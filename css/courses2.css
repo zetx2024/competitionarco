@@ -1,0 +1,217 @@
+.courses2_sec1{
+    display: flex;
+    justify-content: space-between;
+    padding: 20% 0;
+}
+
+.big_video video{
+    width: 550px;
+    height: 308px;
+    border-radius: 10px;
+}
+.big_video h2{
+    font: var(--font-weight-extrabold) 26pt inter;
+    color: #8640c5;
+    width:550px;
+}
+.big_video .video_time {
+    font-size: 10pt;
+}
+.big_video .video_time{
+    font: var(--font-weight-regular) 8pt inter;
+    color: var(--white-color);
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.video_time i{
+    font-size: 25px;
+    color: var(--white-color);
+}
+.big_video p{
+    font: var(--font-weight-regular) 10pt inter;
+    color: var(--white-color);
+    width: 550px;
+}
+.next_up{
+    overflow-y: scroll;
+    height: 308px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.055);
+}
+.next_up::-webkit-scrollbar{
+    width: 5px;
+}
+.next_up::-webkit-scrollbar-track{
+    background: #ccc;
+    border-radius: 50px;
+}
+.next_up::-webkit-scrollbar-thumb{
+    background: #666;
+    border-radius: 50px;
+}
+.next_up video{
+    width: 100px;
+    height: fit-content;
+}
+.next_up .video{
+    display: flex;
+    width: 350px;
+    margin: 10px 3px 15px 15px;
+    cursor: pointer;
+}
+.next_up .video_time i{
+    display: none;
+}
+.next_up .active{
+    background-color: #04b50a;
+    border-radius: 5px;
+}
+.next_up h2{
+    font: var(--font-weight-light) 8pt inter;
+    color: var(--white-color);
+    display: flex;
+    flex-direction: column; 
+    padding: 5px;
+}
+.next_up p{
+    display: none;
+}
+.courses2_sec2 p{
+    font: var(--font-weight-extrabold) 36pt inter;
+    color: var(--white-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+@media only screen and (max-width: 1300px) {
+    .courses2_sec1{
+        display: flex;
+        flex-direction: column;
+    }
+    .big_video .video{
+        display: flex;
+        flex-direction: row;
+    }
+    .vid_info{
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        width: fit-content;
+    }
+    .big_video h2{
+        font-size: 16pt;
+        width: fit-content;
+    }
+    .big_video .video_time {
+        font-size: 8pt;
+    }
+
+    .video_time i{
+        font-size: 20px;
+    }
+    .big_video p{
+        width: fit-content;
+    }
+    .next_up{
+        height: fit-content;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: row;
+        width: min-content;
+    }
+    
+    .next{
+        width:550px;
+        overflow: hidden;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        margin-top: 5%;
+        border-radius: 10px;
+    }
+    .next::-webkit-scrollbar{
+        height: 5px;
+    }
+    .next::-webkit-scrollbar-track{
+        background: #ccc;
+        border-radius: 50px;
+    }
+    .next::-webkit-scrollbar-thumb{
+        background: #666;
+        border-radius: 50px;
+    }
+    .next_up video{
+        width: 100px;
+        height: fit-content;
+    }
+    .next_up .video{
+        padding-right: 30px;
+        width: max-content;
+        margin: 10px 3px 10px 10px;
+}
+    .courses2_sec2 p{
+    font: var(--font-weight-extrabold) 24pt inter;
+    color: var(--white-color);
+    text-align: center;
+    margin-bottom: 40px;   
+    }
+}
+@media only screen and (max-width: 900px) {
+    .courses2_sec1{
+        flex-direction: column;
+    }
+    .big_video{
+        margin: 0 auto;
+    }
+    .big_video .video{
+        flex-direction: column;
+
+    }
+    .big_video video{
+        width: 250px;
+        height: 140px;
+        
+    }
+    .vid_info{
+        display: flex;
+        flex-direction: column;
+        margin-left: 0px;
+    }
+    .big_video h2{
+        font-size: 12pt;
+        width: 250px;
+    }
+    .big_video p{
+        font-size: 8pt;
+        width: 250px;
+    }
+    .big_video .video_time {
+        font-size: 8pt;
+        width: 250px;
+        padding-right:10px;
+    }
+    .next{
+        margin: 0 auto;
+        width: 250px;;
+        margin-top: 3%;
+    }
+    .next_up video{
+        width: 80px;
+        height: fit-content;
+    }
+    .next_up .video{
+        padding-right: 5px;
+        width: max-content;
+        margin: 5px 3px 5px 10px;
+    }
+    .next_up h2{
+        font: var(--font-weight-light) 7pt inter;
+        color: var(--white-color);
+        display: flex;
+        flex-direction: column; 
+        padding: 5px;
+    }
+
+
+}

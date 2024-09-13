@@ -1,0 +1,5 @@
+/*global $, window, console*/
+
+$(function () {
+    
+});

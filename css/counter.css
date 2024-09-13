@@ -1,0 +1,30 @@
+#counter{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e6e6e7;
+  padding: 30px 0px;
+  width: 100%;
+}
+#counter .item{
+  background: #fff;
+  width: 180px;
+  padding: 30px 20px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 15px;
+  -webkit-box-shadow: 0px 0px 38px -8px rgba(0,0,0,0.34);
+-moz-box-shadow: 0px 0px 38px -8px rgba(0,0,0,0.34);
+box-shadow: 0px 0px 38px -8px rgba(0,0,0,0.34);
+} 
+#counter .item .count{
+  color: #0e851c;
+  margin-bottom: 5px;
+  font-size: 30px;
+}
+#counter .item h3{
+  color: #4f4e28;
+  text-transform: capitalize;
+  font-size: 16px;
+}

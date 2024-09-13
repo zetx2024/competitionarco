@@ -1,0 +1,134 @@
+html{
+  scroll-behavior: smooth;
+}
+.active-animation {
+  opacity: 1 !important;
+  visibility: visible !important;
+  -webkit-transform: translateY(0) !important;
+  transform: translateY(0) !important;
+}
+/* Start Landing */
+.landing .text h2 {
+  font-size: 28px;
+}
+@media (min-width: 992px) {
+  .landing .text p {
+    text-align: justify;
+  }
+}
+.landing .text p {
+  color: #555;
+  font-size: 15px;
+}
+.landing .image {
+  animation: landing-image 2s linear infinite;
+}
+@keyframes landing-image {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+}
+.landing .image img {
+  filter: hue-rotate(45deg);
+}
+.apply {
+  background-color: blue;
+  transition: 0.3s;
+}
+.apply:hover {
+  transform: scale(1.1);
+  background-color: green;
+}
+/* End Landing */
+
+/*Start Comparing*/
+.comparing > .container {
+  padding: 70px 40px;
+  background: black;
+}
+@media (min-width: 992px) {
+  .comparing > .container {
+    border-radius: 50px !important;
+  }
+}
+.comparing > .container .seniors,
+.comparing > .container .juniors {
+  border-left: #fa5968 solid 2px;
+}
+.comparing > .container p {
+  text-align: justify;
+}
+/*End comparing*/
+
+/* Start Timeline */
+.timeline {
+  padding: 50px 0;
+}
+
+.timeline .container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.timeline h1 {
+  font-size: 2.5rem;
+  line-height: 1.25;
+}
+
+.timeline h2 {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+/* TIMELINE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* End Timeline */
+
+/* Start Statistics */
+.stats {
+  background-size: cover;
+  background-position: 20% 20%;
+  background-attachment: fixed;
+  background-image: url("../assets/atoms.png");
+}
+@media (max-width: 575.98px) {
+  .stats {
+    background-position-x: 60%;
+  }
+}
+.stats:before {
+ 
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: ;
+  z-index: auto;
+}
+.stats .container {
+  -webkit-transform: translateY(30px);
+  transform: translateY(30px);
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  /* Animation */
+
+
+}
+.stats .box {
+  border-left: 3px solid white;
+}
+.stats .box > span {
+  font-size: 3em;
+}
+/* End Statistics */

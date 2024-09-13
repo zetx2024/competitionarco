@@ -1,0 +1,53 @@
+{
+        "name": "International Academic Research Competition",
+        "author": "Md Sanaul Haque Shanto",
+        "short_name": "IARCO",
+        "description": "IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc..",
+        "start_url": "/index.html",
+        "background_color": "#0749b3",
+        "theme_color": "#0749b3",
+        "display": "standalone",
+        "icons":[
+        {
+
+            "src": "fevicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+                {
+                "src": "fevicon/fav144x144.png",
+
+            "sizes": "144x144",
+
+            "type": "image/png"
+                       }, 
+        {
+
+            "src": "fevicon/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+        ],
+    "manifest_version": 1,
+    "type": "WebApp",
+    "meta": {
+        "name": "International Academic Research Competition",
+        "author": "Md Sanaul Haque Shanto",
+        "short_name": "IARCO",
+        "short_url": ".",
+        "background_color": "#0749b3",
+        "theme_color": "#0749b3",
+        "display": "standalone",
+        "version": "1.0.0.01",
+        "minimum-overwolf-version": "iarco.org",
+        "minimum-gep-version": "iarco.org",
+        "description": "IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc..",
+        "dock_button_title": "IARCO",
+        "launcher_icon": "fevicon/favicon.ico",
+        "splash_image": "fevicon/logo.png",
+        "window_icon": "fevicon/logo.png"
+        
+    },
+    "permissions": ["Web"]
+    
+}

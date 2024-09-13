@@ -1,0 +1,94 @@
+
+        .testimonial{
+            border-right: 4px solid #089608;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px 30px 30px 130px;
+            margin: 0 15px 30px 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        .testimonial:before{
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: -17px;
+            border-top: 25px solid #089608;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            transform: rotate(45deg);
+        }
+        .testimonial:after{
+            content: "";
+            position: absolute;
+            top: -4px;
+            left: -17px;
+            border-top: 25px solid #089608;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            transform: rotate(135deg);
+        }
+        .testimonial .pic{
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: absolute;
+            top: 60px;
+            left: 5px;
+            border: 3px solid #089608;
+        }
+        .testimonial .pic img{
+            width: 100%;
+            height: auto;
+
+        }
+        .testimonial .description{
+            font-size: 15px;
+            letter-spacing: 1px;
+            color: #6f6f6f;
+
+        }
+        .testimonial .title{
+            display: inline-block;
+            font-size: 20px;
+           
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #089608;
+           
+        }
+        .testimonial .post{
+
+            font-size: 17px;
+            color: #089608;
+            font-style:italic;
+        }
+        .testimonial .rate{
+            
+            font-size: 22px;
+            color: yellow;
+            font-style:italic;
+        }
+        .owl-theme .owl-controls .owl-page span{
+            border: 2px solid #2A3D7D;
+            background: #fff !important;
+          border-radius:0 !important;
+            opacity: 1;
+        }
+        .owl-theme .owl-controls .owl-page.active span,
+        .owl-theme .owl-controls .owl-page:hover span{
+            background: #29D18B !important;
+          border-color:#29D18B;
+        }
+        @media only screen and (max-width: 767px){
+            .testimonial{
+                padding: 20px;
+                text-align: center;
+            }
+            .testimonial .pic{
+                display: block;
+                position: static;
+                margin: 0 auto 15px;
+            }
+        }

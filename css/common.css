@@ -1,0 +1,268 @@
+@import url("https://fonts.cdnfonts.com/css/sofia-pro");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+  /* border-radius: 5px; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #555;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Sofia Pro", sans-serif;
+}
+
+/* start nav bar */
+
+.navbar {
+  background-color: #fff !important;
+  z-index: 999;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.navbar-brand {
+  margin-top: 5px;
+}
+
+.navbar .nav-link {
+  /* color: #eee; */
+  font-weight: bold;
+  margin: 0 6px;
+  font-size: 15px;
+}
+
+/* Mikha */
+.navbar .navbar-toggler {
+  outline: none;
+  border: none;
+  box-shadow: none;
+  transition: 0.2s;
+}
+
+.navbar .navbar-toggler:not(.collapsed) {
+  transform: rotate(-90deg);
+}
+/* End Mikha */
+
+.pub-btn {
+  background: rgba(250, 48, 67, 0.2);
+  color: rgba(250, 48, 67, 0.8) !important;
+  margin-left: 15px;
+  border-radius: 7px;
+  font-size: 14px !important;
+  padding: 2px 15px !important;
+  margin-top: 8px !important;
+  /* Mikha */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mikha */
+.pub-btn div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: white;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  transform: skewX(-45deg);
+  background: linear-gradient(to right, white, white 20px, transparent 20px);
+  transform-origin: left bottom;
+  animation: shine 5s ease-in infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: skewX(-45deg) translateX(-100%);
+  }
+  /* 20% {
+    transform: skewX(-45deg) translateX(100%);
+  } */
+  30% {
+    transform: skewX(-45deg) translateX(-100%);
+  }
+  45% {
+    transform: skewX(-45deg) translateX(100%);
+  }
+  100% {
+    transform: skewX(-45deg) translateX(100%);
+  }
+}
+/* End Mikha */
+
+@media (max-width: 992px) {
+  .pub-btn {
+    width: 80px;
+  }
+}
+
+/* Mikha */
+.pub-btn:hover {
+  background: rgba(250, 48, 67, 0.3);
+  color: rgb(255, 37, 59) !important;
+}
+/* End Mikha */
+
+/*start footer section*/
+
+footer {
+  padding-top: 50px;
+  background: rgba(2, 9, 32, 0.8);
+  bottom: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+@media (min-width: 992px) {
+  footer {
+    padding-left: 3rem;
+  }
+}
+
+footer h4 {
+  color: #f2f2f2;
+  position: relative;
+  margin-left: 100px;
+  margin-top: 45px;
+  margin-bottom: 25px;
+  /* Mikha */
+  /* font-family: -webkit-pictograph; */
+  /* font-size: 2.3rem; */
+  font-size: 1.8rem;
+  font-family: "Lobster", cursive !important;
+  width: fit-content;
+}
+
+footer h4::after {
+  content: "";
+  background-color: #f2f2f2ad;
+  height: 1.5px;
+  position: absolute;
+  top: 47px;
+  /* Mikha */
+  /* margin-left: -172px; */
+  /* width: 172px; */
+  width: 100%;
+  left: 0;
+}
+
+footer p {
+  color: #676767;
+  font-size: 14px;
+  /* margin-left: 100px; */
+}
+
+footer .jobs p {
+  font-size: 14px;
+}
+
+footer img {
+  height: 28px !important;
+}
+
+footer .jobs {
+  /* margin-left: 150px; */
+  margin-top: 90px;
+  margin-bottom: 60px;
+  /* Mikha */
+  margin-inline: auto;
+}
+
+@media (max-width: 992px) {
+  footer .jobs,
+  footer p {
+    margin-left: 15px;
+  }
+  footer h4 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  footer .jobs {
+    margin-top: 25px;
+  }
+}
+
+footer .jobs p span {
+  color: #f2f2f2;
+}
+
+footer a {
+  text-decoration: none;
+  margin: 0 20px;
+  /* font-size: 20px; */
+  color: #ccc;
+  /* Mikha */
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+/* Mikha */
+footer a:first-child {
+  margin-left: 0;
+}
+
+footer a:last-child {
+  margin-right: 0;
+}
+/* End Mikha */
+
+footer a i {
+  font-size: 14px;
+}
+
+footer a:hover {
+  color: #f2f2f2;
+}
+
+.rights {
+  color: #ccc;
+  font-size: 14px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+
+/* Mikha */
+@media (max-width: 767.98px) {
+  footer {
+    text-align: center;
+  }
+  footer a {
+    margin-inline: auto;
+  }
+  footer a::after {
+    content: "\a\a";
+    white-space: pre;
+  }
+  .rights {
+    margin-top: 30px;
+  }
+}
+/* End Mikha */
