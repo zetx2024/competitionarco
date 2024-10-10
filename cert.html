@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Generator with Template and QR Code</title>
+    <title>Certificate Generator with QR Code</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,9 +23,11 @@
 
     <div id="qrcode"></div>
 
+    <!-- Import the QRCode.js and jsPDF libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.16.0/dist/pdf-lib.min.js"></script>
 
     <script>
         const students = [
@@ -52,45 +54,59 @@
             }, 500); // Delay to ensure QR code is rendered
         }
 
-        // Function to load template PDF and generate new PDF
-        function generateCertificates() {
+        // Function to load and manipulate the template PDF
+        async function generateCertificates() {
             const { jsPDF } = window.jspdf;
 
-            // Load the PDF template file as base64
-            const pdfTemplateUrl = 'template.pdf'; // The path to the certificate template PDF
+            // Load the PDF template file as an ArrayBuffer
+            const pdfTemplateUrl = 'template.pdf'; // Path to your template PDF
+            const templateBytes = await fetch(pdfTemplateUrl).then(res => res.arrayBuffer());
 
-            students.forEach((student) => {
-                fetch(pdfTemplateUrl)
-                    .then(response => response.arrayBuffer())
-                    .then(data => {
-                        // Create a new jsPDF document
-                        const doc = new jsPDF();
+            students.forEach(async (student) => {
+                const pdfDoc = await PDFLib.PDFDocument.load(templateBytes);
+                const page = pdfDoc.getPage(0); // Assuming the template is single-page
 
-                        // Add the template PDF as background
-                        const pdfAsDataUri = new Uint8Array(data);
-                        doc.addFileToVFS('template.pdf', pdfAsDataUri);
-                        doc.addImage('template.pdf', 'PDF', 0, 0, 210, 297);
+                // Generate QR code for the student
+                const qrText = `Name: ${student.name}\nInstitute: ${student.institute}\nProgram: ${student.program}`;
+                generateQRCode(qrText, async (qrDataUrl) => {
+                    const imageBytes = await fetch(qrDataUrl).then(res => res.arrayBuffer());
+                    const qrImage = await pdfDoc.embedPng(imageBytes);
+                    const qrImageDimensions = qrImage.scale(0.5); // Adjust the QR code size
 
-                        // Prepare student information
-                        const qrText = `Name: ${student.name}\nInstitute: ${student.institute}\nProgram: ${student.program}`;
-                        const description = `${student.name} has successfully completed the ${student.program} program at ${student.institute}.`;
+                    // Add the student's name, institute, and program to the PDF
+                    page.drawText(student.name, {
+                        x: 200,
+                        y: 400, // Adjust x, y according to your template
+                        size: 24,
+                        font: await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold)
+                    });
+                    page.drawText(student.institute, {
+                        x: 200,
+                        y: 380,
+                        size: 18
+                    });
+                    page.drawText(student.program, {
+                        x: 200,
+                        y: 360,
+                        size: 18
+                    });
 
-                        // Generate QR code for the student
-                        generateQRCode(qrText, (qrDataUrl) => {
-                            // Add student details to the PDF
-                            doc.setFontSize(16);
-                            doc.text(student.name, 105, 150, { align: 'center' }); // Adjust position as needed
-                            doc.text(student.institute, 105, 160, { align: 'center' });
-                            doc.text(student.program, 105, 170, { align: 'center' });
+                    // Add the QR code to the page
+                    page.drawImage(qrImage, {
+                        x: 400, // Adjust the x and y position of the QR code
+                        y: 100,
+                        width: qrImageDimensions.width,
+                        height: qrImageDimensions.height
+                    });
 
-                            // Add QR code image at desired position (bottom-right corner in this example)
-                            doc.addImage(qrDataUrl, 'PNG', 160, 200, 40, 40); // Adjust size and position as needed
-
-                            // Save the PDF with the student's name
-                            doc.save(`certificate_${student.name}.pdf`);
-                        });
-                    })
-                    .catch(error => console.error('Error loading template PDF:', error));
+                    // Serialize the PDF document to bytes and download it
+                    const pdfBytes = await pdfDoc.save();
+                    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = `certificate_${student.name}.pdf`;
+                    link.click();
+                });
             });
         }
     </script>
