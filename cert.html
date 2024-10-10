@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Generator with QR</title>
+    <title>Certificate Generator with Template and QR Code</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,30 +11,6 @@
         }
         #qrcode {
             display: none; /* Hide QR code element as it will be used for generating the image */
-        }
-        .form-container {
-            margin-bottom: 20px;
-        }
-        .certificate {
-            width: 800px;
-            height: 600px;
-            background-color: #f8f8f8;
-            border: 2px solid #000;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        .certificate-content {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        .qr-code {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
         }
     </style>
 </head>
@@ -52,7 +28,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <script>
-        // Sample JSON Data
         const students = [
             { "name": "Alice Johnson", "institute": "XYZ University", "program": "Computer Science" },
             { "name": "Bob Smith", "institute": "XYZ University", "program": "Mechanical Engineering" },
@@ -77,39 +52,45 @@
             }, 500); // Delay to ensure QR code is rendered
         }
 
-        // Function to generate certificates for all students
+        // Function to load template PDF and generate new PDF
         function generateCertificates() {
             const { jsPDF } = window.jspdf;
 
-            students.forEach((student, index) => {
-                // Create a new jsPDF document
-                const doc = new jsPDF();
+            // Load the PDF template file as base64
+            const pdfTemplateUrl = 'template.pdf'; // The path to the certificate template PDF
 
-                // Prepare student information
-                const qrText = `Name: ${student.name}\nInstitute: ${student.institute}\nProgram: ${student.program}`;
-                const certificateTitle = "Certificate of Completion";
-                const description = `${student.name} has successfully completed the ${student.program} program at ${student.institute}.`;
+            students.forEach((student) => {
+                fetch(pdfTemplateUrl)
+                    .then(response => response.arrayBuffer())
+                    .then(data => {
+                        // Create a new jsPDF document
+                        const doc = new jsPDF();
 
-                // Generate QR code for the student
-                generateQRCode(qrText, (qrDataUrl) => {
-                    // Add certificate title
-                    doc.setFontSize(24);
-                    doc.text(certificateTitle, 105, 40, { align: 'center' });
+                        // Add the template PDF as background
+                        const pdfAsDataUri = new Uint8Array(data);
+                        doc.addFileToVFS('template.pdf', pdfAsDataUri);
+                        doc.addImage('template.pdf', 'PDF', 0, 0, 210, 297);
 
-                    // Add student details
-                    doc.setFontSize(16);
-                    doc.text(description, 105, 80, { align: 'center' });
+                        // Prepare student information
+                        const qrText = `Name: ${student.name}\nInstitute: ${student.institute}\nProgram: ${student.program}`;
+                        const description = `${student.name} has successfully completed the ${student.program} program at ${student.institute}.`;
 
-                    // Add QR code image
-                    doc.addImage(qrDataUrl, 'PNG', 160, 200, 40, 40);
+                        // Generate QR code for the student
+                        generateQRCode(qrText, (qrDataUrl) => {
+                            // Add student details to the PDF
+                            doc.setFontSize(16);
+                            doc.text(student.name, 105, 150, { align: 'center' }); // Adjust position as needed
+                            doc.text(student.institute, 105, 160, { align: 'center' });
+                            doc.text(student.program, 105, 170, { align: 'center' });
 
-                    // Add some decorative lines (optional)
-                    doc.setLineWidth(1);
-                    doc.line(20, 50, 190, 50); // Horizontal line
+                            // Add QR code image at desired position (bottom-right corner in this example)
+                            doc.addImage(qrDataUrl, 'PNG', 160, 200, 40, 40); // Adjust size and position as needed
 
-                    // Save the PDF with the student's name
-                    doc.save(`certificate_${student.name}.pdf`);
-                });
+                            // Save the PDF with the student's name
+                            doc.save(`certificate_${student.name}.pdf`);
+                        });
+                    })
+                    .catch(error => console.error('Error loading template PDF:', error));
             });
         }
     </script>
