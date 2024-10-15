@@ -61,6 +61,9 @@
                     case 'bronze':
                         colors = ['#cd7f32', '#A0522D']; // Bronze colors
                         break;
+                case 'hmention':
+                        colors = ['#bfa993', '#63473a']; // Bronze colors
+                        break;
                     default:
                         colors = ['#00F', '#F00']; // Default colors
                 }
