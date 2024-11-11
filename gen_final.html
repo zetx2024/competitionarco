@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel to JSON Generator</title>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <style type="text/css"> 
+  /* styles.css */
+
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Excel to JSON Generator</h1>
+
+  <p>Upload your Excel file below:</p>
+
+  <input type="file" id="excel-file" accept=".xlsx, .xls, .csv" />
+  
+  <button id="generate-json-btn" style="display: none;">Generate JSON</button>
+  <button id="show-json-btn" style="display: none;">Show JSON</button>
+  <button id="copy-json-btn" style="display: none;">Copy to Clipboard</button>
+
+  <h2>Generated JSON Output:</h2>
+  <pre id="json-output" style="display: none;"></pre>
+
+  <script>
+
+    // script.js
+
+// Function to generate random ID in the format azAZ1-9
+function generateRandomID() {
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = '';
+  const length = 8;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+
+// Function to read the uploaded Excel file
+document.getElementById('excel-file').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    const data = e.target.result;
+    const workbook = XLSX.read(data, { type: 'array' });
+
+    // Get the first sheet name and parse the data
+    const sheet = workbook.Sheets[workbook.SheetNames[0]]; // Getting the first sheet
+    const sheetData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+    // Process the sheet data (skip the header)
+    const studentData = [];
+    for (let i = 1; i < sheetData.length; i++) {
+      const studentName = sheetData[i][0]; // First column = Student Name
+      const schoolName = sheetData[i][1];  // Second column = School Name
+
+      if (studentName && schoolName) {
+        const student = {
+          id: generateRandomID(),        // Generate random ID
+          category: 'Junior',            // Default category
+          name: studentName,             // From Excel
+          school: schoolName,            // From Excel
+          country: 'Bangladesh',         // Default country
+          selected: 'No'                 // Default selected status
+        };
+        studentData.push(student);
+      }
+    }
+
+    // Generate the JSON output and display it
+    const jsonOutput = document.getElementById('json-output');
+    jsonOutput.textContent = JSON.stringify(studentData, null, 2);
+    jsonOutput.style.display = 'block';
+
+    // Show the "Generate JSON" and "Show JSON" buttons
+    document.getElementById('generate-json-btn').style.display = 'inline-block';
+    document.getElementById('show-json-btn').style.display = 'inline-block';
+    document.getElementById('copy-json-btn').style.display = 'inline-block';
+  };
+
+  reader.readAsArrayBuffer(file);
+});
+
+// Toggle visibility of the JSON output when "Show JSON" is clicked
+document.getElementById('show-json-btn').addEventListener('click', function() {
+  const jsonOutput = document.getElementById('json-output');
+  const isVisible = jsonOutput.style.display === 'block';
+  jsonOutput.style.display = isVisible ? 'none' : 'block';
+});
+
+// Copy the JSON to clipboard
+document.getElementById('copy-json-btn').addEventListener('click', function() {
+  const jsonOutput = document.getElementById('json-output');
+  const textToCopy = jsonOutput.textContent;
+
+  // Create a temporary textarea element to copy the JSON text
+  const tempTextArea = document.createElement('textarea');
+  tempTextArea.value = textToCopy;
+  document.body.appendChild(tempTextArea);
+  tempTextArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempTextArea);
+
+  alert('JSON copied to clipboard!');
+});
+
+  </script>
+</body>
+</html>
