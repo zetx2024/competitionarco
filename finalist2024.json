@@ -696,18 +696,18 @@
       "quality_of_writing": 2,
       "plagiarism_check_percentile": 2,
       "presentation": {
-        "persuasiveness": 16,
-        "video_quality": 15,
+        "persuasiveness": 17,
+        "video_quality": 17,
         "research_problem": 15,
         "research_question": 15,
-        "methodology": 14
+        "methodology": 15
       }
     },
     "plagiarismPenalty": 15,
     "researchPaperScore": 77,
-    "presentationScore": 75,
-    "submissionScore": 152,
-    "scaledFinalScore": 137,
+    "presentationScore": 79,
+    "submissionScore": 156,
+    "scaledFinalScore": 141,
     "viewProposal": "https://drive.google.com/open?id=1pOwSpJ4g7yldlQX7pfdAYkvGVTBi2p49",
     "videoPitch": "https://drive.google.com/file/d/143RFUwp5UsPFIed68fTbRXVGdmf851pE/view?usp=drivesdk",
     "proposal_comment": "No Comment.",
