@@ -47,6 +47,10 @@
 <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
 <link rel="manifest" href="manifest.json">
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+
 <meta name="theme-color" content="#0749b3">
 <meta name="keywords" content="Global, USA, United State of America, Competiton, IARCO, International, Academic, International Academic Research Competition, Bangladesh, Summer, SRP, WRP,YRJ, yrj, Youth Research Journal, Education, Lumiere Education, Spring, Research Program, Summer Activities, Winter Research, Winter Program, Winter Activities, undergraduate, research, journal, electronic, online, multidisciplinary, open access, articles, essays, Houston, Texas, Journal of Student Research, jofsr, Jofsr, JofSR, student research journal, undergraduate rsesearch journal, student research, high school, hs, high school publication, high school research, school research, high school edition, hs edition, hs portal, high school portal, high school edition research, machine learning, computational biology, machine, computational, biology."/>
 
@@ -199,6 +203,64 @@
   .apply.btn {
     font-size: 0.9rem;
     padding: 0.5rem 1.25rem;
+  }
+}
+
+
+
+            .reviews-section {
+  padding: 2rem 1rem;
+  background-color: #f5f5f5;
+}
+
+.swiper {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+
+.review-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.review-card img.reviewer-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.review-stars {
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.review-country svg {
+  width: 24px;
+  height: 16px;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+.review-content {
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 0.5rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .review-card {
+    padding: 0.8rem;
+  }
+
+  .review-content {
+    font-size: 0.85rem;
   }
 }
 
@@ -527,6 +589,17 @@ Researchers can choose a topic they’re passionate about, something they wish t
     </section>
     <!--End: Bootcamp container-->
 
+<section class="reviews-section">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper" id="reviews-container">
+      <!-- Slides injected here -->
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+
+        
 
     <!--Start: Partner container-->
      <section class="team">
@@ -545,11 +618,7 @@ Researchers can choose a topic they’re passionate about, something they wish t
                     <p><a href="https://www.facebook.com/aysrizon.ylrl">Young Learners' Research Lab</a>—a dynamic platform driving the future of research and innovation! Young Learners' Research Lab is dedicated to igniting curiosity and fostering creativity among young scholars by connecting them with leading researchers and cutting-edge projects. By nurturing the next generation of thinkers, we’re creating a vibrant ecosystem of learning and collaboration. With a focus on groundbreaking research and a commitment to building valuable networks, the Young Learners' Research Lab is at the forefront of shaping tomorrow's leaders in science and technology. Explore our innovative approach and witness how we are transforming the landscape of academic research. </p>
                   </div>
                   
-                 <div class="col-md-4">
-                    <img src="https://pinneducation.org/images/logo.png" class="img-fluid" alt="Pinn Education">
-                    <p><a href="https://pinneducation.org">Pinn Education</a> is the leading US, UK, Canada, Russia, India, and Undergrad admissions counselors. In 2024, it was founded by three students, including CEO Sanaul Haque who had just been accepted to 30+ of the world's best universities. Our mission is to help students all over the world reach their ultimate university admissions goals.</p>
-                  </div>
-                
+                 
 
 
                 </div>
@@ -626,7 +695,51 @@ Researchers can choose a topic they’re passionate about, something they wish t
     });
 });
         </script>
+<script>
+  async function loadReviewsAndFlags() {
+    const [reviews, flags] = await Promise.all([
+      fetch('reviews.json').then(res => res.json()),
+      fetch('flagss.json').then(res => res.json())
+    ]);
 
+    const container = document.getElementById("reviews-container");
+
+    reviews.forEach(review => {
+      const stars = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+      const flagSVG = flags[review.country] || "";
+
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.innerHTML = `
+        <div class="review-card">
+          <img src="${review.image}" alt="${review.name}" class="reviewer-img" />
+          <h5>${review.name}</h5>
+          <p><strong>${review.institution}</strong><br>${review.category}</p>
+          <div class="review-stars">${stars}</div>
+          <div class="review-country">${review.country} ${flagSVG}</div>
+          <p class="review-content">"${review.review}"</p>
+        </div>
+      `;
+      container.appendChild(slide);
+    });
+
+    new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 }
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", loadReviewsAndFlags);
+</script>
 
     </body>
 </html>
