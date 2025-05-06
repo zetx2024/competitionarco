@@ -1,0 +1,20 @@
+[
+  {
+    "image": "https://example.com/user1.jpg",
+    "name": "Alice Johnson",
+    "institution": "Oxford University",
+    "category": "Senior",
+    "country": "United Kingdom",
+    "rating": 4,
+    "review": "An amazing opportunity to present globally!"
+  },
+  {
+    "image": "https://example.com/user2.jpg",
+    "name": "Ravi Kumar",
+    "institution": "IIT Delhi",
+    "category": "Junior",
+    "country": "India",
+    "rating": 5,
+    "review": "Very professional and globally competitive!"
+  }
+]
