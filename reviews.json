@@ -1,24 +1,69 @@
 [
-  {
-    "image": "https://yrjournal.org/testimonialimg/MorsalinaC.jpg",
-    "name": "Morsalina Chowdhory Madhabi",
-    "institution": "Liceo Scientifico Francesco D’assisi",
-    "category": "Senior",
-    "country": "Indonesia",
-    "year": "2024",
-    "rating": 4,
-    "result": "Winner",
-    "review": "It was such pleasure to work with you all. But I wish we had more time to complete the assignments as most of us are beginners. It would have been much better and beginner friendly in that way. But the overall experience was so good and the people organizing it were so friendly and nice. I will say these people are so dedicated individuals."
-  },
+  
   {
     "image": "https://yrjournal.org/awardimg/wrp24/shafi.jpg",
-    "name": "Ravi Kumar",
-    "institution": "IIT Delhi",
+    "name": "Shafi Bin Sultan",
+    "institution": "St.Joseph Higher Secondary School & College",
     "category": "Junior",
     "country": "Bangladesh",
     "year": "2025",
-   "result": "Finalist",
+   "result": "Gold Medalist",
     "rating": 5,
-    "review": "The YRJ Winter Research Program is an exceptionally well-organized and impactful event. From the seamless registration process to the carefully curated sessions, every aspect reflects meticulous planning and attention to detail. The program's structure fosters collaboration and learning, offering participants a platform to engage deeply with their chosen research fields. The organizers' dedication to creating an intellectually stimulating environment is evident in the expert mentorship, timely communication, and diverse research opportunities provided. The event's emphasis on real-world applicability ensures that participants leave with theoretical knowledge and practical insights that contribute to their academic and professional growth."
+    "review": "The journey with IARCO has been nothing short of transformational, with opened doors that I never thought possible, encouraging us to excel in every step through bootcamp sessions. It provided me a ground to showcase my abilities, challenged me for critical thinking, and aspired me to aim higher. I am eternally grateful that I can be in a place to share my experiences and contribute to encouraging others, because by now, too, I've been encouraged enough by the stories of so many before me. Long story short, Hats off to IARCO!"
+  },
+  {
+    "image": "https://yrjournal.org/testimonialimg/adira.jpg",
+    "name": "Adira Safwan",
+    "institution": "Maple Leaf International School",
+    "category": "Junior",
+    "country": "Bangladesh",
+    "year": "2025",
+   "result": "Silver Medalist",
+    "rating": 5,
+    "review": "As the Silver Prize winner of IARCO 2024, I am immensely grateful for the incredible opportunity to practice and showcase everything I had learned, especially from the Youth Research Journal program I was a student of prior. Participating in this competition significantly honed my research skills, and the excellent workshops conducted by some of the brightest minds in the field were instrumental in my success. The event was very well-structured, with concise and detailed guidelines, ensuring that every resource we needed was readily available--- from guidelines, lectures and even examples of what was expected of us as participants. This inclusive approach made it accessible even for participants with little to no prior experience in research, encouraging everyone to give it a shot. One of the most exciting parts of the competition for me was creating the video pitch. It allowed me to present the significance of my chosen topic and put into practice everything I had worked on in my proposal. It was a perfect opportunity to merge creativity with research and demonstrate my insights in a compelling way. Truthfully, I tend to work last-minute, and there were moments when I doubted whether I’d even make it to the top 10. Winning Silver felt surreal and deeply rewarding. I am endlessly thankful to IARCO for providing this platform. I hope this inspires others to step out of their comfort zones and explore the exciting world of research."
+  },
+  {
+    "image": "https://yrjournal.org/testimonialimg/MorsalinaC.jpg",
+    "name": "Andi Filzah Dahiyah Liana",
+    "institution": "Man 2 Kota Makassar",
+    "category": "Junior",
+    "country": "Indonesia",
+    "year": "2024",
+    "rating": 5,
+    "result": "Bronze Medalist",
+    "review": "Participating in IARCO 2024 has been an incredibly valuable and meaningful experience for me. The event was well organized, and I truly appreciate the opportunity to showcase my research and connect with other brilliant minds from various fields. Receiving the certificate of recognition was an honor, and it motivates me to continue striving for excellence in research. The supportive and professional atmosphere created by the organizers made the entire process smooth and enjoyable. I believe IARCO has a significant positive impact by inspiring researchers and fostering innovation. Thank you for hosting such an inspiring event, and I hope IARCO continues to thrive and support many more researchers in the future."
+  },
+  {
+    "image": "https://yrjournal.org/testimonialimg/adira.jpg",
+    "name": "Sanjana Hasan",
+    "institution": "Khulna University of Engineering & Technology",
+    "category": "Senior",
+    "country": "Bangladesh",
+    "year": "2025",
+   "result": "Gold Medalist",
+    "rating": 5,
+    "review": "No matter how many lemons life gives you, keep making lemonade with a smile. There will be moments when it feels overwhelming and others that fill you with joy—that’s the nature of life. Be grateful not only for what you’ve achieved but also for what you haven’t, as it may not have been meant for you. Gratitude and forgiveness go hand in hand. Show kindness and compassion because you never truly know what others are going through. Even if you reach great heights, remain humble and treat everyone with respect. Life will bring new people and experiences your way—welcome them and learn from each one. Mistakes are not reasons for grief; they are valuable lessons. If you act unjustly or behave rudely toward someone, sincerely apologize without delay. Remember, it’s not your achievements but your behavior that truly defines your character. And lastly, never forget—no matter what challenges come your way, you must keep going. Never give up."
+  },
+  {
+    "image": "https://yrjournal.org/awardimg/wrp24/shafi.jpg",
+    "name": "Mohammad Ebtisam Jawad",
+    "institution": "Premier University, Chittagong",
+    "category": "Senior",
+    "country": "Bangladesh",
+    "year": "2025",
+   "result": "Silver Medalist",
+    "rating": 5,
+    "review": "Participating in the 'International Academic Research Competition' was a learning session in my life. I took it as a challenge to see my capabilities. In my IARCO journey, I learnt a lot from Azmain bhaiya and Sanaul bhaiya. A big congratulations to the whole IARCO team for arranging this competition successfully. I always believe, The result is not in my hand, but how much effort and dedication should be given is always in my hand."
+  },
+  {
+    "image": "https://yrjournal.org/awardimg/wrp24/shafi.jpg",
+    "name": "Arafat Rahman",
+    "institution": "American International University Bangladesh",
+    "category": "Senior",
+    "country": "Bangladesh",
+    "year": "2025",
+   "result": "Bronze Medalist",
+    "rating": 5,
+    "review": "I’m honored to have my journey featured by IARCO! Participating in the research proposal competition was a challenging yet rewarding experience. Finishing 3rd was a proud moment, as it reflected my dedication and hard work. IARCO provided me with an incredible platform to showcase my ideas and grow both personally and professionally. Their support and encouragement motivated me to push my limits and think creatively. I hope my story inspires others to take on challenges and make the most of the opportunities around them. Thank you, IARCO, for being a part of my journey!"
   }
 ]
