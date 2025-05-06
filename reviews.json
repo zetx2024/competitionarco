@@ -2,18 +2,22 @@
   {
     "image": "https://yrjournal.org/testimonialimg/MorsalinaC.jpg",
     "name": "Morsalina Chowdhory Madhabi",
-    "institution": "Oxford University",
+    "institution": "Liceo Scientifico Francesco D’assisi",
     "category": "Senior",
     "country": "United Kingdom",
+    "year": "2024",
+    "selected": "Finalist",
     "rating": 4,
     "review": "It was such pleasure to work with you all. But I wish we had more time to complete the assignments as most of us are beginners. It would have been much better and beginner friendly in that way. But the overall experience was so good and the people organizing it were so friendly and nice. I will say these people are so dedicated individuals."
   },
   {
     "image": "https://yrjournal.org/awardimg/wrp24/shafi.jpg",
-    "name": "Sabik Bin Sultan",
+    "name": "Ravi Kumar",
     "institution": "IIT Delhi",
     "category": "Junior",
     "country": "India",
+    "year": "2025",
+    "selected": "Winner",
     "rating": 5,
     "review": "The YRJ Winter Research Program is an exceptionally well-organized and impactful event. From the seamless registration process to the carefully curated sessions, every aspect reflects meticulous planning and attention to detail. The program's structure fosters collaboration and learning, offering participants a platform to engage deeply with their chosen research fields. The organizers' dedication to creating an intellectually stimulating environment is evident in the expert mentorship, timely communication, and diverse research opportunities provided. The event's emphasis on real-world applicability ensures that participants leave with theoretical knowledge and practical insights that contribute to their academic and professional growth."
   }
