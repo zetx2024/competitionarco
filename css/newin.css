@@ -43,7 +43,7 @@ p {
 
 /* Navigation */
 .navbar {
-  background-color: var(--primary-blue);
+  background-color: var(--white);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
 }
@@ -54,7 +54,7 @@ p {
 }
 
 .nav-link {
-  color: var(--white) !important;
+  color: var(--primary-blue) !important;
   font-weight: 500;
   padding: 0.5rem 1rem !important;
   transition: all 0.3s ease;
@@ -65,35 +65,36 @@ p {
 }
 
 .dropdown-menu {
-  background-color: var(--primary-blue);
-  border: none;
+  background-color: var(--white);
+  border: 1px solid var(--light-gray);
 }
 
 .dropdown-item {
-  color: var(--white);
+  color: var(--primary-blue);
   padding: 0.5rem 1rem;
 }
 
 .dropdown-item:hover {
-  background-color: var(--secondary-blue);
+  background-color: var(--light-gray);
   color: var(--primary-gold);
 }
 
 .navbar-toggler {
-  border-color: var(--white);
+  border-color: var(--primary-blue);
 }
 
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(0, 51, 102, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* Quote Section */
 .quote {
-  background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.9)), url('assets/hero-bg.jpg') no-repeat center center;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), url('assets/hero-bg.jpg') no-repeat center center;
   background-size: cover;
-  color: var(--white);
+  color: var(--primary-blue);
   padding: 5rem 0;
   text-align: center;
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .quote p {
@@ -128,8 +129,10 @@ p {
 /* Comparing Section */
 .comparing {
   padding: 3rem 0;
-  background-color: var(--primary-blue);
-  color: var(--white);
+  background-color: var(--light-gray);
+  color: var(--primary-blue);
+  border-top: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .comparing i {
@@ -237,7 +240,9 @@ p {
 /* Reviews Section */
 .reviews-section {
   padding: 4rem 0;
-  background-color: var(--light-gray);
+  background-color: var(--white);
+  border-top: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .review-card {
@@ -321,19 +326,20 @@ p {
 
 /* Footer */
 footer {
-  background-color: var(--primary-blue);
-  color: var(--white);
+  background-color: var(--light-gray);
+  color: var(--primary-blue);
   padding: 3rem 0 1rem;
+  border-top: 1px solid var(--light-gray);
 }
 
 footer a {
-  color: var(--primary-gold);
+  color: var(--primary-blue);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 footer a:hover {
-  color: var(--white);
+  color: var(--primary-gold);
   text-decoration: underline;
 }
 
@@ -343,12 +349,12 @@ footer img {
 }
 
 .rights {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 1rem;
   margin-top: 2rem;
   text-align: center;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-color);
 }
 
 /* Modal Popup */
@@ -377,9 +383,10 @@ footer img {
   margin: 10% auto;
   padding: 20px;
   border-radius: 10px;
-  background: var(--primary-blue);
-  color: var(--white);
+  background: var(--white);
+  color: var(--primary-blue);
   text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .close {
@@ -398,8 +405,8 @@ footer img {
 }
 
 .close:hover {
-  background: var(--white);
-  color: var(--primary-blue) !important;
+  background: var(--secondary-gold);
+  color: var(--white) !important;
 }
 
 /* Preloader */
@@ -409,7 +416,7 @@ footer img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--primary-blue);
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
