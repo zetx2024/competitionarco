@@ -12,6 +12,7 @@
   --text-color: #2c3e50;
   --header-bg: rgba(0, 51, 102, 0.95); /* Semi-transparent blue */
   --footer-bg: rgba(0, 51, 102, 0.97); /* Slightly darker blue */
+  --header-footer-gray: #f1f3f5; /* Light grey for header/footer */
 }
 
 body {
@@ -59,7 +60,7 @@ p {
 
 /* Navigation */
 .navbar {
-  background-color: var(--header-bg);
+  background-color: var(--header-footer-gray);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 0.5rem 0;
@@ -86,7 +87,7 @@ p {
 }
 
 .dropdown-menu {
-  background-color: var(--header-bg);
+  background-color: var(--header-footer-gray);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -393,7 +394,7 @@ a:not(.btn):not(.nav-link):not(.dropdown-item):hover:after {
 
 /* Footer */
 footer {
-  background-color: var(--footer-bg);
+  background-color: var(--header-footer-gray);
   backdrop-filter: blur(8px);
   color: var(--white);
   padding: 4rem 0 2rem;
