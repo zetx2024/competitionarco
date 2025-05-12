@@ -1,0 +1,128 @@
+/* Add these to your existing CSS */
+
+/* Enhanced Modal Dialog with Blue & Gold Theme */
+.modalDialog > div {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #001a33 100%);
+  color: var(--white);
+  border: 3px solid var(--primary-gold);
+}
+
+.modalDialog input[type="email"],
+.modalDialog input[type="text"],
+.modalDialog select {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border: 2px solid var(--primary-gold);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--primary-blue);
+  font-weight: 500;
+}
+
+.modalDialog button[type="submit"] {
+  background-color: var(--primary-gold);
+  color: var(--primary-blue);
+  font-weight: 600;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.modalDialog button[type="submit"]:hover {
+  background-color: var(--secondary-blue);
+  color: var(--white);
+}
+
+/* Country Dropdown Styling */
+.modalDialog select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23003366'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+}
+
+/* Footer Subscription Form */
+.footer-subscribe {
+  margin-top: 1.5rem;
+}
+
+.footer-subscribe h5 {
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.subscribe-form button {
+  background-color: var(--primary-gold);
+  color: var(--primary-blue);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subscribe-form button:hover {
+  background-color: var(--secondary-blue);
+  color: var(--white);
+}
+
+.subscribe-message {
+  margin-top: 10px;
+  color: var(--primary-gold);
+  font-size: 0.9rem;
+}
+
+/* Enhanced Mobile Responsiveness */
+@media (max-width: 768px) {
+  .modalDialog > div {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .subscribe-form input,
+  .subscribe-form button {
+    width: 100%;
+  }
+  
+  .timeline .desc {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .quote p {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+  
+  .comparing .col-sm-4 {
+    margin-bottom: 1.5rem;
+  }
+  
+  footer .col-sm-4 {
+    margin-bottom: 2rem;
+  }
+}
