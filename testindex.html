@@ -22,8 +22,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-         <link rel="stylesheet" href="css/main.css" />
         
         <link rel="icon" href="fevicon/favicon.ico"/>
         <link rel="apple-touch-icon" sizes="180x180" href="fevicon/apple-touch-icon.png">
@@ -32,51 +30,22 @@
         <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
         <link rel="manifest" href="manifest.json">
+         <link rel="stylesheet" href="css/main.css" />
 
-        <meta name="theme-color" content="#0749b3">
-        <meta name="keywords" content="Global, USA, United State of America, Competiton, IARCO, International, Academic, International Academic Research Competition, Bangladesh, Summer, SRP, WRP,YRJ, yrj, Youth Research Journal, Education, Lumiere Education, Spring, Research Program, Summer Activities, Winter Research, Winter Program, Winter Activities, undergraduate, research, journal, electronic, online, multidisciplinary, open access, articles, essays, Houston, Texas, Journal of Student Research, jofsr, Jofsr, JofSR, student research journal, undergraduate rsesearch journal, student research, high school, hs, high school publication, high school research, school research, high school edition, hs edition, hs portal, high school portal, high school edition research, machine learning, computational biology, machine, computational, biology."/>
-
-        <meta name="description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
-        <meta name="subject" content="2024 Finalists | International Academic Research Competition">
-        <meta name="copyright"content="Md Sanaul Haque Shanto">
-        <meta name="language" content="ES">
-        <meta name="robots" content="index,follow" />
-        <meta name="revised" content="2024-09-13T08:13:15.028Z" />
-        <meta name="abstract" content="2024 Finalists | International Academic Research Competition">
-        <meta name="topic" content="2024 Finalists | International Academic Research Competition">
-        <meta name="summary" content="2024 Finalists | International Academic Research Competition">
-        <meta name="Classification" content="Educational">
-        <meta name="author" content="Md Sanaul Haque Shanto, hello@iarco.org">
-        <meta name="designer" content="Md Sanaul Haque Shanto">
-        <meta name="copyright" content="Md Sanaul Haque Shanto">
-        <meta name="reply-to" content="hello@iarco.org">
-        <meta name="owner" content="Md Sanaul Haque Shanto">
-        <meta name="url" content="https://iarco.org/">
-        <meta name="identifier-URL" content="https://iarco.org/">
-        <meta name="directory" content="submission">
-        <meta name="category" content="Educational">
-        <meta name="coverage" content="Worldwide">
-        <meta name="distribution" content="Global">
-        <meta name="rating" content="General">
-        <meta name="og:title" content="2024 Finalists | International Academic Research Competition"/>
-        <meta name="og:type" content="Educational"/>
-        <meta name="og:url" content="https://iarco.org/"/>
-        <meta name="og:image" content="https://hello@iarco.org">
-        <meta name="og:site_name" content="2024 Finalists | International Academic Research Competition"/>
-        <meta name="og:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
-        <meta name="fb:page_id" content="405729912624141" />
-        <meta name="og:email" content="hello@iarco.org"/>
-        <meta name="og:phone_number" content="+8801766009306"/>
-
-        <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Research Competition","url":"https://iarco.org"}</script>
-
-        <meta name="twitter:card" content="summary_large_image"/>
-        <meta name="twitter:title" content="2024 Finalists | International Academic Research Competition"/>
-        <meta name="twitter:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc..">
-
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <style>
             /* Finalists Page Specific Styles */
+            :root {
+                --primary-blue: #003366;
+                --secondary-blue: #0749b3;
+                --accent-blue: #4b9cd3;
+                --primary-gold: #ffd700;
+                --secondary-gold: #daa520;
+                --white: #ffffff;
+                --light-gray: #f8f9fa;
+                --medium-gray: #e9ecef;
+                --dark-gray: #343a40;
+            }
+            
             .finalists-header {
                 background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.95)), url('assets/hero-bg.jpg') no-repeat center center;
                 background-size: cover;
@@ -89,8 +58,8 @@
             .finalists-header h1 {
                 font-size: 2.5rem;
                 margin-bottom: 1rem;
-                color: #ffd700;
-                border-bottom: 3px solid #ffd700;
+                color: var(--primary-gold);
+                border-bottom: 3px solid var(--primary-gold);
                 display: inline-block;
                 padding-bottom: 0.5rem;
             }
@@ -117,30 +86,90 @@
             }
             
             .stat-card {
-                background-color: #f8f9fa;
-                border-left: 4px solid #0749b3;
+                background-color: var(--light-gray);
+                border-left: 4px solid var(--secondary-blue);
                 padding: 1.5rem;
                 border-radius: 8px;
                 text-align: center;
             }
             
             .stat-card h3 {
-                color: #0749b3;
+                color: var(--secondary-blue);
                 font-size: 2rem;
                 margin-bottom: 0.5rem;
             }
             
             .stat-card p {
-                color: #343a40;
+                color: var(--dark-gray);
                 font-weight: 500;
             }
             
-            .chart-container {
+            .map-container {
                 background-color: white;
-                padding: 2rem;
+                padding: 1rem;
                 border-radius: 10px;
                 box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
                 margin-bottom: 2rem;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            #world-map {
+                width: 100%;
+                height: auto;
+                min-height: 400px;
+            }
+            
+            .country {
+                fill: #ccc;
+                stroke: #fff;
+                stroke-width: 0.5px;
+                transition: all 0.3s ease;
+            }
+            
+            .country:hover {
+                fill: var(--accent-blue);
+                stroke-width: 1px;
+            }
+            
+            .country-highlight {
+                fill: var(--secondary-blue);
+                stroke: #fff;
+                stroke-width: 0.5px;
+            }
+            
+            .map-tooltip {
+                position: absolute;
+                background: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                pointer-events: none;
+                font-size: 0.9rem;
+                z-index: 100;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+            
+            .map-legend {
+                display: flex;
+                justify-content: center;
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .legend-item {
+                display: flex;
+                align-items: center;
+                margin-right: 1rem;
+            }
+            
+            .legend-color {
+                width: 20px;
+                height: 20px;
+                margin-right: 0.5rem;
+                border: 1px solid #ddd;
             }
             
             .finalists-table {
@@ -157,17 +186,17 @@
             .finalists-table td {
                 padding: 12px 15px;
                 text-align: left;
-                border-bottom: 1px solid #e9ecef;
+                border-bottom: 1px solid var(--medium-gray);
             }
             
             .finalists-table th {
-                background-color: #0749b3;
+                background-color: var(--secondary-blue);
                 color: white;
                 font-weight: 600;
             }
             
             .finalists-table tr:hover {
-                background-color: #f8f9fa;
+                background-color: var(--light-gray);
             }
             
             .selected-yes {
@@ -205,6 +234,10 @@
                 .stat-card h3 {
                     font-size: 1.5rem;
                 }
+                
+                #world-map {
+                    min-height: 300px;
+                }
             }
             
             @media (max-width: 576px) {
@@ -230,7 +263,7 @@
                 
                 .finalists-table tr {
                     margin-bottom: 1rem;
-                    border: 1px solid #e9ecef;
+                    border: 1px solid var(--medium-gray);
                     border-radius: 8px;
                     overflow: hidden;
                 }
@@ -239,7 +272,7 @@
                     text-align: right;
                     padding-left: 50%;
                     position: relative;
-                    border-bottom: 1px solid #e9ecef;
+                    border-bottom: 1px solid var(--medium-gray);
                 }
                 
                 .finalists-table td:last-child {
@@ -253,11 +286,15 @@
                     top: 50%;
                     transform: translateY(-50%);
                     font-weight: 600;
-                    color: #0749b3;
+                    color: var(--secondary-blue);
                 }
                 
                 .finalists-table td {
                     text-align: right;
+                }
+                
+                #world-map {
+                    min-height: 250px;
                 }
             }
         </style>
@@ -325,7 +362,7 @@
         <div class="container">
             <!-- Statistics Section -->
             <div class="stats-container">
-                <h2 style="color: #0749b3; margin-bottom: 1.5rem;">Competition Statistics</h2>
+                <h2 style="color: var(--secondary-blue); margin-bottom: 1.5rem;">Competition Statistics</h2>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
@@ -354,18 +391,32 @@
                     </div>
                 </div>
                 
-                <div class="chart-container">
-                    <h3 style="color: #0749b3; margin-bottom: 1.5rem;">Participation by Country</h3>
-                    <canvas id="studentChart"></canvas>
-                    <div class="legend">
-                        <p>Breakdown of participants by country and category</p>
+                <div class="map-container">
+                    <h3 style="color: var(--secondary-blue); margin-bottom: 1.5rem;">Global Participation</h3>
+                    <div style="width: 100%; overflow: auto;">
+                        <svg id="world-map" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"></svg>
+                    </div>
+                    <div class="map-tooltip" id="map-tooltip"></div>
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--secondary-blue);"></div>
+                            <span>Participants</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #4CAF50;"></div>
+                            <span>Selected</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #f44336;"></div>
+                            <span>Not Selected</span>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <!-- Finalists Table Section -->
             <div class="table-responsive">
-                <h2 style="color: #0749b3; margin-bottom: 1.5rem;">Finalists List</h2>
+                <h2 style="color: var(--secondary-blue); margin-bottom: 1.5rem;">Finalists List</h2>
                 <p>Sorted alphabetically by name. Green highlighted rows indicate participants selected for the video pitch round.</p>
                 
                 <table id="finalistsTable" class="finalists-table">
@@ -433,12 +484,11 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
         <script src="js/script.js"></script>
         
         <script>
             // Sample data - Normally you would fetch this from a JSON file
-            const studentData = [
+           const studentData = [
   {
     "id": "qvPMALxu",
     "category": "Junior",
@@ -1385,7 +1435,15 @@
   }
 ];
 
-            // Function to load student data into the table
+            // World map data (simplified for example)
+            const worldMapData = {
+                "BD": { name: "Bangladesh", participants: 0, selected: 0, notSelected: 0 },
+                "ID": { name: "Indonesia", participants: 0, selected: 0, notSelected: 0 },
+                "KG": { name: "Kyrgyzstan", participants: 0, selected: 0, notSelected: 0 }
+                // Add more countries as needed
+            };
+
+            // Function to load student data into the table and map
             function loadStudentData() {
                 const tableBody = document.querySelector("#finalistsTable tbody");
 
@@ -1394,7 +1452,19 @@
                     return a.name.localeCompare(b.name);  // Sort by name alphabetically
                 });
 
+                // Process student data for map
                 sortedStudentData.forEach(student => {
+                    const countryCode = getCountryCode(student.country);
+                    if (countryCode && worldMapData[countryCode]) {
+                        worldMapData[countryCode].participants++;
+                        if (student.selected === "Yes") {
+                            worldMapData[countryCode].selected++;
+                        } else {
+                            worldMapData[countryCode].notSelected++;
+                        }
+                    }
+
+                    // Create table row
                     const row = document.createElement("tr");
 
                     // Set data-label attributes for mobile responsiveness
@@ -1437,130 +1507,141 @@
                 });
             }
 
+            // Helper function to get country code from country name
+            function getCountryCode(countryName) {
+                const countryMap = {
+                    "Bangladesh": "BD",
+                    "Indonesia": "ID",
+                    "Kyrgyzstan": "KG"
+                    // Add more country mappings as needed
+                };
+                return countryMap[countryName];
+            }
+
+            // Function to render the world map
+            function renderWorldMap() {
+                const svg = document.getElementById('world-map');
+                const tooltip = document.getElementById('map-tooltip');
+                
+                // Simplified world map paths (in a real implementation, you would use a proper world map SVG)
+                // For demonstration, we'll just create some circles for countries
+                
+                // Clear existing map
+                svg.innerHTML = '';
+                
+                // Add country circles (in a real implementation, these would be proper country shapes)
+                Object.keys(worldMapData).forEach(countryCode => {
+                    const country = worldMapData[countryCode];
+                    if (country.participants > 0) {
+                        // Calculate position based on country code (simplified)
+                        const x = 100 + (Math.random() * 800);
+                        const y = 100 + (Math.random() * 300);
+                        const radius = 10 + (country.participants * 2);
+                        
+                        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                        circle.setAttribute("cx", x);
+                        circle.setAttribute("cy", y);
+                        circle.setAttribute("r", radius);
+                        circle.setAttribute("class", "country");
+                        circle.setAttribute("data-country", countryCode);
+                        circle.setAttribute("fill", country.selected > 0 ? "#4CAF50" : "#f44336");
+                        circle.setAttribute("stroke", "#fff");
+                        circle.setAttribute("stroke-width", "0.5");
+                        
+                        // Add hover effects
+                        circle.addEventListener("mouseover", function() {
+                            this.setAttribute("stroke-width", "2");
+                            tooltip.innerHTML = `
+                                <strong>${country.name}</strong><br>
+                                Total: ${country.participants}<br>
+                                Selected: ${country.selected}<br>
+                                Not Selected: ${country.notSelected}
+                            `;
+                            tooltip.style.opacity = "1";
+                            tooltip.style.left = (event.pageX + 10) + "px";
+                            tooltip.style.top = (event.pageY + 10) + "px";
+                        });
+                        
+                        circle.addEventListener("mouseout", function() {
+                            this.setAttribute("stroke-width", "0.5");
+                            tooltip.style.opacity = "0";
+                        });
+                        
+                        circle.addEventListener("mousemove", function() {
+                            tooltip.style.left = (event.pageX + 10) + "px";
+                            tooltip.style.top = (event.pageY + 10) + "px";
+                        });
+                        
+                        // Add country label
+                        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                        text.setAttribute("x", x);
+                        text.setAttribute("y", y + radius + 15);
+                        text.setAttribute("text-anchor", "middle");
+                        text.setAttribute("font-size", "10");
+                        text.setAttribute("fill", "#333");
+                        text.textContent = countryCode;
+                        
+                        svg.appendChild(circle);
+                        svg.appendChild(text);
+                    }
+                });
+                
+                // In a real implementation, you would:
+                // 1. Use a proper world map SVG with actual country paths
+                // 2. Color each country based on participation data
+                // 3. Add proper hover effects with detailed tooltips
+            }
+
             // Statistics processing
             const stats = {};
             const participatedCountries = new Set();
-            const participatedInstitutes = new Set(); // To track unique institutes
+            const participatedInstitutes = new Set();
             let totalStudents = 0;
             let totalSelected = 0;
             let totalNotSelected = 0;
             let totalJunior = 0;
             let totalSenior = 0;
 
-            studentData.forEach(student => {
-                const country = student.country;
-                const category = student.category;
-                const selected = student.selected;
-                const school = student.school;
+            function processStatistics() {
+                studentData.forEach(student => {
+                    const country = student.country;
+                    const category = student.category;
+                    const selected = student.selected;
+                    const school = student.school;
 
-                if (!stats[country]) {
-                    stats[country] = { Junior: { Yes: 0, No: 0 }, Senior: { Yes: 0, No: 0 } };
-                }
-
-                stats[country][category][selected]++;
-
-                totalStudents++;
-                if (selected === "Yes") totalSelected++;
-                if (selected === "No") totalNotSelected++;
-                if (category === "Junior") totalJunior++;
-                if (category === "Senior") totalSenior++;
-
-                participatedCountries.add(country);
-                participatedInstitutes.add(school); // Add school to the set
-            });
-
-            const participatedCountriesCount = participatedCountries.size;
-            const participatedInstitutesCount = participatedInstitutes.size; // Number of unique institutes
-
-            // Update statistics cards
-            document.getElementById('totalStudents').textContent = totalStudents;
-            document.getElementById('totalSelected').textContent = totalSelected;
-            document.getElementById('totalJunior').textContent = totalJunior;
-            document.getElementById('totalSenior').textContent = totalSenior;
-            document.getElementById('institutesCount').textContent = participatedInstitutesCount;
-            document.getElementById('countriesCount').textContent = participatedCountriesCount;
-
-            // Chart generation
-            const countries = Object.keys(stats);
-            const labels = [];
-            const juniorYesData = [];
-            const juniorNoData = [];
-            const seniorYesData = [];
-            const seniorNoData = [];
-
-            countries.forEach(country => {
-                const countryData = stats[country];
-
-                labels.push(country);
-                juniorYesData.push(countryData.Junior.Yes || 0);
-                juniorNoData.push(countryData.Junior.No || 0);
-                seniorYesData.push(countryData.Senior.Yes || 0);
-                seniorNoData.push(countryData.Senior.No || 0);
-            });
-
-            const ctx = document.getElementById('studentChart').getContext('2d');
-            const studentChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Junior Selected',
-                            data: juniorYesData,
-                            backgroundColor: '#4CAF50',
-                            borderColor: '#1976D2',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Junior Not Selected',
-                            data: juniorNoData,
-                            backgroundColor: '#f44336',
-                            borderColor: '#D32F2F',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Senior Selected',
-                            data: seniorYesData,
-                            backgroundColor: '#FF9800',
-                            borderColor: '#F57C00',
-                            borderWidth: 1
-                        },
-                        {
-                            label: 'Senior Not Selected',
-                            data: seniorNoData,
-                            backgroundColor: '#f44336',
-                            borderColor: '#f44336',
-                            borderWidth: 1
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 1
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                font: {
-                                    size: 14
-                                }
-                            }
-                        }
+                    if (!stats[country]) {
+                        stats[country] = { Junior: { Yes: 0, No: 0 }, Senior: { Yes: 0, No: 0 } };
                     }
-                }
-            });
+
+                    stats[country][category][selected]++;
+
+                    totalStudents++;
+                    if (selected === "Yes") totalSelected++;
+                    if (selected === "No") totalNotSelected++;
+                    if (category === "Junior") totalJunior++;
+                    if (category === "Senior") totalSenior++;
+
+                    participatedCountries.add(country);
+                    participatedInstitutes.add(school);
+                });
+
+                const participatedCountriesCount = participatedCountries.size;
+                const participatedInstitutesCount = participatedInstitutes.size;
+
+                // Update statistics cards
+                document.getElementById('totalStudents').textContent = totalStudents;
+                document.getElementById('totalSelected').textContent = totalSelected;
+                document.getElementById('totalJunior').textContent = totalJunior;
+                document.getElementById('totalSenior').textContent = totalSenior;
+                document.getElementById('institutesCount').textContent = participatedInstitutesCount;
+                document.getElementById('countriesCount').textContent = participatedCountriesCount;
+            }
 
             // Load the data when the page loads
             document.addEventListener("DOMContentLoaded", function() {
                 loadStudentData();
+                processStatistics();
+                renderWorldMap();
                 
                 // Hide preloader when page is loaded
                 window.addEventListener('load', function() {
