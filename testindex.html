@@ -450,12 +450,31 @@
 
               <div class="col-sm-4 pb-1 footer-subscribe">
                   <h5>Subscribe to Our Newsletter</h5>
-                  <form class="subscribe-form" id="footer-subscribe-form">
+                  <form class="subscribe-form" id="submit-to-google-sheet">
                     <input type="email" placeholder="Your Email" required>
                     <button type="submit"><i class="fas fa-paper-plane"></i></button>
                   </form>
                   <div class="subscribe-message" id="footer-subscribe-message"></div>
             </div>
+
+                 <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxRCHU4ylkzi4CZXHeGQpv8oV5j-kJ3BDKcK-3QLCCUE3FZuQd6aX0JvdkBL0DHOshNmA/exec'
+  const form = document.forms['submit-to-google-sheet']
+    const SubId = document.getElementById("footer-subscribe-message")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response =>{
+        SubId.innerHTML = "Thank You for Subscribing us!"
+        setTimeout(function(){
+           SubId.innerHTML = ""
+        },3000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
                 <div class="rights">
                     &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
                 </div>
@@ -463,25 +482,7 @@
             </div>
         </footer>
 
-<script>
-  // Footer subscription form handling
-  const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec'
-  const Fform = document.forms['footer-subscribe-form']
-    const FSubId = document.getElementById("footer-subscribe-message")
 
-  Fform.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
-      .then(response =>{
-        FSubId.innerHTML = "Thank You for Subscribing us!"
-        setTimeout(function(){
-           FSubId.innerHTML = ""
-        },3000)
-        Fform.reset()
-      })
-      .catch(error => console.error('Error!', error.message))
-  })
-</script>
 
 
         <!--        start js files-->
