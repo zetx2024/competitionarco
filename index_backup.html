@@ -162,14 +162,14 @@
   <div>
     <a href="#close" title="Close" class="close">X</a>
     <center>
-
-    <p style="color:white; background-color: red;" href="apply.yrjournal.org"><a href="https://forms.gle/W7QU9fMWvXku5erY7" style="color: white;text-decoration: none;">Looking for international Sponsor for 2025.</a></p>
-    
-    <p><a href="https://forms.gle/W7QU9fMWvXku5erY7">
-<img src="https://yrjournal.org/market/iarco25.png" alt="https://forms.gle/W7QU9fMWvXku5erY7" width="90%" height="60%">
-</a></p>
-
-     <a href="https://forms.gle/W7QU9fMWvXku5erY7" style="background-color:red;color: white; text-decoration: none;">Apply Now</a>
+  <form name="submit-to-google-sheet">
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="firstName" type="text" placeholder="First Name">
+      <input name="lastName" type="text" placeholder="Last Name">
+      <button type="submit">Send</button>
+   </form>
+        <span id="subsid"></span>
+   
      </center>
   </div>
 </div>
@@ -181,7 +181,24 @@ $(document).ready(function() {
 });
 
 </script> 
+ <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxwJfZuGHnWBcX4SON32OwzywcjddUbKQl1ZXDUCQLcjlbKmLqcBXt4MJ-gr_g30a0qmg/exec'
+  const form = document.forms['submit-to-google-sheet']
+    const SubId = document.getElementById("subsid")
 
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response =>{
+        SubId.innerHTML = "Thank You for Subscribing us!"
+        setTimeout(function(){
+           SubId.innerHTML = ""
+        },3000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
       
       <!-- End Open Model Popup -->
         
