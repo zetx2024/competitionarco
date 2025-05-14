@@ -26,10 +26,17 @@
                 "bio": "Specializes in guiding students through scientific research projects.",
                 "image": "https://randomuser.me/api/portraits/women/28.jpg"
             }
+        ],
+        "guestSpeakers": [
+            {
+                "name": "Prof. James Smith",
+                "position": "Keynote Speaker",
+                "institution": "Stanford University",
+                "image": "https://randomuser.me/api/portraits/men/32.jpg"
+            }
         ]
     },
     "2024": {
-        "advisoryBoard": [],
         "iarcoCommittee": [
             {
                 "name": "Amanda Chen",
