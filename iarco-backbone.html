@@ -294,6 +294,21 @@
             margin-bottom: 1rem;
         }
 
+        .country-flag {
+            margin: 0.5rem 0;
+            display: inline-block;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            padding: 2px;
+            background: white;
+        }
+
+        .team-member-info .bio {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+
         /* Structure Section */
         .structure-section {
             padding: 4rem 0;
@@ -504,8 +519,18 @@
                 </div>
                 
                 <div class="structure-item">
+                    <h4><i class="fas fa-gavel" style="color: #003366;"></i> Judges</h4>
+                    <p>Renowned experts who evaluate research submissions and provide constructive feedback to participants.</p>
+                </div>
+                
+                <div class="structure-item">
                     <h4><i class="fas fa-star" style="color: #003366;"></i> Guest Speakers</h4>
                     <p>Renowned researchers and professionals who share their expertise through special sessions and workshops.</p>
+                </div>
+                
+                <div class="structure-item">
+                    <h4><i class="fas fa-handshake" style="color: #003366;"></i> Ambassadors</h4>
+                    <p>Regional representatives who promote IARCO and support participants in their local areas.</p>
                 </div>
                 
                 <div class="structure-item">
@@ -582,7 +607,7 @@
     <!-- Team Members Data Loading Script -->
     <script>
         // Define the order of categories we want to display
-        const CATEGORY_ORDER = ['advisoryBoard', 'iarcoCommittee', 'mentors', 'guestSpeakers'];
+        const CATEGORY_ORDER = ['advisoryBoard', 'iarcoCommittee', 'mentors', 'judges', 'guestSpeakers', 'ambassadors', 'alumnis'];
         
         // Function to format category name for display
         function formatCategoryName(category) {
@@ -590,7 +615,10 @@
                 'advisoryBoard': 'Advisory Board',
                 'iarcoCommittee': 'IARCO Committee',
                 'mentors': 'Mentors',
-                'guestSpeakers': 'Guest Speakers'
+                'judges': 'Judges',
+                'guestSpeakers': 'Guest Speakers',
+                'ambassadors': 'Ambassadors',
+                'alumnis': 'Alumni Network'
             };
             return names[category] || category;
         }
@@ -609,8 +637,23 @@
             }
         }
 
+        // Function to fetch flags data
+        async function fetchFlagsData() {
+            try {
+                const response = await fetch('data/flags.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading flags data:', error);
+                return null;
+            }
+        }
+
         // Function to create team member HTML
-        function createMemberHTML(member) {
+        function createMemberHTML(member, flags) {
+            const flagSvg = flags && member.country ? flags[member.country] || '' : '';
             return `
                 <div class="team-member">
                     <img src="${member.image}" alt="${member.name}" class="team-member-img">
@@ -618,6 +661,7 @@
                         <h4>${member.name}</h4>
                         <p class="position">${member.position}</p>
                         ${member.institution ? `<p class="institution">${member.institution}</p>` : ''}
+                        ${flagSvg ? `<div class="country-flag">${flagSvg}</div>` : ''}
                         ${member.bio ? `<p class="bio">${member.bio}</p>` : ''}
                     </div>
                 </div>
@@ -625,8 +669,9 @@
         }
 
         // Function to render team data
-        function renderTeamData(data, year) {
+        async function renderTeamData(data, year) {
             const teamContainer = document.getElementById('teamContainer');
+            const flags = await fetchFlagsData();
             
             if (!data || !data[year]) {
                 teamContainer.innerHTML = '<p class="text-center">No team data available for the selected year.</p>';
@@ -639,7 +684,7 @@
             // Create sections for each category in our predefined order
             CATEGORY_ORDER.forEach(category => {
                 if (yearData[category] && yearData[category].length > 0) {
-                    const membersHTML = yearData[category].map(createMemberHTML).join('');
+                    const membersHTML = yearData[category].map(member => createMemberHTML(member, flags)).join('');
                     const displayName = formatCategoryName(category);
                     
                     // Add class for few items to center them
