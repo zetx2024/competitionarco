@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5LLP0WEBK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C5LLP0WEBK');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>IARCO Backbone | International Research Competition</title>
+    <link rel="icon" href="assets/logo.png"/>
+    <link rel="canonical" href="https://iarco.org/iarco-backbone"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- Favicon and meta tags -->
+    <link rel="icon" href="fevicon/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="fevicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="fevicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="fevicon/favicon-512x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="theme-color" content="#0749b3">
+    <meta name="description" content="Meet the IARCO Skeleton - The backbone of our international research competition"/>
+    <meta name="keywords" content="IARCO committee, research competition mentors, academic advisors, competition organizers"/>
+    
+    <!-- Social media meta tags -->
+    <meta property="og:title" content="IARCO Backbone | International Research Competition"/>
+    <meta property="og:description" content="Meet the dedicated team behind the International Academic Research Competition"/>
+    <meta property="og:url" content="https://iarco.org/iarco-backbone"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://iarco.org/assets/logo.png"/>
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="IARCO Backbone | International Research Competition"/>
+    <meta name="twitter:description" content="Meet the dedicated team behind the International Academic Research Competition"/>
+    <meta name="twitter:image" content="https://iarco.org/assets/logo.png"/>
+
+    <!-- Page Specific CSS -->
+    <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 51, 102, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+            transition: opacity 0.3s ease;
+        }
+
+        #preloader img {
+            width: 100px;
+            height: 100px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Hero Section */
+        .skeleton-hero {
+            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skeleton-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .skeleton-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+
+        .skeleton-hero h1 span {
+            color: #ffd700;
+        }
+
+        .skeleton-hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about-skeleton {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .skeleton-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            height: 100%;
+            border-top: 5px solid #003366;
+            transition: all 0.3s ease;
+        }
+
+        .skeleton-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        .skeleton-card h3 {
+            color: #003366;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .skeleton-card h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #ffd700;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .team-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .team-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #ffd700;
+        }
+
+        .year-selector {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .year-selector select {
+            padding: 0.5rem 1rem;
+            border: 2px solid #003366;
+            border-radius: 6px;
+            background-color: white;
+            color: #003366;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .year-selector select:hover {
+            background-color: #f8f9fa;
+        }
+
+        .team-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-category {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+        }
+
+        .team-category h3 {
+            color: #003366;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .team-members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            justify-items: center;
+        }
+
+        .team-members-grid.few-items {
+            grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+            justify-content: center;
+        }
+
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 51, 102, 0.05);
+        }
+
+        .team-member-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid #ffd700;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member-info h4 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .team-member-info p {
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .team-member-info .position {
+            color: #003366;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .team-member-info .institution {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* Structure Section */
+        .structure-section {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .structure-diagram {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .structure-diagram:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('assets/structure-pattern.png') repeat;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .structure-item {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .structure-item h4 {
+            color: #003366;
+            margin-bottom: 0.5rem;
+        }
+
+        .structure-item p {
+            color: #2c3e50;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .skeleton-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .skeleton-hero p {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skeleton-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .skeleton-hero p {
+                font-size: 1.1rem;
+            }
+
+            .team-member {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .skeleton-hero {
+                padding: 4rem 0 2rem;
+            }
+
+            .skeleton-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .team-members-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Start Preloader -->
+    <div id="preloader">
+        <img src="assets/preloader.gif" alt="Loading...">
+    </div>
+    <!-- End Preloader -->
+
+    <!-- start nav bar -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand text-uppercase" href="/">
+                    <img src="assets/logo.png" width="80%" height="70px" class="d-inline-block align-top">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i> About</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
+                            <li><a class="dropdown-item" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
+                            <li><a class="dropdown-item" href="partners"><i class="fas fa-handshake"></i> Partners</a></li>
+                            <li><a class="dropdown-item active" href="iarco-backbone"><i class="fas fa-users"></i> IARCO Backbone</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fab fa-hubspot"></i> Competition Hubs</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamps</a></li>
+                            <li><a class="dropdown-item" href="guidelines"><i class="fas fa-chalkboard-teacher"></i> Guidelines</a></li>
+                            <li><a class="dropdown-item" href="2024-finalists"><i class="fas fa-running"></i> 2024 Finalists</a></li>
+                            <li><a class="dropdown-item" href="2024-winners"><i class="fas fa-trophy"></i> 2024 Winners</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="faq"><i class="fas fa-question"></i> FAQs</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--End NavBar section-->
+
+    <!-- Hero Section -->
+    <section class="skeleton-hero">
+        <div class="container">
+            <h1>The <span>IARCO Skeleton</span></h1>
+            <p>The backbone of our international research competition</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-skeleton">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="skeleton-card">
+                        <h3>Our Structure</h3>
+                        <p>The IARCO Skeleton represents the organizational framework that supports our competition. Just like a skeleton provides structure to the body, our team provides the foundation for this global academic initiative.</p>
+                        <p>Comprised of distinguished academics, experienced researchers, and dedicated organizers, the IARCO Skeleton ensures the competition maintains its high standards of excellence and fairness.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="skeleton-card">
+                        <h3>Our Mission</h3>
+                        <p>We are committed to fostering academic excellence and research innovation among students worldwide. Our team works tirelessly to create opportunities for young researchers to showcase their work on an international platform.</p>
+                        <p>Through mentorship, rigorous evaluation, and continuous improvement, we aim to make IARCO the premier student research competition in the world.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            
+            <div class="year-selector">
+                <label for="yearSelect">Select Year: </label>
+                <select id="yearSelect">
+                    <!-- Options will be populated by JavaScript -->
+                </select>
+            </div>
+            
+            <div class="team-container" id="teamContainer">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Structure Section -->
+    <section class="structure-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Organizational Structure</h2>
+            
+            <div class="structure-diagram">
+                <div class="structure-item">
+                    <h4><i class="fas fa-chess-king" style="color: #003366;"></i> Advisory Board</h4>
+                    <p>Provides strategic guidance and ensures academic integrity of the competition. Comprised of senior academics and industry leaders.</p>
+                </div>
+                
+                <div class="structure-item">
+                    <h4><i class="fas fa-users-cog" style="color: #003366;"></i> IARCO Committee</h4>
+                    <p>The core organizing team responsible for competition operations, logistics, and day-to-day management.</p>
+                </div>
+                
+                <div class="structure-item">
+                    <h4><i class="fas fa-chalkboard-teacher" style="color: #003366;"></i> Mentors</h4>
+                    <p>Subject matter experts who guide participants through the research process and provide valuable feedback.</p>
+                </div>
+                
+                <div class="structure-item">
+                    <h4><i class="fas fa-star" style="color: #003366;"></i> Guest Speakers</h4>
+                    <p>Renowned researchers and professionals who share their expertise through special sessions and workshops.</p>
+                </div>
+                
+                <div class="structure-item">
+                    <h4><i class="fas fa-user-graduate" style="color: #003366;"></i> Alumni Network</h4>
+                    <p>Former participants who contribute to the competition's growth and mentor new generations of researchers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Start: Partner container-->
+    <section id="Our_Affiliates" class="gallery-section">
+        <div class="container">
+            <h2>Administrated by</h2>
+            <div class="gallery">
+                <a href="https://yrjournal.org" target="_blank"><img src="https://yrjournal.org/fevicon/logo.png" alt="Youth Research Journal"></a>
+            </div>
+        </div>
+    </section>
+    <!--End: Partner container-->
+
+    <!--start footer section-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 pb-3">
+                    <img src="assets/logo.png" class="img-fluid">
+                    <h4 style="color: white;">Contact Us</h4>
+                    <p>Contact us at hello@iarco.org!</p>
+                    <p><a href="terms-conditions">Terms & Conditions</a></p>
+                </div>
+                <div class="col-sm-4 pb-2">
+                    <h4 style="color: white;">Social Media</h4>
+                    <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
+                    <p><a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a></p>
+                    <p><a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> Youtube</a></p>
+                    <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a></p>
+                </div>
+
+                <div class="col-sm-4 pb-1">
+                    <h4 style="color: white;">Information</h4>
+                    <p><a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About IARCO</a></p>
+                    <p><a href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a></p>
+                    <p><a href="prizes"><i class="fas fa-trophy"></i> Prizes</a></p>
+                    <p><a href="skeleton"><i class="fas fa-users"></i> IARCO Skeleton</a></p>
+                    <p><a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a></p>
+                </div>
+            </div>
+
+            <div class="col-sm-4 pb-1 footer-subscribe">
+                <h5>Subscribe to Our Newsletter</h5>
+                <form class="subscribe-form" id="footer-subscribe-form">
+                    <input name="email" type="email" placeholder="Your Email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div class="subscribe-message" id="footer-subscribe-message"></div>
+            </div>
+            
+            <div class="rights">
+                &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/script_CP.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Team Members Data Loading Script -->
+    <script>
+        // Define the order of categories we want to display
+        const CATEGORY_ORDER = ['advisoryBoard', 'iarcoCommittee', 'mentors', 'guestSpeakers'];
+        
+        // Function to format category name for display
+        function formatCategoryName(category) {
+            const names = {
+                'advisoryBoard': 'Advisory Board',
+                'iarcoCommittee': 'IARCO Committee',
+                'mentors': 'Mentors',
+                'guestSpeakers': 'Guest Speakers'
+            };
+            return names[category] || category;
+        }
+
+        // Function to fetch JSON data
+        async function fetchTeamData() {
+            try {
+                const response = await fetch('data/team-members.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading team data:', error);
+                return null;
+            }
+        }
+
+        // Function to create team member HTML
+        function createMemberHTML(member) {
+            return `
+                <div class="team-member">
+                    <img src="${member.image}" alt="${member.name}" class="team-member-img">
+                    <div class="team-member-info">
+                        <h4>${member.name}</h4>
+                        <p class="position">${member.position}</p>
+                        ${member.institution ? `<p class="institution">${member.institution}</p>` : ''}
+                        ${member.bio ? `<p class="bio">${member.bio}</p>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to render team data
+        function renderTeamData(data, year) {
+            const teamContainer = document.getElementById('teamContainer');
+            
+            if (!data || !data[year]) {
+                teamContainer.innerHTML = '<p class="text-center">No team data available for the selected year.</p>';
+                return;
+            }
+            
+            const yearData = data[year];
+            let teamHTML = '';
+            
+            // Create sections for each category in our predefined order
+            CATEGORY_ORDER.forEach(category => {
+                if (yearData[category] && yearData[category].length > 0) {
+                    const membersHTML = yearData[category].map(createMemberHTML).join('');
+                    const displayName = formatCategoryName(category);
+                    
+                    // Add class for few items to center them
+                    const fewItemsClass = yearData[category].length <= 2 ? 'few-items' : '';
+                    
+                    teamHTML += `
+                        <div class="team-category">
+                            <h3>${displayName}</h3>
+                            <div class="team-members-grid ${fewItemsClass}">
+                                ${membersHTML}
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            // If no categories have members, show message
+            if (teamHTML === '') {
+                teamHTML = '<p class="text-center">No team members available for the selected year.</p>';
+            }
+            
+            teamContainer.innerHTML = teamHTML;
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Hide preloader when everything is loaded
+            window.addEventListener('load', function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 300);
+                    }, 500);
+                }
+            });
+
+            // Load team data and populate year selector
+            const teamData = await fetchTeamData();
+            const yearSelect = document.getElementById('yearSelect');
+            
+            if (teamData) {
+                // Clear existing options
+                yearSelect.innerHTML = '';
+                
+                // Add available years to selector (sorted newest first)
+                Object.keys(teamData).sort().reverse().forEach(year => {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                });
+                
+                // Set up event listener for year changes
+                yearSelect.addEventListener('change', function() {
+                    renderTeamData(teamData, this.value);
+                });
+                
+                // Load data for the first year initially
+                const initialYear = yearSelect.options[0]?.value;
+                if (initialYear) {
+                    renderTeamData(teamData, initialYear);
+                }
+            } else {
+                document.getElementById('teamContainer').innerHTML = 
+                    '<p class="text-center">Unable to load team data. Please try again later.</p>';
+            }
+
+            // Footer subscription form handling
+            const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
+            const Fform = document.forms['footer-subscribe-form'];
+            const FSubId = document.getElementById("footer-subscribe-message");
+
+            Fform.addEventListener('submit', e => {
+                e.preventDefault();
+                fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
+                    .then(response => {
+                        FSubId.innerHTML = "Thank You for Subscribing us!";
+                        setTimeout(function() {
+                            FSubId.innerHTML = "";
+                        }, 3000);
+                        Fform.reset();
+                    })
+                    .catch(error => console.error('Error!', error.message));
+            });
+        });
+    </script>
+</body>
+</html>
