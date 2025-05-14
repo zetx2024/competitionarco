@@ -6,7 +6,8 @@
                 "position": "Chair of Advisory Board",
                 "institution": "Harvard University",
                 "bio": "Professor of Research Methodology with 20+ years of experience in academic research.",
-                "image": "https://randomuser.me/api/portraits/women/65.jpg"
+                "image": "https://randomuser.me/api/portraits/women/65.jpg",
+                "country": "United States"
             }
         ],
         "iarcoCommittee": [
@@ -15,7 +16,8 @@
                 "position": "Competition Director",
                 "institution": "IARCO",
                 "bio": "Oversees all aspects of the competition organization.",
-                "image": "https://randomuser.me/api/portraits/men/75.jpg"
+                "image": "https://randomuser.me/api/portraits/men/75.jpg",
+                "country": "United Kingdom"
             }
         ],
         "mentors": [
@@ -24,7 +26,26 @@
                 "position": "STEM Research Mentor",
                 "institution": "MIT",
                 "bio": "Specializes in guiding students through scientific research projects.",
-                "image": "https://randomuser.me/api/portraits/women/28.jpg"
+                "image": "https://randomuser.me/api/portraits/women/28.jpg",
+                "country": "United States"
+            }
+        ],
+        "judges": [
+            {
+                "name": "Prof. Michael Brown",
+                "position": "Chief Judge",
+                "institution": "University of Cambridge",
+                "bio": "Expert in research evaluation with 15 years of judging experience.",
+                "image": "https://randomuser.me/api/portraits/men/45.jpg",
+                "country": "United Kingdom"
+            },
+            {
+                "name": "Dr. Aisha Khan",
+                "position": "Research Judge",
+                "institution": "University of Delhi",
+                "bio": "Specializes in social sciences research methodology.",
+                "image": "https://randomuser.me/api/portraits/women/52.jpg",
+                "country": "India"
             }
         ],
         "guestSpeakers": [
@@ -32,7 +53,28 @@
                 "name": "Prof. James Smith",
                 "position": "Keynote Speaker",
                 "institution": "Stanford University",
-                "image": "https://randomuser.me/api/portraits/men/32.jpg"
+                "image": "https://randomuser.me/api/portraits/men/32.jpg",
+                "country": "United States"
+            }
+        ],
+        "ambassadors": [
+            {
+                "name": "Carlos Mendez",
+                "position": "Regional Ambassador",
+                "institution": "University of Buenos Aires",
+                "bio": "Represents IARCO in South America.",
+                "image": "https://randomuser.me/api/portraits/men/68.jpg",
+                "country": "Argentina"
+            }
+        ],
+        "alumnis": [
+            {
+                "name": "Emma Watson",
+                "position": "Alumni Representative",
+                "institution": "Oxford University",
+                "bio": "Former IARCO winner now mentoring new participants.",
+                "image": "https://randomuser.me/api/portraits/women/33.jpg",
+                "country": "United Kingdom"
             }
         ]
     },
@@ -43,7 +85,8 @@
                 "position": "Former Competition Director",
                 "institution": "IARCO",
                 "bio": "Led the competition through its inaugural years.",
-                "image": "https://randomuser.me/api/portraits/women/25.jpg"
+                "image": "https://randomuser.me/api/portraits/women/25.jpg",
+                "country": "Canada"
             }
         ],
         "mentors": [
@@ -52,7 +95,18 @@
                 "position": "Former STEM Mentor",
                 "institution": "Caltech",
                 "bio": "Guided students in engineering and physics projects.",
-                "image": "https://randomuser.me/api/portraits/women/38.jpg"
+                "image": "https://randomuser.me/api/portraits/women/38.jpg",
+                "country": "United States"
+            }
+        ],
+        "judges": [
+            {
+                "name": "Dr. Robert Kim",
+                "position": "Former Chief Judge",
+                "institution": "Seoul National University",
+                "bio": "Pioneered the judging criteria for IARCO.",
+                "image": "https://randomuser.me/api/portraits/men/22.jpg",
+                "country": "South Korea"
             }
         ]
     }
