@@ -1,113 +1,169 @@
 {
     "2025": {
-        "advisoryBoard": [
+         "iarcoCommittee": [
             {
-                "name": "Dr. Sarah Johnson",
-                "position": "Chair of Advisory Board",
-                "institution": "Harvard University",
-                "bio": "Professor of Research Methodology with 20+ years of experience in academic research.",
-                "image": "https://randomuser.me/api/portraits/women/65.jpg",
-                "country": "United States"
-            }
-        ],
-        "iarcoCommittee": [
-            {
-                "name": "David Wilson",
-                "position": "Competition Director",
-                "institution": "IARCO",
-                "bio": "Oversees all aspects of the competition organization.",
-                "image": "https://randomuser.me/api/portraits/men/75.jpg",
-                "country": "United Kingdom"
+                "name": "Md Sanaul Haque Shanto",
+                "position": "IARCO Brain & Host",
+                "institution": "President, Lead Researcher at YRJ",
+                "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
+                "image": "https://yrjournal.org/images/staff-01.jpg",
+                "country": "Bangladesh"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "IARCO Director & HOST",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangladesh"
             }
         ],
         "mentors": [
             {
-                "name": "Dr. Lisa Park",
-                "position": "STEM Research Mentor",
-                "institution": "MIT",
-                "bio": "Specializes in guiding students through scientific research projects.",
-                "image": "https://randomuser.me/api/portraits/women/28.jpg",
-                "country": "United States"
+                "name": "Dr. Karthikeyan Parthasarathy",
+                "position": "IARCO Mentor",
+                "institution": "Head of the Department, Department of Management Studies, Kongu Engineering College",
+                "bio": "Dr.Karthikeyan Parthasarathy was awarded Ph.D in Management from Bharathiar University in 2009 and qualified with SET in the year 2006. Presently he is working as an Associate Professor in School of Management Studies at Kongu Engineering College.",
+                "image": "https://iarco.org/assets/mentor/drpk.PNG",
+                "country": "India"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "IARCO Mentor",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangladesh"
             }
         ],
         "judges": [
             {
-                "name": "Prof. Michael Brown",
-                "position": "Chief Judge",
-                "institution": "University of Cambridge",
-                "bio": "Expert in research evaluation with 15 years of judging experience.",
-                "image": "https://randomuser.me/api/portraits/men/45.jpg",
-                "country": "United Kingdom"
+                "name": "Dr. Karthikeyan Parthasarathy",
+                "position": "IARCO Judge",
+                "institution": "Head of the Department, Department of Management Studies, Kongu Engineering College",
+                "bio": "Dr.Karthikeyan Parthasarathy was awarded Ph.D in Management from Bharathiar University in 2009 and qualified with SET in the year 2006. Presently he is working as an Associate Professor in School of Management Studies at Kongu Engineering College.",
+                "image": "https://iarco.org/assets/mentor/drpk.PNG",
+                "country": "India"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "IARCO Judge",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangladesh"
             },
             {
-                "name": "Dr. Aisha Khan",
-                "position": "Research Judge",
-                "institution": "University of Delhi",
-                "bio": "Specializes in social sciences research methodology.",
-                "image": "https://randomuser.me/api/portraits/women/52.jpg",
-                "country": "India"
+                "name": "Md Sanaul Haque Shanto",
+                "position": "IARCO Judge",
+                "institution": "President, Lead Researcher at YRJ",
+                "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
+                "image": "https://yrjournal.org/images/staff-01.jpg",
+                "country": "Bangladesh"
             }
         ],
         "guestSpeakers": [
             {
-                "name": "Prof. James Smith",
-                "position": "Keynote Speaker",
-                "institution": "Stanford University",
-                "image": "https://randomuser.me/api/portraits/men/32.jpg",
+                "name": "Mubtaseem Ahnaf Aronno",
+                "position": "Research Assistant (RA) at Geisel School of Medicine at Dartmouth",
+                "institution": "Undergrad Student at Dartmouth",
+                "image": "https://iarco.org/assets/mentor/ahnaf.jpg",
+                "country": "United States"
+            },
+            {
+                "name": "Mahadi Masnad",
+                "position": "PhD, Integrated nonlinear photonics at Institut national de la recherche scientifique - INRS",
+                "institution": "Student at McGill University",
+                "image": "https://iarco.org/assets/mentor/masnud.jpg",
+                "country": "Canada"
+            },
+            {
+                "name": "Shubhashis Roy Dipta",
+                "position": "PhD in CS at University of Maryland",
+                "institution": "Graduate Research Assistant at UMBC",
+                "image": "https://iarco.org/assets/mentor/dipto.jpg",
                 "country": "United States"
             }
-        ],
-        "ambassadors": [
-            {
-                "name": "Carlos Mendez",
-                "position": "Regional Ambassador",
-                "institution": "University of Buenos Aires",
-                "bio": "Represents IARCO in South America.",
-                "image": "https://randomuser.me/api/portraits/men/68.jpg",
-                "country": "Argentina"
-            }
-        ],
-        "alumnis": [
-            {
-                "name": "Emma Watson",
-                "position": "Alumni Representative",
-                "institution": "Oxford University",
-                "bio": "Former IARCO winner now mentoring new participants.",
-                "image": "https://randomuser.me/api/portraits/women/33.jpg",
-                "country": "United Kingdom"
-            }
         ]
+        
     },
     "2024": {
         "iarcoCommittee": [
             {
-                "name": "Amanda Chen",
-                "position": "Former Competition Director",
-                "institution": "IARCO",
-                "bio": "Led the competition through its inaugural years.",
-                "image": "https://randomuser.me/api/portraits/women/25.jpg",
-                "country": "Canada"
+                "name": "Md Sanaul Haque Shanto",
+                "position": "IARCO Brain & Host",
+                "institution": "President, Lead Researcher at YRJ",
+                "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
+                "image": "https://yrjournal.org/images/staff-01.jpg",
+                "country": "Bangladesh"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "IARCO Director & HOST",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangladesh"
             }
         ],
         "mentors": [
             {
-                "name": "Dr. Patricia Ng",
-                "position": "Former STEM Mentor",
-                "institution": "Caltech",
-                "bio": "Guided students in engineering and physics projects.",
-                "image": "https://randomuser.me/api/portraits/women/38.jpg",
-                "country": "United States"
+                "name": "Md Sanaul Haque Shanto",
+                "position": "Teach Research 101 to 320+ Students",
+                "institution": "YRJ Flagship Programs",
+                "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
+                "image": "https://yrjournal.org/images/staff-01.jpg",
+                "country": "Bangladesh"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "125+ Publications",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangladesh"
             }
         ],
         "judges": [
             {
-                "name": "Dr. Robert Kim",
-                "position": "Former Chief Judge",
-                "institution": "Seoul National University",
-                "bio": "Pioneered the judging criteria for IARCO.",
-                "image": "https://randomuser.me/api/portraits/men/22.jpg",
-                "country": "South Korea"
+                "name": "Md Sanaul Haque Shanto",
+                "position": "Develop IARCO Judging Algorithm",
+                "institution": "President, Lead Researcher at YRJ",
+                "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
+                "image": "https://yrjournal.org/images/staff-01.jpg",
+                "country": "Bangladesh"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "IARCO Judge",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangladesh"
             }
-        ]
+        ],
+        "guestSpeakers": [
+            {
+                "name": "Mubtaseem Ahnaf Aronno",
+                "position": "Research Assistant (RA) at Geisel School of Medicine at Dartmouth",
+                "institution": "Undergrad Student at Dartmouth",
+                "image": "https://iarco.org/assets/mentor/ahnaf.jpg",
+                "country": "United States"
+            },
+            {
+                "name": "Mahadi Masnad",
+                "position": "PhD, Integrated nonlinear photonics at Institut national de la recherche scientifique - INRS",
+                "institution": "Student at McGill University",
+                "image": "https://iarco.org/assets/mentor/masnud.jpg",
+                "country": "Canada"
+            },
+            {
+                "name": "Shubhashis Roy Dipta",
+                "position": "PhD in CS at University of Maryland",
+                "institution": "Graduate Research Assistant at UMBC",
+                "image": "https://iarco.org/assets/mentor/dipto.jpg",
+                "country": "United States"
+            }
+        ],
     }
 }
