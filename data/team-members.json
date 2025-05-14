@@ -1,0 +1,52 @@
+{
+    "2025": {
+        "advisoryBoard": [
+            {
+                "name": "Dr. Sarah Johnson",
+                "position": "Chair of Advisory Board",
+                "institution": "Harvard University",
+                "bio": "Professor of Research Methodology with 20+ years of experience in academic research.",
+                "image": "https://randomuser.me/api/portraits/women/65.jpg"
+            }
+        ],
+        "iarcoCommittee": [
+            {
+                "name": "David Wilson",
+                "position": "Competition Director",
+                "institution": "IARCO",
+                "bio": "Oversees all aspects of the competition organization.",
+                "image": "https://randomuser.me/api/portraits/men/75.jpg"
+            }
+        ],
+        "mentors": [
+            {
+                "name": "Dr. Lisa Park",
+                "position": "STEM Research Mentor",
+                "institution": "MIT",
+                "bio": "Specializes in guiding students through scientific research projects.",
+                "image": "https://randomuser.me/api/portraits/women/28.jpg"
+            }
+        ]
+    },
+    "2024": {
+        "advisoryBoard": [],
+        "iarcoCommittee": [
+            {
+                "name": "Amanda Chen",
+                "position": "Former Competition Director",
+                "institution": "IARCO",
+                "bio": "Led the competition through its inaugural years.",
+                "image": "https://randomuser.me/api/portraits/women/25.jpg"
+            }
+        ],
+        "mentors": [
+            {
+                "name": "Dr. Patricia Ng",
+                "position": "Former STEM Mentor",
+                "institution": "Caltech",
+                "bio": "Guided students in engineering and physics projects.",
+                "image": "https://randomuser.me/api/portraits/women/38.jpg"
+            }
+        ]
+    }
+}
