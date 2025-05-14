@@ -1,108 +1,356 @@
 <!DOCTYPE html>
 <html>
-
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5LLP0WEBK"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-C5LLP0WEBK');
+        </script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5LLP0WEBK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>What is IARCO? | International Research Competition</title>
+        <link rel="icon" href="assets/logo.png"/>
+        <link rel="canonical" href="https://iarco.org/what-is-iarco"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="css/main.css" />
 
-  gtag('config', 'G-C5LLP0WEBK');
-</script>
+        <!-- Page-specific CSS -->
+        <style>
+            /* Blue & Gold Theme Variables */
+            :root {
+                --primary-blue: #003366;
+                --secondary-blue: #0749b3;
+                --accent-blue: #4b9cd3;
+                --primary-gold: #ffd700;
+                --secondary-gold: #daa520;
+                --white: #ffffff;
+                --light-gray: #f8f9fa;
+                --dark-gray: #343a40;
+            }
 
-<!-- End Google Tag Manager -->
-	    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>What is IARCO? | Research Competition</title>
-    <link rel="icon" href="assets/logo.png"/>
-    <link rel="canonical" href="https://iarco.org"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/courses.css" />
+            /* Hero Section */
+            .hero-section {
+                background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+                color: var(--white);
+                padding: 8rem 0 6rem;
+                position: relative;
+                overflow: hidden;
+                text-align: center;
+            }
 
-    <!-- Program -->
-    <link rel="stylesheet" href="css/program.css" />
-    <link rel="stylesheet" href="css/timeline.css" />
-    <link rel="stylesheet" href="css/slider.css" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+            .hero-section::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('assets/hero-pattern.png') repeat;
+                opacity: 0.1;
+                z-index: 1;
+            }
 
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+                margin: 0 auto;
+            }
 
+            .hero-title {
+                font-size: 3.5rem;
+                font-weight: 800;
+                margin-bottom: 1.5rem;
+                line-height: 1.2;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
 
-<link rel="icon" href="fevicon/favicon.ico"/>
-<link rel="apple-touch-icon" sizes="180x180" href="fevicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="fevicon/android-chrome-192x192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="fevicon/favicon-512x512.png">
-<link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
-<link rel="manifest" href="manifest.json">
+            .hero-title span {
+                color: var(--primary-gold);
+                display: inline-block;
+            }
 
-<meta name="theme-color" content="#0749b3">
-<meta name="keywords" content="Global, USA, United State of America, Competiton, IARCO, International, Academic, International Academic Research Competition, Bangladesh, Summer, SRP, WRP,YRJ, yrj, Youth Research Journal, Education, Lumiere Education, Spring, Research Program, Summer Activities, Winter Research, Winter Program, Winter Activities, undergraduate, research, journal, electronic, online, multidisciplinary, open access, articles, essays, Houston, Texas, Journal of Student Research, jofsr, Jofsr, JofSR, student research journal, undergraduate rsesearch journal, student research, high school, hs, high school publication, high school research, school research, high school edition, hs edition, hs portal, high school portal, high school edition research, machine learning, computational biology, machine, computational, biology."/>
+            .hero-subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 2.5rem;
+                opacity: 0.9;
+            }
 
-<meta name="description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
-<meta name="subject" content="What is IARCO? | International Academic Research Competition">
-<meta name="copyright"content="Md Sanaul Haque Shanto">
-<meta name="language" content="ES">
-<meta name="robots" content="index,follow" />
-<meta name="revised" content="2024-09-13T08:13:15.028Z" />
-<meta name="abstract" content="What is IARCO? | International Academic Research Competition">
-<meta name="topic" content="What is IARCO? | International Academic Research Competition">
-<meta name="summary" content="What is IARCO? | International Academic Research Competition">
-<meta name="Classification" content="Educational">
-<meta name="author" content="Md Sanaul Haque Shanto, hello@iarco.org">
-<meta name="designer" content="Md Sanaul Haque Shanto">
-<meta name="copyright" content="Md Sanaul Haque Shanto">
-<meta name="reply-to" content="hello@iarco.org">
-<meta name="owner" content="Md Sanaul Haque Shanto">
-<meta name="url" content="https://iarco.org/">
-<meta name="identifier-URL" content="https://iarco.org/">
-<meta name="directory" content="submission">
-<meta name="category" content="Educational">
-<meta name="coverage" content="Worldwide">
-<meta name="distribution" content="Global">
-<meta name="rating" content="General">
-<meta name="og:title" content="What is IARCO? | International Academic Research Competition"/>
-<meta name="og:type" content="Educational"/>
-<meta name="og:url" content="https://iarco.org/"/>
-<meta name="og:image" content="https://hello@iarco.org">
-<meta name="og:site_name" content="What is IARCO? | International Academic Research Competition"/>
-<meta name="og:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
-<meta name="fb:page_id" content="405729912624141" />
-<meta name="og:email" content="hello@iarco.org"/>
-<meta name="og:phone_number" content="+8801766009306"/>
+            .hero-cta {
+                display: inline-block;
+                background-color: var(--primary-gold);
+                color: var(--primary-blue);
+                font-weight: 600;
+                padding: 1rem 2.5rem;
+                border-radius: 50px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                border: 2px solid var(--primary-gold);
+            }
 
- <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Research Competition","url":"https://iarco.org"}</script>
+            .hero-cta:hover {
+                background-color: transparent;
+                color: var(--primary-gold);
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            }
 
- <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="What is IARCO? | International Academic Research Competition"/>
-  <meta name="twitter:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc..">
+            /* About Section */
+            .about-section {
+                padding: 6rem 0;
+                background-color: var(--white);
+            }
 
+            .section-title {
+                color: var(--primary-blue);
+                font-weight: 700;
+                margin-bottom: 3rem;
+                text-align: center;
+                position: relative;
+            }
 
+            .section-title::after {
+                content: "";
+                display: block;
+                width: 80px;
+                height: 4px;
+                background: var(--primary-gold);
+                margin: 1rem auto 0;
+            }
+
+            .about-content {
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .about-text {
+                font-size: 1.1rem;
+                line-height: 1.8;
+                margin-bottom: 2rem;
+            }
+
+            .about-features {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .feature-card {
+                background: var(--white);
+                border-radius: 10px;
+                padding: 2rem;
+                width: calc(33.333% - 2rem);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                border-top: 4px solid var(--primary-gold);
+                transition: transform 0.3s ease;
+            }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+            }
+
+            .feature-icon {
+                font-size: 2.5rem;
+                color: var(--primary-blue);
+                margin-bottom: 1.5rem;
+            }
+
+            .feature-title {
+                font-weight: 600;
+                margin-bottom: 1rem;
+                color: var(--primary-blue);
+            }
+
+            /* How It Works Section */
+            .how-it-works {
+                padding: 6rem 0;
+                background-color: var(--light-gray);
+            }
+
+            .steps-container {
+                position: relative;
+                max-width: 900px;
+                margin: 0 auto;
+                padding-top: 3rem;
+            }
+
+            .step {
+                display: flex;
+                margin-bottom: 3rem;
+                position: relative;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                background: var(--primary-blue);
+                color: var(--white);
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                font-weight: 700;
+                flex-shrink: 0;
+                margin-right: 2rem;
+                position: relative;
+                z-index: 2;
+                border: 4px solid var(--primary-gold);
+            }
+
+            .step-content {
+                background: var(--white);
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                flex-grow: 1;
+                position: relative;
+                border-left: 4px solid var(--primary-gold);
+            }
+
+            .step-content::before {
+                content: "";
+                position: absolute;
+                left: -30px;
+                top: 30px;
+                width: 30px;
+                height: 2px;
+                background: var(--primary-gold);
+            }
+
+            .step-title {
+                font-weight: 600;
+                color: var(--primary-blue);
+                margin-bottom: 1rem;
+                font-size: 1.3rem;
+            }
+
+            /* Research Topic Section */
+            .research-topic {
+                padding: 6rem 0;
+                background: linear-gradient(135deg, rgba(0,51,102,0.9) 0%, rgba(7,73,179,0.9) 100%), url('assets/research-bg.jpg') center/cover no-repeat;
+                color: var(--white);
+                text-align: center;
+            }
+
+            .research-title {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+                position: relative;
+                display: inline-block;
+            }
+
+            .research-title::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 3px;
+                background: var(--primary-gold);
+            }
+
+            .research-text {
+                max-width: 700px;
+                margin: 0 auto 2rem;
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+
+            .topic-highlight {
+                color: var(--primary-gold);
+                font-weight: 600;
+            }
+
+            /* Responsive Adjustments */
+            @media (max-width: 992px) {
+                .hero-title {
+                    font-size: 2.8rem;
+                }
+                
+                .hero-subtitle {
+                    font-size: 1.3rem;
+                }
+                
+                .feature-card {
+                    width: calc(50% - 2rem);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .hero-section {
+                    padding: 6rem 0 4rem;
+                }
+                
+                .hero-title {
+                    font-size: 2.3rem;
+                }
+                
+                .step {
+                    flex-direction: column;
+                }
+                
+                .step-number {
+                    margin-right: 0;
+                    margin-bottom: 1rem;
+                }
+                
+                .step-content::before {
+                    display: none;
+                }
+            }
+
+            @media (max-width: 576px) {
+                .hero-title {
+                    font-size: 2rem;
+                }
+                
+                .hero-subtitle {
+                    font-size: 1.1rem;
+                }
+                
+                .feature-card {
+                    width: 100%;
+                }
+                
+                .research-title {
+                    font-size: 2rem;
+                }
+            }
+        </style>
     </head>
 
     <body>
+        <!-- Start Preloader -->
+        <div id="preloader">
+            <img src="assets/preloader.gif" alt="Loading...">
+        </div>
+        <!-- End Preloader -->
 
-
-
-        <!-- start nav bar  -->
+        <!-- start nav bar -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-light sticky-top">
             <div class="container">
                 <div class="d-flex align-items-center">
-                <a class="navbar-brand text-uppercase" href="/">
-                    <img src="assets/logo.png" width="80%" height="70px" class="d-inline-block align-top">
-                </a>
-             </div>
+                    <a class="navbar-brand text-uppercase" href="/">
+                        <img src="assets/logo.png" width="80%" height="70px" class="d-inline-block align-top">
+                    </a>
+                </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -110,318 +358,168 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                About
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item active" href="what-is-iarco">What is IARCO</a></li>
-                                <li><a class="dropdown-item" href="prizes">Prizes</a></li>
-                                <li><a class="dropdown-item" href="partners">Partners</a></li>
-                              </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i> About</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item active" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
+                                <li><a class="dropdown-item" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
+                                <li><a class="dropdown-item" href="partners"><i class="fas fa-handshake"></i> Partners</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="timeline">Timeline</a>
+                            <a class="nav-link" href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a>
                         </li>
                         <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Hubs
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="bootcamps">Bootcamps</a></li>
-                                <li><a class="dropdown-item" href="premium-webinar">Premium Webinar</a></li>
-                                <li><a class="dropdown-item" href="guidelines">Guidelines</a></li>
-                                <li><a class="dropdown-item" href="2024-finalists">2024 Finalists</a></li>
-                                <li><a class="dropdown-item" href="2024-winners">2024 Winners</a></li>
-                              </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fab fa-hubspot"></i> Competition Hubs</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamps</a></li>
+                                <li><a class="dropdown-item" href="guidelines"><i class="fas fa-chalkboard-teacher"></i> Guidelines</a></li>
+                                <li><a class="dropdown-item" href="2024-finalists"><i class="fas fa-running"></i> 2024 Finalists</a></li>
+                                <li><a class="dropdown-item" href="2024-winners"><i class="fas fa-trophy"></i> 2024 Winners</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="faq">FAQs</a>
+                            <a class="nav-link" href="faq"><i class="fas fa-question"></i> FAQs</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-<!--End NavBar section-->
+        <!--End NavBar section-->
 
-
-<!-- start quote section -->
-        <section class="quote text-center">
-          <div class="container">
-           <br>
-
-      <span style="background-color: rgba(39, 245, 114, 0.8);">IARCO is more than just a contest </span>
-            
-         
-            <p>- It's a <span style="background-color: blue;">Guide Immersion</span> Into The </p>
-         
-            <span style="background-color: blue;">Research Process, Design,</span>
-            <br>
-
-            <p> For Experts and New Comers Alike!</p> 
-          
-          </div>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover the <span>International Academic Research Competition</span></h1>
+                    <p class="hero-subtitle">Where brilliant minds compete to showcase groundbreaking research across all disciplines</p>
+                    <a href="#about" class="hero-cta">Learn More</a>
+                </div>
+            </div>
         </section>
 
-     <!-- End quote section -->
-
-
-
-
-<!-- START: Landing -->
-    <section class="landing py-5" id="landing">
-      <div class="container">
-        <div class="row align-items-center justify-space-between gap-5">
-          <div class="col-lg-6">
-            <article class="text text-center text-lg-start">
-              <h2>WHAT IS IARCO?</h2>
-              <p><i class="fa-solid fa-certificate" style="color: green;"></i> The International Academic Research Competition is where talented students from around the world compete to present high-quality research on any topic.
-              </p>
-              <p><i class="fa-solid fa-certificate" style="color: green;"></i> IARCO challenges students to sharpen their critical thinking skills, immerse themselves in the research process, and hone their writing skills for success.</p>
-            </article>
-          </div>
-          <div class="col-lg-5">
-            <div class="image text-center">
-              <img src="assets/paper-amico.png" class="img-fluid" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END: Overview -->
-
-
-
-<!-- Start: Comparing container-->
-    <section class="comparing text-light">
-      <div class="container d-flex rounded-0" style="background-color: rgba(212, 227, 220, 0.8); color: black;">
-        <div class="row">
-            
-            <div class="col">
-                <div class="row">
-
-                  <div class="col">
-                  	<h4 style="color: blue;"><strong>WHO CAN COMPETE:</strong></h4>
-            <p>You’ll enroll in immersive workshops that guide you through the research process from beginning to end and prepare you for your own research proposal.</p>
-          </div>
-          <div class="col">
-          	<h4 style="color: blue;"><strong>WHERE WILL IT TAKE PLACE:</strong></h4>
-            <p>You’ll enroll in immersive workshops that guide you through the research process from beginning to end and prepare you for your own research proposal.</p>
-          </div>
-
-      </div>
-  </div>
-          
-        </div>
-      </div>
-    </section>
-    <!--End: Comparing container-->
-    <!--Start: Gain Skills-->
-    <section class="gain skills">
-
-    	<div class="container">
-    		<h2>WHY YOU SHOULD JOIN</h2>
-    		<div class="row">
-    			<div class="col">
-    				<div class="desc">
-    					<p><i class="fa-solid fa-certificate" style="color: blue; font-size: 50px;"></i></p>
-    					<p>Boost your extracurriculars with an accredited research competition to stand out as a top applicant at your dream university.</p>
-    				</div>
-    			</div>
-    			<div class="col">
-    				<div class="desc">
-    					<p><i class="fa-solid fa-certificate" style="color: blue; font-size: 50px;"></i></p>
-    					<p>Gain useful skills through our exclusive bootcamps with experts in the field and improve your research skills.</p>
-    				</div>
-    			</div>
-    			<div class="col">
-    				<div class="desc">
-    					<p><i class="fa-solid fa-certificate" style="color: blue; font-size: 50px;"></i></p>
-    					<p>Whether you have lots of experience or are just starting out, IARCO is for you! All you need is a passion for research.</p>
-    				</div>
-    			</div>
-    		</div>
-
-    		<div class="row">
-    			<div class="col">
-    				<div class="desc">
-    					<p><i class="fa-solid fa-certificate" style="color: blue; font-size: 50px;"></i></p>
-    					<p>Win exclusive prizes: 25%-100% off renowned YRJ Research program with the opportunity to gain amazing cash prizes.</p>
-    				</div>
-    			</div>
-    			<div class="col">
-    				<div class="desc">
-    					<p><i class="fa-solid fa-certificate" style="color: blue; font-size: 50px;"></i></p>
-    					<p>A great opportunity to fine-tune your research abilities and explore your interests before heading off to university.</p>
-    				</div>
-    			</div>
-    	</div>
-    	
-    </section>
-
-
-
-    <!--End: Gain Skills-->
-
-
-
-    <!--Start: Topic-->
-    <div class="container" style="justify-content: center;">
-            <div class="row">
-                <h1>RESEARCH TOPIC</h1>
-                <div class="col-sm-4 pb-2">
-                    <p>IARCO is unique in that participants can research <strong style="color: blue;">any topic</strong> they want!</p>
-
-                    <p>This competition is not limited to the sciences. Your research topic can range from political science, art, and economics to engineering, history, or any other field of interest.</p>
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="container">
+                <h2 class="section-title">What is IARCO?</h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        The International Academic Research Competition (IARCO) is a prestigious global event where talented students from around the world compete to present high-quality, original research across all academic disciplines. Whether you're in STEM, humanities, social sciences, or arts, IARCO provides the perfect platform to showcase your intellectual curiosity and research skills.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="feature-title">Global Platform</h3>
+                            <p>Connect with researchers worldwide and gain international recognition for your work.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="feature-title">Diverse Disciplines</h3>
+                            <p>All academic fields welcome - from quantum physics to medieval poetry and everything between.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3 class="feature-title">Prestigious Awards</h3>
+                            <p>Win scholarships, publication opportunities, and recognition from top academic institutions.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 pb-1">
-                    <div class="desc">
-          <p>
-Researchers can choose a topic they’re passionate about, something they wish to <strong style="color: blue;">dive deeper</strong> into, or something they want to study in university.</p>
-          
-
-      </div>
-                </div>
-
             </div>
-</div>
-    <!--End: Topic-->
+        </section>
 
-    <!--Start: Timeline-->
-<div class="container">
-	<br>
-    <h2>HOW DOES THE COMPETITION WORK:</h2>
-<ul class="timeline">
-  <!-- Item 1 -->
-  <li>
-    <div class="direction-r">
-      <div class="flag-wrapper">
-        <span class="hexa"></span>
-        <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: green;">STEP 1</span></span>
-      </div>
-      <div class="desc">
-          <p>IARCO is an individual research competition and is not open to group entries.</p>
-
-			<p>After registration, provide answers to a few short questions about your research topic (Assessment Form).</p>
-			<p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
-
-      </div>
-    </div>
-  </li>
-
-  <!-- Item 2 -->
-  <li>
-    <div class="direction-l">
-      <div class="flag-wrapper">
-        <span class="hexa"></span>
-        <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: green;">STEP 2</span></span>
-      </div>
-      <div class="desc">
-          	<p>Gain experience by participating in exclusive bootcamps on subjects like research proposal development and data analysis from experts in their fields.</p>
-			<p>Submit your 1-2 page research proposal shortly after all bootcamps end.</p>
-			<p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
-
-      </div>
-    </div>
-  </li>
-
-  <!-- Item 3 -->
-  <li>
-    <div class="direction-r">
-      <div class="flag-wrapper">
-        <span class="hexa"></span>
-        <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: green;">STEP 3</span></span>
-      </div>
-      <div class="desc">
-          <p>The top 20 research proposals are chosen to advance to the next round. Each finalist films and submits a 2.5-5 minutes elevator pitch video.</p>
-
-			<p>Winners are declared based on the quality of their research proposal and video.</p>
-			<p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
-
-      </div>
-    </div>
-  </li>
-
-</ul>
-
-</div>
-    <!--End: Timeline-->
-
-    <!--Start: Partner container-->
-     <section class="team">
-          <div class="container">
-            <h2>PARTNERS:</h2>
-            <div class="row">
-              <div class="col-lg-12 text-center">
-                <div class="row">
-
-                  <div class="col-md-4">
-                    <img src="https://yrjournal.org/images/Logo.PNG" class="img-fluid" alt="Youth Research Journal">
-                    <p><a href="https://yrjournal.org">Youth Research Journal</a> aspire to promote young researchers and writers by walking them through the standard procedures of publishing a research article; that is, delivering a manuscript, editing & peer-review, and finally acceptance or rejection. Through our monthly-issues, we hope to bring the hard work of those writers to light while also providing a constant stream of quality, entertaining, and highly scrutinized content for readers hungry for explore. These articles, however, are but an initial spark that encourages readers to go beyond and delve more deeply into their topics of interest on their own, advertising independent research and self-learning.</p>
-                  </div>
-                  <div class="col-md-4">
-                    <img src="https://yrjournal.org/images/ylrl.jpg" class="img-fluid" alt="Young Learners Research Lab">
-                    <p><a href="https://www.facebook.com/aysrizon.ylrl">Young Learners' Research Lab</a>—a dynamic platform driving the future of research and innovation! Young Learners' Research Lab is dedicated to igniting curiosity and fostering creativity among young scholars by connecting them with leading researchers and cutting-edge projects. By nurturing the next generation of thinkers, we’re creating a vibrant ecosystem of learning and collaboration. With a focus on groundbreaking research and a commitment to building valuable networks, the Young Learners' Research Lab is at the forefront of shaping tomorrow's leaders in science and technology. Explore our innovative approach and witness how we are transforming the landscape of academic research. </p>
-                  </div>
-                  
-                 <div class="col-md-4">
-                    <img src="https://pinneducation.org/images/logo.png" class="img-fluid" alt="Pinn Education">
-                    <p><a href="https://pinneducation.org">Pinn Education</a> is the leading US, UK, Canada, Russia, India, and Undergrad admissions counselors. In 2024, it was founded by three students, including CEO Sanaul Haque who had just been accepted to 30+ of the world's best universities. Our mission is to help students all over the world reach their ultimate university admissions goals.</p>
-                  </div>
-                
-
-
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How Does the Competition Work?</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Registration & Initial Submission</h3>
+                            <p>Register as an individual competitor and submit your research topic through our assessment form. This helps us understand your area of focus and prepare appropriate resources.</p>
+                            <p><a href="timeline">View submission dates</a> and <a href="guidelines">detailed instructions</a> for this phase.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Research Development Phase</h3>
+                            <p>Participate in our exclusive bootcamps covering research methodology, data analysis, and academic writing. Then submit your 1-2 page research proposal demonstrating your project's significance and methodology.</p>
+                            <p>Access all <a href="bootcamps">bootcamp schedules</a> and preparation materials.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Final Presentation</h3>
+                            <p>Top proposals advance to the final round where you'll create a 2.5-5 minute video presentation explaining your research. Winners are selected based on proposal quality, presentation skills, and academic rigor.</p>
+                            <p>Review the <a href="guidelines">evaluation criteria</a> for the final round.</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </section> 
-    <!--End: Partner container-->
+        </section>
 
+        <!-- Research Topic Section -->
+        <section class="research-topic">
+            <div class="container">
+                <h2 class="research-title" style="color: white;">Research Without Boundaries</h2>
+                <p class="research-text">
+                    IARCO stands out by allowing participants to explore <span class="topic-highlight">any academic topic</span> they're passionate about. Your research can span from nanotechnology to Renaissance art, from economic theories to AI ethics - if it can be researched academically, it's welcome at IARCO.
+                </p>
+                <p class="research-text">
+                    Choose a subject you're deeply curious about, something you want to <span class="topic-highlight">investigate further</span>, or a topic you might pursue in higher education. This is your opportunity to dive deep into what fascinates you most.
+                </p>
+            </div>
+        </section>
 
-
-
-
-
-
-
-        <!--start footer section-->
+        <!-- Footer Section -->
         <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-4 pb-3">
                         <img src="assets/logo.png" class="img-fluid">
-                        <h4>Contact Us</h4>
+                        <h4 style="color: white;">Contact Us</h4>
                         <p>Contact us at hello@iarco.org!</p>
                         <p><a href="terms-conditions">Terms & Conditions</a></p>
                     </div>
                     <div class="col-sm-4 pb-2">
-                        <h4>Social Media</h4>
-                         <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
-                        <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a> </p>
+                        <h4 style="color: white;">Social Media</h4>
+                        <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
                         <p><a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a></p>
+                        <p><a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> Youtube</a></p>
+                        <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a></p>
                     </div>
-
                     <div class="col-sm-4 pb-1">
-                        <h4>Information</h4>
-                        <p><a href="what-is-iarco">About Competition</a></p>
-                        <p><a href="timeline">Timeline</a></p>
-                        <p><a href="prizes">Prizes</a></p>
-                        <p><a href="bootcamps">Bootcamp</a></p>
-                        <p><a href="https://cert.iarco.org/">Certificate</a></p>
+                        <h4 style="color: white;">Information</h4>
+                        <p><a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About Competition</a></p>
+                        <p><a href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a></p>
+                        <p><a href="prizes"><i class="fas fa-trophy"></i> Prizes</a></p>
+                        <p><a href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a></p>
+                        <p><a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a></p>
                     </div>
-        
-                    
                 </div>
+
+                <div class="col-sm-4 pb-1 footer-subscribe">
+                    <h5>Subscribe to Our Newsletter</h5>
+                    <form class="subscribe-form" id="footer-subscribe-form">
+                        <input name="email" type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="subscribe-message" id="footer-subscribe-message"></div>
+                </div>
+                
                 <div class="rights">
-                    &copy; <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
+                    &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
                 </div>
-        
             </div>
         </footer>
 
-
-
-        <!--        start js files-->
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -429,9 +527,31 @@ Researchers can choose a topic they’re passionate about, something they wish t
         <script src="js/plugins.js"></script>
         <script src="js/script_CP.js"></script>
         <script src="js/script.js"></script>
-        <script src="js/program.js"></script>
-        <script src="js/slider.js"></script>
+        
+        <script>
+            // Preloader
+            window.addEventListener('load', function() {
+                const preloader = document.getElementById('preloader');
+                preloader.style.display = 'none';
+            });
 
+            // Footer subscription form handling
+            const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
+            const Fform = document.forms['footer-subscribe-form'];
+            const FSubId = document.getElementById("footer-subscribe-message");
 
+            Fform.addEventListener('submit', e => {
+                e.preventDefault();
+                fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
+                    .then(response => {
+                        FSubId.innerHTML = "Thank You for Subscribing us!";
+                        setTimeout(function() {
+                            FSubId.innerHTML = "";
+                        }, 3000);
+                        Fform.reset();
+                    })
+                    .catch(error => console.error('Error!', error.message));
+            });
+        </script>
     </body>
 </html>
