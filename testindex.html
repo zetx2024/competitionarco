@@ -65,6 +65,7 @@
             align-items: center;
             z-index: 9999;
             flex-direction: column;
+            transition: opacity 0.3s ease;
         }
 
         #preloader img {
@@ -316,18 +317,17 @@
 
         .team-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
             gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .team-category {
-            flex: 1 1 100%;
             background: white;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
             padding: 2rem;
-            margin-bottom: 2rem;
         }
 
         .team-category h3 {
@@ -342,6 +342,13 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
+            justify-items: center;
+        }
+
+        /* Center items when there are few members */
+        .team-members-grid.few-items {
+            grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+            justify-content: center;
         }
 
         .team-member {
@@ -354,6 +361,8 @@
             border-radius: 8px;
             border: 1px solid rgba(0, 51, 102, 0.1);
             transition: all 0.3s ease;
+            width: 100%;
+            max-width: 350px;
         }
 
         .team-member:hover {
@@ -702,6 +711,16 @@
 
     <!-- Team Members Data Loading Script -->
     <script>
+        // Define the order of categories we want to display
+        const CATEGORY_ORDER = ['advisoryBoard', 'iarcoCommittee', 'mentors', 'guestSpeakers'];
+        
+        // Function to format category name for display
+        function formatCategoryName(category) {
+            return category
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, str => str.toUpperCase());
+        }
+
         // Function to fetch JSON data
         async function fetchTeamData() {
             try {
@@ -743,26 +762,20 @@
             const yearData = data[year];
             let teamHTML = '';
             
-            // Get all category keys and sort them to maintain order
-            const categories = Object.keys(yearData).sort((a, b) => {
-                // Custom sorting to maintain specific order
-                const order = ['advisoryBoard', 'iarcoCommittee', 'mentors'];
-                return order.indexOf(a) - order.indexOf(b);
-            });
-            
-            // Create sections for each category that has members
-            categories.forEach(category => {
+            // Create sections for each category in our predefined order
+            CATEGORY_ORDER.forEach(category => {
                 if (yearData[category] && yearData[category].length > 0) {
-                    // Convert category name to display format (e.g., "advisoryBoard" => "Advisory Board")
-                    const displayName = category
-                        .replace(/([A-Z])/g, ' $1')
-                        .replace(/^./, str => str.toUpperCase());
+                    const membersHTML = yearData[category].map(createMemberHTML).join('');
+                    const displayName = formatCategoryName(category);
+                    
+                    // Add class for few items to center them
+                    const fewItemsClass = yearData[category].length <= 2 ? 'few-items' : '';
                     
                     teamHTML += `
                         <div class="team-category">
                             <h3>${displayName}</h3>
-                            <div class="team-members-grid">
-                                ${yearData[category].map(createMemberHTML).join('')}
+                            <div class="team-members-grid ${fewItemsClass}">
+                                ${membersHTML}
                             </div>
                         </div>
                     `;
