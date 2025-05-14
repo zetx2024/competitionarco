@@ -12,9 +12,9 @@
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>2024 Finalists | International Research Competition</title>
+        <title>What is IARCO? | International Research Competition</title>
         <link rel="icon" href="assets/logo.png"/>
-        <link rel="canonical" href="https://iarco.org"/>
+        <link rel="canonical" href="https://iarco.org/what-is-iarco"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
@@ -22,18 +22,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-        
-        <link rel="icon" href="fevicon/favicon.ico"/>
-        <link rel="apple-touch-icon" sizes="180x180" href="fevicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="fevicon/android-chrome-192x192.png">
-        <link rel="icon" type="image/png" sizes="512x512" href="fevicon/favicon-512x512.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
-        <link rel="manifest" href="manifest.json">
-         <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/main.css" />
 
+        <!-- Page-specific CSS -->
         <style>
-            /* Finalists Page Specific Styles */
+            /* Blue & Gold Theme Variables */
             :root {
                 --primary-blue: #003366;
                 --secondary-blue: #0749b3;
@@ -42,259 +35,180 @@
                 --secondary-gold: #daa520;
                 --white: #ffffff;
                 --light-gray: #f8f9fa;
-                --medium-gray: #e9ecef;
                 --dark-gray: #343a40;
             }
-            
-            .finalists-header {
-                background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.95)), url('assets/hero-bg.jpg') no-repeat center center;
-                background-size: cover;
-                color: white;
-                padding: 5rem 0;
-                text-align: center;
-                margin-bottom: 2rem;
+
+            /* Landing Section */
+            .landing {
+                padding: 4rem 0;
+                background-color: var(--white);
             }
-            
-            .finalists-header h1 {
-                font-size: 2.5rem;
-                margin-bottom: 1rem;
-                color: var(--primary-gold);
+
+            .landing h2 {
+                color: var(--primary-blue);
+                font-weight: 700;
+                margin-bottom: 1.5rem;
                 border-bottom: 3px solid var(--primary-gold);
                 display: inline-block;
                 padding-bottom: 0.5rem;
             }
-            
-            .finalists-header p {
-                font-size: 1.2rem;
-                max-width: 800px;
-                margin: 0 auto;
-            }
-            
-            .stats-container {
-                background-color: white;
-                padding: 2rem;
-                border-radius: 10px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                margin-bottom: 2rem;
-            }
-            
-            .stats-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .stat-card {
-                background-color: var(--light-gray);
-                border-left: 4px solid var(--secondary-blue);
-                padding: 1.5rem;
-                border-radius: 8px;
-                text-align: center;
-            }
-            
-            .stat-card h3 {
-                color: var(--secondary-blue);
-                font-size: 2rem;
-                margin-bottom: 0.5rem;
-            }
-            
-            .stat-card p {
+
+            .landing p {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
                 color: var(--dark-gray);
-                font-weight: 500;
             }
-            
-            .map-container {
-                background-color: white;
-                padding: 1rem;
-                border-radius: 10px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                margin-bottom: 2rem;
-                position: relative;
-                overflow: hidden;
-            }
-            
-            #world-map {
-                width: 100%;
-                height: auto;
-                min-height: 400px;
-            }
-            
-            .country {
-                fill: #ccc;
-                stroke: #fff;
-                stroke-width: 0.5px;
-                transition: all 0.3s ease;
-            }
-            
-            .country:hover {
-                fill: var(--accent-blue);
-                stroke-width: 1px;
-            }
-            
-            .country-highlight {
-                fill: var(--secondary-blue);
-                stroke: #fff;
-                stroke-width: 0.5px;
-            }
-            
-            .map-tooltip {
-                position: absolute;
-                background: rgba(0, 0, 0, 0.8);
-                color: white;
-                padding: 0.5rem 1rem;
-                border-radius: 4px;
-                pointer-events: none;
-                font-size: 0.9rem;
-                z-index: 100;
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-            
-            .map-legend {
-                display: flex;
-                justify-content: center;
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-            
-            .legend-item {
-                display: flex;
-                align-items: center;
-                margin-right: 1rem;
-            }
-            
-            .legend-color {
-                width: 20px;
-                height: 20px;
+
+            .landing i.fa-certificate {
+                color: var(--primary-gold);
                 margin-right: 0.5rem;
-                border: 1px solid #ddd;
             }
-            
-            .finalists-table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 2rem;
-                background-color: white;
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            }
-            
-            .finalists-table th, 
-            .finalists-table td {
-                padding: 12px 15px;
-                text-align: left;
-                border-bottom: 1px solid var(--medium-gray);
-            }
-            
-            .finalists-table th {
-                background-color: var(--secondary-blue);
-                color: white;
-                font-weight: 600;
-            }
-            
-            .finalists-table tr:hover {
+
+            /* Skills Section */
+            .gain.skills {
+                padding: 4rem 0;
                 background-color: var(--light-gray);
             }
-            
-            .selected-yes {
-                background-color: rgba(0, 128, 0, 0.1);
+
+            .gain.skills h2 {
+                color: var(--primary-blue);
+                text-align: center;
+                margin-bottom: 2rem;
             }
-            
-            .selected-yes td {
-                font-weight: 500;
+
+            .gain.skills .col {
+                margin-bottom: 2rem;
             }
-            
-            .table-responsive {
-                overflow-x: auto;
+
+            .gain.skills .desc {
+                background: var(--white);
+                padding: 2rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+                height: 100%;
+                border-top: 4px solid var(--primary-gold);
+                transition: transform 0.3s ease;
             }
-            
-            /* Responsive adjustments */
-            @media (max-width: 768px) {
-                .finalists-header {
-                    padding: 3rem 1rem;
-                }
-                
-                .finalists-header h1 {
-                    font-size: 2rem;
-                }
-                
-                .stats-grid {
-                    grid-template-columns: 1fr 1fr;
-                }
-                
-                .finalists-table th, 
-                .finalists-table td {
-                    padding: 8px 10px;
-                    font-size: 0.9rem;
-                }
-                
-                .stat-card h3 {
+
+            .gain.skills .desc:hover {
+                transform: translateY(-5px);
+            }
+
+            .gain.skills i {
+                font-size: 2rem;
+                color: var(--primary-blue);
+                margin-bottom: 1rem;
+                display: block;
+            }
+
+            /* Timeline Customization */
+            .timeline .time-wrapper .time[style*="STEP"] {
+                font-size: 1.5rem !important;
+                padding: 0.5rem 1rem !important;
+                background-color: var(--primary-blue) !important;
+                color: var(--white) !important;
+                border-radius: 6px !important;
+            }
+
+            /* Team/Partners Section */
+            .team {
+                padding: 4rem 0;
+                background-color: var(--white);
+            }
+
+            .team h2 {
+                color: var(--primary-blue);
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .team .col-md-4 {
+                margin-bottom: 2rem;
+            }
+
+            .team img {
+                max-height: 100px;
+                margin-bottom: 1.5rem;
+                object-fit: contain;
+            }
+
+            .team p {
+                margin-top: 1rem;
+            }
+
+            /* Quote Section */
+            .quote {
+                background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.95)), url('assets/hero-bg.jpg') no-repeat center center;
+                background-size: cover;
+                color: var(--white);
+                padding: 6rem 0;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .quote span {
+                background-color: var(--primary-gold);
+                color: var(--primary-blue);
+                padding: 0.5rem 1rem;
+                border-radius: 6px;
+                font-weight: 600;
+                display: inline-block;
+                margin: 0.5rem 0;
+            }
+
+            .quote p {
+                font-size: 1.8rem;
+                margin-bottom: 0;
+                line-height: 1.4;
+            }
+
+            /* Comparing Section */
+            .comparing {
+                padding: 3rem 2rem;
+                background-color: var(--primary-blue);
+                color: var(--white);
+                margin: 2rem 0;
+                border-radius: 8px;
+            }
+
+            .comparing h4 {
+                color: var(--primary-gold) !important;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Responsive Adjustments */
+            @media (max-width: 992px) {
+                .quote p {
                     font-size: 1.5rem;
                 }
                 
-                #world-map {
-                    min-height: 300px;
+                .landing .image {
+                    margin-top: 2rem;
                 }
             }
-            
+
+            @media (max-width: 768px) {
+                .quote {
+                    padding: 4rem 0;
+                }
+                
+                .quote p {
+                    font-size: 1.3rem;
+                }
+                
+                .gain.skills .col {
+                    margin-bottom: 1.5rem;
+                }
+            }
+
             @media (max-width: 576px) {
-                .stats-grid {
-                    grid-template-columns: 1fr;
+                .quote p {
+                    font-size: 1.2rem;
+                    line-height: 1.3;
                 }
                 
-                .finalists-table {
-                    display: block;
-                    width: 100%;
-                }
-                
-                .finalists-table thead {
-                    display: none;
-                }
-                
-                .finalists-table tbody, 
-                .finalists-table tr, 
-                .finalists-table td {
-                    display: block;
-                    width: 100%;
-                }
-                
-                .finalists-table tr {
-                    margin-bottom: 1rem;
-                    border: 1px solid var(--medium-gray);
-                    border-radius: 8px;
-                    overflow: hidden;
-                }
-                
-                .finalists-table td {
-                    text-align: right;
-                    padding-left: 50%;
-                    position: relative;
-                    border-bottom: 1px solid var(--medium-gray);
-                }
-                
-                .finalists-table td:last-child {
-                    border-bottom: none;
-                }
-                
-                .finalists-table td::before {
-                    content: attr(data-label);
-                    position: absolute;
-                    left: 15px;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    font-weight: 600;
-                    color: var(--secondary-blue);
-                }
-                
-                .finalists-table td {
-                    text-align: right;
-                }
-                
-                #world-map {
-                    min-height: 250px;
+                .timeline .time-wrapper .time[style*="STEP"] {
+                    font-size: 1.2rem !important;
                 }
             }
         </style>
@@ -305,7 +219,8 @@
         <div id="preloader">
             <img src="assets/preloader.gif" alt="Loading...">
         </div>
-        
+        <!-- End Preloader -->
+
         <!-- start nav bar -->
         <nav class="navbar sticky-top navbar-expand-lg navbar-light sticky-top">
             <div class="container">
@@ -323,7 +238,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i> About</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
+                                <li><a class="dropdown-item active" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
                                 <li><a class="dropdown-item" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
                                 <li><a class="dropdown-item" href="partners"><i class="fas fa-handshake"></i> Partners</a></li>
                             </ul>
@@ -349,93 +264,200 @@
         </nav>
         <!--End NavBar section-->
 
-        <!-- Finalists Header Section -->
-        <section class="finalists-header">
+        <!-- start quote section -->
+        <section class="quote text-center">
             <div class="container">
-                <h1>IARCO 2024 Finalists</h1>
-                <p>Congratulations to all the finalists of the International Academic Research Competition 2024! Below you'll find the complete list of participants who made it to the final round.</p>
-                <a href="2024-winners" class="apply btn rounded-5 text-light py-2 px-3 mt-3 mx-auto mx-lg-0">View 2024 Winners</a>
+                <span>IARCO is more than just a contest</span>
+                <p>- It's a <span>Guide Immersion</span> Into The</p>
+                <span>Research Process, Design,</span>
+                <p>For Experts and New Comers Alike!</p>
             </div>
         </section>
+        <!-- End quote section -->
 
-        <!-- Main Content -->
-        <div class="container">
-            <!-- Statistics Section -->
-            <div class="stats-container">
-                <h2 style="color: var(--secondary-blue); margin-bottom: 1.5rem;">Competition Statistics</h2>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3 id="totalStudents">0</h3>
-                        <p>Total Participants</p>
+        <!-- START: Landing -->
+        <section class="landing py-5" id="landing">
+            <div class="container">
+                <div class="row align-items-center justify-space-between gap-5">
+                    <div class="col-lg-6">
+                        <article class="text text-center text-lg-start">
+                            <h2>WHAT IS IARCO?</h2>
+                            <p><i class="fa-solid fa-certificate"></i> The International Academic Research Competition is where talented students from around the world compete to present high-quality research on any topic.</p>
+                            <p><i class="fa-solid fa-certificate"></i> IARCO challenges students to sharpen their critical thinking skills, immerse themselves in the research process, and hone their writing skills for success.</p>
+                        </article>
                     </div>
-                    <div class="stat-card">
-                        <h3 id="totalSelected">0</h3>
-                        <p>Selected for Video Pitch</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="totalJunior">0</h3>
-                        <p>Junior Participants</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="totalSenior">0</h3>
-                        <p>Senior Participants</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="institutesCount">0</h3>
-                        <p>Participating Institutes</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3 id="countriesCount">0</h3>
-                        <p>Participating Countries</p>
-                    </div>
-                </div>
-                
-                <div class="map-container">
-                    <h3 style="color: var(--secondary-blue); margin-bottom: 1.5rem;">Global Participation</h3>
-                    <div style="width: 100%; overflow: auto;">
-                        <svg id="world-map" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet"></svg>
-                    </div>
-                    <div class="map-tooltip" id="map-tooltip"></div>
-                    <div class="map-legend">
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: var(--secondary-blue);"></div>
-                            <span>Participants</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: #4CAF50;"></div>
-                            <span>Selected</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="legend-color" style="background-color: #f44336;"></div>
-                            <span>Not Selected</span>
+                    <div class="col-lg-5">
+                        <div class="image text-center">
+                            <img src="assets/paper-amico.png" class="img-fluid" alt="Research Illustration" />
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Finalists Table Section -->
-            <div class="table-responsive">
-                <h2 style="color: var(--secondary-blue); margin-bottom: 1.5rem;">Finalists List</h2>
-                <p>Sorted alphabetically by name. Green highlighted rows indicate participants selected for the video pitch round.</p>
-                
-                <table id="finalistsTable" class="finalists-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Category</th>
-                            <th>Name</th>
-                            <th>Institute</th>
-                            <th>Country</th>
-                            <th>Video Pitch</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Data will be inserted here by JavaScript -->
-                    </tbody>
-                </table>
+        </section>
+        <!-- END: Overview -->
+
+        <!-- Start: Comparing container-->
+        <section class="comparing text-light">
+            <div class="container d-flex rounded-0">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <h4><strong>WHO CAN COMPETE:</strong></h4>
+                                <p>High school and university students from around the world can participate in IARCO. The competition is open to both beginners and experienced researchers who are passionate about exploring academic topics.</p>
+                            </div>
+                            <div class="col">
+                                <h4><strong>WHERE WILL IT TAKE PLACE:</strong></h4>
+                                <p>IARCO is conducted entirely online, allowing participants from any location to compete. All submissions, bootcamps, and evaluations are handled through our digital platform.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End: Comparing container-->
+
+        <!--Start: Gain Skills-->
+        <section class="gain skills">
+            <div class="container">
+                <h2>WHY YOU SHOULD JOIN</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="desc">
+                            <i class="fa-solid fa-certificate"></i>
+                            <p>Boost your extracurriculars with an accredited research competition to stand out as a top applicant at your dream university.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="desc">
+                            <i class="fa-solid fa-certificate"></i>
+                            <p>Gain useful skills through our exclusive bootcamps with experts in the field and improve your research skills.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="desc">
+                            <i class="fa-solid fa-certificate"></i>
+                            <p>Whether you have lots of experience or are just starting out, IARCO is for you! All you need is a passion for research.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="desc">
+                            <i class="fa-solid fa-certificate"></i>
+                            <p>Win exclusive prizes: 25%-100% off renowned YRJ Research program with the opportunity to gain amazing cash prizes.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="desc">
+                            <i class="fa-solid fa-certificate"></i>
+                            <p>A great opportunity to fine-tune your research abilities and explore your interests before heading off to university.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End: Gain Skills-->
+
+        <!--Start: Topic-->
+        <div class="container" style="justify-content: center;">
+            <div class="row">
+                <h1>RESEARCH TOPIC</h1>
+                <div class="col-sm-4 pb-2">
+                    <p>IARCO is unique in that participants can research <strong style="color: var(--primary-blue);">any topic</strong> they want!</p>
+                    <p>This competition is not limited to the sciences. Your research topic can range from political science, art, and economics to engineering, history, or any other field of interest.</p>
+                </div>
+                <div class="col-sm-4 pb-1">
+                    <div class="desc">
+                        <p>Researchers can choose a topic they're passionate about, something they wish to <strong style="color: var(--primary-blue);">dive deeper</strong> into, or something they want to study in university.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <img src="assets/research-topic.png" class="img-fluid" alt="Research Topics" style="max-height: 200px;">
+                </div>
             </div>
         </div>
+        <!--End: Topic-->
+
+        <!--Start: Timeline-->
+        <div class="container">
+            <br>
+            <h2>HOW DOES THE COMPETITION WORK:</h2>
+            <ul class="timeline">
+                <!-- Item 1 -->
+                <li>
+                    <div class="direction-r">
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: var(--primary-blue);">STEP 1</span></span>
+                        </div>
+                        <div class="desc">
+                            <p>IARCO is an individual research competition and is not open to group entries.</p>
+                            <p>After registration, provide answers to a few short questions about your research topic (Assessment Form).</p>
+                            <p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Item 2 -->
+                <li>
+                    <div class="direction-l">
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: var(--primary-blue);">STEP 2</span></span>
+                        </div>
+                        <div class="desc">
+                            <p>Gain experience by participating in exclusive bootcamps on subjects like research proposal development and data analysis from experts in their fields.</p>
+                            <p>Submit your 1-2 page research proposal shortly after all bootcamps end.</p>
+                            <p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Item 3 -->
+                <li>
+                    <div class="direction-r">
+                        <div class="flag-wrapper">
+                            <span class="hexa"></span>
+                            <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: var(--primary-blue);">STEP 3</span></span>
+                        </div>
+                        <div class="desc">
+                            <p>The top 20 research proposals are chosen to advance to the next round. Each finalist films and submits a 2.5-5 minutes elevator pitch video.</p>
+                            <p>Winners are declared based on the quality of their research proposal and video.</p>
+                            <p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--End: Timeline-->
+
+        <!--Start: Partner container-->
+        <section class="team">
+            <div class="container">
+                <h2>PARTNERS:</h2>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="https://yrjournal.org/images/Logo.PNG" class="img-fluid" alt="Youth Research Journal">
+                                <p><a href="https://yrjournal.org">Youth Research Journal</a> aspire to promote young researchers and writers by walking them through the standard procedures of publishing a research article; that is, delivering a manuscript, editing & peer-review, and finally acceptance or rejection. Through our monthly-issues, we hope to bring the hard work of those writers to light while also providing a constant stream of quality, entertaining, and highly scrutinized content for readers hungry for explore. These articles, however, are but an initial spark that encourages readers to go beyond and delve more deeply into their topics of interest on their own, advertising independent research and self-learning.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="https://yrjournal.org/images/ylrl.jpg" class="img-fluid" alt="Young Learners Research Lab">
+                                <p><a href="https://www.facebook.com/aysrizon.ylrl">Young Learners' Research Lab</a>—a dynamic platform driving the future of research and innovation! Young Learners' Research Lab is dedicated to igniting curiosity and fostering creativity among young scholars by connecting them with leading researchers and cutting-edge projects. By nurturing the next generation of thinkers, we're creating a vibrant ecosystem of learning and collaboration. With a focus on groundbreaking research and a commitment to building valuable networks, the Young Learners' Research Lab is at the forefront of shaping tomorrow's leaders in science and technology. Explore our innovative approach and witness how we are transforming the landscape of academic research.</p>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="https://pinneducation.org/images/logo.png" class="img-fluid" alt="Pinn Education">
+                                <p><a href="https://pinneducation.org">Pinn Education</a> is the leading US, UK, Canada, Russia, India, and Undergrad admissions counselors. In 2024, it was founded by three students, including CEO Sanaul Haque who had just been accepted to 30+ of the world's best universities. Our mission is to help students all over the world reach their ultimate university admissions goals.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End: Partner container-->
 
         <!--start footer section-->
         <footer>
@@ -452,9 +474,8 @@
                         <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
                         <p><a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a></p>
                         <p><a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> Youtube</a></p>
-                        <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a> </p>
+                        <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a></p>
                     </div>
-
                     <div class="col-sm-4 pb-1">
                         <h4 style="color: white;">Information</h4>
                         <p><a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About Competition</a></p>
@@ -463,1191 +484,36 @@
                         <p><a href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a></p>
                         <p><a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a></p>
                     </div>
-                    
-                    <div class="col-sm-4 pb-1 footer-subscribe">
-                        <h5>Subscribe to Our Newsletter</h5>
-                        <form class="subscribe-form" id="footer-subscribe-form">
-                            <input name="email" type="email" placeholder="Your Email" required>
-                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                        </form>
-                        <div class="subscribe-message" id="footer-subscribe-message"></div>
-                    </div>
                 </div>
+
+                <div class="col-sm-4 pb-1 footer-subscribe">
+                    <h5>Subscribe to Our Newsletter</h5>
+                    <form class="subscribe-form" id="footer-subscribe-form">
+                        <input name="email" type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="subscribe-message" id="footer-subscribe-message"></div>
+                </div>
+                
                 <div class="rights">
                     &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
                 </div>
             </div>
         </footer>
 
-        <!-- JavaScript Files -->
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/script_CP.js"></script>
         <script src="js/script.js"></script>
         
         <script>
-            // Sample data - Normally you would fetch this from a JSON file
-           const studentData = [
-  {
-    "id": "qvPMALxu",
-    "category": "Junior",
-    "name": "Nirjhar Niloy Das",
-    "school": "Alomgir Monsur Memorial College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "mPbs7Tao",
-    "category": "Junior",
-    "name": "Ha-mim Rahman",
-    "school": "Notre Dame College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "NeHocA74",
-    "category": "Junior",
-    "name": "Tasfia Tasneem Shamonty",
-    "school": "Cambrian School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "IqivBz9V",
-    "category": "Junior",
-    "name": "Irfan Kabir Zarif",
-    "school": "Bangladesh International School & College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "LXd6a9ey",
-    "category": "Junior",
-    "name": "Adira Safwan",
-    "school": "Maple Leaf International School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "VelLiKaM",
-    "category": "Junior",
-    "name": "Tazrian Islam Subha",
-    "school": "South Breeze School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "EzrlCxin",
-    "category": "Junior",
-    "name": "Shreya Dhar",
-    "school": "Comilla Government Woman’s College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "DlpjfkeW",
-    "category": "Junior",
-    "name": "Raeydul Islam Khan Rafi",
-    "school": "Murarichand College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "JLzAqfSO",
-    "category": "Junior",
-    "name": "Pyali Bhowmik",
-    "school": "Viqarunnisa Noon School & College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "zWRNT28U",
-    "category": "Junior",
-    "name": "Sarhan Alam Khan",
-    "school": "Scholastica",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "fiJXuJsU",
-    "category": "Junior",
-    "name": "Xeon Nasif",
-    "school": "Notre Dame College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "EqmWBKux",
-    "category": "Junior",
-    "name": "Samia Ayat Smahan",
-    "school": "Viqarunnisa Noon School & College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "Du3bXXST",
-    "category": "Junior",
-    "name": "Md.Tahmidul Haque (Sabit)",
-    "school": "Dhaka College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "3eDU6ciL",
-    "category": "Junior",
-    "name": "Rifah Nur Reza",
-    "school": "New Govt.Degree College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "j4MYBGym",
-    "category": "Junior",
-    "name": "Ruslan Rafid Hossain",
-    "school": "Govt. Azizul Haque College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "QJLZ5Yme",
-    "category": "Junior",
-    "name": "Umaiza Javeria",
-    "school": "William Carey Academy",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "Ic1Os3C0",
-    "category": "Junior",
-    "name": "Mohammed Hamid Hadi",
-    "school": "Glenrich International School",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "9r8Ha79o",
-    "category": "Junior",
-    "name": "Manjary Howlader",
-    "school": "Viqarunnisa Noon School & college",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "XalZiJEM",
-    "category": "Junior",
-    "name": "Sabikun Nahar Monira",
-    "school": "BAF Shaheen College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "NOihSeDT",
-    "category": "Junior",
-    "name": "Abdullah Bin Atiq",
-    "school": "Rajshahi Cantroment Board School & College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "3q1klbZ7",
-    "category": "Junior",
-    "name": "Kazi Nayeb Elahi Dhrubo",
-    "school": "Hazera Tazu Degree College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "3iuytLyO",
-    "category": "Junior",
-    "name": "Bidita Halder Swagata",
-    "school": "Govt. Iqbalnagar Secondary Girls School",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "v1MrV4dT",
-    "category": "Junior",
-    "name": "Afia Anjum Aboni",
-    "school": "Rajuk Uttara Model College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "lh8SNpKr",
-    "category": "Junior",
-    "name": "Tahir Abrar Rashid",
-    "school": "Notre Dame College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "V6NRtOue",
-    "category": "Junior",
-    "name": "Nabil Diyaul Islam",
-    "school": "International Hope School Bangladesh",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "dIXT32OW",
-    "category": "Junior",
-    "name": "Kazi Nafisul Bashar",
-    "school": "St. Joseph Higher Secondary School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "jZyrn7D0",
-    "category": "Junior",
-    "name": "Md Danesh Rafin",
-    "school": "Adamjee Cantonment college",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "N9hls28I",
-    "category": "Junior",
-    "name": "Maisha Iffat Mostafa",
-    "school": "Rajuk Uttara Model College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "dZKVLSvR",
-    "category": "Junior",
-    "name": "Arnob Kumar Sarkar",
-    "school": "Mymensingh Government College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "MtMX7ZCC",
-    "category": "Junior",
-    "name": "Mubtashim Jarif",
-    "school": "Chattogram Cantonment Public College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "yoNyL5yr",
-    "category": "Junior",
-    "name": "Nurkyz Ydyrysova",
-    "school": "Bishkek International School",
-    "country": "Kyrgyzstan",
-    "selected": "No"
-  },
-  {
-    "id": "Zr9mevJr",
-    "category": "Junior",
-    "name": "Tasnim Tabassum Sara",
-    "school": "Manarat International College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "fvotJNJ3",
-    "category": "Junior",
-    "name": "Md Muktadirul Islam Mahi",
-    "school": "Dhaka Residential Model College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "x2mCvcyo",
-    "category": "Junior",
-    "name": "Farhatul Islam Nafi",
-    "school": "Jalalabad Cantonment Public school & college",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "DWjlNVne",
-    "category": "Junior",
-    "name": "Md. Naim Molla",
-    "school": "Notre Dame College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "vNPn8gsv",
-    "category": "Junior",
-    "name": "Tafhim Islam",
-    "school": "Saint Joseph Higher Secondary School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "Yb5kHhqq",
-    "category": "Junior",
-    "name": "Ruhe Sajid ",
-    "school": "Willes Little Flower School & College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "1FmgoC1I",
-    "category": "Junior",
-    "name": "Md Maruf Hasan",
-    "school": "Armed Police Battalion Public School & College, Bogura",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "5Mzf2EFr",
-    "category": "Junior",
-    "name": "Mubassera Rahman",
-    "school": "Mastermind",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "dAjMkReX",
-    "category": "Junior",
-    "name": "Glory Jewel ",
-    "school": "Mohammadpur Preparatory School & College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "lagDCbw8",
-    "category": "Junior",
-    "name": "Saad Ibna Mannan",
-    "school": "Adamjee Cantonment College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "3QdicoqO",
-    "category": "Junior",
-    "name": "Arman Akhter Khan",
-    "school": "Udayan Uchcha Madhyamik Bidyalaya",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "2l0z9t3O",
-    "category": "Junior",
-    "name": "Nahian Adib Mahim",
-    "school": "Motijheel Govt. Boys High School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "nHiIzOB3",
-    "category": "Junior",
-    "name": "Mahiya Mannan",
-    "school": "Heritage School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "RGQWORVs",
-    "category": "Junior",
-    "name": "Ahnaf Rasheed Khan",
-    "school": "Notre Dame College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "ByoCpXBa",
-    "category": "Junior",
-    "name": "Shafi Bin Sultan",
-    "school": "St.Joseph Higher Secondary School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "dCWqqhfh",
-    "category": "Junior",
-    "name": "Nayon Chandra Saha",
-    "school": "Ideal College Dhanmondi",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "WT9RZoEx",
-    "category": "Junior",
-    "name": "Andi Filzah Dahiyah Liana",
-    "school": "Man 2 Kota Makassar",
-    "country": "Indonesia",
-    "selected": "Yes"
-  },
-  {
-    "id": "nTFawjAN",
-    "category": "Junior",
-    "name": "Adnan Hussain Sajeeb",
-    "school": "Sylhet Govt. High School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "GTeAwjAD",
-    "category": "Junior",
-    "name": "Ishmam Haque",
-    "school": "Maple Leaf International School",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "CTRiVAbw",
-    "category": "Senior",
-    "name": "Odri Chakma",
-    "school": "University of Chittagong",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "RpXPJzpz",
-    "category": "Senior",
-    "name": "Tanmoy Dev Barman",
-    "school": "Rajshahi University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "gIzah6XW",
-    "category": "Senior",
-    "name": "Khadijatul Kubra Mim",
-    "school": "Shanto Mariam University of Creative Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "fRoqL042",
-    "category": "Senior",
-    "name": "Eshrat Jahan ",
-    "school": "University of Dhaka",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "8hgj2tPv",
-    "category": "Senior",
-    "name": "Tanzila Tabassum ",
-    "school": "Independent University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "2J3DR3pp",
-    "category": "Senior",
-    "name": "Prappo Anthony Purification",
-    "school": "Independent University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "cAHpSKMh",
-    "category": "Senior",
-    "name": "Apurbo Kumar",
-    "school": "Bangladesh University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "OwohO1sc",
-    "category": "Senior",
-    "name": "Nafiz Al Mamun",
-    "school": "Rajshahi University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "7iLaVlpu",
-    "category": "Senior",
-    "name": "Manswurin Mahira Ahmed",
-    "school": "University of Dhaka",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "BPBSAO9R",
-    "category": "Junior",
-    "name": "Ashura Tabassum Arshi",
-    "school": "Cantonment Public School & College, Rangpur",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "xD0Dw8fE",
-    "category": "Senior",
-    "name": "Rahat Khan Siyad",
-    "school": "Islamic University of Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "WMdwBkwA",
-    "category": "Senior",
-    "name": "Samia Mahjabeen Shama",
-    "school": "East Delta University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "Ddqm3EW1",
-    "category": "Senior",
-    "name": "Samira Sobhan",
-    "school": "American International University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "8QQlz7VP",
-    "category": "Senior",
-    "name": "Atia Sultana Esa ",
-    "school": "University of Dhaka",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "xRVMEt8Y",
-    "category": "Senior",
-    "name": "Protick Nowsherowa Khandkar",
-    "school": "University of Asia Pacific",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "JXTy4Enm",
-    "category": "Senior",
-    "name": "Nazmoon Nahar",
-    "school": "Sher-e-Bangla Agricultural University",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "Q72e38GC",
-    "category": "Senior",
-    "name": "Md.Nahin Khan Oitizzo",
-    "school": "Military Institute of Science & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "UA37mITb",
-    "category": "Senior",
-    "name": "Sabiha Binte Ali",
-    "school": "American International University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "vYmccdnR",
-    "category": "Senior",
-    "name": "MUHUTASIM BIN SADIK",
-    "school": "United international University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "7gRxeWek",
-    "category": "Senior",
-    "name": "Zulkernayeen Yusuf",
-    "school": "North South University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "F9wGwN44",
-    "category": "Senior",
-    "name": "Sanjida Akter Jim",
-    "school": "Jahangirnagar University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "2hnVyXzE",
-    "category": "Senior",
-    "name": "Samir Ahmed",
-    "school": "American International University of Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "tdIV58aS",
-    "category": "Senior",
-    "name": "Sonia Akter Tuktuki",
-    "school": "Daffodil International University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "5Q0rjCTf",
-    "category": "Senior",
-    "name": "Mohammad Ebtisam Jawad",
-    "school": "Premier University",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "tGiNxnm8",
-    "category": "Senior",
-    "name": "Farjana Islam Etu",
-    "school": "Bangabandhu Sheikh Mujibur Rahman Science & Technology University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "Og2vOGdU",
-    "category": "Senior",
-    "name": "Fariha Anika Promi",
-    "school": "Jagannath University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "JwflRY2a",
-    "category": "Senior",
-    "name": "Ummey Zahida",
-    "school": "University of Chittagong",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "SzaUj6il",
-    "category": "Senior",
-    "name": "Sumaya Tasnim",
-    "school": "Rajshahi University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "F9WKdhMK",
-    "category": "Senior",
-    "name": "Maxudur Rahman Chowdhury",
-    "school": "Bangladesh University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "cVVQKYPS",
-    "category": "Senior",
-    "name": "Jannatul Ferdous Juicy",
-    "school": "Daffodil International University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "TTh2gsNP",
-    "category": "Senior",
-    "name": "Arafat Rahman",
-    "school": "American International University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "LFhbLR8H",
-    "category": "Senior",
-    "name": "Md. Mahedi Hasan Bappy",
-    "school": "Bangabandhu Sheikh Mujibur Rahman Maritime University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "rO1PR6uh",
-    "category": "Senior",
-    "name": "Mehjad Mehrin",
-    "school": "Brac University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "AqAs93Lz",
-    "category": "Senior",
-    "name": "Foyez Ahmed Dewan",
-    "school": "Rajshahi University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "66alF21O",
-    "category": "Senior",
-    "name": "Md. Tanvir Rahman Fuad",
-    "school": "Pabna University of Science & Technology",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "yMXrQWvp",
-    "category": "Senior",
-    "name": "Tashfia Siddiqua",
-    "school": "Bangladesh University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "htD9BrFl",
-    "category": "Senior",
-    "name": "Sanjana Hasan",
-    "school": "Khulna University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "tKaEuJEn",
-    "category": "Senior",
-    "name": "Sameera Khan",
-    "school": "Notre Dame University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "JKdWjfxM",
-    "category": "Senior",
-    "name": "Shaumik Barua",
-    "school": "Rajshahi University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "Ogrd8tfY",
-    "category": "Senior",
-    "name": "Sanjida Afrin",
-    "school": "Bangladesh University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "zu83BHgm",
-    "category": "Senior",
-    "name": "Nazat Jahan Fatima",
-    "school": "Islamic University of Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "etdYOmYQ",
-    "category": "Senior",
-    "name": "MD Hussain Ahmed Shomrat",
-    "school": "Jalalabad Cantonment Public School & College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "UpwZYPDX",
-    "category": "Senior",
-    "name": "MD SHAZAN MAHMUD ARPON",
-    "school": "United International University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "RxCkFfn1",
-    "category": "Senior",
-    "name": "Tripranta Saha",
-    "school": "American International University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "F7JrH439",
-    "category": "Senior",
-    "name": "Samira Sultana",
-    "school": "American International University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "4neqICCJ",
-    "category": "Senior",
-    "name": "Rifah Tasnia Atoshe",
-    "school": "Brac University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "Dc31jSeA",
-    "category": "Senior",
-    "name": "Md. Sakib Mia",
-    "school": "Govt. Titumir College",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "l87FNDqk",
-    "category": "Senior",
-    "name": "Maitree Howlader",
-    "school": "Bangladesh University of Textiles",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "4STXRdI4",
-    "category": "Senior",
-    "name": "Zubair Mustafa",
-    "school": "Daffodil International University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "JYOevNRV",
-    "category": "Senior",
-    "name": "Jayeeta Biswas",
-    "school": "Khulna University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "LohEDj6T",
-    "category": "Senior",
-    "name": "Ibrahim Hossain",
-    "school": "Bangladesh University of Textile",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "QYe37TZy",
-    "category": "Senior",
-    "name": "Anamika Paul",
-    "school": "University of Dhaka",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "MEXryXvv",
-    "category": "Senior",
-    "name": "Sirazzum Munira",
-    "school": "Brac University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "L2OK6Fdw",
-    "category": "Senior",
-    "name": "Naim Siddique",
-    "school": "National University",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "mQJf6Dyn",
-    "category": "Senior",
-    "name": "Ashish Saha",
-    "school": "NA",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "L87P71SH",
-    "category": "Senior",
-    "name": "Caroline Gomes",
-    "school": "University of Dhaka",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "uCE3ArQC",
-    "category": "Senior",
-    "name": "Md Foisal Imtiaz",
-    "school": "Jahangirnagar University",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "ciURgbjI",
-    "category": "Senior",
-    "name": "Md Siam Hossain",
-    "school": "University of Dhaka",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "ASeoZXkN",
-    "category": "Senior",
-    "name": "Umme Mehzabin",
-    "school": "Islamic University of Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "BRzVHLq8",
-    "category": "Senior",
-    "name": "Abu Sayed",
-    "school": "University of Science & Technology Chittagong",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "kjSwAyyH",
-    "category": "Senior",
-    "name": "Summayah Islam Toma",
-    "school": "Eden Mohila College",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "aZmq0Pbl",
-    "category": "Senior",
-    "name": "Shamsunnahar Shanta",
-    "school": "University of Dhaka",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "6bA0fibF",
-    "category": "Senior",
-    "name": "Tahamidul Islam Samin",
-    "school": "Chittagong University of Engineering & Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "bhGZGP4S",
-    "category": "Senior",
-    "name": "Aungsu Talukder ",
-    "school": "International Islamic University Chittagong",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "5NrlClda",
-    "category": "Senior",
-    "name": "Lamisa Manha Aditee",
-    "school": "Brac University",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "L2zs104G",
-    "category": "Senior",
-    "name": "Rahul Rohit ",
-    "school": "Independent University Bangladesh",
-    "country": "Bangladesh",
-    "selected": "No"
-  },
-  {
-    "id": "kJhCGBJ0",
-    "category": "Senior",
-    "name": "Kazi Maliha Islam ",
-    "school": "University of Liberal Arts Bangladesh",
-    "country": "Bangladesh",
-    "selected": "Yes"
-  },
-  {
-    "id": "rvsXTU0q",
-    "category": "Senior",
-    "name": "MD NAZMUL ISLAM ",
-    "school": "Islamic University of Technology",
-    "country": "Bangladesh",
-    "selected": "No"
-  }
-];
-
-            // World map data (simplified for example)
-            const worldMapData = {
-                "BD": { name: "Bangladesh", participants: 0, selected: 0, notSelected: 0 },
-                "ID": { name: "Indonesia", participants: 0, selected: 0, notSelected: 0 },
-                "KG": { name: "Kyrgyzstan", participants: 0, selected: 0, notSelected: 0 }
-                // Add more countries as needed
-            };
-
-            // Function to load student data into the table and map
-            function loadStudentData() {
-                const tableBody = document.querySelector("#finalistsTable tbody");
-
-                // Sort the student data by name in alphabetical order
-                const sortedStudentData = studentData.sort((a, b) => {
-                    return a.name.localeCompare(b.name);  // Sort by name alphabetically
-                });
-
-                // Process student data for map
-                sortedStudentData.forEach(student => {
-                    const countryCode = getCountryCode(student.country);
-                    if (countryCode && worldMapData[countryCode]) {
-                        worldMapData[countryCode].participants++;
-                        if (student.selected === "Yes") {
-                            worldMapData[countryCode].selected++;
-                        } else {
-                            worldMapData[countryCode].notSelected++;
-                        }
-                    }
-
-                    // Create table row
-                    const row = document.createElement("tr");
-
-                    // Set data-label attributes for mobile responsiveness
-                    const studentIdCell = document.createElement("td");
-                    studentIdCell.textContent = student.id;
-                    studentIdCell.setAttribute('data-label', 'ID');
-
-                    const categoryCell = document.createElement("td");
-                    categoryCell.textContent = student.category;
-                    categoryCell.setAttribute('data-label', 'Category');
-
-                    const nameCell = document.createElement("td");
-                    nameCell.textContent = student.name;
-                    nameCell.setAttribute('data-label', 'Name');
-
-                    const schoolCell = document.createElement("td");
-                    schoolCell.textContent = student.school;
-                    schoolCell.setAttribute('data-label', 'Institute');
-
-                    const countryCell = document.createElement("td");
-                    countryCell.textContent = student.country;
-                    countryCell.setAttribute('data-label', 'Country');
-
-                    const selectedCell = document.createElement("td");
-                    selectedCell.textContent = student.selected;
-                    selectedCell.setAttribute('data-label', 'Video Pitch');
-
-                    if (student.selected === "Yes") {
-                        row.classList.add("selected-yes");
-                    }
-
-                    row.appendChild(studentIdCell);
-                    row.appendChild(categoryCell);
-                    row.appendChild(nameCell);
-                    row.appendChild(schoolCell);
-                    row.appendChild(countryCell);
-                    row.appendChild(selectedCell);
-
-                    tableBody.appendChild(row);
-                });
-            }
-
-            // Helper function to get country code from country name
-            function getCountryCode(countryName) {
-                const countryMap = {
-                    "Bangladesh": "BD",
-                    "Indonesia": "ID",
-                    "Kyrgyzstan": "KG"
-                    // Add more country mappings as needed
-                };
-                return countryMap[countryName];
-            }
-
-            // Function to render the world map
-            function renderWorldMap() {
-                const svg = document.getElementById('world-map');
-                const tooltip = document.getElementById('map-tooltip');
-                
-                // Simplified world map paths (in a real implementation, you would use a proper world map SVG)
-                // For demonstration, we'll just create some circles for countries
-                
-                // Clear existing map
-                svg.innerHTML = '';
-                
-                // Add country circles (in a real implementation, these would be proper country shapes)
-                Object.keys(worldMapData).forEach(countryCode => {
-                    const country = worldMapData[countryCode];
-                    if (country.participants > 0) {
-                        // Calculate position based on country code (simplified)
-                        const x = 100 + (Math.random() * 800);
-                        const y = 100 + (Math.random() * 300);
-                        const radius = 10 + (country.participants * 2);
-                        
-                        const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                        circle.setAttribute("cx", x);
-                        circle.setAttribute("cy", y);
-                        circle.setAttribute("r", radius);
-                        circle.setAttribute("class", "country");
-                        circle.setAttribute("data-country", countryCode);
-                        circle.setAttribute("fill", country.selected > 0 ? "#4CAF50" : "#f44336");
-                        circle.setAttribute("stroke", "#fff");
-                        circle.setAttribute("stroke-width", "0.5");
-                        
-                        // Add hover effects
-                        circle.addEventListener("mouseover", function() {
-                            this.setAttribute("stroke-width", "2");
-                            tooltip.innerHTML = `
-                                <strong>${country.name}</strong><br>
-                                Total: ${country.participants}<br>
-                                Selected: ${country.selected}<br>
-                                Not Selected: ${country.notSelected}
-                            `;
-                            tooltip.style.opacity = "1";
-                            tooltip.style.left = (event.pageX + 10) + "px";
-                            tooltip.style.top = (event.pageY + 10) + "px";
-                        });
-                        
-                        circle.addEventListener("mouseout", function() {
-                            this.setAttribute("stroke-width", "0.5");
-                            tooltip.style.opacity = "0";
-                        });
-                        
-                        circle.addEventListener("mousemove", function() {
-                            tooltip.style.left = (event.pageX + 10) + "px";
-                            tooltip.style.top = (event.pageY + 10) + "px";
-                        });
-                        
-                        // Add country label
-                        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                        text.setAttribute("x", x);
-                        text.setAttribute("y", y + radius + 15);
-                        text.setAttribute("text-anchor", "middle");
-                        text.setAttribute("font-size", "10");
-                        text.setAttribute("fill", "#333");
-                        text.textContent = countryCode;
-                        
-                        svg.appendChild(circle);
-                        svg.appendChild(text);
-                    }
-                });
-                
-                // In a real implementation, you would:
-                // 1. Use a proper world map SVG with actual country paths
-                // 2. Color each country based on participation data
-                // 3. Add proper hover effects with detailed tooltips
-            }
-
-            // Statistics processing
-            const stats = {};
-            const participatedCountries = new Set();
-            const participatedInstitutes = new Set();
-            let totalStudents = 0;
-            let totalSelected = 0;
-            let totalNotSelected = 0;
-            let totalJunior = 0;
-            let totalSenior = 0;
-
-            function processStatistics() {
-                studentData.forEach(student => {
-                    const country = student.country;
-                    const category = student.category;
-                    const selected = student.selected;
-                    const school = student.school;
-
-                    if (!stats[country]) {
-                        stats[country] = { Junior: { Yes: 0, No: 0 }, Senior: { Yes: 0, No: 0 } };
-                    }
-
-                    stats[country][category][selected]++;
-
-                    totalStudents++;
-                    if (selected === "Yes") totalSelected++;
-                    if (selected === "No") totalNotSelected++;
-                    if (category === "Junior") totalJunior++;
-                    if (category === "Senior") totalSenior++;
-
-                    participatedCountries.add(country);
-                    participatedInstitutes.add(school);
-                });
-
-                const participatedCountriesCount = participatedCountries.size;
-                const participatedInstitutesCount = participatedInstitutes.size;
-
-                // Update statistics cards
-                document.getElementById('totalStudents').textContent = totalStudents;
-                document.getElementById('totalSelected').textContent = totalSelected;
-                document.getElementById('totalJunior').textContent = totalJunior;
-                document.getElementById('totalSenior').textContent = totalSenior;
-                document.getElementById('institutesCount').textContent = participatedInstitutesCount;
-                document.getElementById('countriesCount').textContent = participatedCountriesCount;
-            }
-
-            // Load the data when the page loads
-            document.addEventListener("DOMContentLoaded", function() {
-                loadStudentData();
-                processStatistics();
-                renderWorldMap();
-                
-                // Hide preloader when page is loaded
-                window.addEventListener('load', function() {
-                    const preloader = document.getElementById('preloader');
-                    preloader.style.display = 'none';
-                });
+            // Preloader
+            window.addEventListener('load', function() {
+                const preloader = document.getElementById('preloader');
+                preloader.style.display = 'none';
             });
 
             // Footer subscription form handling
@@ -1660,7 +526,7 @@
                 fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
                     .then(response => {
                         FSubId.innerHTML = "Thank You for Subscribing us!";
-                        setTimeout(function(){
+                        setTimeout(function() {
                             FSubId.innerHTML = "";
                         }, 3000);
                         Fform.reset();
