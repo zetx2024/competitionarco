@@ -52,6 +52,33 @@
 
     <!-- Bootcamps Page Specific CSS -->
     <style>
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 51, 102, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            flex-direction: column;
+        }
+
+        #preloader img {
+            width: 100px;
+            height: 100px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
         /* Bootcamps Hero Section */
         .bootcamps-hero {
             background: linear-gradient(135deg, #003366 0%, #001a33 100%);
@@ -295,8 +322,7 @@
         }
 
         .team-category {
-            flex: 1;
-            min-width: 300px;
+            flex: 1 1 100%;
             background: white;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
@@ -312,32 +338,42 @@
             border-bottom: 2px solid #ffd700;
         }
 
-        .team-member {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #e9ecef;
+        .team-members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        .team-member:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+        .team-member {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 51, 102, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .team-member-img {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 1.5rem;
+            margin-bottom: 1rem;
             border: 3px solid #ffd700;
         }
 
         .team-member-info h4 {
             color: #003366;
             margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         .team-member-info p {
@@ -349,6 +385,11 @@
         .team-member-info .position {
             color: #003366;
             font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .team-member-info .institution {
+            font-style: italic;
         }
 
         /* Responsive Adjustments */
@@ -385,13 +426,7 @@
             }
 
             .team-member {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .team-member-img {
-                margin-right: 0;
-                margin-bottom: 1rem;
+                padding: 1rem;
             }
         }
 
@@ -405,11 +440,11 @@
             }
 
             .lesson-content {
-                padding: 1.5rem;
+                padding: 1.2rem;
             }
 
-            .team-category {
-                min-width: 100%;
+            .team-members-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -591,7 +626,7 @@
             
             <div class="year-selector">
                 <label for="yearSelect">Select Year: </label>
-                <select id="yearSelect" onchange="updateTeamMembers()">
+                <select id="yearSelect">
                     <!-- Options will be populated by JavaScript -->
                 </select>
             </div>
@@ -681,80 +716,91 @@
             }
         }
 
-        // Function to update team members based on selected year
-        async function updateTeamMembers() {
-            const year = document.getElementById('yearSelect').value;
-            const teamData = await fetchTeamData();
+        // Function to create team member HTML
+        function createMemberHTML(member) {
+            return `
+                <div class="team-member">
+                    <img src="${member.image}" alt="${member.name}" class="team-member-img">
+                    <div class="team-member-info">
+                        <h4>${member.name}</h4>
+                        <p class="position">${member.position}</p>
+                        ${member.institution ? `<p class="institution">${member.institution}</p>` : ''}
+                        ${member.bio ? `<p class="bio">${member.bio}</p>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to render team data
+        function renderTeamData(data, year) {
+            const teamContainer = document.getElementById('teamContainer');
             
-            if (!teamData || !teamData[year]) {
-                document.getElementById('teamContainer').innerHTML = '<p class="text-center">No team data available for the selected year.</p>';
+            if (!data || !data[year]) {
+                teamContainer.innerHTML = '<p class="text-center">No team data available for the selected year.</p>';
                 return;
             }
             
-            const data = teamData[year];
+            const yearData = data[year];
             let teamHTML = '';
             
-            // Function to create member HTML
-            function createMemberHTML(member) {
-                return `
-                    <div class="team-member">
-                        <img src="${member.image}" alt="${member.name}" class="team-member-img">
-                        <div class="team-member-info">
-                            <h4>${member.name}</h4>
-                            <p class="position">${member.position}</p>
-                            <p>${member.institution}</p>
-                            <p class="bio">${member.bio}</p>
+            // Get all category keys and sort them to maintain order
+            const categories = Object.keys(yearData).sort((a, b) => {
+                // Custom sorting to maintain specific order
+                const order = ['advisoryBoard', 'iarcoCommittee', 'mentors'];
+                return order.indexOf(a) - order.indexOf(b);
+            });
+            
+            // Create sections for each category that has members
+            categories.forEach(category => {
+                if (yearData[category] && yearData[category].length > 0) {
+                    // Convert category name to display format (e.g., "advisoryBoard" => "Advisory Board")
+                    const displayName = category
+                        .replace(/([A-Z])/g, ' $1')
+                        .replace(/^./, str => str.toUpperCase());
+                    
+                    teamHTML += `
+                        <div class="team-category">
+                            <h3>${displayName}</h3>
+                            <div class="team-members-grid">
+                                ${yearData[category].map(createMemberHTML).join('')}
+                            </div>
                         </div>
-                    </div>
-                `;
-            }
-            
-            // Create team categories only if they have members
-            if (data.advisoryBoard && data.advisoryBoard.length > 0) {
-                teamHTML += `
-                    <div class="team-category">
-                        <h3>Advisory Board</h3>
-                        ${data.advisoryBoard.map(createMemberHTML).join('')}
-                    </div>
-                `;
-            }
-            
-            if (data.iarcoCommittee && data.iarcoCommittee.length > 0) {
-                teamHTML += `
-                    <div class="team-category">
-                        <h3>IARCO Committee</h3>
-                        ${data.iarcoCommittee.map(createMemberHTML).join('')}
-                    </div>
-                `;
-            }
-            
-            if (data.mentors && data.mentors.length > 0) {
-                teamHTML += `
-                    <div class="team-category">
-                        <h3>Mentors</h3>
-                        ${data.mentors.map(createMemberHTML).join('')}
-                    </div>
-                `;
-            }
+                    `;
+                }
+            });
             
             // If no categories have members, show message
             if (teamHTML === '') {
                 teamHTML = '<p class="text-center">No team members available for the selected year.</p>';
             }
             
-            document.getElementById('teamContainer').innerHTML = teamHTML;
+            teamContainer.innerHTML = teamHTML;
         }
-        
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', async function() {
+            // Hide preloader when everything is loaded
+            window.addEventListener('load', function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 300);
+                    }, 500);
+                }
+            });
+
             // Load team data and populate year selector
             const teamData = await fetchTeamData();
+            const yearSelect = document.getElementById('yearSelect');
             
             if (teamData) {
-                const yearSelect = document.getElementById('yearSelect');
+                // Clear existing options
                 yearSelect.innerHTML = '';
                 
-                // Add available years to selector
+                // Add available years to selector (sorted newest first)
                 Object.keys(teamData).sort().reverse().forEach(year => {
                     const option = document.createElement('option');
                     option.value = year;
@@ -762,36 +808,38 @@
                     yearSelect.appendChild(option);
                 });
                 
-                // Load data for the first year
-                updateTeamMembers();
+                // Set up event listener for year changes
+                yearSelect.addEventListener('change', function() {
+                    renderTeamData(teamData, this.value);
+                });
+                
+                // Load data for the first year initially
+                const initialYear = yearSelect.options[0]?.value;
+                if (initialYear) {
+                    renderTeamData(teamData, initialYear);
+                }
             } else {
                 document.getElementById('teamContainer').innerHTML = 
                     '<p class="text-center">Unable to load team data. Please try again later.</p>';
             }
-            
-            // Preloader
-            window.addEventListener('load', function() {
-                const preloader = document.getElementById('preloader');
-                preloader.style.display = 'none';
+
+            // Footer subscription form handling
+            const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
+            const Fform = document.forms['footer-subscribe-form'];
+            const FSubId = document.getElementById("footer-subscribe-message");
+
+            Fform.addEventListener('submit', e => {
+                e.preventDefault();
+                fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
+                    .then(response => {
+                        FSubId.innerHTML = "Thank You for Subscribing us!";
+                        setTimeout(function() {
+                            FSubId.innerHTML = "";
+                        }, 3000);
+                        Fform.reset();
+                    })
+                    .catch(error => console.error('Error!', error.message));
             });
-        });
-
-        // Footer subscription form handling
-        const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
-        const Fform = document.forms['footer-subscribe-form'];
-        const FSubId = document.getElementById("footer-subscribe-message");
-
-        Fform.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
-                .then(response => {
-                    FSubId.innerHTML = "Thank You for Subscribing us!";
-                    setTimeout(function() {
-                        FSubId.innerHTML = "";
-                    }, 3000);
-                    Fform.reset();
-                })
-                .catch(error => console.error('Error!', error.message));
         });
     </script>
 </body>
