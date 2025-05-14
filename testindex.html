@@ -38,177 +38,299 @@
                 --dark-gray: #343a40;
             }
 
-            /* Landing Section */
-            .landing {
-                padding: 4rem 0;
+            /* Hero Section */
+            .hero-section {
+                background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+                color: var(--white);
+                padding: 8rem 0 6rem;
+                position: relative;
+                overflow: hidden;
+                text-align: center;
+            }
+
+            .hero-section::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('assets/hero-pattern.png') repeat;
+                opacity: 0.1;
+                z-index: 1;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+                font-weight: 800;
+                margin-bottom: 1.5rem;
+                line-height: 1.2;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            }
+
+            .hero-title span {
+                color: var(--primary-gold);
+                display: inline-block;
+            }
+
+            .hero-subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 2.5rem;
+                opacity: 0.9;
+            }
+
+            .hero-cta {
+                display: inline-block;
+                background-color: var(--primary-gold);
+                color: var(--primary-blue);
+                font-weight: 600;
+                padding: 1rem 2.5rem;
+                border-radius: 50px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                border: 2px solid var(--primary-gold);
+            }
+
+            .hero-cta:hover {
+                background-color: transparent;
+                color: var(--primary-gold);
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            }
+
+            /* About Section */
+            .about-section {
+                padding: 6rem 0;
                 background-color: var(--white);
             }
 
-            .landing h2 {
+            .section-title {
                 color: var(--primary-blue);
                 font-weight: 700;
-                margin-bottom: 1.5rem;
-                border-bottom: 3px solid var(--primary-gold);
-                display: inline-block;
-                padding-bottom: 0.5rem;
-            }
-
-            .landing p {
-                font-size: 1.1rem;
-                margin-bottom: 1.5rem;
-                color: var(--dark-gray);
-            }
-
-            .landing i.fa-certificate {
-                color: var(--primary-gold);
-                margin-right: 0.5rem;
-            }
-
-            /* Skills Section */
-            .gain.skills {
-                padding: 4rem 0;
-                background-color: var(--light-gray);
-            }
-
-            .gain.skills h2 {
-                color: var(--primary-blue);
+                margin-bottom: 3rem;
                 text-align: center;
+                position: relative;
+            }
+
+            .section-title::after {
+                content: "";
+                display: block;
+                width: 80px;
+                height: 4px;
+                background: var(--primary-gold);
+                margin: 1rem auto 0;
+            }
+
+            .about-content {
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .about-text {
+                font-size: 1.1rem;
+                line-height: 1.8;
                 margin-bottom: 2rem;
             }
 
-            .gain.skills .col {
-                margin-bottom: 2rem;
+            .about-features {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 3rem;
             }
 
-            .gain.skills .desc {
+            .feature-card {
                 background: var(--white);
+                border-radius: 10px;
                 padding: 2rem;
-                border-radius: 8px;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-                height: 100%;
+                width: calc(33.333% - 2rem);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
                 border-top: 4px solid var(--primary-gold);
                 transition: transform 0.3s ease;
             }
 
-            .gain.skills .desc:hover {
-                transform: translateY(-5px);
+            .feature-card:hover {
+                transform: translateY(-10px);
             }
 
-            .gain.skills i {
-                font-size: 2rem;
+            .feature-icon {
+                font-size: 2.5rem;
+                color: var(--primary-blue);
+                margin-bottom: 1.5rem;
+            }
+
+            .feature-title {
+                font-weight: 600;
+                margin-bottom: 1rem;
+                color: var(--primary-blue);
+            }
+
+            /* How It Works Section */
+            .how-it-works {
+                padding: 6rem 0;
+                background-color: var(--light-gray);
+            }
+
+            .steps-container {
+                position: relative;
+                max-width: 900px;
+                margin: 0 auto;
+                padding-top: 3rem;
+            }
+
+            .step {
+                display: flex;
+                margin-bottom: 3rem;
+                position: relative;
+                align-items: flex-start;
+            }
+
+            .step-number {
+                background: var(--primary-blue);
+                color: var(--white);
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.8rem;
+                font-weight: 700;
+                flex-shrink: 0;
+                margin-right: 2rem;
+                position: relative;
+                z-index: 2;
+                border: 4px solid var(--primary-gold);
+            }
+
+            .step-content {
+                background: var(--white);
+                padding: 2rem;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                flex-grow: 1;
+                position: relative;
+                border-left: 4px solid var(--primary-gold);
+            }
+
+            .step-content::before {
+                content: "";
+                position: absolute;
+                left: -30px;
+                top: 30px;
+                width: 30px;
+                height: 2px;
+                background: var(--primary-gold);
+            }
+
+            .step-title {
+                font-weight: 600;
                 color: var(--primary-blue);
                 margin-bottom: 1rem;
-                display: block;
+                font-size: 1.3rem;
             }
 
-            /* Timeline Customization */
-            .timeline .time-wrapper .time[style*="STEP"] {
-                font-size: 1.5rem !important;
-                padding: 0.5rem 1rem !important;
-                background-color: var(--primary-blue) !important;
-                color: var(--white) !important;
-                border-radius: 6px !important;
-            }
-
-            /* Team/Partners Section */
-            .team {
-                padding: 4rem 0;
-                background-color: var(--white);
-            }
-
-            .team h2 {
-                color: var(--primary-blue);
-                text-align: center;
-                margin-bottom: 2rem;
-            }
-
-            .team .col-md-4 {
-                margin-bottom: 2rem;
-            }
-
-            .team img {
-                max-height: 100px;
-                margin-bottom: 1.5rem;
-                object-fit: contain;
-            }
-
-            .team p {
-                margin-top: 1rem;
-            }
-
-            /* Quote Section */
-            .quote {
-                background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 51, 102, 0.95)), url('assets/hero-bg.jpg') no-repeat center center;
-                background-size: cover;
-                color: var(--white);
+            /* Research Topic Section */
+            .research-topic {
                 padding: 6rem 0;
-                text-align: center;
-                margin-bottom: 2rem;
-            }
-
-            .quote span {
-                background-color: var(--primary-gold);
-                color: var(--primary-blue);
-                padding: 0.5rem 1rem;
-                border-radius: 6px;
-                font-weight: 600;
-                display: inline-block;
-                margin: 0.5rem 0;
-            }
-
-            .quote p {
-                font-size: 1.8rem;
-                margin-bottom: 0;
-                line-height: 1.4;
-            }
-
-            /* Comparing Section */
-            .comparing {
-                padding: 3rem 2rem;
-                background-color: var(--primary-blue);
+                background: linear-gradient(135deg, rgba(0,51,102,0.9) 0%, rgba(7,73,179,0.9) 100%), url('assets/research-bg.jpg') center/cover no-repeat;
                 color: var(--white);
-                margin: 2rem 0;
-                border-radius: 8px;
+                text-align: center;
             }
 
-            .comparing h4 {
-                color: var(--primary-gold) !important;
-                margin-bottom: 1.5rem;
+            .research-title {
+                font-size: 2.5rem;
+                margin-bottom: 2rem;
+                position: relative;
+                display: inline-block;
+            }
+
+            .research-title::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 3px;
+                background: var(--primary-gold);
+            }
+
+            .research-text {
+                max-width: 700px;
+                margin: 0 auto 2rem;
+                font-size: 1.1rem;
+                line-height: 1.8;
+            }
+
+            .topic-highlight {
+                color: var(--primary-gold);
+                font-weight: 600;
             }
 
             /* Responsive Adjustments */
             @media (max-width: 992px) {
-                .quote p {
-                    font-size: 1.5rem;
+                .hero-title {
+                    font-size: 2.8rem;
                 }
                 
-                .landing .image {
-                    margin-top: 2rem;
+                .hero-subtitle {
+                    font-size: 1.3rem;
+                }
+                
+                .feature-card {
+                    width: calc(50% - 2rem);
                 }
             }
 
             @media (max-width: 768px) {
-                .quote {
-                    padding: 4rem 0;
+                .hero-section {
+                    padding: 6rem 0 4rem;
                 }
                 
-                .quote p {
-                    font-size: 1.3rem;
+                .hero-title {
+                    font-size: 2.3rem;
                 }
                 
-                .gain.skills .col {
-                    margin-bottom: 1.5rem;
+                .step {
+                    flex-direction: column;
+                }
+                
+                .step-number {
+                    margin-right: 0;
+                    margin-bottom: 1rem;
+                }
+                
+                .step-content::before {
+                    display: none;
                 }
             }
 
             @media (max-width: 576px) {
-                .quote p {
-                    font-size: 1.2rem;
-                    line-height: 1.3;
+                .hero-title {
+                    font-size: 2rem;
                 }
                 
-                .timeline .time-wrapper .time[style*="STEP"] {
-                    font-size: 1.2rem !important;
+                .hero-subtitle {
+                    font-size: 1.1rem;
+                }
+                
+                .feature-card {
+                    width: 100%;
+                }
+                
+                .research-title {
+                    font-size: 2rem;
                 }
             }
         </style>
@@ -264,202 +386,99 @@
         </nav>
         <!--End NavBar section-->
 
-        <!-- start quote section -->
-        <section class="quote text-center">
+        <!-- Hero Section -->
+        <section class="hero-section">
             <div class="container">
-                <span>IARCO is more than just a contest</span>
-                <p>- It's a <span>Guide Immersion</span> Into The</p>
-                <span>Research Process, Design,</span>
-                <p>For Experts and New Comers Alike!</p>
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover the <span>International Academic Research Competition</span></h1>
+                    <p class="hero-subtitle">Where brilliant minds compete to showcase groundbreaking research across all disciplines</p>
+                    <a href="#about" class="hero-cta">Learn More</a>
+                </div>
             </div>
         </section>
-        <!-- End quote section -->
 
-        <!-- START: Landing -->
-        <section class="landing py-5" id="landing">
+        <!-- About Section -->
+        <section class="about-section" id="about">
             <div class="container">
-                <div class="row align-items-center justify-space-between gap-5">
-                    <div class="col-lg-6">
-                        <article class="text text-center text-lg-start">
-                            <h2>WHAT IS IARCO?</h2>
-                            <p><i class="fa-solid fa-certificate"></i> The International Academic Research Competition is where talented students from around the world compete to present high-quality research on any topic.</p>
-                            <p><i class="fa-solid fa-certificate"></i> IARCO challenges students to sharpen their critical thinking skills, immerse themselves in the research process, and hone their writing skills for success.</p>
-                        </article>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="image text-center">
-                            <img src="assets/paper-amico.png" class="img-fluid" alt="Research Illustration" />
+                <h2 class="section-title">What is IARCO?</h2>
+                <div class="about-content">
+                    <p class="about-text">
+                        The International Academic Research Competition (IARCO) is a prestigious global event where talented students from around the world compete to present high-quality, original research across all academic disciplines. Whether you're in STEM, humanities, social sciences, or arts, IARCO provides the perfect platform to showcase your intellectual curiosity and research skills.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3 class="feature-title">Global Platform</h3>
+                            <p>Connect with researchers worldwide and gain international recognition for your work.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="feature-title">Diverse Disciplines</h3>
+                            <p>All academic fields welcome - from quantum physics to medieval poetry and everything between.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3 class="feature-title">Prestigious Awards</h3>
+                            <p>Win scholarships, publication opportunities, and recognition from top academic institutions.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- END: Overview -->
 
-        <!-- Start: Comparing container-->
-        <section class="comparing text-light">
-            <div class="container d-flex rounded-0">
-                <div class="row">
-                    <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <h4><strong>WHO CAN COMPETE:</strong></h4>
-                                <p>High school and university students from around the world can participate in IARCO. The competition is open to both beginners and experienced researchers who are passionate about exploring academic topics.</p>
-                            </div>
-                            <div class="col">
-                                <h4><strong>WHERE WILL IT TAKE PLACE:</strong></h4>
-                                <p>IARCO is conducted entirely online, allowing participants from any location to compete. All submissions, bootcamps, and evaluations are handled through our digital platform.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End: Comparing container-->
-
-        <!--Start: Gain Skills-->
-        <section class="gain skills">
+        <!-- How It Works Section -->
+        <section class="how-it-works">
             <div class="container">
-                <h2>WHY YOU SHOULD JOIN</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="desc">
-                            <i class="fa-solid fa-certificate"></i>
-                            <p>Boost your extracurriculars with an accredited research competition to stand out as a top applicant at your dream university.</p>
+                <h2 class="section-title">How Does the Competition Work?</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Registration & Initial Submission</h3>
+                            <p>Register as an individual competitor and submit your research topic through our assessment form. This helps us understand your area of focus and prepare appropriate resources.</p>
+                            <p><a href="timeline">View submission dates</a> and <a href="guidelines">detailed instructions</a> for this phase.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="desc">
-                            <i class="fa-solid fa-certificate"></i>
-                            <p>Gain useful skills through our exclusive bootcamps with experts in the field and improve your research skills.</p>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Research Development Phase</h3>
+                            <p>Participate in our exclusive bootcamps covering research methodology, data analysis, and academic writing. Then submit your 1-2 page research proposal demonstrating your project's significance and methodology.</p>
+                            <p>Access all <a href="bootcamps">bootcamp schedules</a> and preparation materials.</p>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="desc">
-                            <i class="fa-solid fa-certificate"></i>
-                            <p>Whether you have lots of experience or are just starting out, IARCO is for you! All you need is a passion for research.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="desc">
-                            <i class="fa-solid fa-certificate"></i>
-                            <p>Win exclusive prizes: 25%-100% off renowned YRJ Research program with the opportunity to gain amazing cash prizes.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="desc">
-                            <i class="fa-solid fa-certificate"></i>
-                            <p>A great opportunity to fine-tune your research abilities and explore your interests before heading off to university.</p>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">Final Presentation</h3>
+                            <p>Top proposals advance to the final round where you'll create a 2.5-5 minute video presentation explaining your research. Winners are selected based on proposal quality, presentation skills, and academic rigor.</p>
+                            <p>Review the <a href="guidelines">evaluation criteria</a> for the final round.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!--End: Gain Skills-->
 
-        <!--Start: Topic-->
-        <div class="container" style="justify-content: center;">
-            <div class="row">
-                <h1>RESEARCH TOPIC</h1>
-                <div class="col-sm-4 pb-2">
-                    <p>IARCO is unique in that participants can research <strong style="color: var(--primary-blue);">any topic</strong> they want!</p>
-                    <p>This competition is not limited to the sciences. Your research topic can range from political science, art, and economics to engineering, history, or any other field of interest.</p>
-                </div>
-                <div class="col-sm-4 pb-1">
-                    <div class="desc">
-                        <p>Researchers can choose a topic they're passionate about, something they wish to <strong style="color: var(--primary-blue);">dive deeper</strong> into, or something they want to study in university.</p>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <img src="assets/research-topic.png" class="img-fluid" alt="Research Topics" style="max-height: 200px;">
-                </div>
-            </div>
-        </div>
-        <!--End: Topic-->
-
-        <!--Start: Timeline-->
-        <div class="container">
-            <br>
-            <h2>HOW DOES THE COMPETITION WORK:</h2>
-            <ul class="timeline">
-                <!-- Item 1 -->
-                <li>
-                    <div class="direction-r">
-                        <div class="flag-wrapper">
-                            <span class="hexa"></span>
-                            <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: var(--primary-blue);">STEP 1</span></span>
-                        </div>
-                        <div class="desc">
-                            <p>IARCO is an individual research competition and is not open to group entries.</p>
-                            <p>After registration, provide answers to a few short questions about your research topic (Assessment Form).</p>
-                            <p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Item 2 -->
-                <li>
-                    <div class="direction-l">
-                        <div class="flag-wrapper">
-                            <span class="hexa"></span>
-                            <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: var(--primary-blue);">STEP 2</span></span>
-                        </div>
-                        <div class="desc">
-                            <p>Gain experience by participating in exclusive bootcamps on subjects like research proposal development and data analysis from experts in their fields.</p>
-                            <p>Submit your 1-2 page research proposal shortly after all bootcamps end.</p>
-                            <p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Item 3 -->
-                <li>
-                    <div class="direction-r">
-                        <div class="flag-wrapper">
-                            <span class="hexa"></span>
-                            <span class="time-wrapper"><span class="time" style="font-size: 30px; border-radius: 10px; background-color: var(--primary-blue);">STEP 3</span></span>
-                        </div>
-                        <div class="desc">
-                            <p>The top 20 research proposals are chosen to advance to the next round. Each finalist films and submits a 2.5-5 minutes elevator pitch video.</p>
-                            <p>Winners are declared based on the quality of their research proposal and video.</p>
-                            <p>Find all <a href="timeline">submission dates</a> & <a href="guidelines">instructions here!</a></p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!--End: Timeline-->
-
-        <!--Start: Partner container-->
-        <section class="team">
+        <!-- Research Topic Section -->
+        <section class="research-topic">
             <div class="container">
-                <h2>PARTNERS:</h2>
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <img src="https://yrjournal.org/images/Logo.PNG" class="img-fluid" alt="Youth Research Journal">
-                                <p><a href="https://yrjournal.org">Youth Research Journal</a> aspire to promote young researchers and writers by walking them through the standard procedures of publishing a research article; that is, delivering a manuscript, editing & peer-review, and finally acceptance or rejection. Through our monthly-issues, we hope to bring the hard work of those writers to light while also providing a constant stream of quality, entertaining, and highly scrutinized content for readers hungry for explore. These articles, however, are but an initial spark that encourages readers to go beyond and delve more deeply into their topics of interest on their own, advertising independent research and self-learning.</p>
-                            </div>
-                            <div class="col-md-4">
-                                <img src="https://yrjournal.org/images/ylrl.jpg" class="img-fluid" alt="Young Learners Research Lab">
-                                <p><a href="https://www.facebook.com/aysrizon.ylrl">Young Learners' Research Lab</a>—a dynamic platform driving the future of research and innovation! Young Learners' Research Lab is dedicated to igniting curiosity and fostering creativity among young scholars by connecting them with leading researchers and cutting-edge projects. By nurturing the next generation of thinkers, we're creating a vibrant ecosystem of learning and collaboration. With a focus on groundbreaking research and a commitment to building valuable networks, the Young Learners' Research Lab is at the forefront of shaping tomorrow's leaders in science and technology. Explore our innovative approach and witness how we are transforming the landscape of academic research.</p>
-                            </div>
-                            <div class="col-md-4">
-                                <img src="https://pinneducation.org/images/logo.png" class="img-fluid" alt="Pinn Education">
-                                <p><a href="https://pinneducation.org">Pinn Education</a> is the leading US, UK, Canada, Russia, India, and Undergrad admissions counselors. In 2024, it was founded by three students, including CEO Sanaul Haque who had just been accepted to 30+ of the world's best universities. Our mission is to help students all over the world reach their ultimate university admissions goals.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <h2 class="research-title">Research Without Boundaries</h2>
+                <p class="research-text">
+                    IARCO stands out by allowing participants to explore <span class="topic-highlight">any academic topic</span> they're passionate about. Your research can span from nanotechnology to Renaissance art, from economic theories to AI ethics - if it can be researched academically, it's welcome at IARCO.
+                </p>
+                <p class="research-text">
+                    Choose a subject you're deeply curious about, something you want to <span class="topic-highlight">investigate further</span>, or a topic you might pursue in higher education. This is your opportunity to dive deep into what fascinates you most.
+                </p>
             </div>
         </section>
-        <!--End: Partner container-->
 
-        <!--start footer section-->
+        <!-- Footer Section -->
         <footer>
             <div class="container">
                 <div class="row">
