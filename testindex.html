@@ -351,82 +351,6 @@
             font-weight: 600;
         }
 
-        /* Partner Section */
-        .partner-section {
-            padding: 4rem 0;
-            background: white;
-            text-align: center;
-        }
-
-        .partner-section h2 {
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .partner-section h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #ffd700;
-        }
-
-        .partner-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .partner-image {
-            flex: 0 0 300px;
-        }
-
-        .partner-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-        }
-
-        .partner-info {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-        }
-
-        .partner-info p {
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-        }
-
-        .partner-info ul {
-            padding-left: 1.5rem;
-            margin-bottom: 0;
-        }
-
-        .partner-info li {
-            margin-bottom: 0.75rem;
-            position: relative;
-            color: #2c3e50;
-        }
-
-        .partner-info li:before {
-            content: '•';
-            color: #ffd700;
-            font-size: 1.5rem;
-            position: absolute;
-            left: -1.2rem;
-            top: -0.3rem;
-        }
-
         /* Responsive Adjustments */
         @media (max-width: 992px) {
             .bootcamps-hero h1 {
@@ -444,15 +368,6 @@
             .lesson-number-container {
                 flex: 0 0 80px;
                 width: 100%;
-            }
-
-            .partner-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .partner-info {
-                text-align: center;
             }
         }
 
@@ -677,48 +592,12 @@
             <div class="year-selector">
                 <label for="yearSelect">Select Year: </label>
                 <select id="yearSelect" onchange="updateTeamMembers()">
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
+                    <!-- Options will be populated by JavaScript -->
                 </select>
             </div>
             
-            <div class="team-container">
-                <div class="team-category">
-                    <h3>Advisory Board</h3>
-                    <div id="advisoryBoard"></div>
-                </div>
-                
-                <div class="team-category">
-                    <h3>IARCO Committee</h3>
-                    <div id="iarcoCommittee"></div>
-                </div>
-                
-                <div class="team-category">
-                    <h3>Mentors</h3>
-                    <div id="mentors"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partner Section -->
-    <section class="partner-section">
-        <div class="container">
-            <h2>Brought to you by</h2>
-            
-            <div class="partner-content">
-                <div class="partner-image">
-                    <img src="https://yrjournal.org/images/Logo.PNG" alt="Youth Research Journal">
-                </div>
-                <div class="partner-info">
-                    <p><strong>YRJ Flagship Research Program</strong> is a renowned online program that lets high school and graduate students research the topics that fascinate them.</p>
-                    <ul>
-                        <li>At YRJ, students build expertise and deepen their intellectual curiosity</li>
-                        <li>Participants stand out on college applications through advanced research</li>
-                        <li>Access to expert mentors and comprehensive research training</li>
-                        <li>Opportunities to publish in academic journals</li>
-                    </ul>
-                </div>
+            <div class="team-container" id="teamContainer">
+                <!-- Content will be populated by JavaScript -->
             </div>
         </div>
     </section>
@@ -786,144 +665,34 @@
     <script src="js/script_CP.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Team Members Data and Script -->
+    <!-- Team Members Data Loading Script -->
     <script>
-        // Team members data by year
-        const teamData = {
-            "2025": {
-                "advisoryBoard": [
-                    {
-                        "name": "Dr. Sarah Johnson",
-                        "position": "Chair of Advisory Board",
-                        "institution": "Harvard University",
-                        "bio": "Professor of Research Methodology with 20+ years of experience in academic research.",
-                        "image": "https://randomuser.me/api/portraits/women/65.jpg"
-                    },
-                    {
-                        "name": "Prof. Michael Chen",
-                        "position": "Advisory Board Member",
-                        "institution": "Stanford University",
-                        "bio": "Expert in STEM research and competition judging.",
-                        "image": "https://randomuser.me/api/portraits/men/32.jpg"
-                    },
-                    {
-                        "name": "Dr. Aisha Mohammed",
-                        "position": "Advisory Board Member",
-                        "institution": "University of Oxford",
-                        "bio": "Specialist in humanities and social sciences research.",
-                        "image": "https://randomuser.me/api/portraits/women/44.jpg"
-                    }
-                ],
-                "iarcoCommittee": [
-                    {
-                        "name": "David Wilson",
-                        "position": "Competition Director",
-                        "institution": "IARCO",
-                        "bio": "Oversees all aspects of the competition organization.",
-                        "image": "https://randomuser.me/api/portraits/men/75.jpg"
-                    },
-                    {
-                        "name": "Emily Rodriguez",
-                        "position": "Program Coordinator",
-                        "institution": "IARCO",
-                        "bio": "Manages participant communications and logistics.",
-                        "image": "https://randomuser.me/api/portraits/women/33.jpg"
-                    },
-                    {
-                        "name": "James Kim",
-                        "position": "Technical Director",
-                        "institution": "IARCO",
-                        "bio": "Handles all digital platforms and submission systems.",
-                        "image": "https://randomuser.me/api/portraits/men/22.jpg"
-                    }
-                ],
-                "mentors": [
-                    {
-                        "name": "Dr. Lisa Park",
-                        "position": "STEM Research Mentor",
-                        "institution": "MIT",
-                        "bio": "Specializes in guiding students through scientific research projects.",
-                        "image": "https://randomuser.me/api/portraits/women/28.jpg"
-                    },
-                    {
-                        "name": "Prof. Robert Taylor",
-                        "position": "Humanities Mentor",
-                        "institution": "Yale University",
-                        "bio": "Expert in qualitative research methods and analysis.",
-                        "image": "https://randomuser.me/api/portraits/men/41.jpg"
-                    },
-                    {
-                        "name": "Dr. Maria Gonzalez",
-                        "position": "Social Sciences Mentor",
-                        "institution": "University of Chicago",
-                        "bio": "Focuses on survey design and statistical analysis.",
-                        "image": "https://randomuser.me/api/portraits/women/51.jpg"
-                    },
-                    {
-                        "name": "Prof. Daniel Brown",
-                        "position": "Business Research Mentor",
-                        "institution": "Wharton School",
-                        "bio": "Specializes in case study methodology and market research.",
-                        "image": "https://randomuser.me/api/portraits/men/68.jpg"
-                    }
-                ]
-            },
-            "2024": {
-                "advisoryBoard": [
-                    {
-                        "name": "Dr. Jennifer Smith",
-                        "position": "Former Chair of Advisory Board",
-                        "institution": "Columbia University",
-                        "bio": "Retired professor with extensive experience in research competitions.",
-                        "image": "https://randomuser.me/api/portraits/women/45.jpg"
-                    },
-                    {
-                        "name": "Prof. Richard Lee",
-                        "position": "Former Advisory Board Member",
-                        "institution": "UC Berkeley",
-                        "bio": "Specialized in interdisciplinary research approaches.",
-                        "image": "https://randomuser.me/api/portraits/men/55.jpg"
-                    }
-                ],
-                "iarcoCommittee": [
-                    {
-                        "name": "Amanda Chen",
-                        "position": "Former Competition Director",
-                        "institution": "IARCO",
-                        "bio": "Led the competition through its inaugural years.",
-                        "image": "https://randomuser.me/api/portraits/women/25.jpg"
-                    },
-                    {
-                        "name": "Thomas Wilson",
-                        "position": "Former Technical Director",
-                        "institution": "IARCO",
-                        "bio": "Developed the original submission platform.",
-                        "image": "https://randomuser.me/api/portraits/men/35.jpg"
-                    }
-                ],
-                "mentors": [
-                    {
-                        "name": "Dr. Patricia Ng",
-                        "position": "Former STEM Mentor",
-                        "institution": "Caltech",
-                        "bio": "Guided students in engineering and physics projects.",
-                        "image": "https://randomuser.me/api/portraits/women/38.jpg"
-                    },
-                    {
-                        "name": "Prof. Edward Harris",
-                        "position": "Former Humanities Mentor",
-                        "institution": "Princeton University",
-                        "bio": "Specialized in literary analysis research methods.",
-                        "image": "https://randomuser.me/api/portraits/men/48.jpg"
-                    }
-                ]
+        // Function to fetch JSON data
+        async function fetchTeamData() {
+            try {
+                const response = await fetch('data/team-members.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading team data:', error);
+                return null;
             }
-        };
+        }
 
         // Function to update team members based on selected year
-        function updateTeamMembers() {
+        async function updateTeamMembers() {
             const year = document.getElementById('yearSelect').value;
+            const teamData = await fetchTeamData();
+            
+            if (!teamData || !teamData[year]) {
+                document.getElementById('teamContainer').innerHTML = '<p class="text-center">No team data available for the selected year.</p>';
+                return;
+            }
+            
             const data = teamData[year];
+            let teamHTML = '';
             
             // Function to create member HTML
             function createMemberHTML(member) {
@@ -940,19 +709,65 @@
                 `;
             }
             
-            // Update Advisory Board
-            document.getElementById('advisoryBoard').innerHTML = data.advisoryBoard.map(createMemberHTML).join('');
+            // Create team categories only if they have members
+            if (data.advisoryBoard && data.advisoryBoard.length > 0) {
+                teamHTML += `
+                    <div class="team-category">
+                        <h3>Advisory Board</h3>
+                        ${data.advisoryBoard.map(createMemberHTML).join('')}
+                    </div>
+                `;
+            }
             
-            // Update IARCO Committee
-            document.getElementById('iarcoCommittee').innerHTML = data.iarcoCommittee.map(createMemberHTML).join('');
+            if (data.iarcoCommittee && data.iarcoCommittee.length > 0) {
+                teamHTML += `
+                    <div class="team-category">
+                        <h3>IARCO Committee</h3>
+                        ${data.iarcoCommittee.map(createMemberHTML).join('')}
+                    </div>
+                `;
+            }
             
-            // Update Mentors
-            document.getElementById('mentors').innerHTML = data.mentors.map(createMemberHTML).join('');
+            if (data.mentors && data.mentors.length > 0) {
+                teamHTML += `
+                    <div class="team-category">
+                        <h3>Mentors</h3>
+                        ${data.mentors.map(createMemberHTML).join('')}
+                    </div>
+                `;
+            }
+            
+            // If no categories have members, show message
+            if (teamHTML === '') {
+                teamHTML = '<p class="text-center">No team members available for the selected year.</p>';
+            }
+            
+            document.getElementById('teamContainer').innerHTML = teamHTML;
         }
         
-        // Initialize with current year
-        document.addEventListener('DOMContentLoaded', function() {
-            updateTeamMembers();
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load team data and populate year selector
+            const teamData = await fetchTeamData();
+            
+            if (teamData) {
+                const yearSelect = document.getElementById('yearSelect');
+                yearSelect.innerHTML = '';
+                
+                // Add available years to selector
+                Object.keys(teamData).sort().reverse().forEach(year => {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                });
+                
+                // Load data for the first year
+                updateTeamMembers();
+            } else {
+                document.getElementById('teamContainer').innerHTML = 
+                    '<p class="text-center">Unable to load team data. Please try again later.</p>';
+            }
             
             // Preloader
             window.addEventListener('load', function() {
