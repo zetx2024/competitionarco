@@ -49,9 +49,6 @@
     <meta name="twitter:description" content="View your competition results and detailed evaluation"/>
     <meta name="twitter:image" content="https://iarco.org/assets/logo.png"/>
 
-    <!-- Add html2pdf library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
     <!-- Scorecard Page Specific CSS -->
     <style>
         /* Preloader Styles */
@@ -155,7 +152,6 @@
             margin-bottom: 2rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border-left: 4px solid #ffd700;
-            position: relative;
         }
 
         .search-container label {
@@ -195,36 +191,6 @@
             background-color: #003366;
             color: #ffd700;
             transform: translateY(-2px);
-        }
-
-        /* Suggestions Dropdown */
-        .suggestions-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 0 0 6px 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            max-height: 300px;
-            overflow-y: auto;
-            display: none;
-        }
-
-        .suggestion-item {
-            padding: 0.75rem 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .suggestion-item:hover {
-            background-color: #f8f9fa;
-        }
-
-        .suggestion-item.highlighted {
-            background-color: rgba(0, 51, 102, 0.1);
         }
 
         /* Student Info Section */
@@ -473,93 +439,6 @@
             background: #ffd700;
         }
 
-        /* Download Button */
-        .download-btn-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .download-btn {
-            background-color: #003366;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .download-btn:hover {
-            background-color: #ffd700;
-            color: #003366;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-        }
-        .download-btn i {
-            margin-right: 8px;
-        }
-
-        /* PDF-specific styles */
-        @media print {
-            body {
-                background: white !important;
-                color: black !important;
-                padding: 20px;
-            }
-            .scorecard-container, .scorecard-content, 
-            .student-info, .score-section, .comments-section {
-                box-shadow: none !important;
-                border: none !important;
-                margin-bottom: 15px !important;
-                page-break-inside: avoid;
-            }
-            .document-link {
-                color: #003366 !important;
-                text-decoration: underline !important;
-                background: none !important;
-                padding: 0 !important;
-            }
-            .search-container, .navbar, footer, .download-btn-container {
-                display: none !important;
-            }
-            .pdf-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-                border-bottom: 2px solid #003366;
-                padding-bottom: 10px;
-            }
-            .pdf-header img {
-                height: 60px;
-            }
-            .pdf-title {
-                text-align: center;
-                flex-grow: 1;
-            }
-            .pdf-title h1 {
-                color: #003366 !important;
-                margin-bottom: 5px !important;
-            }
-            .pdf-title p {
-                color: #666 !important;
-                font-size: 14px !important;
-            }
-            .pdf-footer {
-                text-align: center;
-                margin-top: 20px;
-                font-size: 12px;
-                color: #666;
-                border-top: 1px solid #ddd;
-                padding-top: 10px;
-            }
-            .page-break {
-                page-break-before: always;
-            }
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -698,8 +577,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-8 mb-3 mb-md-0">
                         <label for="student-search"><i class="fas fa-search"></i> Search by Student Name or ID:</label>
-                        <input type="text" id="student-search" placeholder="Enter student name or ID" autocomplete="off">
-                        <div class="suggestions-dropdown" id="suggestionsDropdown"></div>
+                        <input type="text" id="student-search" placeholder="Enter student name or ID">
                     </div>
                     <div class="col-md-4">
                         <button class="search-btn" id="search-btn">
@@ -717,35 +595,8 @@
                     <p class="text-muted">Enter a student name or ID in the search box above</p>
                 </div>
             </div>
-
-            <!-- Download Button - Initially hidden -->
-            <div class="download-btn-container" id="downloadBtnContainer" style="display: none;">
-                <button class="download-btn" id="downloadPdf">
-                    <i class="fas fa-file-pdf"></i> Download Scorecard as PDF
-                </button>
-            </div>
         </div>
     </section>
-
-    <!-- PDF Template (hidden) -->
-    <div id="pdfTemplate" style="display: none;">
-        <div class="pdf-header">
-            <img src="assets/logo.png" alt="IARCO Logo">
-            <div class="pdf-title">
-                <h1>International Academic Research Competition</h1>
-                <p>Official Scorecard Report</p>
-                <p id="reportDate"></p>
-            </div>
-            <div style="width: 60px;"></div>
-        </div>
-
-        <div id="pdfContent"></div>
-
-        <div class="pdf-footer">
-            <p>© ${new Date().getFullYear()} International Academic Research Competition. All rights reserved.</p>
-            <p>This document is generated automatically and is valid without signature.</p>
-        </div>
-    </div>
 
     <!-- Start: Partner container-->
     <section id="Our_Affiliates" class="gallery-section">
@@ -818,7 +669,6 @@
             let currentStudent = null;
             let researchChart = null;
             let presentationChart = null;
-            let highlightedIndex = -1;
 
             // Hide preloader when everything is loaded
             window.addEventListener('load', function() {
@@ -839,680 +689,527 @@
                 .then(data => {
                     studentsData = data;
                     console.log("Students data loaded:", studentsData);
-                    setupSearch();
                 })
                 .catch(error => console.error('Error loading student data:', error));
 
-            // Setup search functionality
-            function setupSearch() {
-                const searchInput = document.getElementById('student-search');
-                const searchBtn = document.getElementById('search-btn');
-                const suggestionsDropdown = document.getElementById('suggestionsDropdown');
-
-                // Input event for search suggestions
-                searchInput.addEventListener('input', function() {
-                    const searchTerm = this.value.toLowerCase();
-                    if (searchTerm.length < 2) {
-                        suggestionsDropdown.style.display = 'none';
-                        return;
-                    }
-
-                    const matches = studentsData.filter(s => 
-                        s.name.toLowerCase().includes(searchTerm) || 
-                        (s.student_id && s.student_id.toLowerCase().includes(searchTerm))
-                    ).slice(0, 5);
-
-                    if (matches.length > 0) {
-                        suggestionsDropdown.innerHTML = matches.map((student, index) => `
-                            <div class="suggestion-item ${index === 0 ? 'highlighted' : ''}" 
-                                 data-index="${index}" 
-                                 data-id="${student.student_id}">
-                                ${student.name} (${student.student_id || 'No ID'}) - ${student.school}
-                            </div>
-                        `).join('');
-                        suggestionsDropdown.style.display = 'block';
-                        highlightedIndex = 0;
-                    } else {
-                        suggestionsDropdown.style.display = 'none';
-                    }
-                });
-
-                // Keyboard navigation in suggestions
-                searchInput.addEventListener('keydown', function(e) {
-                    const items = suggestionsDropdown.querySelectorAll('.suggestion-item');
-                    if (items.length === 0) return;
-
-                    if (e.key === 'ArrowDown') {
-                        e.preventDefault();
-                        highlightedIndex = (highlightedIndex + 1) % items.length;
-                        updateHighlightedItem();
-                    } else if (e.key === 'ArrowUp') {
-                        e.preventDefault();
-                        highlightedIndex = (highlightedIndex - 1 + items.length) % items.length;
-                        updateHighlightedItem();
-                    } else if (e.key === 'Enter') {
-                        e.preventDefault();
-                        if (highlightedIndex >= 0 && items[highlightedIndex]) {
-                            items[highlightedIndex].click();
-                        } else {
-                            searchForStudent();
-                        }
-                    }
-                });
-
-                // Click on suggestion
-                suggestionsDropdown.addEventListener('click', function(e) {
-                    const item = e.target.closest('.suggestion-item');
-                    if (item) {
-                        const searchTerm = item.textContent.split('(')[0].trim();
-                        searchInput.value = searchTerm;
-                        suggestionsDropdown.style.display = 'none';
-                        searchForStudent(searchTerm);
-                    }
-                });
-
-                // Search button click
-                searchBtn.addEventListener('click', searchForStudent);
-
-                // Hide suggestions when clicking outside
-                document.addEventListener('click', function(e) {
-                    if (!searchInput.contains(e.target) {
-                        suggestionsDropdown.style.display = 'none';
-                    }
-                });
-
-                function updateHighlightedItem() {
-                    const items = suggestionsDropdown.querySelectorAll('.suggestion-item');
-                    items.forEach((item, index) => {
-                        if (index === highlightedIndex) {
-                            item.classList.add('highlighted');
-                            item.scrollIntoView({ block: 'nearest' });
-                        } else {
-                            item.classList.remove('highlighted');
-                        }
-                    });
-                }
-            }
-
             // Search function for students
-            function searchForStudent(searchTerm = null) {
-                const searchInput = document.getElementById('student-search');
-                const term = searchTerm || searchInput.value.toLowerCase();
-                
-                if (!term) {
-                    showError("Please enter a student name or ID to search.");
-                    return;
-                }
-
+            document.getElementById("search-btn").addEventListener("click", function () {
+                const searchTerm = document.getElementById("student-search").value.toLowerCase();
                 const student = studentsData.find(s => 
-                    s.name.toLowerCase().includes(term) || 
-                    (s.student_id && s.student_id.toLowerCase().includes(term))
+                    s.name.toLowerCase().includes(searchTerm) || 
+                    (s.student_id && s.student_id.toLowerCase().includes(searchTerm))
                 );
                 
                 if (student) {
                     currentStudent = student;
                     generateScorecard(student);
-                    document.getElementById('downloadBtnContainer').style.display = 'block';
                 } else {
                     showError("Student not found! Please check the name or ID and try again.");
-                    document.getElementById('downloadBtnContainer').style.display = 'none';
                 }
+            });
+
+            // Function to show error message
+            function showError(message) {
+                const container = document.getElementById("student-details");
+                container.innerHTML = `
+                    <div class="text-center py-5">
+                        <i class="fas fa-exclamation-triangle fa-3x mb-3" style="color: #dc3545;"></i>
+                        <h3>${message}</h3>
+                        <p class="text-muted">Please try again with a different search term</p>
+                    </div>
+                `;
             }
 
-            // Function to show error
-                                          function showError(message) {
-            const container = document.getElementById("student-details");
-            container.innerHTML = `
-                <div class="text-center py-5">
-                    <i class="fas fa-exclamation-triangle fa-3x mb-3" style="color: #dc3545;"></i>
-                    <h3>${message}</h3>
-                    <p class="text-muted">Please try again with a different search term</p>
-                </div>
-            `;
-        }
+            // Function to generate scorecard on the page
+            function generateScorecard(student) {
+                const container = document.getElementById("student-details");
+                container.innerHTML = '';  // Clear previous content
 
-        // Function to generate scorecard on the page
-        function generateScorecard(student) {
-            const container = document.getElementById("student-details");
-            container.innerHTML = '';  // Clear previous content
+                const { name, student_id, school, category, year, research_proposal_title, research_paper, proposal_comment, presentation_comment, viewProposal, videoPitch } = student;
+                const paperScores = research_paper;
+                const presentationScores = paperScores.presentation;
 
-            const { name, student_id, school, category, year, research_proposal_title, research_paper, proposal_comment, presentation_comment, viewProposal, videoPitch } = student;
-            const paperScores = research_paper;
-            const presentationScores = paperScores.presentation;
+                // Calculate total Research Paper score
+                const researchPaperScore = calculateScore(
+                    paperScores.research_problem, 
+                    paperScores.existing_literature, 
+                    paperScores.research_question, 
+                    paperScores.methodology, 
+                    paperScores.research_topic, 
+                    paperScores.quality_of_writing
+                );
 
-            // Calculate total Research Paper score
-            const researchPaperScore = calculateScore(
-                paperScores.research_problem, 
-                paperScores.existing_literature, 
-                paperScores.research_question, 
-                paperScores.methodology, 
-                paperScores.research_topic, 
-                paperScores.quality_of_writing
-            );
+                // Calculate total Presentation score
+                const presentationScore = calculateScore(
+                    presentationScores.persuasiveness, 
+                    presentationScores.video_quality, 
+                    presentationScores.research_problem, 
+                    presentationScores.research_question, 
+                    presentationScores.methodology
+                );
 
-            // Calculate total Presentation score
-            const presentationScore = calculateScore(
-                presentationScores.persuasiveness, 
-                presentationScores.video_quality, 
-                presentationScores.research_problem, 
-                presentationScores.research_question, 
-                presentationScores.methodology
-            );
+                // Apply plagiarism penalty
+                const plagiarismPenalty = calculatePlagiarismPenalty(paperScores.plagiarism_check_percentile);
 
-            // Apply plagiarism penalty
-            const plagiarismPenalty = calculatePlagiarismPenalty(paperScores.plagiarism_check_percentile);
+                // Calculate Submission Score
+                const submissionScore = researchPaperScore + presentationScore;
 
-            // Calculate Submission Score
-            const submissionScore = researchPaperScore + presentationScore;
+                // Final score after penalty
+                const finalScore = Math.floor(submissionScore - plagiarismPenalty);
 
-            // Final score after penalty
-            const finalScore = Math.floor(submissionScore - plagiarismPenalty);
+                // Plagiarism adjusted score
+                const plagiarismAdjustedScore = submissionScore - plagiarismPenalty;
 
-            // Plagiarism adjusted score
-            const plagiarismAdjustedScore = submissionScore - plagiarismPenalty;
-
-            // Add content to the page
-            container.innerHTML = `
-                <!-- Student Info Section -->
-                <div class="student-info">
-                    <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
-                    <div class="student-details">
-                        <div class="student-detail">
-                            <strong>Student ID:</strong>
-                            <span>${student_id}</span>
-                        </div>
-                        <div class="student-detail">
-                            <strong>Name:</strong>
-                            <span>${name}</span>
-                        </div>
-                        <div class="student-detail">
-                            <strong>Institution:</strong>
-                            <span>${school}</span>
-                        </div>
-                        <div class="student-detail">
-                            <strong>Category:</strong>
-                            <span>${category}</span>
-                        </div>
-                        <div class="student-detail">
-                            <strong>Year:</strong>
-                            <span>${year}</span>
-                        </div>
-                    </div>
-                    <div class="proposal-title">
-                        <strong>Research Proposal Title:</strong> ${research_proposal_title}
-                    </div>
-                </div>
-
-                <!-- Research Paper Score Section -->
-                <div class="score-section">
-                    <h3><i class="fas fa-file-alt"></i> Research Paper Score: ${researchPaperScore}/100</h3>
-                    <div class="table-responsive">
-                        <table class="score-table">
-                            <thead>
-                                <tr>
-                                    <th>Criteria</th>
-                                    <th>Obtained Marks</th>
-                                    <th>Full Marks</th>
-                                    <th>Percentage</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Research Problem</td>
-                                    <td>${paperScores.research_problem}</td>
-                                    <td>20</td>
-                                    <td>${((paperScores.research_problem / 20) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Existing Literature</td>
-                                    <td>${paperScores.existing_literature}</td>
-                                    <td>10</td>
-                                    <td>${((paperScores.existing_literature / 10) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Research Question</td>
-                                    <td>${paperScores.research_question}</td>
-                                    <td>25</td>
-                                    <td>${((paperScores.research_question / 25) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Methodology</td>
-                                    <td>${paperScores.methodology}</td>
-                                    <td>25</td>
-                                    <td>${((paperScores.methodology / 25) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Research Topic</td>
-                                    <td>${paperScores.research_topic}</td>
-                                    <td>15</td>
-                                    <td>${((paperScores.research_topic / 15) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Quality of Writing</td>
-                                    <td>${paperScores.quality_of_writing}</td>
-                                    <td>5</td>
-                                    <td>${((paperScores.quality_of_writing / 5) * 100).toFixed(1)}%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Presentation Score Section -->
-                <div class="score-section">
-                    <h3><i class="fas fa-video"></i> Presentation Score: ${presentationScore}/100</h3>
-                    <div class="table-responsive">
-                        <table class="score-table">
-                            <thead>
-                                <tr>
-                                    <th>Criteria</th>
-                                    <th>Obtained Marks</th>
-                                    <th>Full Marks</th>
-                                    <th>Percentage</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Persuasiveness</td>
-                                    <td>${presentationScores.persuasiveness}</td>
-                                    <td>20</td>
-                                    <td>${((presentationScores.persuasiveness / 20) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Video Quality</td>
-                                    <td>${presentationScores.video_quality}</td>
-                                    <td>20</td>
-                                    <td>${((presentationScores.video_quality / 20) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Research Problem</td>
-                                    <td>${presentationScores.research_problem}</td>
-                                    <td>20</td>
-                                    <td>${((presentationScores.research_problem / 20) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Research Question</td>
-                                    <td>${presentationScores.research_question}</td>
-                                    <td>20</td>
-                                    <td>${((presentationScores.research_question / 20) * 100).toFixed(1)}%</td>
-                                </tr>
-                                <tr>
-                                    <td>Methodology</td>
-                                    <td>${presentationScores.methodology}</td>
-                                    <td>20</td>
-                                    <td>${((presentationScores.methodology / 20) * 100).toFixed(1)}%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Score Summary Section -->
-                <div class="score-section">
-                    <h3><i class="fas fa-calculator"></i> Score Summary</h3>
-                    <div class="score-summary">
-                        <div class="summary-card">
-                            <h4><i class="fas fa-clipboard-check"></i> Plagiarism Check</h4>
-                            <p><strong>Plagiarism Percentile:</strong> ${paperScores.plagiarism_check_percentile}%</p>
-                            <p><strong>Plagiarism Penalty:</strong> ${plagiarismPenalty} points</p>
-                            <div class="progress mt-3" style="height: 10px;">
-                                <div class="progress-bar ${getPlagiarismColorClass(paperScores.plagiarism_check_percentile)}" 
-                                     role="progressbar" 
-                                     style="width: ${paperScores.plagiarism_check_percentile}%" 
-                                     aria-valuenow="${paperScores.plagiarism_check_percentile}" 
-                                     aria-valuemin="0" 
-                                     aria-valuemax="100">
-                                </div>
+                // Add content to the page
+                container.innerHTML = `
+                    <!-- Student Info Section -->
+                    <div class="student-info">
+                        <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                        <div class="student-details">
+                            <div class="student-detail">
+                                <strong>Student ID:</strong>
+                                <span>${student_id}</span>
+                            </div>
+                            <div class="student-detail">
+                                <strong>Name:</strong>
+                                <span>${name}</span>
+                            </div>
+                            <div class="student-detail">
+                                <strong>Institution:</strong>
+                                <span>${school}</span>
+                            </div>
+                            <div class="student-detail">
+                                <strong>Category:</strong>
+                                <span>${category}</span>
+                            </div>
+                            <div class="student-detail">
+                                <strong>Year:</strong>
+                                <span>${year}</span>
                             </div>
                         </div>
-                        <div class="summary-card">
-                            <h4><i class="fas fa-tasks"></i> Submission Score</h4>
-                            <p><strong>Research Paper:</strong> ${researchPaperScore}/100</p>
-                            <p><strong>Presentation:</strong> ${presentationScore}/100</p>
-                            <p><strong>Total Score:</strong> ${submissionScore}/200</p>
-                        </div>
-                        <div class="summary-card">
-                            <h4><i class="fas fa-award"></i> Final Score</h4>
-                            <p><strong>Plagiarism Adjusted Score:</strong> ${plagiarismAdjustedScore}</p>
-                            <p><strong>Final Score:</strong> ${finalScore}</p>
-                            <p><strong>Percentage:</strong> ${((finalScore / 200) * 100).toFixed(1)}%</p>
+                        <div class="proposal-title">
+                            <strong>Research Proposal Title:</strong> ${research_proposal_title}
                         </div>
                     </div>
-                </div>
 
-                <!-- Charts Section -->
-                <div class="chart-container">
-                    <h3><i class="fas fa-chart-bar"></i> Performance Charts</h3>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <canvas id="researchChart" height="300"></canvas>
+                    <!-- Research Paper Score Section -->
+                    <div class="score-section">
+                        <h3><i class="fas fa-file-alt"></i> Research Paper Score: ${researchPaperScore}/100</h3>
+                        <div class="table-responsive">
+                            <table class="score-table">
+                                <thead>
+                                    <tr>
+                                        <th>Criteria</th>
+                                        <th>Obtained Marks</th>
+                                        <th>Full Marks</th>
+                                        <th>Percentage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Research Problem</td>
+                                        <td>${paperScores.research_problem}</td>
+                                        <td>20</td>
+                                        <td>${((paperScores.research_problem / 20) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Existing Literature</td>
+                                        <td>${paperScores.existing_literature}</td>
+                                        <td>10</td>
+                                        <td>${((paperScores.existing_literature / 10) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Research Question</td>
+                                        <td>${paperScores.research_question}</td>
+                                        <td>25</td>
+                                        <td>${((paperScores.research_question / 25) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Methodology</td>
+                                        <td>${paperScores.methodology}</td>
+                                        <td>25</td>
+                                        <td>${((paperScores.methodology / 25) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Research Topic</td>
+                                        <td>${paperScores.research_topic}</td>
+                                        <td>15</td>
+                                        <td>${((paperScores.research_topic / 15) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quality of Writing</td>
+                                        <td>${paperScores.quality_of_writing}</td>
+                                        <td>5</td>
+                                        <td>${((paperScores.quality_of_writing / 5) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="col-md-6">
-                            <canvas id="presentationChart" height="300"></canvas>
+                    </div>
+
+                    <!-- Presentation Score Section -->
+                    <div class="score-section">
+                        <h3><i class="fas fa-video"></i> Presentation Score: ${presentationScore}/100</h3>
+                        <div class="table-responsive">
+                            <table class="score-table">
+                                <thead>
+                                    <tr>
+                                        <th>Criteria</th>
+                                        <th>Obtained Marks</th>
+                                        <th>Full Marks</th>
+                                        <th>Percentage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Persuasiveness</td>
+                                        <td>${presentationScores.persuasiveness}</td>
+                                        <td>20</td>
+                                        <td>${((presentationScores.persuasiveness / 20) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Video Quality</td>
+                                        <td>${presentationScores.video_quality}</td>
+                                        <td>20</td>
+                                        <td>${((presentationScores.video_quality / 20) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Research Problem</td>
+                                        <td>${presentationScores.research_problem}</td>
+                                        <td>20</td>
+                                        <td>${((presentationScores.research_problem / 20) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Research Question</td>
+                                        <td>${presentationScores.research_question}</td>
+                                        <td>20</td>
+                                        <td>${((presentationScores.research_question / 20) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Methodology</td>
+                                        <td>${presentationScores.methodology}</td>
+                                        <td>20</td>
+                                        <td>${((presentationScores.methodology / 20) * 100).toFixed(1)}%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
 
-                <!-- Comments Section -->
-                <div class="comments-section">
-                    <h3><i class="fas fa-comments"></i> Evaluator Comments</h3>
-                    <div class="document-links mb-4">
-                        ${viewProposal ? `<a href="${viewProposal}" target="_blank" class="document-link">
-                            <i class="fas fa-file-pdf"></i> View Research Proposal
-                        </a>` : ''}
-                        ${videoPitch ? `<a href="${videoPitch}" target="_blank" class="document-link">
-                            <i class="fas fa-video"></i> View Video Pitch
-                        </a>` : ''}
+                    <!-- Score Summary Section -->
+                    <div class="score-section">
+                        <h3><i class="fas fa-calculator"></i> Score Summary</h3>
+                        <div class="score-summary">
+                            <div class="summary-card">
+                                <h4><i class="fas fa-clipboard-check"></i> Plagiarism Check</h4>
+                                <p><strong>Plagiarism Percentile:</strong> ${paperScores.plagiarism_check_percentile}%</p>
+                                <p><strong>Plagiarism Penalty:</strong> ${plagiarismPenalty} points</p>
+                                <div class="progress mt-3" style="height: 10px;">
+                                    <div class="progress-bar ${getPlagiarismColorClass(paperScores.plagiarism_check_percentile)}" 
+                                         role="progressbar" 
+                                         style="width: ${paperScores.plagiarism_check_percentile}%" 
+                                         aria-valuenow="${paperScores.plagiarism_check_percentile}" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="summary-card">
+                                <h4><i class="fas fa-tasks"></i> Submission Score</h4>
+                                <p><strong>Research Paper:</strong> ${researchPaperScore}/100</p>
+                                <p><strong>Presentation:</strong> ${presentationScore}/100</p>
+                                <p><strong>Total Score:</strong> ${submissionScore}/200</p>
+                            </div>
+                            <div class="summary-card">
+                                <h4><i class="fas fa-award"></i> Final Score</h4>
+                                <p><strong>Plagiarism Adjusted Score:</strong> ${plagiarismAdjustedScore}</p>
+                                <p><strong>Final Score:</strong> ${finalScore}</p>
+                                <p><strong>Percentage:</strong> ${((finalScore / 200) * 100).toFixed(1)}%</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="comment-box">
-                        <h4><i class="fas fa-file-signature"></i> Research Paper Comments</h4>
-                        <p>${proposal_comment}</p>
-                    </div>
-                    <div class="comment-box">
-                        <h4><i class="fas fa-video"></i> Presentation Comments</h4>
-                        <p>${presentation_comment}</p>
-                    </div>
-                </div>
-            `;
 
-            // Create charts
-            createResearchChart(paperScores);
-            createPresentationChart(presentationScores);
-        }
+                    <!-- Charts Section -->
+                    <div class="chart-container">
+                        <h3><i class="fas fa-chart-bar"></i> Performance Charts</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <canvas id="researchChart" height="300"></canvas>
+                            </div>
+                            <div class="col-md-6">
+                                <canvas id="presentationChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
 
-        // Function to create research paper chart
-        function createResearchChart(scores) {
-            const ctx = document.getElementById('researchChart').getContext('2d');
-            
-            if (researchChart) {
-                researchChart.destroy();
+                    <!-- Comments Section -->
+                    <div class="comments-section">
+                        <h3><i class="fas fa-comments"></i> Evaluator Comments</h3>
+                        <div class="document-links mb-4">
+                            ${viewProposal ? `<a href="${viewProposal}" target="_blank" class="document-link">
+                                <i class="fas fa-file-pdf"></i> View Research Proposal
+                            </a>` : ''}
+                            ${videoPitch ? `<a href="${videoPitch}" target="_blank" class="document-link">
+                                <i class="fas fa-video"></i> View Video Pitch
+                            </a>` : ''}
+                        </div>
+                        <div class="comment-box">
+                            <h4><i class="fas fa-file-signature"></i> Research Paper Comments</h4>
+                            <p>${proposal_comment}</p>
+                        </div>
+                        <div class="comment-box">
+                            <h4><i class="fas fa-video"></i> Presentation Comments</h4>
+                            <p>${presentation_comment}</p>
+                        </div>
+                    </div>
+                `;
+
+                // Create charts
+                createResearchChart(paperScores);
+                createPresentationChart(presentationScores);
             }
-            
-            researchChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Research Problem', 'Existing Literature', 'Research Question', 'Methodology', 'Research Topic', 'Quality of Writing'],
-                    datasets: [{
-                        label: 'Your Score',
-                        data: [
-                            scores.research_problem, 
-                            scores.existing_literature, 
-                            scores.research_question, 
-                            scores.methodology, 
-                            scores.research_topic, 
-                            scores.quality_of_writing
-                        ],
-                        backgroundColor: 'rgba(0, 51, 102, 0.2)',
-                        borderColor: 'rgba(0, 51, 102, 1)',
-                        borderWidth: 2,
-                        pointBackgroundColor: 'rgba(255, 215, 0, 1)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(255, 215, 0, 1)'
-                    }, {
-                        label: 'Maximum Score',
-                        data: [20, 10, 25, 25, 15, 5],
-                        backgroundColor: 'rgba(255, 215, 0, 0.1)',
-                        borderColor: 'rgba(255, 215, 0, 0.5)',
-                        borderWidth: 1,
-                        pointBackgroundColor: 'rgba(255, 215, 0, 0.5)',
-                        pointBorderColor: '#fff',
-                        pointHoverBackgroundColor: '#fff',
-                        pointHoverBorderColor: 'rgba(255, 215, 0, 0.5)'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        r: {
-                            angleLines: {
+
+            // Function to create research paper chart
+            function createResearchChart(scores) {
+                const ctx = document.getElementById('researchChart').getContext('2d');
+                
+                if (researchChart) {
+                    researchChart.destroy();
+                }
+                
+                researchChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Research Problem', 'Existing Literature', 'Research Question', 'Methodology', 'Research Topic', 'Quality of Writing'],
+                        datasets: [{
+                            label: 'Your Score',
+                            data: [
+                                scores.research_problem, 
+                                scores.existing_literature, 
+                                scores.research_question, 
+                                scores.methodology, 
+                                scores.research_topic, 
+                                scores.quality_of_writing
+                            ],
+                            backgroundColor: 'rgba(0, 51, 102, 0.2)',
+                            borderColor: 'rgba(0, 51, 102, 1)',
+                            borderWidth: 2,
+                            pointBackgroundColor: 'rgba(255, 215, 0, 1)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(255, 215, 0, 1)'
+                        }, {
+                            label: 'Maximum Score',
+                            data: [20, 10, 25, 25, 15, 5],
+                            backgroundColor: 'rgba(255, 215, 0, 0.1)',
+                            borderColor: 'rgba(255, 215, 0, 0.5)',
+                            borderWidth: 1,
+                            pointBackgroundColor: 'rgba(255, 215, 0, 0.5)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgba(255, 215, 0, 0.5)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            r: {
+                                angleLines: {
+                                    display: true,
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                },
+                                suggestedMin: 0,
+                                suggestedMax: 25,
+                                ticks: {
+                                    backdropColor: 'rgba(255, 255, 255, 0.8)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#003366',
+                                    font: {
+                                        weight: 'bold'
+                                    }
+                                }
+                            },
+                            title: {
                                 display: true,
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            },
-                            suggestedMin: 0,
-                            suggestedMax: 25,
-                            ticks: {
-                                backdropColor: 'rgba(255, 255, 255, 0.8)'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
+                                text: 'Research Paper Evaluation',
                                 color: '#003366',
                                 font: {
+                                    size: 16,
                                     weight: 'bold'
                                 }
                             }
                         },
-                        title: {
-                            display: true,
-                            text: 'Research Paper Evaluation',
-                            color: '#003366',
-                            font: {
-                                size: 16,
-                                weight: 'bold'
-                            }
-                        }
-                    },
-                    elements: {
-                        line: {
-                            tension: 0.1
-                        }
-                    }
-                }
-            });
-        }
-
-        // Function to create presentation chart
-        function createPresentationChart(scores) {
-            const ctx = document.getElementById('presentationChart').getContext('2d');
-            
-            if (presentationChart) {
-                presentationChart.destroy();
-            }
-            
-            presentationChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Persuasiveness', 'Video Quality', 'Research Problem', 'Research Question', 'Methodology'],
-                    datasets: [{
-                        label: 'Your Score',
-                        data: [
-                            scores.persuasiveness, 
-                            scores.video_quality, 
-                            scores.research_problem, 
-                            scores.research_question, 
-                            scores.methodology
-                        ],
-                        backgroundColor: [
-                            'rgba(0, 51, 102, 0.7)',
-                            'rgba(0, 51, 102, 0.7)',
-                            'rgba(0, 51, 102, 0.7)',
-                            'rgba(0, 51, 102, 0.7)',
-                            'rgba(0, 51, 102, 0.7)'
-                        ],
-                        borderColor: [
-                            'rgba(0, 51, 102, 1)',
-                            'rgba(0, 51, 102, 1)',
-                            'rgba(0, 51, 102, 1)',
-                            'rgba(0, 51, 102, 1)',
-                            'rgba(0, 51, 102, 1)'
-                        ],
-                        borderWidth: 1
-                    }, {
-                        label: 'Maximum Score',
-                        data: [20, 20, 20, 20, 20],
-                        backgroundColor: [
-                            'rgba(255, 215, 0, 0.3)',
-                            'rgba(255, 215, 0, 0.3)',
-                            'rgba(255, 215, 0, 0.3)',
-                            'rgba(255, 215, 0, 0.3)',
-                            'rgba(255, 215, 0, 0.3)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 215, 0, 0.5)',
-                            'rgba(255, 215, 0, 0.5)',
-                            'rgba(255, 215, 0, 0.5)',
-                            'rgba(255, 215, 0, 0.5)',
-                            'rgba(255, 215, 0, 0.5)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 20,
-                            ticks: {
-                                color: '#003366',
-                                font: {
-                                    weight: 'bold'
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.1)'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#003366',
-                                font: {
-                                    weight: 'bold'
-                                }
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                color: '#003366',
-                                font: {
-                                    weight: 'bold'
-                                }
-                            }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Presentation Evaluation',
-                            color: '#003366',
-                            font: {
-                                size: 16,
-                                weight: 'bold'
+                        elements: {
+                            line: {
+                                tension: 0.1
                             }
                         }
                     }
+                });
+            }
+
+            // Function to create presentation chart
+            function createPresentationChart(scores) {
+                const ctx = document.getElementById('presentationChart').getContext('2d');
+                
+                if (presentationChart) {
+                    presentationChart.destroy();
                 }
-            });
-        }
-
-        // Function to calculate the score based on the sum of individual criteria
-        function calculateScore(...scores) {
-            return scores.reduce((acc, score) => acc + score, 0);
-        }
-
-        // Function to calculate plagiarism penalty based on percentile
-        function calculatePlagiarismPenalty(plagiarismPercentile) {
-            let penalty = 0;
-
-            if (plagiarismPercentile >= 0 && plagiarismPercentile <= 5) {
-                penalty = 15; // High penalty
-            } else if (plagiarismPercentile >= 6 && plagiarismPercentile <= 20) {
-                penalty = 0;  // No penalty
-            } else if (plagiarismPercentile >= 21 && plagiarismPercentile <= 30) {
-                penalty = 20; // Moderate penalty
-            } else if (plagiarismPercentile > 30) {
-                penalty = 30; // High penalty
+                
+                presentationChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Persuasiveness', 'Video Quality', 'Research Problem', 'Research Question', 'Methodology'],
+                        datasets: [{
+                            label: 'Your Score',
+                            data: [
+                                scores.persuasiveness, 
+                                scores.video_quality, 
+                                scores.research_problem, 
+                                scores.research_question, 
+                                scores.methodology
+                            ],
+                            backgroundColor: [
+                                'rgba(0, 51, 102, 0.7)',
+                                'rgba(0, 51, 102, 0.7)',
+                                'rgba(0, 51, 102, 0.7)',
+                                'rgba(0, 51, 102, 0.7)',
+                                'rgba(0, 51, 102, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 51, 102, 1)',
+                                'rgba(0, 51, 102, 1)',
+                                'rgba(0, 51, 102, 1)',
+                                'rgba(0, 51, 102, 1)',
+                                'rgba(0, 51, 102, 1)'
+                            ],
+                            borderWidth: 1
+                        }, {
+                            label: 'Maximum Score',
+                            data: [20, 20, 20, 20, 20],
+                            backgroundColor: [
+                                'rgba(255, 215, 0, 0.3)',
+                                'rgba(255, 215, 0, 0.3)',
+                                'rgba(255, 215, 0, 0.3)',
+                                'rgba(255, 215, 0, 0.3)',
+                                'rgba(255, 215, 0, 0.3)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 215, 0, 0.5)',
+                                'rgba(255, 215, 0, 0.5)',
+                                'rgba(255, 215, 0, 0.5)',
+                                'rgba(255, 215, 0, 0.5)',
+                                'rgba(255, 215, 0, 0.5)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 20,
+                                ticks: {
+                                    color: '#003366',
+                                    font: {
+                                        weight: 'bold'
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#003366',
+                                    font: {
+                                        weight: 'bold'
+                                    }
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#003366',
+                                    font: {
+                                        weight: 'bold'
+                                    }
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Presentation Evaluation',
+                                color: '#003366',
+                                font: {
+                                    size: 16,
+                                    weight: 'bold'
+                                }
+                            }
+                        }
+                    }
+                });
             }
 
-            return penalty;
-        }
-
-        // Function to get plagiarism color class
-        function getPlagiarismColorClass(percentile) {
-            if (percentile <= 5) return 'bg-success';
-            if (percentile <= 20) return 'bg-primary';
-            if (percentile <= 30) return 'bg-warning';
-            return 'bg-danger';
-        }
-
-        // PDF Generation Functionality
-        document.getElementById('downloadPdf').addEventListener('click', generatePdf);
-
-        function generatePdf() {
-            if (!currentStudent) {
-                alert('Please search for and view a student scorecard first.');
-                return;
+            // Function to calculate the score based on the sum of individual criteria
+            function calculateScore(...scores) {
+                return scores.reduce((acc, score) => acc + score, 0);
             }
 
-            // Update report date
-            const now = new Date();
-            document.getElementById('reportDate').textContent = `Generated: ${now.toLocaleDateString()} at ${now.toLocaleTimeString()}`;
+            // Function to calculate plagiarism penalty based on percentile
+            function calculatePlagiarismPenalty(plagiarismPercentile) {
+                let penalty = 0;
 
-            // Clone the visible content
-            const content = document.getElementById('student-details').cloneNode(true);
-            
-            // Remove elements we don't want in PDF
-            content.querySelectorAll('.search-container, .navbar, footer, .download-btn-container').forEach(el => el.remove());
-            
-            // Insert into PDF template
-            const pdfContent = document.getElementById('pdfContent');
-            pdfContent.innerHTML = '';
-            pdfContent.appendChild(content);
-            
-            // Make charts visible for PDF (they're canvas elements)
-            const pdfTemplate = document.getElementById('pdfTemplate');
-            pdfTemplate.style.display = 'block';
-            
-            // Options for pdf generation
-            const options = {
-                margin: 10,
-                filename: `IARCO_Scorecard_${currentStudent.name.replace(/\s+/g, '_')}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { 
-                    scale: 2,
-                    logging: true,
-                    useCORS: true,
-                    allowTaint: true,
-                    scrollX: 0,
-                    scrollY: 0
-                },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
-            };
+                if (plagiarismPercentile >= 0 && plagiarismPercentile <= 5) {
+                    penalty = 15; // High penalty
+                } else if (plagiarismPercentile >= 6 && plagiarismPercentile <= 20) {
+                    penalty = 0;  // No penalty
+                } else if (plagiarismPercentile >= 21 && plagiarismPercentile <= 30) {
+                    penalty = 20; // Moderate penalty
+                } else if (plagiarismPercentile > 30) {
+                    penalty = 30; // High penalty
+                }
 
-            // Generate PDF
-            html2pdf().from(pdfTemplate).set(options).save().then(() => {
-                // Hide the template again after generation
-                pdfTemplate.style.display = 'none';
+                return penalty;
+            }
+
+            // Function to get plagiarism color class
+            function getPlagiarismColorClass(percentile) {
+                if (percentile <= 5) return 'bg-success';
+                if (percentile <= 20) return 'bg-primary';
+                if (percentile <= 30) return 'bg-warning';
+                return 'bg-danger';
+            }
+
+            // Footer subscription form handling
+            const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
+            const Fform = document.forms['footer-subscribe-form'];
+            const FSubId = document.getElementById("footer-subscribe-message");
+
+            Fform.addEventListener('submit', e => {
+                e.preventDefault();
+                fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
+                    .then(response => {
+                        FSubId.innerHTML = "Thank You for Subscribing us!";
+                        setTimeout(function() {
+                            FSubId.innerHTML = "";
+                        }, 3000);
+                        Fform.reset();
+                    })
+                    .catch(error => console.error('Error!', error.message));
             });
-        }
-
-        // Footer subscription form handling
-        const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
-        const Fform = document.forms['footer-subscribe-form'];
-        const FSubId = document.getElementById("footer-subscribe-message");
-
-        Fform.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
-                .then(response => {
-                    FSubId.innerHTML = "Thank You for Subscribing us!";
-                    setTimeout(function() {
-                        FSubId.innerHTML = "";
-                    }, 3000);
-                    Fform.reset();
-                })
-                .catch(error => console.error('Error!', error.message));
         });
-    });
-</script>
-    
-</body> </html>
+    </script>
+</body>
+</html>
