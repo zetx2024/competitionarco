@@ -689,34 +689,6 @@
             </div>
         </div>
     </section>
-        <!-- Add download button container -->
-    <div class="download-btn-container">
-        <button class="download-btn" id="downloadPdf">
-            <i class="fas fa-file-pdf"></i> Download Scorecard as PDF
-        </button>
-    </div>
-
-    <!-- Add PDF template div (hidden from normal view) -->
-    <div id="pdfTemplate" style="display: none;">
-        <div class="pdf-header">
-            <img src="assets/logo.png" alt="IARCO Logo">
-            <div class="pdf-title">
-                <h1>International Academic Research Competition</h1>
-                <p>Official Scorecard Report</p>
-                <p id="reportDate"></p>
-            </div>
-            <div style="width: 60px;"></div> <!-- Spacer for alignment -->
-        </div>
-
-        <div id="pdfContent">
-            <!-- Content will be inserted here by JavaScript -->
-        </div>
-
-        <div class="pdf-footer">
-            <p>© ${new Date().getFullYear()} International Academic Research Competition. All rights reserved.</p>
-            <p>This document is generated automatically and is valid without signature.</p>
-        </div>
-    </div>
 
     <!-- Start: Partner container-->
     <section id="Our_Affiliates" class="gallery-section">
@@ -1082,6 +1054,36 @@
                             <p>${presentation_comment}</p>
                         </div>
                     </div>
+
+                            <!-- Add download button container -->
+    <div class="download-btn-container">
+        <button class="download-btn" id="downloadPdf">
+            <i class="fas fa-file-pdf"></i> Download Scorecard as PDF
+        </button>
+    </div>
+
+    <!-- Add PDF template div (hidden from normal view) -->
+    <div id="pdfTemplate" style="display: none;">
+        <div class="pdf-header">
+            <img src="assets/logo.png" alt="IARCO Logo">
+            <div class="pdf-title">
+                <h1>International Academic Research Competition</h1>
+                <p>Official Scorecard Report</p>
+                <p id="reportDate"></p>
+            </div>
+            <div style="width: 60px;"></div> <!-- Spacer for alignment -->
+        </div>
+
+        <div id="pdfContent">
+            <!-- Content will be inserted here by JavaScript -->
+        </div>
+
+        <div class="pdf-footer">
+            <p>© ${new Date().getFullYear()} International Academic Research Competition. All rights reserved.</p>
+            <p>This document is generated automatically and is valid without signature.</p>
+        </div>
+    </div>
+
                 `;
 
                 // Create charts
