@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5LLP0WEBK"></script>
@@ -10,446 +9,1037 @@
       gtag('js', new Date());
       gtag('config', 'G-C5LLP0WEBK');
     </script>
-
-    <!-- Meta Tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Prizes | International Academic Research Competition</title>
-    <meta name="description" content="Explore the exciting prizes for IARCO 2025 competition winners in both Junior and Senior categories.">
     
-    <!-- Favicon -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IARCO 2025 | International Research Competition</title>
     <link rel="icon" href="assets/logo.png"/>
-    <link rel="canonical" href="https://iarco.org/prizes"/>
-    <link rel="apple-touch-icon" sizes="180x180" href="fevicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="fevicon/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="fevicon/favicon-512x512.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
-    <link rel="manifest" href="manifest.json">
-
-    <!-- CSS & Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="canonical" href="https://iarco.org"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="css/main.css" />
-    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
     <style>
-        :root {
-            --primary-blue: #003366;
-            --secondary-blue: #0749b3;
-            --accent-blue: #4b9cd3;
-            --primary-gold: #ffd700;
-            --secondary-gold: #daa520;
-            --white: #ffffff;
-            --light-gray: #f8f9fa;
-            --dark-gray: #343a40;
-            --text-color: #2c3e50;
-            --header-bg: rgba(0, 51, 102, 0.95);
-            --footer-bg: rgba(0, 51, 102, 0.97);
-            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+    :root {
+      --primary-blue: #003366;
+      --secondary-blue: #0749b3;
+      --accent-blue: #4b9cd3;
+      --primary-gold: #ffd700;
+      --secondary-gold: #daa520;
+      --white: #ffffff;
+      --light-gray: #f8f9fa;
+      --dark-gray: #343a40;
+      --text-color: #2c3e50;
+      --header-bg: rgba(0, 51, 102, 0.95);
+      --footer-bg: rgba(0, 51, 102, 0.97);
+      --modal-bg: linear-gradient(135deg, var(--primary-blue) 0%, #001a33 100%);
+      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-color);
-            background-color: var(--light-gray);
-            overflow-x: hidden;
-        }
+    /* Base Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-color: var(--light-gray);
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Navigation */
-        .navbar {
-            background-color: var(--header-bg);
-            backdrop-filter: blur(8px);
-            box-shadow: var(--box-shadow);
-            padding: 0.5rem 0;
-        }
+    /* Hero Section - Enhanced with Animation */
+    .hero-section {
+      background: linear-gradient(135deg, rgba(0, 51, 102, 0.9) 0%, rgba(7, 73, 179, 0.9) 100%), 
+                  url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center;
+      background-size: cover;
+      color: var(--white);
+      padding: 8rem 0 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+    }
 
-        .navbar-brand img {
-            height: 60px;
-            transition: var(--transition);
-        }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        .nav-link {
-            color: var(--white) !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem !important;
-            transition: var(--transition);
-            margin: 0 0.25rem;
-        }
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: fadeInDown 1s ease-out;
+    }
 
-        .nav-link:hover, .nav-link:focus {
-            color: var(--primary-gold) !important;
-        }
+    .hero-title span {
+      color: var(--primary-gold);
+      display: inline-block;
+      position: relative;
+    }
 
-        .dropdown-menu {
-            background-color: var(--header-bg);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    .hero-title span:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--primary-gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      animation: underlineExpand 1.5s ease-in-out forwards;
+      animation-delay: 0.5s;
+    }
 
-        .dropdown-item {
-            color: var(--white);
-            transition: var(--transition);
-        }
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.8s;
+    }
 
-        .dropdown-item:hover {
-            background-color: var(--primary-gold);
-            color: var(--primary-blue) !important;
-        }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease-out forwards;
+      animation-delay: 1s;
+    }
 
-        /* Hero Section */
-        .prizes-hero {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: var(--white);
-            padding: 5rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+    .hero-btn {
+      background-color: var(--primary-gold);
+      color: var(--primary-blue) !important;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        .prizes-hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,215,0,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>') repeat;
-            opacity: 0.1;
-        }
+    .hero-btn:hover {
+      background-color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
 
-        .prizes-hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
+    .hero-btn.secondary {
+      background-color: transparent;
+      color: var(--white) !important;
+      border: 2px solid var(--primary-gold);
+    }
 
-        .prizes-hero h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: var(--primary-gold);
-            border-radius: 2px;
-        }
+    .hero-btn.secondary:hover {
+      background-color: var(--primary-gold);
+      color: var(--primary-blue) !important;
+    }
 
-        .prizes-hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
+    /* Floating Elements Animation */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
 
-        /* Prize Cards */
-        .prize-section {
-            padding: 4rem 0;
-        }
+    .floating-element {
+      position: absolute;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
 
-        .prize-section h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 700;
-            color: var(--primary-blue);
-            position: relative;
-        }
+    /* About IARCO Section */
+    .about-section {
+      padding: 5rem 0;
+      background-color: var(--white);
+    }
 
-        .prize-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-gold);
-        }
+    .about-container {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 3rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
 
-        .prize-card {
-            background: var(--white);
-            border-radius: 12px;
-            box-shadow: var(--box-shadow);
-            padding: 2rem;
-            height: 100%;
-            transition: var(--transition);
-            border-top: 4px solid var(--primary-gold);
-            position: relative;
-            overflow: hidden;
-        }
+    .about-container:before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: var(--primary-gold);
+      border-radius: 50%;
+      opacity: 0.1;
+    }
 
-        .prize-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
+    .about-container:after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 150px;
+      height: 150px;
+      background: var(--primary-gold);
+      border-radius: 50%;
+      opacity: 0.1;
+    }
 
-        .prize-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0, 51, 102, 0.03) 0%, rgba(255, 215, 0, 0.03) 100%);
-            z-index: 0;
-        }
+    .about-title {
+      color: var(--primary-gold);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
 
-        .prize-card h3 {
-            color: var(--primary-blue);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
+    .about-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary-gold);
+    }
 
-        .prize-card ul {
-            list-style: none;
-            padding: 0;
-            position: relative;
-            z-index: 1;
-        }
+    .about-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 2rem;
+    }
 
-        .prize-card li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
-            line-height: 1.6;
-        }
+    .about-feature {
+      flex: 1 1 300px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary-gold);
+      transition: transform 0.3s ease;
+    }
 
-        .prize-card li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--primary-gold);
-        }
+    .about-feature:hover {
+      transform: translateY(-5px);
+    }
 
-        .prize-card .prize-amount {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-gold);
-            margin: 1.5rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .about-feature i {
+      color: var(--primary-gold);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
 
-        .prize-card .prize-amount i {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
+    .about-feature h4 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
 
-        .prize-card .badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: var(--primary-gold);
-            color: var(--primary-blue);
-            padding: 5px 30px;
-            font-weight: 700;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
+    /* Research Topics Section */
+    .topics-section {
+      padding: 5rem 0;
+      background-color: var(--light-gray);
+    }
 
-        /* Partners Section */
-        .partners-section {
-            padding: 4rem 0;
-            background-color: var(--white);
-        }
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
 
-        .partners-section h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-blue);
-        }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      display: inline-block;
+    }
 
-        .partner-card {
-            background: var(--light-gray);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: var(--transition);
-            height: 100%;
-        }
+    .section-title h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary-gold);
+    }
 
-        .partner-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+    .topic-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
 
-        .partner-card img {
-            max-height: 100px;
-            width: auto;
-            margin: 0 auto 1.5rem;
-            object-fit: contain;
-        }
+    .topic-card {
+      background: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border-top: 5px solid var(--primary-blue);
+    }
 
-        .partner-card p {
-            margin-bottom: 1.5rem;
-        }
+    .topic-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
 
-        .partner-card a {
-            color: var(--primary-blue);
-            font-weight: 600;
-            transition: var(--transition);
-        }
+    .topic-icon {
+      background: var(--primary-blue);
+      color: var(--primary-gold);
+      font-size: 2.5rem;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: -40px auto 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
 
-        .partner-card a:hover {
-            color: var(--primary-gold);
-        }
+    .topic-content {
+      padding: 0 2rem 2rem;
+      text-align: center;
+    }
 
-        /* Footer */
-        footer {
-            background-color: var(--footer-bg);
-            color: var(--white);
-            padding: 4rem 0 2rem;
-        }
+    .topic-content h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
 
-        footer a {
-            color: var(--primary-gold);
-            transition: var(--transition);
-            display: inline-block;
-            padding: 0.25rem 0;
-        }
+    /* Enhanced Timeline Section */
+    .timeline-section {
+      padding: 5rem 0;
+      background-color: var(--white);
+      position: relative;
+    }
 
-        footer a:hover {
-            color: var(--white);
-            transform: translateX(5px);
-        }
+    .timeline-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        footer img {
-            max-height: 80px;
-            margin-bottom: 1.5rem;
-        }
+    .timeline-container:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary-blue), var(--primary-gold), var(--primary-blue));
+      z-index: 1;
+    }
 
-        .rights {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      width: 100%;
+      padding-left: 50%;
+      padding-right: 30px;
+    }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+    .timeline-item:nth-child(even) {
+      padding-left: 30px;
+      padding-right: 50%;
+    }
 
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+    .timeline-content {
+      background: var(--white);
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      position: relative;
+      border-left: 5px solid var(--primary-gold);
+      transition: all 0.3s ease;
+    }
 
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
+    .timeline-item:nth-child(even) .timeline-content {
+      border-left: none;
+      border-right: 5px solid var(--primary-gold);
+    }
 
-        .slide-up {
-            animation: slideUp 0.8s ease-out;
-        }
+    .timeline-content:hover {
+      transform: scale(1.03);
+    }
 
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .prizes-hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .prize-card {
-                margin-bottom: 2rem;
-            }
-        }
+    .timeline-date {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      background: var(--primary-blue);
+      color: var(--white);
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      z-index: 2;
+    }
 
-        @media (max-width: 768px) {
-            .prizes-hero {
-                padding: 4rem 0;
-            }
-            
-            .prizes-hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .prize-card {
-                padding: 1.5rem;
-            }
-        }
+    .timeline-item:nth-child(even) .timeline-date {
+      left: auto;
+      right: -20px;
+    }
 
-        @media (max-width: 576px) {
-            .prizes-hero h1 {
-                font-size: 2rem;
-            }
-            
-            .prize-card .prize-amount {
-                font-size: 1.5rem;
-            }
-            
-            footer .col-sm-4 {
-                margin-bottom: 2rem;
-            }
-        }
+    .timeline-dot {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: var(--primary-gold);
+      border: 4px solid var(--primary-blue);
+      border-radius: 50%;
+      z-index: 2;
+    }
 
-        /* Special Prize Elements */
-        .trophy-icon {
-            color: var(--primary-gold);
-            font-size: 2rem;
-            margin-right: 10px;
-            vertical-align: middle;
-            animation: bounce 2s infinite;
-        }
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: auto;
+      right: 50%;
+      transform: translateX(50%);
+    }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-15px);}
-            60% {transform: translateY(-7px);}
-        }
+    .timeline-content h3 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
 
-        .medal-icon {
-            color: var(--primary-gold);
-            font-size: 1.5rem;
-            margin-right: 8px;
-            vertical-align: middle;
-            animation: spin 4s linear infinite;
-        }
+    .timeline-content p {
+      margin-bottom: 0;
+    }
 
-        @keyframes spin {
-            0% {transform: rotateY(0deg);}
-            100% {transform: rotateY(360deg);}
-        }
+    /* Bootcamp Section */
+    .bootcamp-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+      color: var(--white);
+    }
 
-        .money-icon {
-            color: var(--primary-gold);
-            font-size: 1.5rem;
-            margin-right: 8px;
-            vertical-align: middle;
-            animation: pulse 1.5s infinite;
-        }
+    .bootcamp-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 3rem;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
-        .note {
-            background: rgba(255, 215, 0, 0.1);
-            border-left: 4px solid var(--primary-gold);
-            padding: 1rem;
-            margin: 2rem 0;
-            border-radius: 0 8px 8px 0;
-        }
+    .bootcamp-title {
+      color: var(--primary-gold);
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
 
-        .note p {
-            margin-bottom: 0;
-            color: var(--primary-blue);
-            font-weight: 500;
-        }
+    .bootcamp-btn {
+      background: var(--primary-gold);
+      color: var(--primary-blue) !important;
+      font-weight: 600;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 2rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .bootcamp-btn:hover {
+      background: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+      padding: 5rem 0;
+      background-color: var(--light-gray);
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+      padding-bottom: 50px !important;
+    }
+
+    .review-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border-top: 5px solid var(--primary-gold);
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .reviewer-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50% !important;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 3px solid var(--primary-blue);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-stars {
+      color: var(--primary-gold);
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+      letter-spacing: 2px;
+    }
+
+    .review-meta {
+      font-size: 0.95rem;
+      color: var(--dark-gray);
+      margin-bottom: 0.75rem;
+    }
+
+    .review-result {
+      font-weight: bold;
+      color: var(--primary-blue);
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .review-content {
+      font-size: 1rem;
+      color: var(--text-color);
+      margin-top: 1.5rem;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+
+    .swiper-pagination-bullet {
+      background: var(--primary-blue);
+      opacity: 0.5;
+      width: 12px;
+      height: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--primary-gold);
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    /* Partners Section */
+    .partners-section {
+      padding: 5rem 0;
+      background-color: var(--white);
+      text-align: center;
+    }
+
+    .partner-logo {
+      max-height: 100px;
+      width: auto;
+      margin: 0 auto;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--footer-bg);
+      color: var(--white);
+      padding: 5rem 0 2rem;
+      position: relative;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo img {
+      max-height: 80px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-title {
+      color: var(--primary-gold);
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary-gold);
+    }
+
+    .footer-links a {
+      color: var(--white);
+      display: block;
+      margin-bottom: 0.75rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-gold);
+      transform: translateX(5px);
+    }
+
+    .footer-links a i {
+      margin-right: 8px;
+      color: var(--primary-gold);
+      width: 20px;
+      text-align: center;
+    }
+
+    .subscribe-form {
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .subscribe-form input {
+      flex: 1;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      font-size: 0.9rem;
+    }
+
+    .subscribe-form button {
+      background: var(--primary-gold);
+      color: var(--primary-blue);
+      border: none;
+      padding: 0 15px;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .subscribe-form button:hover {
+      background: var(--secondary-gold);
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Modal Popup */
+    .modalDialog {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99999;
+      opacity: 0;
+      transition: opacity 400ms ease-in;
+      pointer-events: none;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+    }
+
+    .modalDialog:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modalDialog > div {
+      width: 90%;
+      max-width: 450px;
+      position: relative;
+      margin: 10% auto;
+      padding: 2.5rem;
+      border-radius: 15px;
+      background: var(--modal-bg);
+      color: var(--white);
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: modalFadeIn 0.4s ease-out;
+      border: 3px solid var(--primary-gold);
+    }
+
+    .modalDialog h3 {
+      color: var(--primary-gold);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .modalDialog p {
+      margin-bottom: 1.5rem;
+      color: var(--white);
+    }
+
+    .modalDialog input[type="email"],
+    .modalDialog input[type="text"],
+    .modalDialog select {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 8px 0;
+      border: 2px solid var(--primary-gold);
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: var(--primary-blue);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .modalDialog select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23003366'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 20px;
+    }
+
+    .modalDialog button[type="submit"] {
+      background-color: var(--primary-gold);
+      color: var(--primary-blue);
+      font-weight: 600;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    .modalDialog button[type="submit"]:hover {
+      background-color: var(--secondary-blue);
+      color: var(--white);
+    }
+
+    .close {
+      background: var(--primary-gold);
+      color: var(--primary-blue) !important;
+      line-height: 30px;
+      position: absolute;
+      right: -15px;
+      text-align: center;
+      top: -15px;
+      width: 36px;
+      height: 36px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 50% !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .close:hover {
+      background: var(--secondary-blue);
+      color: var(--white) !important;
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    .subscribe-message {
+      margin-top: 15px;
+      color: var(--primary-gold);
+      font-size: 0.95rem;
+      min-height: 20px;
+    }
+
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 51, 102, 0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+    }
+
+    #preloader img {
+      width: 100px;
+      height: 100px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    /* Navigation */
+    .navbar {
+      background-color: var(--header-bg);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--box-shadow);
+      padding: 0.5rem 0;
+    }
+
+    .navbar-brand img {
+      height: 60px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link {
+      color: var(--white) !important;
+      font-weight: 500;
+      padding: 0.5rem 1rem !important;
+      transition: all 0.3s ease;
+      margin: 0 0.25rem;
+      border-radius: 6px !important;
+    }
+
+    .nav-link:hover, .nav-link:focus {
+      background-color: rgba(255, 215, 0, 0.2);
+      color: var(--primary-gold) !important;
+    }
+
+    .dropdown-menu {
+      background-color: var(--header-bg);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .dropdown-item {
+      color: var(--white);
+      padding: 0.75rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: var(--primary-gold);
+      color: var(--primary-blue) !important;
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes underlineExpand {
+      from { transform: scaleX(0); transform-origin: right; }
+      to { transform: scaleX(1); transform-origin: left; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 95%;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .timeline-container:before {
+        left: 40px;
+      }
+      
+      .timeline-item {
+        padding-left: 80px;
+        padding-right: 30px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        padding-left: 80px;
+        padding-right: 30px;
+      }
+      
+      .timeline-dot {
+        left: 30px;
+        right: auto;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: 30px;
+        right: auto;
+      }
+      
+      .timeline-date {
+        left: -10px;
+        right: auto;
+      }
+      
+      .timeline-item:nth-child(even) .timeline-date {
+        left: -10px;
+        right: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 6rem 0 4rem;
+      }
+      
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .about-feature {
+        flex: 1 1 100%;
+      }
+      
+      .timeline-container:before {
+        left: 20px;
+      }
+      
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        padding-left: 60px;
+        padding-right: 20px;
+      }
+      
+      .timeline-dot {
+        left: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .about-container {
+        padding: 2rem 1.5rem;
+      }
+      
+      .bootcamp-container {
+        padding: 2rem 1.5rem;
+      }
+      
+      .modalDialog > div {
+        padding: 1.5rem;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+    }
     </style>
 </head>
-
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="assets/preloader.gif" alt="Loading...">
+    </div>
+
+    <!-- Modal Popup -->
+    <a href="#openModal"></a>
+    <div id="openModal" class="modalDialog">
+      <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <center>
+          <h3>Stay Updated!</h3>
+          <p>Subscribe to get the Registration information about IARCO 2025</p>
+          <form name="submit-to-google-sheet">
+            <input name="email" type="email" placeholder="Email" required>
+            <input name="firstName" type="text" placeholder="Your Full Name">
+            <select name="country" required>
+              <option value="" disabled selected>Select Country</option>
+              <option value="Afghanistan">Afghanistan</option>
+              <option value="Albania">Albania</option>
+              <!-- All other country options -->
+            </select>
+            <button type="submit">Subscribe</button>
+          </form>
+          <span id="subsid" class="subscribe-message"></span>
+        </center>
+      </div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light sticky-top">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
         <div class="container">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand text-uppercase" href="/">
@@ -463,12 +1053,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-chart-bar"></i> About
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i> About</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
-                            <li><a class="dropdown-item active" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
+                            <li><a class="dropdown-item" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
                             <li><a class="dropdown-item" href="partners"><i class="fas fa-handshake"></i> Partners</a></li>
                         </ul>
                     </li>
@@ -476,9 +1064,7 @@
                         <a class="nav-link" href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fab fa-hubspot"></i> Competition Hubs
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fab fa-hubspot"></i> Competition Hubs</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamps</a></li>
                             <li><a class="dropdown-item" href="guidelines"><i class="fas fa-chalkboard-teacher"></i> Guidelines</a></li>
@@ -495,196 +1081,235 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="prizes-hero fade-in">
-        <div class="container">
-            <h1 class="slide-up">
-                <i class="fas fa-trophy trophy-icon"></i> IARCO 2025 Prizes
-            </h1>
-            <p class="slide-up">Discover the exciting rewards awaiting the winners of the International Academic Research Competition. Both Junior and Senior category winners will receive prestigious awards and opportunities.</p>
+    <section class="hero-section">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 20px; height: 20px; top: 20%; left: 10%; animation-delay: 0s;"></div>
+            <div class="floating-element" style="width: 30px; height: 30px; top: 30%; left: 30%; animation-delay: 2s;"></div>
+                        <div class="floating-element" style="width: 25px; height: 25px; top: 70%; left: 20%; animation-delay: 4s;"></div>
+            <div class="floating-element" style="width: 15px; height: 15px; top: 50%; left: 80%; animation-delay: 6s;"></div>
+            <div class="floating-element" style="width: 40px; height: 40px; top: 80%; left: 60%; animation-delay: 8s;"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title"><span>International Academic Research Competition</span></h1>
+            <p class="hero-subtitle">IARCO 2025 Coming Soon!</p>
+            <div class="hero-buttons">
+                <a href="https://iarco.org/2024-winners" class="hero-btn"><i class="fas fa-trophy"></i> 2024 Results</a>
+                <a href="#about" class="hero-btn secondary"><i class="fas fa-info-circle"></i> Learn More</a>
+            </div>
         </div>
     </section>
 
-    <!-- Junior Prizes -->
-    <section class="prize-section">
+    <!-- About IARCO Section -->
+    <section id="about" class="about-section">
         <div class="container">
-            <h2>Junior Category (Grade/Class 7-12 + Gap Year)</h2>
-            
-            <div class="note">
-                <p><i class="fas fa-info-circle"></i> All participants will receive certificates of participation. Winners will be featured on our website and social media.</p>
-            </div>
-            
-            <div class="row">
-                <!-- 1st Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.1s;">
-                        <span class="badge">1st Place</span>
-                        <h3>Champion</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-medal medal-icon"></i> $300
-                        </div>
-                        <ul>
-                            <li>Cash prize of $300 USD</li>
-                            <li>Free enrollment in YRJ Winter Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital winner's badge</li>
-                            <li>Certificate of Excellence</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="about-container">
+                <h2 class="about-title">What is IARCO?</h2>
+                <p>Running through September and November, IARCO is more than just a contest—it's a guided immersion into the research process, designed for experts and newcomers alike!</p>
                 
-                <!-- 2nd Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.2s;">
-                        <span class="badge">2nd Place</span>
-                        <h3>First Runner-Up</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-medal medal-icon"></i> $200
-                        </div>
-                        <ul>
-                            <li>Cash prize of $200 USD</li>
-                            <li>70% discount on YRJ Winter Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital winner's badge</li>
-                            <li>Certificate of Excellence</li>
-                        </ul>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>For All Levels</h4>
+                        <p>Whether you're new to research or have experience, our competition is designed to challenge and inspire you.</p>
                     </div>
-                </div>
-                
-                <!-- 3rd Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.3s;">
-                        <span class="badge">3rd Place</span>
-                        <h3>Second Runner-Up</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-medal medal-icon"></i> $100
-                        </div>
-                        <ul>
-                            <li>Cash prize of $100 USD</li>
-                            <li>50% discount on YRJ Winter Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital winner's badge</li>
-                            <li>Certificate of Excellence</li>
-                        </ul>
+                    <div class="about-feature">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>Creative Freedom</h4>
+                        <p>Explore any research topic of your choice across STEM, Humanities, Economics, and more.</p>
                     </div>
-                </div>
-                
-                <!-- 4th-10th Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.4s;">
-                        <span class="badge">Top 10</span>
-                        <h3>Finalists</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-award medal-icon"></i> Prize
-                        </div>
-                        <ul>
-                            <li>25% discount on YRJ Winter Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital finalist badge</li>
-                            <li>Certificate of Achievement</li>
-                            <li>Invitation to winner's webinar</li>
-                        </ul>
+                    <div class="about-feature">
+                        <i class="fas fa-trophy"></i>
+                        <h4>Prestigious Recognition</h4>
+                        <p>Showcase your work to a global audience and compete for amazing prizes and opportunities.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Senior Prizes -->
-    <section class="prize-section" style="background-color: #f5f7fa;">
+    <!-- Research Topics Section -->
+    <section class="topics-section">
         <div class="container">
-            <h2>Senior Category (Undergraduate/Graduate/Diploma Students)</h2>
-            
-            <div class="note">
-                <p><i class="fas fa-info-circle"></i> All senior participants will receive certificates. Winners may have opportunities for research publication assistance.</p>
+            <div class="section-title">
+                <h2>Research Topics</h2>
             </div>
-            
-            <div class="row">
-                <!-- 1st Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.1s;">
-                        <span class="badge">1st Place</span>
-                        <h3>Champion</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-medal medal-icon"></i> $300
-                        </div>
-                        <ul>
-                            <li>Cash prize of $300 USD</li>
-                            <li>Free enrollment in YRJ Graduate Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital winner's badge</li>
-                            <li>Certificate of Excellence</li>
-                        </ul>
+            <div class="topic-cards">
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <div class="topic-content">
+                        <h3>STEM Fields</h3>
+                        <p>Explore cutting-edge research in Science, Technology, Engineering, and Mathematics. From quantum computing to biomedical breakthroughs.</p>
                     </div>
                 </div>
-                
-                <!-- 2nd Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.2s;">
-                        <span class="badge">2nd Place</span>
-                        <h3>First Runner-Up</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-medal medal-icon"></i> $200
-                        </div>
-                        <ul>
-                            <li>Cash prize of $200 USD</li>
-                            <li>70% discount on YRJ Graduate Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital winner's badge</li>
-                            <li>Certificate of Excellence</li>
-                        </ul>
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="topic-content">
+                        <h3>Humanities</h3>
+                        <p>Dive into literature, philosophy, history, and cultural studies. Examine human experiences and societal developments.</p>
                     </div>
                 </div>
-                
-                <!-- 3rd Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.3s;">
-                        <span class="badge">3rd Place</span>
-                        <h3>Second Runner-Up</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-medal medal-icon"></i> $100
-                        </div>
-                        <ul>
-                            <li>Cash prize of $100 USD</li>
-                            <li>50% discount on YRJ Graduate Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital winner's badge</li>
-                            <li>Certificate of Excellence</li>
-                        </ul>
+                <div class="topic-card">
+                    <div class="topic-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                </div>
-                
-                <!-- 4th-10th Place -->
-                <div class="col-md-3 mb-4">
-                    <div class="prize-card slide-up" style="animation-delay: 0.4s;">
-                        <span class="badge">Top 10</span>
-                        <h3>Finalists</h3>
-                        <div class="prize-amount">
-                            <i class="fas fa-award medal-icon"></i> Prize
-                        </div>
-                        <ul>
-                            <li>25% discount on YRJ Graduate Research Program</li>
-                            <li>Featured on IARCO website</li>
-                            <li>Digital finalist badge</li>
-                            <li>Certificate of Achievement</li>
-                            <li>Invitation to winner's webinar</li>
-                        </ul>
+                    <div class="topic-content">
+                        <h3>Economics & Business</h3>
+                        <p>Investigate economic theories, market trends, business strategies, and financial innovations.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Administrated By Section -->
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Competition Timeline</h2>
+            </div>
+            <div class="timeline-container">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">April 01, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Early Bird Registration Opens</h3>
+                        <p>Early bird registrations open at 23:59 EST. Take advantage of discounted rates!</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">May 28, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Early Bird Registration Closes</h3>
+                        <p>Last day for early bird registrations at 23:59 EST.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">May 29, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Regular Registration Opens</h3>
+                        <p>Regular registration period begins at 23:59 EST.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">August 29, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Regular Registration Closes</h3>
+                        <p>Final deadline for all registrations at 23:59 EST.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">September 10, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Bootcamps Begin</h3>
+                        <p>Participant-exclusive bootcamps start to prepare you for the competition.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">October 1, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Submission Period Opens</h3>
+                        <p>Begin submitting your research assignments at 23:59 EST.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">October 5, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Proposal Deadline</h3>
+                        <p>Final deadline for research proposal submissions at 23:59 EST.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 8 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">October 8, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Qualification Round Winners</h3>
+                        <p>Announcement of qualification round winners at 23:59 EST.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 9 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">October 15, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Video Pitch Deadline</h3>
+                        <p>Final deadline for video pitch submissions at 23:59 EST.</p>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 10 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">October 25, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Winners Announced</h3>
+                        <p>Grand prize winners announced at 23:59 EST.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootcamp Section -->
+    <section class="bootcamp-section">
+        <div class="container">
+            <div class="bootcamp-container">
+                <h2 class="bootcamp-title">Exclusive Bootcamps</h2>
+                <p>At IARCO, we host participant-exclusive bootcamps with experts in the field to prepare you for your research proposal and give you insight into this field. Our bootcamps cover everything from research methodology to presentation skills, ensuring you're fully prepared for the competition.</p>
+                <a href="bootcamps" class="bootcamp-btn"><i class="fas fa-calendar-alt"></i> View Bootcamp Schedule</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Participants Say</h2>
+            </div>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper" id="reviews-container">
+                    <!-- Reviews will be loaded dynamically via JavaScript -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
     <section class="partners-section">
         <div class="container">
-            <h2>Administrated by</h2>
+            <div class="section-title">
+                <h2>Administrated By</h2>
+            </div>
             <div class="row justify-content-center">
-                <div class="col-md-4 mb-4">
-                    <div class="partner-card">
-                        <img src="https://yrjournal.org/fevicon/logo.png" alt="Youth Research Journal" class="img-fluid">
-                        <p>Youth Research Journal (YRJ) is dedicated to promoting young researchers by guiding them through the standard procedures of publishing research articles.</p>
-                        <a href="https://yrjournal.org" target="_blank">Visit YRJ <i class="fas fa-external-link-alt"></i></a>
-                    </div>
+                <div class="col-md-4 text-center">
+                    <img src="https://yrjournal.org/fevicon/logo.png" alt="Youth Research Journal" class="partner-logo">
                 </div>
             </div>
         </div>
@@ -693,85 +1318,215 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div class="col-sm-4 pb-3">
-                    <img src="assets/logo.png" class="img-fluid">
-                    <h4>Contact Us</h4>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/logo.png" alt="IARCO Logo">
+                    <h3 class="footer-title">Contact Us</h3>
                     <p>Contact us at hello@iarco.org!</p>
                     <p><a href="terms-conditions">Terms & Conditions</a></p>
                 </div>
-                <div class="col-sm-4 pb-2">
-                    <h4>Social Media</h4>
-                    <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
-                    <p><a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a></p>
-                    <p><a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> Youtube</a></p>
-                    <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a></p>
+                <div class="footer-links">
+                    <h3 class="footer-title">Social Media</h3>
+                    <a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-f"></i> Facebook</a>
+                    <a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> YouTube</a>
+                    <a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
                 </div>
-                <div class="col-sm-4 pb-1">
-                    <h4>Information</h4>
-                    <p><a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About Competition</a></p>
-                    <p><a href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a></p>
-                    <p><a href="prizes"><i class="fas fa-trophy"></i> Prizes</a></p>
-                    <p><a href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a></p>
-                    <p><a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a></p>
+                <div class="footer-links">
+                    <h3 class="footer-title">Information</h3>
+                    <a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About Competition</a>
+                    <a href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a>
+                    <a href="prizes"><i class="fas fa-trophy"></i> Prizes</a>
+                    <a href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a>
+                    <a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a>
+                </div>
+                <div class="footer-subscribe">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates</p>
+                    <form class="subscribe-form" id="footer-subscribe-form">
+                        <input name="email" type="email" placeholder="Your Email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                    <div class="subscribe-message" id="footer-subscribe-message"></div>
                 </div>
             </div>
-            
-            <div class="col-sm-4 pb-1 footer-subscribe">
-                <h5>Subscribe to Our Newsletter</h5>
-                <form class="subscribe-form" id="footer-subscribe-form">
-                    <input name="email" type="email" placeholder="Your Email" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
-                <div class="subscribe-message" id="footer-subscribe-message"></div>
-            </div>
-            
-            <div class="rights">
+            <div class="copyright">
                 &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script>
-        // Footer subscription form handling
-        const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
-        const Fform = document.forms['footer-subscribe-form'];
-        const FSubId = document.getElementById("footer-subscribe-message");
+    // Preloader
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    });
 
-        Fform.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
-                .then(response => {
-                    FSubId.innerHTML = "Thank You for Subscribing!";
-                    setTimeout(function() {
-                        FSubId.innerHTML = "";
-                    }, 3000);
-                    Fform.reset();
-                })
-                .catch(error => console.error('Error!', error.message));
-        });
+    // Modal Popup
+    $(document).ready(function() {
+        $('a[href="#openModal"]')[0].click();
+    });
 
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const prizeCards = document.querySelectorAll('.prize-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+    // Form Submission
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxwJfZuGHnWBcX4SON32OwzywcjddUbKQl1ZXDUCQLcjlbKmLqcBXt4MJ-gr_g30a0qmg/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const SubId = document.getElementById("subsid");
 
-            prizeCards.forEach(card => {
-                observer.observe(card);
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                SubId.innerHTML = "Thank You! We'll email you about IARCO 2025 dates.";
+                setTimeout(function() {
+                    SubId.innerHTML = "";
+                }, 3000);
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message));
+    });
+
+    // Footer Form Submission
+    const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
+    const Fform = document.forms['footer-subscribe-form'];
+    const FSubId = document.getElementById("footer-subscribe-message");
+
+    Fform.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
+            .then(response => {
+                FSubId.innerHTML = "Thank You for Subscribing!";
+                setTimeout(function() {
+                    FSubId.innerHTML = "";
+                }, 3000);
+                Fform.reset();
+            })
+            .catch(error => console.error('Error!', error.message));
+    });
+
+    // Reviews Slider
+    async function loadReviewsAndFlags() {
+        try {
+            // In a real implementation, you would fetch these from JSON files
+            const reviews = [
+                {
+                    "name": "Alex Johnson",
+                    "institution": "Harvard University",
+                    "category": "STEM",
+                    "year": "2024",
+                    "result": "Gold Medalist",
+                    "rating": 5,
+                    "country": "USA",
+                    "review": "IARCO was an incredible experience that pushed my research skills to new heights. The bootcamps were particularly valuable.",
+                    "image": "https://randomuser.me/api/portraits/men/32.jpg"
+                },
+                {
+                    "name": "Maria Garcia",
+                    "institution": "University of Barcelona",
+                    "category": "Humanities",
+                    "year": "2024",
+                    "result": "Silver Medalist",
+                    "rating": 5,
+                    "country": "Spain",
+                    "review": "The competition was well-organized and the feedback from judges helped me improve my research methodology significantly.",
+                    "image": "https://randomuser.me/api/portraits/women/44.jpg"
+                },
+                {
+                    "name": "James Chen",
+                    "institution": "National University of Singapore",
+                    "category": "Economics",
+                    "year": "2024",
+                    "result": "Finalist",
+                    "rating": 4,
+                    "country": "Singapore",
+                    "review": "Great platform to showcase my research. The timeline was tight but fair, and the resources provided were excellent.",
+                    "image": "https://randomuser.me/api/portraits/men/22.jpg"
+                },
+                {
+                    "name": "Fatima Ahmed",
+                    "institution": "Cairo University",
+                    "category": "STEM",
+                    "year": "2023",
+                    "result": "Bronze Medalist",
+                    "rating": 5,
+                    "country": "Egypt",
+                    "review": "Participating in IARCO opened doors for me. The international exposure and networking opportunities were invaluable.",
+                    "image": "https://randomuser.me/api/portraits/women/63.jpg"
+                },
+                {
+                    "name": "David Kim",
+                    "institution": "Seoul National University",
+                    "category": "Technology",
+                    "year": "2023",
+                    "result": "Gold Medalist",
+                    "rating": 5,
+                    "country": "South Korea",
+                    "review": "The competition was challenging but rewarding. The judges provided insightful comments that helped refine my work.",
+                    "image": "https://randomuser.me/api/portraits/men/75.jpg"
+                }
+            ];
+
+            const flags = {
+                "USA": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='24' height='12'><clipPath id='a'><path d='M0 0v30h60V0z'/></clipPath><clipPath id='b'><path d='M30 15h30v15zv15H0zH0V0zV0h30z'/></clipPath><g clip-path='url(#a)'><path d='M0 0v30h60V0z' fill='#b22234'/><path d='M0 0L60 30M60 0L0 30' stroke='#fff' stroke-width='6'/><path d='M0 0v30h60V0z' fill='#3c3b6e' clip-path='url(#b)'/><path d='M7 0v3.5H0v3h7v3.5h3v-3.5h53v-3H10V0H7zm0 17v3.5H0v3h7V27h3v-3.5h53v-3H10V17H7z' fill='#fff'/></svg>",
+                "Spain": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='24' height='12'><rect width='60' height='30' fill='#c60b1e'/><rect y='6' width='60' height='18' fill='#ffc400'/><rect y='10' width='60' height='10' fill='#c60b1e'/></svg>",
+                "Singapore": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='24' height='12'><rect width='60' height='30' fill='#ed2939'/><rect y='6' width='60' height='6' fill='#fff'/><rect y='18' width='60' height='6' fill='#fff'/><path d='M0 0v30l15-15L0 0z' fill='#fff'/><path d='M5 0v30l5-5V5L5 0z' fill='#ed2939'/></svg>",
+                "Egypt": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='24' height='12'><rect width='60' height='30' fill='#ce1126'/><rect y='10' width='60' height='10' fill='#fff'/><rect y='20' width='60' height='10' fill='#000'/><path d='M0 0v30l15-15L0 0z' fill='#fff'/></svg>",
+                "South Korea": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='24' height='12'><rect width='60' height='30' fill='#fff'/><path d='M30 15a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15zm0 0a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15z' fill='#000'/><path d='M30 15a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5zm0 0a3.75 3.75 0 1 0 0 7.5 3.75 3.75 0 0 0 0-7.5z' fill='#c60c30'/><path d='M30 15l-7.5-7.5m7.5 7.5l7.5-7.5m-7.5 7.5l-7.5 7.5m7.5-7.5l7.5 7.5' stroke='#000' stroke-width='1.5'/><path d='M30 15l-7.5-7.5m7.5 7.5l7.5-7.5m-7.5 7.5l-7.5 7.5m7.5-7.5l7.5 7.5' stroke='#c60c30' stroke-width='1'/></svg>"
+            };
+
+            const container = document.getElementById("reviews-container");
+
+            reviews.forEach(review => {
+                const stars = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+                const flagSVG = flags[review.country] || "";
+
+                const slide = document.createElement("div");
+                slide.className = "swiper-slide";
+                slide.innerHTML = `
+                    <div class="review-card">
+                        <img src="${review.image}" alt="${review.name}" class="reviewer-img" />
+                        <h5>${review.name}</h5>
+                        <p class="review-meta">
+                            ${review.institution}<br>
+                            ${review.category} – ${review.year}<br>
+                            <span class="review-result">${review.result}</span>
+                        </p>
+                        <div class="review-stars">${stars}</div>
+                        <div class="review-country">${review.country} ${flagSVG}</div>
+                        <div class="review-content">"${review.review}"</div>
+                    </div>
+                `;
+                container.appendChild(slide);
             });
-        });
+
+            new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    640: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 }
+                }
+            });
+        } catch (error) {
+            console.error("Error loading reviews:", error);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadReviewsAndFlags);
     </script>
 </body>
 </html>
+            
