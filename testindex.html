@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5LLP0WEBK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-C5LLP0WEBK');
-    </script>
+    <head>
+	    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5LLP0WEBK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-C5LLP0WEBK');
+</script>
+	    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Bootcamps | IARCO - International Research Competition</title>
+    <title>Guidelines | IARCO 2025</title>
     <link rel="icon" href="assets/logo.png"/>
-    <link rel="canonical" href="https://iarco.org/bootcamps"/>
+    <link rel="canonical" href="https://iarco.org/guidelines"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 
-    <!-- Favicon and meta tags -->
+    <!-- Favicon and Meta Tags -->
     <link rel="icon" href="fevicon/favicon.ico"/>
     <link rel="apple-touch-icon" sizes="180x180" href="fevicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="fevicon/android-chrome-192x192.png">
@@ -35,825 +35,612 @@
     <link rel="manifest" href="manifest.json">
 
     <meta name="theme-color" content="#0749b3">
-    <meta name="description" content="IARCO Bootcamps - Exclusive training sessions for participants of the International Academic Research Competition"/>
-    <meta name="keywords" content="research bootcamp, academic training, research competition, IARCO, research methodology"/>
+    <meta name="description" content="Submission guidelines and judging rubric for IARCO 2025 International Research Competition"/>
+    <meta name="keywords" content="research competition guidelines, IARCO submission rules, academic research requirements"/>
     
-    <!-- Social media meta tags -->
-    <meta property="og:title" content="Bootcamps | IARCO - International Research Competition"/>
-    <meta property="og:description" content="Exclusive training sessions for participants of the International Academic Research Competition"/>
-    <meta property="og:url" content="https://iarco.org/bootcamps"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:image" content="https://iarco.org/assets/logo.png"/>
-
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Bootcamps | IARCO - International Research Competition"/>
-    <meta name="twitter:description" content="Exclusive training sessions for participants of the International Academic Research Competition"/>
-    <meta name="twitter:image" content="https://iarco.org/assets/logo.png"/>
-
-    <!-- Bootcamps Page Specific CSS -->
     <style>
-        /* Preloader Styles */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 51, 102, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            flex-direction: column;
-            transition: opacity 0.3s ease;
+      /* Guidelines Page Specific Styles */
+      :root {
+        --primary-blue: #003366;
+        --secondary-blue: #0749b3;
+        --accent-blue: #4b9cd3;
+        --primary-gold: #ffd700;
+        --secondary-gold: #daa520;
+        --white: #ffffff;
+        --light-gray: #f8f9fa;
+        --dark-gray: #343a40;
+      }
+      
+      /* Guidelines Hero Section */
+      .guidelines-hero {
+        background: linear-gradient(135deg, rgba(0, 51, 102, 0.9) 0%, rgba(7, 73, 179, 0.9) 100%), 
+                    url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+        background-size: cover;
+        color: var(--white);
+        padding: 8rem 0 6rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0 !important;
+      }
+      
+      .guidelines-hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        border: none;
+      }
+      
+      .guidelines-hero .highlight {
+        display: inline-block;
+        background-color: var(--primary-gold);
+        color: var(--primary-blue);
+        padding: 0.5rem 1.5rem;
+        border-radius: 30px;
+        font-weight: 700;
+        margin: 0.5rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      
+      .guidelines-hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 2rem;
+        opacity: 0.9;
+      }
+      
+      /* Requirements Section */
+      .requirements-section {
+        padding: 5rem 0;
+        background-color: var(--light-gray);
+      }
+      
+      .requirement-card {
+        background: var(--white);
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 51, 102, 0.08);
+        border-top: 4px solid var(--primary-gold);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+      }
+      
+      .requirement-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0, 51, 102, 0.15);
+      }
+      
+      .requirement-card h3 {
+        color: var(--primary-blue);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.75rem;
+      }
+      
+      .requirement-card h3:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--primary-gold);
+      }
+      
+      .requirement-card ul {
+        padding-left: 1.5rem;
+      }
+      
+      .requirement-card li {
+        margin-bottom: 0.75rem;
+        position: relative;
+        list-style-type: none;
+      }
+      
+      .requirement-card li:before {
+        content: '✓';
+        color: var(--primary-gold);
+        font-weight: bold;
+        display: inline-block;
+        width: 1.5em;
+        margin-left: -1.5em;
+      }
+      
+      /* Rubric Section */
+      .rubric-section {
+        padding: 5rem 0;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .rubric-section:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffd700" opacity="0.1"><path d="M50 0 L100 50 L50 100 L0 50 Z"/></svg>') no-repeat;
+        background-size: contain;
+      }
+      
+      .rubric-section:after {
+        content: '';
+        position: absolute;
+        bottom: -50px;
+        left: -50px;
+        width: 200px;
+        height: 200px;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffd700" opacity="0.1"><circle cx="50" cy="50" r="50"/></svg>') no-repeat;
+        background-size: contain;
+      }
+      
+      .rubric-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 12px;
+        padding: 2.5rem;
+        text-align: center;
+        color: var(--primary-blue);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+      
+      .rubric-card:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--primary-gold);
+      }
+      
+      .rubric-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+      }
+      
+      .rubric-card i {
+        font-size: 3.5rem;
+        color: var(--primary-gold);
+        margin-bottom: 1.5rem;
+        display: inline-block;
+      }
+      
+      .rubric-card h3 {
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      
+      .rubric-card .btn {
+        background: var(--primary-gold);
+        color: var(--primary-blue);
+        font-weight: 600;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        margin-top: 1.5rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+      
+      .rubric-card .btn:hover {
+        background: var(--secondary-blue);
+        color: var(--white);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Partners Section */
+      .partners-section {
+        padding: 5rem 0;
+        background-color: var(--white);
+      }
+      
+      .partner-card {
+        background: var(--light-gray);
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: all 0.3s ease;
+        height: 100%;
+        text-align: center;
+        border: 1px solid rgba(0, 51, 102, 0.1);
+      }
+      
+      .partner-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 51, 102, 0.1);
+        border-color: var(--primary-gold);
+      }
+      
+      .partner-card img {
+        max-height: 100px;
+        width: auto;
+        margin: 0 auto 1.5rem;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+      }
+      
+      .partner-card:hover img {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+      
+      .partner-card h3 {
+        color: var(--primary-blue);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      
+      .partner-card p {
+        color: var(--dark-gray);
+        margin-bottom: 1.5rem;
+      }
+      
+      .partner-card a {
+        color: var(--primary-blue);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-block;
+      }
+      
+      .partner-card a:hover {
+        color: var(--primary-gold);
+        transform: translateX(5px);
+      }
+      
+      /* Responsive Adjustments */
+      @media (max-width: 992px) {
+        .guidelines-hero h1 {
+          font-size: 2.5rem;
         }
-
-        #preloader img {
-            width: 100px;
-            height: 100px;
-            animation: pulse 1.5s infinite ease-in-out;
+        
+        .guidelines-hero .highlight {
+          font-size: 0.9rem;
+          padding: 0.4rem 1.2rem;
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
+        
+        .requirement-card, .rubric-card, .partner-card {
+          padding: 2rem;
         }
-
-        /* Bootcamps Hero Section */
-        .bootcamps-hero {
-            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
-            color: white;
-            padding: 6rem 0 4rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+      }
+      
+      @media (max-width: 768px) {
+        .guidelines-hero {
+          padding: 6rem 0 4rem;
         }
-
-        .bootcamps-hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
-            z-index: 1;
+        
+        .guidelines-hero h1 {
+          font-size: 2rem;
         }
-
-        .bootcamps-hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-            color: white;
+        
+        .guidelines-hero p {
+          font-size: 1rem;
         }
-
-        .bootcamps-hero h1 span {
-            color: #ffd700;
-            display: block;
+        
+        .requirements-section, .rubric-section, .partners-section {
+          padding: 3rem 0;
         }
-
-        .bootcamps-hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            position: relative;
-            z-index: 2;
-            opacity: 0.9;
+      }
+      
+      @media (max-width: 576px) {
+        .guidelines-hero h1 {
+          font-size: 1.8rem;
         }
-
-        /* Bootcamps Info Section */
-        .bootcamps-info {
-            background-color: #f8f9fa;
-            padding: 4rem 0;
+        
+        .requirement-card, .rubric-card, .partner-card {
+          padding: 1.5rem;
         }
-
-        .bootcamps-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            padding: 2.5rem;
-            height: 100%;
-            border-top: 5px solid #003366;
-            transition: all 0.3s ease;
+        
+        .rubric-card i {
+          font-size: 2.5rem;
         }
-
-        .bootcamps-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-        }
-
-        .bootcamps-card h3 {
-            color: #003366;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.75rem;
-        }
-
-        .bootcamps-card h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: #ffd700;
-        }
-
-        .bootcamps-card .lesson-number {
-            display: inline-block;
-            background: #003366;
-            color: #ffd700;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        /* Lessons Section */
-        .lessons-section {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .lesson-item {
-            display: flex;
-            margin-bottom: 3rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-        }
-
-        .lesson-number-container {
-            flex: 0 0 120px;
-            background: #003366;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            font-weight: 700;
-            position: relative;
-        }
-
-        .lesson-number-container span {
-            position: relative;
-            z-index: 2;
-            color: #ffd700;
-        }
-
-        .lesson-number-container:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,51,102,0.9) 0%, rgba(0,26,51,0.9) 100%);
-            z-index: 1;
-        }
-
-        .lesson-content {
-            flex: 1;
-            padding: 2rem;
-        }
-
-        .lesson-content h3 {
-            color: #003366;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .lesson-content p {
-            color: #2c3e50;
-            margin-bottom: 1.5rem;
-        }
-
-        .lesson-topics {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .lesson-topics h4 {
-            color: #003366;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .lesson-topics ul {
-            padding-left: 1.5rem;
-            margin-bottom: 0;
-        }
-
-        .lesson-topics li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            color: #2c3e50;
-        }
-
-        .lesson-topics li:before {
-            content: '•';
-            color: #ffd700;
-            font-size: 1.5rem;
-            position: absolute;
-            left: -1.2rem;
-            top: -0.3rem;
-        }
-
-        /* Team Section */
-        .team-section {
-            padding: 4rem 0;
-            background: #f8f9fa;
-        }
-
-        .team-section h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .team-section h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: #ffd700;
-        }
-
-        .year-selector {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .year-selector select {
-            padding: 0.5rem 1rem;
-            border: 2px solid #003366;
-            border-radius: 6px;
-            background-color: white;
-            color: #003366;
-            font-weight: 600;
-            cursor: pointer;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .year-selector select:hover {
-            background-color: #f8f9fa;
-        }
-
-        .team-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .team-category {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            padding: 2rem;
-        }
-
-        .team-category h3 {
-            color: #003366;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #ffd700;
-        }
-
-        .team-members-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            justify-items: center;
-        }
-
-        /* Center items when there are few members */
-        .team-members-grid.few-items {
-            grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
-            justify-content: center;
-        }
-
-        .team-member {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(255, 215, 0, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(0, 51, 102, 0.1);
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 350px;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-            border: 3px solid #ffd700;
-        }
-
-        .team-member-info h4 {
-            color: #003366;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .team-member-info p {
-            color: #6c757d;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .team-member-info .position {
-            color: #003366;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .team-member-info .institution {
-            font-style: italic;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .bootcamps-hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .bootcamps-hero p {
-                font-size: 1.3rem;
-            }
-
-            .lesson-item {
-                flex-direction: column;
-            }
-
-            .lesson-number-container {
-                flex: 0 0 80px;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .bootcamps-hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .bootcamps-hero p {
-                font-size: 1.1rem;
-            }
-
-            .lesson-number-container {
-                font-size: 2.5rem;
-            }
-
-            .team-member {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .bootcamps-hero {
-                padding: 4rem 0 2rem;
-            }
-
-            .bootcamps-hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .lesson-content {
-                padding: 1.2rem;
-            }
-
-            .team-members-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
+    </head>
 
-<body>
-    <!-- Start Preloader -->
-    <div id="preloader">
-        <img src="assets/preloader.gif" alt="Loading...">
-    </div>
-    <!-- End Preloader -->
+    <body>
 
-    <!-- start nav bar -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light sticky-top">
-        <div class="container">
-            <div class="d-flex align-items-center">
+        <!-- Navigation -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light sticky-top">
+            <div class="container">
+                <div class="d-flex align-items-center">
                 <a class="navbar-brand text-uppercase" href="/">
                     <img src="assets/logo.png" width="80%" height="70px" class="d-inline-block align-top">
                 </a>
-            </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i> About</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
-                            <li><a class="dropdown-item" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
-                            <li><a class="dropdown-item" href="partners"><i class="fas fa-handshake"></i> Partners</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fab fa-hubspot"></i> Competition Hubs</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamps</a></li>
-                            <li><a class="dropdown-item" href="guidelines"><i class="fas fa-chalkboard-teacher"></i> Guidelines</a></li>
-                            <li><a class="dropdown-item" href="2024-finalists"><i class="fas fa-running"></i> 2024 Finalists</a></li>
-                            <li><a class="dropdown-item" href="2024-winners"><i class="fas fa-trophy"></i> 2024 Winners</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="faq"><i class="fas fa-question"></i> FAQs</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--End NavBar section-->
-
-    <!-- Bootcamps Hero Section -->
-    <section class="bootcamps-hero">
-        <div class="container">
-            <h1>EXCLUSIVE <span>BOOTCAMPS</span></h1>
-            <p>Comprehensive research training for IARCO participants</p>
-        </div>
-    </section>
-
-    <!-- Bootcamps Info Section -->
-    <section class="bootcamps-info">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-4">
-                    <div class="bootcamps-card">
-                        <div class="lesson-number">1</div>
-                        <h3>What You'll Learn</h3>
-                        <p>Our bootcamps provide essential training in academic research methodology, proposal writing, and presentation skills specifically designed for competition participants.</p>
-                        <p>These exclusive resources are available for free only to those who join IARCO. Access links and instructions will be provided to all participants.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="bootcamps-card">
-                        <div class="lesson-number">2</div>
-                        <h3>How It Works</h3>
-                        <p>All bootcamp materials are available on-demand, meaning you can watch them whenever it's convenient for you starting from the access date.</p>
-                        <p>While viewing the bootcamps is not mandatory, they contain crucial information that will help you conduct research and write an effective proposal for the competition.</p>
-                    </div>
+             </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i> About
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
+                                <li><a class="dropdown-item" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
+                                <li><a class="dropdown-item" href="partners"><i class="fas fa-handshake"></i> Partners</a></li>
+                              </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fab fa-hubspot"></i> Competition Hubs
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamps</a></li>
+                                <li><a class="dropdown-item" href="guidelines"><i class="fas fa-chalkboard-teacher"></i> Guidelines</a></li>
+                                <li><a class="dropdown-item" href="2024-finalists"><i class="fas fa-running"></i> 2024 Finalists</a></li>
+                                <li><a class="dropdown-item" href="2024-winners"><i class="fas fa-trophy"></i> 2024 Winners</a></li>
+                              </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="faq"><i class="fas fa-question"></i> FAQs</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
 
-    <!-- Lessons Section -->
-    <section class="lessons-section">
-        <div class="container">
-            <h2 class="text-center mb-5">Bootcamp Curriculum</h2>
-            
-            <div class="lesson-item">
-                <div class="lesson-number-container">
-                    <span>1</span>
-                </div>
-                <div class="lesson-content">
-                    <h3>Your First Step Into Academic Research</h3>
-                    <p>This foundational lesson introduces you to the world of academic research, covering the basic concepts and expectations for competition participants.</p>
-                    <div class="lesson-topics">
-                        <h4>Topics Covered:</h4>
-                        <ul>
-                            <li>Understanding academic research standards</li>
-                            <li>Selecting a research topic</li>
-                            <li>Developing research questions</li>
-                            <li>Ethical considerations in research</li>
-                            <li>Introduction to literature review</li>
-                        </ul>
-                    </div>
-                </div>
+        <!-- Guidelines Hero Section -->
+        <section class="guidelines-hero">
+          <div class="container">
+            <h1>IARCO 2025 Submission Guidelines</h1>
+            <span class="highlight">OFFICIAL RULES & REQUIREMENTS</span>
+            <p>Detailed submission guidelines and judging criteria for the International Academic Research Competition 2025</p>
+            <p><em>More detailed submission guidelines will be sent to each participant's registered email.</em></p>
+          </div>
+        </section>
+
+        <!-- Requirements Section -->
+        <section class="requirements-section">
+          <div class="container">
+            <div class="row mb-5">
+              <div class="col-12 text-center">
+                <h2 class="mb-4">Submission Requirements</h2>
+                <p class="lead">All submissions must adhere to the following guidelines to be considered for evaluation</p>
+              </div>
             </div>
             
-            <div class="lesson-item">
-                <div class="lesson-number-container">
-                    <span>2</span>
+            <div class="row g-4">
+              <div class="col-md-6 col-lg-3">
+                <div class="requirement-card">
+                  <h3>General Requirements</h3>
+                  <ul>
+                    <li>Cover page + 1-2 page research proposal</li>
+                    <li>References not included in page limit</li>
+                    <li>No plagiarism allowed</li>
+                    <li>Strict deadline adherence</li>
+                  </ul>
                 </div>
-                <div class="lesson-content">
-                    <h3>Research Methodology</h3>
-                    <p>Learn about different research methodologies and how to select the most appropriate approach for your project.</p>
-                    <div class="lesson-topics">
-                        <h4>Topics Covered:</h4>
-                        <ul>
-                            <li>Quantitative vs. qualitative research</li>
-                            <li>Experimental design</li>
-                            <li>Data collection methods</li>
-                            <li>Sampling techniques</li>
-                            <li>Ensuring validity and reliability</li>
-                        </ul>
+              </div>
+              
+              <div class="col-md-6 col-lg-3">
+                <div class="requirement-card">
+                  <h3>Citation Requirements</h3>
+                  <ul>
+                    <li>Proper citation of all sources</li>
+                    <li>IEEE citation format required</li>
+                    <li>References in alphabetical order</li>
+                    <li>Author's last name as primary sort</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-3">
+                <div class="requirement-card">
+                  <h3>Formatting Requirements</h3>
+                  <ul>
+                    <li>Times New Roman, 12pt font</li>
+                    <li>1 inch (2.5 cm) margins</li>
+                    <li>Single spaced text</li>
+                    <li>PDF format only</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-3">
+                <div class="requirement-card">
+                  <h3>Cover Page Requirements</h3>
+                  <ul>
+                    <li>Full legal name as registered</li>
+                    <li>Clearly stated research topic</li>
+                    <li>Registered email address</li>
+                    <li>Proper title formatting</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Rubric Section -->
+        <section class="rubric-section">
+          <div class="container">
+            <div class="row mb-5">
+              <div class="col-12 text-center">
+                <h2 class="mb-4">Judging Rubrics</h2>
+                <p class="lead">Understand how your submissions will be evaluated by our expert panel</p>
+              </div>
+            </div>
+            
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="rubric-card">
+                  <i class="fas fa-file-alt"></i>
+                  <h3>Research Proposal Rubric</h3>
+                  <p>Evaluation criteria for your written research proposal including originality, methodology, and academic rigor.</p>
+                  <a href="assets/doc/proposal_rubric.pdf" class="btn">Download Rubric</a>
+                </div>
+              </div>
+              
+              <div class="col-md-6">
+                <div class="rubric-card">
+                  <i class="fas fa-video"></i>
+                  <h3>Video Pitch Rubric</h3>
+                  <p>Scoring guidelines for your video presentation including clarity, engagement, and communication skills.</p>
+                  <a href="assets/doc/video_rubric.pdf" class="btn">Download Rubric</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="partners-section">
+          <div class="container">
+            <div class="row mb-5">
+              <div class="col-12 text-center">
+                <h2 class="mb-4">Our Partners</h2>
+                <p class="lead">Collaborating organizations that make IARCO possible</p>
+              </div>
+            </div>
+            
+            <div class="row g-4">
+              <div class="col-md-4">
+                <div class="partner-card">
+                  <img src="https://yrjournal.org/images/Logo.PNG" alt="Youth Research Journal">
+                  <h3>Youth Research Journal</h3>
+                  <p>Promoting young researchers and writers through standard publication procedures, delivering quality content while encouraging independent research.</p>
+                  <a href="https://yrjournal.org">Visit Website <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+              
+              <div class="col-md-4">
+                <div class="partner-card">
+                  <img src="https://yrjournal.org/images/ylrl.jpg" alt="Young Learners Research Lab">
+                  <h3>Young Learners' Research Lab</h3>
+                  <p>Igniting curiosity and fostering creativity among young scholars by connecting them with leading researchers and cutting-edge projects.</p>
+                  <a href="https://www.facebook.com/aysrizon.ylrl">Visit Page <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+              
+              <div class="col-md-4">
+                <div class="partner-card">
+                  <img src="https://pinneducation.org/images/logo.png" alt="Pinn Education">
+                  <h3>Pinn Education</h3>
+                  <p>Leading admissions counseling service helping students worldwide reach their ultimate university admissions goals.</p>
+                  <a href="https://pinneducation.org">Visit Website <i class="fas fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 pb-3">
+                        <img src="assets/logo.png" class="img-fluid">
+                        <h4 style="color: white;">Contact Us</h4>
+                        <p>Contact us at hello@iarco.org!</p>
+                        <p><a href="terms-conditions">Terms & Conditions</a></p>
+                    </div>
+                    <div class="col-sm-4 pb-2">
+                        <h4 style="color: white;">Social Media</h4>
+                        <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
+                         <p><a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a></p>
+                         <p><a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> Youtube</a></p>
+                        <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a> </p>
+                       
+                    </div>
+
+                    <div class="col-sm-4 pb-1">
+                        <h4 style="color: white;">Information</h4>
+                        <p><a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About Competition</a></p>
+                        <p><a href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a></p>
+                        <p><a href="prizes"><i class="fas fa-trophy"></i> Prizes</a></p>
+                        <p><a href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a></p>
+                        <p><a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a></p>
                     </div>
                 </div>
-            </div>
-            
-            <div class="lesson-item">
-                <div class="lesson-number-container">
-                    <span>3</span>
-                </div>
-                <div class="lesson-content">
-                    <h3>Research Proposal</h3>
-                    <p>Master the art of writing a compelling research proposal that clearly communicates your project's value and methodology.</p>
-                    <div class="lesson-topics">
-                        <h4>Topics Covered:</h4>
-                        <ul>
-                            <li>Structure of a research proposal</li>
-                            <li>Writing clear objectives</li>
-                            <li>Literature review techniques</li>
-                            <li>Methodology section</li>
-                            <li>Expected outcomes and impact</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="lesson-item">
-                <div class="lesson-number-container">
-                    <span>4</span>
-                </div>
-                <div class="lesson-content">
-                    <h3>Practice Research Proposal</h3>
-                    <p>Apply what you've learned by analyzing real research proposal examples and getting practical tips for your own submission.</p>
-                    <div class="lesson-topics">
-                        <h4>Topics Covered:</h4>
-                        <ul>
-                            <li>Analyzing successful proposals</li>
-                            <li>Common mistakes to avoid</li>
-                            <li>Formatting and submission guidelines</li>
-                            <li>Peer review process</li>
-                            <li>Final checklist before submission</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Team Section -->
-    <section class="team-section" id="team">
-        <div class="container">
-            <h2>Our Committee & Mentors</h2>
-            
-            <div class="year-selector">
-                <label for="yearSelect">Select Year: </label>
-                <select id="yearSelect">
-                    <!-- Options will be populated by JavaScript -->
-                </select>
-            </div>
-            
-            <div class="team-container" id="teamContainer">
-                <!-- Content will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Start: Partner container-->
-    <section id="Our_Affiliates" class="gallery-section">
-        <div class="container">
-            <h2>Administrated by</h2>
-            <div class="gallery">
-                <a href="https://yrjournal.org" target="_blank"><img src="https://yrjournal.org/fevicon/logo.png" alt="Youth Research Journal"></a>
-            </div>
-        </div>
-    </section>
-    <!--End: Partner container-->
-
-    <!--start footer section-->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 pb-3">
-                    <img src="assets/logo.png" class="img-fluid">
-                    <h4 style="color: white;">Contact Us</h4>
-                    <p>Contact us at hello@iarco.org!</p>
-                    <p><a href="terms-conditions">Terms & Conditions</a></p>
-                </div>
-                <div class="col-sm-4 pb-2">
-                    <h4 style="color: white;">Social Media</h4>
-                    <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
-                    <p><a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a></p>
-                    <p><a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> Youtube</a></p>
-                    <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a></p>
-                </div>
-
-                <div class="col-sm-4 pb-1">
-                    <h4 style="color: white;">Information</h4>
-                    <p><a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About Competition</a></p>
-                    <p><a href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a></p>
-                    <p><a href="prizes"><i class="fas fa-trophy"></i> Prizes</a></p>
-                    <p><a href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a></p>
-                    <p><a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a></p>
-                </div>
-            </div>
-
-            <div class="col-sm-4 pb-1 footer-subscribe">
-                <h5>Subscribe to Our Newsletter</h5>
-                <form class="subscribe-form" id="footer-subscribe-form">
+              <div class="col-sm-4 pb-1 footer-subscribe">
+                  <h5>Subscribe to Our Newsletter</h5>
+                  <form class="subscribe-form" id="footer-subscribe-form">
                     <input name="email" type="email" placeholder="Your Email" required>
                     <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
-                <div class="subscribe-message" id="footer-subscribe-message"></div>
-            </div>
-            
-            <div class="rights">
-                &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/script_CP.js"></script>
-    <script src="js/script.js"></script>
-
-    <!-- Team Members Data Loading Script -->
-    <script>
-        // Define the order of categories we want to display
-        const CATEGORY_ORDER = ['advisoryBoard', 'iarcoCommittee', 'mentors', 'guestSpeakers'];
-        
-        // Function to format category name for display
-        function formatCategoryName(category) {
-            return category
-                .replace(/([A-Z])/g, ' $1')
-                .replace(/^./, str => str.toUpperCase());
-        }
-
-        // Function to fetch JSON data
-        async function fetchTeamData() {
-            try {
-                const response = await fetch('data/team-members.json');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return await response.json();
-            } catch (error) {
-                console.error('Error loading team data:', error);
-                return null;
-            }
-        }
-
-        // Function to create team member HTML
-        function createMemberHTML(member) {
-            return `
-                <div class="team-member">
-                    <img src="${member.image}" alt="${member.name}" class="team-member-img">
-                    <div class="team-member-info">
-                        <h4>${member.name}</h4>
-                        <p class="position">${member.position}</p>
-                        ${member.institution ? `<p class="institution">${member.institution}</p>` : ''}
-                        ${member.bio ? `<p class="bio">${member.bio}</p>` : ''}
-                    </div>
+                  </form>
+                  <div class="subscribe-message" id="footer-subscribe-message"></div>
+              </div>
+                
+                <div class="rights">
+                    &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
                 </div>
-            `;
-        }
+            </div>
+        </footer>
 
-        // Function to render team data
-        function renderTeamData(data, year) {
-            const teamContainer = document.getElementById('teamContainer');
-            
-            if (!data || !data[year]) {
-                teamContainer.innerHTML = '<p class="text-center">No team data available for the selected year.</p>';
-                return;
-            }
-            
-            const yearData = data[year];
-            let teamHTML = '';
-            
-            // Create sections for each category in our predefined order
-            CATEGORY_ORDER.forEach(category => {
-                if (yearData[category] && yearData[category].length > 0) {
-                    const membersHTML = yearData[category].map(createMemberHTML).join('');
-                    const displayName = formatCategoryName(category);
-                    
-                    // Add class for few items to center them
-                    const fewItemsClass = yearData[category].length <= 2 ? 'few-items' : '';
-                    
-                    teamHTML += `
-                        <div class="team-category">
-                            <h3>${displayName}</h3>
-                            <div class="team-members-grid ${fewItemsClass}">
-                                ${membersHTML}
-                            </div>
-                        </div>
-                    `;
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+        
+        <script>
+          // Footer subscription form handling
+          const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec'
+          const Fform = document.forms['footer-subscribe-form']
+          const FSubId = document.getElementById("footer-subscribe-message")
+
+          Fform.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
+              .then(response =>{
+                FSubId.innerHTML = "Thank You for Subscribing us!"
+                setTimeout(function(){
+                   FSubId.innerHTML = ""
+                },3000)
+                Fform.reset()
+              })
+              .catch(error => console.error('Error!', error.message))
+          }
+          
+          // Animate elements on scroll
+          document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = function() {
+              const elements = document.querySelectorAll('.requirement-card, .rubric-card, .partner-card');
+              
+              elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if(elementPosition < screenPosition) {
+                  element.style.opacity = '1';
+                  element.style.transform = 'translateY(0)';
                 }
+              });
+            };
+            
+            // Set initial state
+            const cards = document.querySelectorAll('.requirement-card, .rubric-card, .partner-card');
+            cards.forEach(card => {
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(30px)';
+              card.style.transition = 'all 0.6s ease-out';
             });
             
-            // If no categories have members, show message
-            if (teamHTML === '') {
-                teamHTML = '<p class="text-center">No team members available for the selected year.</p>';
-            }
-            
-            teamContainer.innerHTML = teamHTML;
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Hide preloader when everything is loaded
-            window.addEventListener('load', function() {
-                const preloader = document.getElementById('preloader');
-                if (preloader) {
-                    setTimeout(() => {
-                        preloader.style.opacity = '0';
-                        setTimeout(() => {
-                            preloader.style.display = 'none';
-                        }, 300);
-                    }, 500);
-                }
-            });
-
-            // Load team data and populate year selector
-            const teamData = await fetchTeamData();
-            const yearSelect = document.getElementById('yearSelect');
-            
-            if (teamData) {
-                // Clear existing options
-                yearSelect.innerHTML = '';
-                
-                // Add available years to selector (sorted newest first)
-                Object.keys(teamData).sort().reverse().forEach(year => {
-                    const option = document.createElement('option');
-                    option.value = year;
-                    option.textContent = year;
-                    yearSelect.appendChild(option);
-                });
-                
-                // Set up event listener for year changes
-                yearSelect.addEventListener('change', function() {
-                    renderTeamData(teamData, this.value);
-                });
-                
-                // Load data for the first year initially
-                const initialYear = yearSelect.options[0]?.value;
-                if (initialYear) {
-                    renderTeamData(teamData, initialYear);
-                }
-            } else {
-                document.getElementById('teamContainer').innerHTML = 
-                    '<p class="text-center">Unable to load team data. Please try again later.</p>';
-            }
-
-            // Footer subscription form handling
-            const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
-            const Fform = document.forms['footer-subscribe-form'];
-            const FSubId = document.getElementById("footer-subscribe-message");
-
-            Fform.addEventListener('submit', e => {
-                e.preventDefault();
-                fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
-                    .then(response => {
-                        FSubId.innerHTML = "Thank You for Subscribing us!";
-                        setTimeout(function() {
-                            FSubId.innerHTML = "";
-                        }, 3000);
-                        Fform.reset();
-                    })
-                    .catch(error => console.error('Error!', error.message));
-            });
-        });
-    </script>
-</body>
+            // Animate on load and scroll
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
+          });
+        </script>
+    </body>
 </html>
