@@ -1203,15 +1203,23 @@
             .catch(error => console.error('Error!', error.message));
     });
 
-    // Load Reviews from JSON
-    async function loadReviews() {
+       // Load Reviews and Flags
+    async function loadReviewsAndFlags() {
         try {
-            const response = await fetch('reviews.json');
-            const reviews = await response.json();
+            // Load reviews
+            const reviewsResponse = await fetch('reviews.json');
+            const reviews = await reviewsResponse.json();
+            
+            // Load flags
+            const flagsResponse = await fetch('flagss.json');
+            const flags = await flagsResponse.json();
+            
             const container = document.getElementById("reviews-container");
 
             reviews.forEach(review => {
                 const stars = "★".repeat(review.rating) + "☆".repeat(5 - review.rating);
+                const flagSVG = flags[review.country] || "";
+                
                 const slide = document.createElement("div");
                 slide.className = "swiper-slide";
                 slide.innerHTML = `
@@ -1224,7 +1232,7 @@
                             <span class="review-result">${review.result}</span>
                         </p>
                         <div class="review-stars">${stars}</div>
-                        <div class="review-country">${review.country}</div>
+                        <div class="review-country">${review.country} ${flagSVG}</div>
                         <div class="review-content">"${review.review}"</div>
                     </div>
                 `;
@@ -1245,11 +1253,11 @@
                 }
             });
         } catch (error) {
-            console.error("Error loading reviews:", error);
+            console.error("Error loading data:", error);
         }
     }
 
-    document.addEventListener("DOMContentLoaded", loadReviews);
+    document.addEventListener("DOMContentLoaded", loadReviewsAndFlags);
     </script>
 </body>
 </html>
