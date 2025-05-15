@@ -48,6 +48,98 @@
     <meta name="twitter:title" content="2024 ScoreCard | IARCO - International Research Competition"/>
     <meta name="twitter:description" content="View your competition results and detailed evaluation"/>
     <meta name="twitter:image" content="https://iarco.org/assets/logo.png"/>
+        <!-- Add html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Add PDF styling -->
+    <style>
+        /* PDF-specific styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 20px;
+            }
+            .scorecard-container, .scorecard-content, 
+            .student-info, .score-section, .comments-section {
+                box-shadow: none !important;
+                border: none !important;
+                margin-bottom: 15px !important;
+                page-break-inside: avoid;
+            }
+            .document-link {
+                color: #003366 !important;
+                text-decoration: underline !important;
+                background: none !important;
+                padding: 0 !important;
+            }
+            .search-container, .navbar, footer {
+                display: none !important;
+            }
+            .pdf-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #003366;
+                padding-bottom: 10px;
+            }
+            .pdf-header img {
+                height: 60px;
+            }
+            .pdf-title {
+                text-align: center;
+                flex-grow: 1;
+            }
+            .pdf-title h1 {
+                color: #003366 !important;
+                margin-bottom: 5px !important;
+            }
+            .pdf-title p {
+                color: #666 !important;
+                font-size: 14px !important;
+            }
+            .pdf-footer {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 12px;
+                color: #666;
+                border-top: 1px solid #ddd;
+                padding-top: 10px;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        /* Download Button */
+        .download-btn-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .download-btn {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .download-btn:hover {
+            background-color: #ffd700;
+            color: #003366;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .download-btn i {
+            margin-right: 8px;
+        }
+    </style>
 
     <!-- Scorecard Page Specific CSS -->
     <style>
@@ -597,6 +689,34 @@
             </div>
         </div>
     </section>
+        <!-- Add download button container -->
+    <div class="download-btn-container">
+        <button class="download-btn" id="downloadPdf">
+            <i class="fas fa-file-pdf"></i> Download Scorecard as PDF
+        </button>
+    </div>
+
+    <!-- Add PDF template div (hidden from normal view) -->
+    <div id="pdfTemplate" style="display: none;">
+        <div class="pdf-header">
+            <img src="assets/logo.png" alt="IARCO Logo">
+            <div class="pdf-title">
+                <h1>International Academic Research Competition</h1>
+                <p>Official Scorecard Report</p>
+                <p id="reportDate"></p>
+            </div>
+            <div style="width: 60px;"></div> <!-- Spacer for alignment -->
+        </div>
+
+        <div id="pdfContent">
+            <!-- Content will be inserted here by JavaScript -->
+        </div>
+
+        <div class="pdf-footer">
+            <p>© ${new Date().getFullYear()} International Academic Research Competition. All rights reserved.</p>
+            <p>This document is generated automatically and is valid without signature.</p>
+        </div>
+    </div>
 
     <!-- Start: Partner container-->
     <section id="Our_Affiliates" class="gallery-section">
@@ -1209,6 +1329,77 @@
                     })
                     .catch(error => console.error('Error!', error.message));
             });
+
+
+             // PDF Generation Functionality
+        document.getElementById('downloadPdf').addEventListener('click', generatePdf);
+
+        function generatePdf() {
+            if (!currentStudent) {
+                alert('Please search for and view a student scorecard first.');
+                return;
+            }
+
+            // Update report date
+            const now = new Date();
+            document.getElementById('reportDate').textContent = `Generated: ${now.toLocaleDateString()} at ${now.toLocaleTimeString()}`;
+
+            // Clone the visible content
+            const content = document.getElementById('student-details').cloneNode(true);
+            
+            // Remove elements we don't want in PDF
+            content.querySelectorAll('.search-container, .navbar, footer, .download-btn-container').forEach(el => el.remove());
+            
+            // Insert into PDF template
+            const pdfContent = document.getElementById('pdfContent');
+            pdfContent.innerHTML = '';
+            pdfContent.appendChild(content);
+            
+            // Make charts visible for PDF (they're canvas elements)
+            const pdfTemplate = document.getElementById('pdfTemplate');
+            pdfTemplate.style.display = 'block';
+            
+            // Options for pdf generation
+            const options = {
+                margin: 10,
+                filename: `IARCO_Scorecard_${currentStudent.name.replace(/\s+/g, '_')}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    logging: true,
+                    useCORS: true,
+                    allowTaint: true,
+                    scrollX: 0,
+                    scrollY: 0
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+
+            // Generate PDF
+            html2pdf().from(pdfTemplate).set(options).save().then(() => {
+                // Hide the template again after generation
+                pdfTemplate.style.display = 'none';
+            });
+        }
+
+        // Modify the generateScorecard function to ensure charts are properly handled
+        function generateScorecard(student) {
+            // ... (previous code remains the same until the end of the function)
+            
+            // After creating charts, add a small delay to ensure they're fully rendered
+            setTimeout(() => {
+                // Convert charts to images for PDF
+                if (researchChart) {
+                    const researchCanvas = document.getElementById('researchChart');
+                    researchChart.resize(); // Ensure proper sizing
+                }
+                if (presentationChart) {
+                    const presentationCanvas = document.getElementById('presentationChart');
+                    presentationChart.resize(); // Ensure proper sizing
+                }
+            }, 500);
+        }
         });
     </script>
 </body>
