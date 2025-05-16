@@ -212,10 +212,22 @@
             background: #ffd700;
         }
 
+        .partners-grid-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
         .partners-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
+            justify-items: center;
+        }
+
+        /* Center items when there are 3 or fewer */
+        .partners-grid.few-items {
+            grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+            justify-content: center;
         }
 
         .partner-card {
@@ -227,6 +239,8 @@
             display: flex;
             flex-direction: column;
             border-top: 5px solid #003366;
+            width: 100%;
+            max-width: 350px;
         }
 
         .partner-card:hover {
@@ -650,14 +664,20 @@
             // Create sections for each category in our predefined order
             PARTNER_CATEGORIES.forEach(category => {
                 if (yearData[category] && yearData[category].length > 0) {
-                    const partnersHTMLForCategory = yearData[category].map(createPartnerCard).join('');
+                    const partners = yearData[category];
+                    const partnersHTMLForCategory = partners.map(createPartnerCard).join('');
                     const displayName = formatCategoryName(category);
+                    
+                    // Add 'few-items' class when there are 3 or fewer partners
+                    const fewItemsClass = partners.length <= 3 ? 'few-items' : '';
                     
                     partnersHTML += `
                         <div class="partner-category ${category}">
                             <h2>${displayName}</h2>
-                            <div class="partners-grid">
-                                ${partnersHTMLForCategory}
+                            <div class="partners-grid-container">
+                                <div class="partners-grid ${fewItemsClass}">
+                                    ${partnersHTMLForCategory}
+                                </div>
                             </div>
                         </div>
                     `;
