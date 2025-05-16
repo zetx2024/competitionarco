@@ -130,23 +130,32 @@
             text-align: center;
         }
 
-        .year-selector {
-            display: inline-flex;
+        .year-selector-container {
+            display: flex;
+            justify-content: center;
             align-items: center;
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 1rem;
         }
 
-        .year-selector label {
-            margin-right: 1rem;
+        .year-selector-label {
             font-weight: 600;
             color: #003366;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .year-selector {
+            position: relative;
+            min-width: 200px;
         }
 
         .year-selector select {
-            padding: 0.5rem 1.5rem;
+            width: 100%;
+            padding: 0.75rem 2rem 0.75rem 1.5rem;
             border: 2px solid #003366;
             border-radius: 50px;
             background-color: white;
@@ -156,14 +165,23 @@
             outline: none;
             transition: all 0.3s ease;
             appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23003366'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            background-size: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .year-selector select:hover {
             background-color: #f1f5ff;
+            border-color: #0749b3;
+        }
+
+        .year-selector::after {
+            content: '▼';
+            position: absolute;
+            top: 50%;
+            right: 1rem;
+            transform: translateY(-50%);
+            color: #003366;
+            font-size: 0.8rem;
+            pointer-events: none;
         }
 
         /* Partners Grid Section */
@@ -283,41 +301,56 @@
             position: absolute;
             top: 1rem;
             right: 1rem;
-            background: #ffd700;
-            color: #003366;
             padding: 0.25rem 0.75rem;
             border-radius: 50px;
             font-size: 0.8rem;
             font-weight: 700;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        /* Partner Tier Colors */
+        .partner-type-badge.gold-tier {
+            background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
+        }
+
+        .partner-type-badge.silver-tier {
+            background: linear-gradient(135deg, #c0c0c0 0%, #a8a8a8 100%);
+        }
+
+        .partner-type-badge.bronze-tier {
+            background: linear-gradient(135deg, #cd7f32 0%, #a67c52 100%);
+        }
+
+        .partner-type-badge.platinum-tier {
+            background: linear-gradient(135deg, #e5e4e2 0%, #b8b8b8 100%);
+            color: #003366;
+        }
+
+        .partner-type-badge.premium-tier {
+            background: linear-gradient(135deg, #003366 0%, #001a33 100%);
+            color: white;
         }
 
         /* Partner Categories */
         .partner-category.sponsor .partner-card {
-            border-top-color: #4b9cd3;
-        }
-
-        .partner-category.sponsor .partner-type-badge {
-            background: #4b9cd3;
-            color: white;
+            border-top-color: #003366;
         }
 
         .partner-category.media .partner-card {
-            border-top-color: #daa520;
-        }
-
-        .partner-category.media .partner-type-badge {
-            background: #daa520;
-            color: white;
+            border-top-color: #4b9cd3;
         }
 
         .partner-category.community .partner-card {
             border-top-color: #28a745;
         }
 
-        .partner-category.community .partner-type-badge {
-            background: #28a745;
-            color: white;
+        .partner-category.academic .partner-card {
+            border-top-color: #6f42c1;
+        }
+
+        .partner-category.payment .partner-card {
+            border-top-color: #17a2b8;
         }
 
         /* No Partners Message */
@@ -352,6 +385,16 @@
             .partners-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
+
+            .year-selector-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .year-selector-label {
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -363,19 +406,12 @@
                 font-size: 1.8rem;
             }
 
-            .year-selector {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 1rem;
-            }
-
-            .year-selector label {
-                margin-bottom: 0.5rem;
-                margin-right: 0;
-            }
-
             .partners-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .year-selector {
+                min-width: 100%;
             }
         }
     </style>
@@ -443,11 +479,13 @@
     <!-- Partners Filter Section -->
     <section class="partners-filter">
         <div class="container">
-            <div class="year-selector">
-                <label for="yearSelect">View Partners for:</label>
-                <select id="yearSelect" aria-label="Select year to filter partners">
-                    <!-- Options will be populated by JavaScript -->
-                </select>
+            <div class="year-selector-container">
+                <span class="year-selector-label">View Partners for:</span>
+                <div class="year-selector">
+                    <select id="yearSelect" aria-label="Select year to filter partners">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
             </div>
         </div>
     </section>
@@ -533,7 +571,7 @@
     <!-- Partners Data Loading Script -->
     <script>
         // Define the order of categories we want to display
-        const PARTNER_CATEGORIES = ['sponsor', 'media', 'community', 'academic'];
+        const PARTNER_CATEGORIES = ['sponsor', 'media', 'community', 'academic', 'payment'];
         
         // Function to format category name for display
         function formatCategoryName(category) {
@@ -541,9 +579,20 @@
                 'sponsor': 'Sponsors & Supporters',
                 'media': 'Media Partners',
                 'community': 'Community Partners',
-                'academic': 'Academic Partners'
+                'academic': 'Academic Partners',
+                'payment': 'Payment Processing Partners'
             };
             return names[category] || category.charAt(0).toUpperCase() + category.slice(1);
+        }
+
+        // Function to determine tier class
+        function getTierClass(type) {
+            if (type.toLowerCase().includes('gold')) return 'gold-tier';
+            if (type.toLowerCase().includes('silver')) return 'silver-tier';
+            if (type.toLowerCase().includes('bronze')) return 'bronze-tier';
+            if (type.toLowerCase().includes('platinum')) return 'platinum-tier';
+            if (type.toLowerCase().includes('premium')) return 'premium-tier';
+            return 'premium-tier'; // default
         }
 
         // Function to fetch JSON data
@@ -562,11 +611,12 @@
 
         // Function to create partner card HTML
         function createPartnerCard(partner) {
+            const tierClass = getTierClass(partner.type);
             return `
                 <div class="partner-card">
                     <div class="partner-logo-container">
                         <img src="${partner.logo}" alt="${partner.name}" class="partner-logo">
-                        <span class="partner-type-badge">${partner.type}</span>
+                        <span class="partner-type-badge ${tierClass}">${partner.type}</span>
                     </div>
                     <div class="partner-info">
                         <h3>${partner.name}</h3>
@@ -657,6 +707,9 @@
                     const option = document.createElement('option');
                     option.value = year;
                     option.textContent = year;
+                    if (year === new Date().getFullYear().toString()) {
+                        option.selected = true;
+                    }
                     yearSelect.appendChild(option);
                 });
                 
@@ -665,11 +718,9 @@
                     renderPartnersData(partnersData, this.value);
                 });
                 
-                // Load data for the first year initially
-                const initialYear = yearSelect.options[0]?.value;
-                if (initialYear) {
-                    renderPartnersData(partnersData, initialYear);
-                }
+                // Load data for the selected year initially
+                const initialYear = yearSelect.value;
+                renderPartnersData(partnersData, initialYear);
             } else {
                 document.getElementById('partnersContainer').innerHTML = `
                     <div class="no-partners">
