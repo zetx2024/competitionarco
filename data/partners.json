@@ -22,7 +22,16 @@
         "logo": "https://yrjournal.org/images/ylrl.jpg",
         "website": "https://www.facebook.com/aysrizon.ylrl",
         "description": "A dynamic platform driving research and innovation by connecting young scholars with leading researchers and cutting-edge projects. Fostering curiosity and creativity to build the next generation of academic leaders.",
-        "type": "Research Partner"
+        "type": "Platinum Partner"
+      }
+    ],
+    "payment": [
+      {
+        "name": "Stripe Payments",
+        "logo": "https://via.placeholder.com/300x150?text=Stripe+Payments",
+        "website": "#",
+        "description": "Our secure payment processing partner handling all competition registration fees and transactions with industry-leading security standards.",
+        "type": "Premium Payment Partner"
       }
     ]
   },
@@ -34,6 +43,15 @@
         "website": "https://yrjournal.org",
         "description": "In our inaugural year, Youth Research Journal partnered to promote young researchers and establish publishing standards for student work.",
         "type": "Founding Partner"
+      }
+    ],
+    "payment": [
+      {
+        "name": "PayPal",
+        "logo": "https://via.placeholder.com/300x150?text=PayPal",
+        "website": "#",
+        "description": "Our initial payment processing partner that helped establish secure transaction capabilities for the competition.",
+        "type": "Bronze Payment Partner"
       }
     ]
   },
@@ -52,6 +70,13 @@
         "website": "https://pinneducation.org",
         "description": "Expanding our collaboration to offer university admissions guidance to competition winners and participants.",
         "type": "Gold Sponsor"
+      },
+      {
+        "name": "Tech Innovations Inc.",
+        "logo": "https://via.placeholder.com/300x150?text=Tech+Innovations",
+        "website": "#",
+        "description": "New sponsor for 2025 providing cutting-edge technology resources for competition participants.",
+        "type": "Silver Sponsor"
       }
     ],
     "media": [
@@ -69,14 +94,30 @@
         "logo": "https://yrjournal.org/images/ylrl.jpg",
         "website": "https://www.facebook.com/aysrizon.ylrl",
         "description": "Expanding our research partnership to include mentorship programs for competition finalists.",
-        "type": "Research Partner"
+        "type": "Platinum Partner"
       },
       {
         "name": "Global STEM Initiative",
         "logo": "https://via.placeholder.com/300x150?text=Global+STEM",
         "website": "#",
         "description": "New academic partner focusing on supporting STEM research projects in the competition.",
-        "type": "STEM Partner"
+        "type": "Gold Partner"
+      }
+    ],
+    "payment": [
+      {
+        "name": "Stripe Payments",
+        "logo": "https://via.placeholder.com/300x150?text=Stripe+Payments",
+        "website": "#",
+        "description": "Continuing as our primary payment processor with enhanced features for 2025 competition registrations.",
+        "type": "Platinum Payment Partner"
+      },
+      {
+        "name": "Payoneer",
+        "logo": "https://via.placeholder.com/300x150?text=Payoneer",
+        "website": "#",
+        "description": "New payment partner for 2025 providing additional payment options for international participants.",
+        "type": "Silver Payment Partner"
       }
     ]
   }
