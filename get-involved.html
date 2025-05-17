@@ -1,1 +1,523 @@
-get-involved
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become An Ambassador | International Academic Research Competition (IARCO)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #0749b3;
+            --accent-blue: #4b9cd3;
+            --primary-gold: #ffd700;
+            --secondary-gold: #daa520;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #343a40;
+            --text-color: #2c3e50;
+            --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-gray);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #001a33 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 0 0 12px 12px;
+            box-shadow: var(--box-shadow);
+        }
+
+        header h1 {
+            color: var(--primary-gold);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary-gold);
+        }
+
+        /* Ambassador Section */
+        .ambassador-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-blue);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+
+        .program-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .program-intro h3 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .program-intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary-gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefit-card h3 i {
+            margin-right: 10px;
+            color: var(--primary-gold);
+            font-size: 1.6rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            background-color: rgba(255, 215, 0, 0.1);
+            padding: 1rem;
+            border-left: 4px solid var(--primary-gold);
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+
+        /* Perks Section */
+        .perks-section {
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.05) 0%, rgba(0, 26, 51, 0.05) 100%);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .perks-section h3 {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+
+        .perks-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .perk-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .perk-item i {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .perk-item p {
+            color: var(--text-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #001a33 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .cta-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-gold);
+            color: var(--primary-blue) !important;
+            font-weight: 600;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-blue);
+            color: var(--white) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            max-width: 150px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-gold);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .program-intro h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 0;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .perks-section {
+                padding: 2rem;
+            }
+
+            .cta-section h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .program-intro h3 {
+                font-size: 1.4rem;
+            }
+
+            .benefit-card {
+                padding: 1.5rem;
+            }
+
+            .perks-section {
+                padding: 1.5rem;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+
+            .cta-section h3 {
+                font-size: 1.6rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Become An Ambassador</h1>
+            <p>Join the International Academic Research Competition (IARCO) Global Ambassador Program</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Program Introduction -->
+        <section class="ambassador-section">
+            <div class="program-intro">
+                <h3>Represent IARCO in Your Community</h3>
+                <p>As an IARCO Student Ambassador, you'll help promote elite academic competitions and research opportunities to students in your network while gaining valuable leadership experience and exclusive benefits.</p>
+            </div>
+
+            <!-- Benefits Grid -->
+            <div class="section-title">
+                <h2>Ambassador Benefits</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3><i class="fas fa-handshake"></i> The Program</h3>
+                    <p>As an IARCO ambassador, you would be helping to promote elite student events and competitions to your community!</p>
+                    <div class="highlight">
+                        Perfect opportunity to develop leadership skills and enhance your college applications.
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <h3><i class="fas fa-award"></i> What You Earn</h3>
+                    <p>USD $50 / 1 hour of Crimson mentoring with leadership/college admission experts for every 20 sign-ups you generate!</p>
+                    <div class="highlight">
+                        Official Ambassador Certificate to stand out on your college and scholarship applications!
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <h3><i class="fas fa-globe"></i> Global Impact</h3>
+                    <p>Join a network of exceptional students worldwide promoting academic excellence and research opportunities.</p>
+                    <div class="highlight">
+                        Make a difference by helping students discover transformative educational experiences.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exclusive Perks -->
+            <div class="perks-section">
+                <h3>Exclusive Ambassador Perks</h3>
+                <div class="perks-list">
+                    <div>
+                        <div class="perk-item">
+                            <i class="fas fa-book-open"></i>
+                            <p>Access to exclusive educational resources and research materials</p>
+                        </div>
+                        <div class="perk-item">
+                            <i class="fas fa-users"></i>
+                            <p>Global community with highly-accomplished and motivated students</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="perk-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <p>Personal development workshops and training sessions</p>
+                        </div>
+                        <div class="perk-item">
+                            <i class="fas fa-briefcase"></i>
+                            <p>Internship opportunities (for outstanding ambassadors)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="perk-item">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <p>Personalized letter of recommendation (for ambassadors who help with >3 events)</p>
+                        </div>
+                        <div class="perk-item">
+                            <i class="fas fa-network-wired"></i>
+                            <p>Networking opportunities with academic leaders and researchers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3>Ready to Become an IARCO Ambassador?</h3>
+                <p>Join our global network of student leaders and help promote academic excellence while earning valuable rewards and experiences for your future.</p>
+                <a href="#" class="btn pulse">Apply Now <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <img src="assets/logo.png" alt="IARCO Logo" class="footer-logo">
+                <div class="footer-links">
+                    <a href="what-is-iarco">About</a>
+                    <a href="timeline">Timeline</a>
+                    <a href="prizes">Prizes</a>
+                    <a href="faq">FAQs</a>
+                    <a href="terms-conditions">Terms</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/iarco.org" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/intresearchcomp" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@iarcomp" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/company/iarco" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <p class="copyright">&copy; 2024 International Academic Research Competition (IARCO). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
