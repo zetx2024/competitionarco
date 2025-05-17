@@ -4,55 +4,49 @@
 
     <url>
       <loc>https://iarco.org</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.00</priority>
     </url>
     <url>
-      <loc>https://iarco.org/what-is-iarco.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
+      <loc>https://regi.iarco.org/</loc>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.00</priority>
+    </url>
+    <url>
+      <loc>https://iarco.org/prizes</loc>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.80</priority>
     </url>
     <url>
-      <loc>https://iarco.org/prizes.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
+      <loc>https://iarco.org/guidelines</loc>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.80</priority>
     </url>
     <url>
-      <loc>https://iarco.org/timeline.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
+      <loc>https://iarco.org/bootcamps</loc>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.80</priority>
     </url>
     <url>
-      <loc>https://iarco.org/guidelines.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
+      <loc>https://cert.iarco.org/</loc>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.80</priority>
     </url>
     <url>
-      <loc>https://iarco.org/bootcamps.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
+      <loc>https://iarco.org/faq</loc>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.80</priority>
     </url>
     <url>
-      <loc>https://iarco.org/premium-webinar.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.80</priority>
-    </url>
-    <url>
-      <loc>https://iarco.org/faq.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>0.80</priority>
-    </url>
-    <url>
-      <loc>https://iarco.org/terms-conditions.html</loc>
-      <lastmod>2024-09-14T17:01:57+00:00</lastmod>
+      <loc>https://iarco.org/terms-conditions</loc>
+      <lastmod>2025-05-18T02:01:57+00:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>0.80</priority>
     </url>
