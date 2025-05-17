@@ -6,12 +6,12 @@
     <title>Privacy Policy | International Academic Research Competition (IARCO)</title>
     <link rel="icon" href="assets/logo.png"/>
     <link rel="canonical" href="https://iarco.org/privacy-policy"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="css/main.css">
+    <link href="css/main.css" rel="stylesheet">
     
     <style>
         :root {
@@ -66,13 +66,6 @@
             border-radius: 2px;
         }
         
-        .privacy-header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-        
         /* Main Content Container */
         .privacy-container {
             max-width: 1200px;
@@ -87,24 +80,11 @@
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
             margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .privacy-content:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary-gold), var(--secondary-gold));
         }
         
         /* Section Styles */
         .privacy-section {
             margin-bottom: 3rem;
-            position: relative;
         }
         
         .privacy-section h2 {
@@ -162,151 +142,6 @@
             padding: 1.5rem;
             margin: 1.5rem 0;
             border-radius: 0 8px 8px 0;
-            position: relative;
-        }
-        
-        .highlight-box:before {
-            content: '\f05a';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            color: var(--primary-gold);
-            position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
-            font-size: 1.2rem;
-        }
-        
-        .highlight-box p {
-            padding-left: 2rem;
-            margin-bottom: 0;
-        }
-        
-        /* Icon Styles */
-        .privacy-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: var(--primary-gold);
-            border-radius: 50%;
-            margin-right: 1rem;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .privacy-icon:hover {
-            transform: rotate(15deg) scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Footer Styles */
-        .privacy-footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 3rem 0;
-            text-align: center;
-            border-radius: 12px 12px 0 0;
-        }
-        
-        .privacy-footer a {
-            color: var(--primary-gold);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .privacy-footer a:hover {
-            color: var(--white);
-            text-decoration: underline;
-        }
-        
-        .footer-logo {
-            max-height: 80px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-social {
-            margin: 1.5rem 0;
-        }
-        
-        .footer-social a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--primary-gold);
-            border-radius: 50%;
-            margin: 0 0.5rem;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            background-color: var(--primary-gold);
-            color: var(--primary-blue);
-            transform: translateY(-3px);
-        }
-        
-        .footer-copyright {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-            color: var(--primary-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Animation Classes */
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .slide-up {
-            animation: slideUp 0.8s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
         
         /* Responsive Adjustments */
@@ -355,10 +190,6 @@
                 font-size: 1.8rem;
             }
             
-            .privacy-header p {
-                font-size: 1rem;
-            }
-            
             .privacy-content {
                 padding: 1.25rem;
             }
@@ -366,44 +197,115 @@
             .highlight-box {
                 padding: 1rem;
             }
-            
-            .highlight-box:before {
-                top: 1rem;
-                left: 1rem;
-            }
-            
-            .highlight-box p {
-                padding-left: 1.75rem;
-            }
+        }
+
+        /* Navbar styles to match existing */
+        .navbar {
+            background-color: rgba(0, 51, 102, 0.95);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+        }
+
+        .navbar-brand img {
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            transition: all 0.3s ease;
+            margin: 0 0.25rem;
+        }
+
+        .nav-link:hover, .nav-link:focus {
+            background-color: rgba(255, 215, 0, 0.2);
+            color: var(--primary-gold) !important;
+        }
+
+        .dropdown-menu {
+            background-color: rgba(0, 51, 102, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-item {
+            color: var(--white);
+            padding: 0.75rem 1.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--primary-gold);
+            color: var(--primary-blue) !important;
+        }
+
+        /* Footer styles to match existing */
+        footer {
+            background-color: rgba(0, 51, 102, 0.97);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            border-radius: 12px 12px 0 0;
+        }
+
+        footer a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        .rights {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--primary-blue);">
+    <!-- Navigation - Matched exactly to terms-conditions page -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="assets/logo.png" alt="IARCO Logo" height="50">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand text-uppercase" href="/">
+                    <img src="assets/logo.png" width="80%" height="70px" class="d-inline-block align-top">
+                </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-chart-bar"></i> About</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="what-is-iarco"><i class="fas fa-question"></i> What is IARCO?</a></li>
+                            <li><a class="dropdown-item" href="prizes"><i class="fas fa-trophy"></i> Prizes</a></li>
+                            <li><a class="dropdown-item" href="partners"><i class="fas fa-handshake"></i> Partners</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about"><i class="fas fa-info-circle"></i> About</a>
+                        <a class="nav-link" href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fab fa-hubspot"></i> Competition Hubs</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamps</a></li>
+                            <li><a class="dropdown-item" href="guidelines"><i class="fas fa-chalkboard-teacher"></i> Guidelines</a></li>
+                            <li><a class="dropdown-item" href="2024-finalists"><i class="fas fa-running"></i> 2024 Finalists</a></li>
+                            <li><a class="dropdown-item" href="2024-winners"><i class="fas fa-trophy"></i> 2024 Winners</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="competition"><i class="fas fa-trophy"></i> Competition</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="privacy-policy"><i class="fas fa-shield-alt"></i> Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact"><i class="fas fa-envelope"></i> Contact</a>
+                        <a class="nav-link" href="faq"><i class="fas fa-question"></i> FAQs</a>
                     </li>
                 </ul>
             </div>
@@ -411,231 +313,162 @@
     </nav>
 
     <!-- Header Section -->
-    <header class="privacy-header fade-in">
+    <header class="privacy-header">
         <div class="container">
-            <h1 class="slide-up"><i class="fas fa-shield-alt privacy-icon"></i> Privacy Policy</h1>
-            <p class="slide-up">Your privacy is important to us. This policy explains how we collect, use, and protect your information.</p>
+            <h1>Privacy Policy</h1>
+            <p>International Academic Research Competition (IARCO) 2025</p>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="privacy-container">
-        <div class="privacy-content fade-in">
+        <div class="privacy-content">
             <div class="highlight-box">
-                <p>International Academic Research Competition (IARCO) is committed to protecting your privacy. This policy applies to all IARCO programs, websites, and interactions.</p>
+                <p>International Academic Research Competition (IARCO) is committed to protecting your privacy. This policy explains how we collect, use, and protect your information.</p>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-scroll privacy-icon"></i> Introduction</h2>
+                <h2>1. Introduction</h2>
                 <p>Your privacy is important to IARCO. This policy explains what, how, and why we collect, use, manage, export, store, and how to delete your information, and what choices you have with respect to your information.</p>
                 
-                <p>When we refer to "the Competition", we mean the International Academic Research Competition, which is the event that you are registering for. When we refer to the "IARCO Team", we mean the organizing committee that acts as the controller or processor of your information.</p>
-                
-                <p>"Personal Data" is information relating to an identified or identifiable natural person. We communicate our privacy policy to IARCO employees and enforce our policies within the organizing committee.</p>
+                <p>When we refer to "the Competition", we mean the International Academic Research Competition. When we refer to the "IARCO Team", we mean the organizing committee that acts as the controller or processor of your information.</p>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-globe privacy-icon"></i> Applicability</h2>
-                <p>This Privacy Policy applies to all of IARCO's programs and includes hello@iarco.org, our Facebook page, Instagram page, and all other IARCO websites and social media platforms (collectively, the "Websites") and other interactions (e.g., customer service inquiries, emails, newsletters, etc.) you may have with IARCO.</p>
+                <h2>2. Applicability</h2>
+                <p>This Privacy Policy applies to all of IARCO's programs and includes hello@iarco.org, our Facebook page, Instagram page, and all other IARCO websites and social media platforms.</p>
                 
                 <div class="highlight-box">
-                    <p>If you do not agree with the terms, do not access or use the Websites or interact with any other aspect of IARCO's programs, including attending our events either in person or online.</p>
+                    <p>If you do not agree with the terms, do not access or use the Websites or interact with any other aspect of IARCO's programs.</p>
                 </div>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-database privacy-icon"></i> Why We Collect Data</h2>
-                <p>You may be asked to provide your personal information anytime you are in contact with IARCO. We use the information we collect for the following purposes:</p>
+                <h2>3. Why We Collect Data</h2>
+                <p>We use the information we collect for the following purposes:</p>
                 
-                <h3>1. Service Improvement</h3>
-                <p>We use your information to ensure our services are working as intended, such as troubleshooting issues that you report to us. And we use your information to make improvements to IARCO's programs.</p>
+                <h3>3.1 Service Improvement</h3>
+                <p>We use your information to ensure our services are working as intended and to make improvements to IARCO's programs.</p>
                 
-                <h3>2. Program Development</h3>
+                <h3>3.2 Program Development</h3>
                 <p>We use the information we collect in existing programs to help us develop new ones.</p>
                 
-                <h3>3. Analytics</h3>
-                <p>We use data for analytics to understand how our services are used. For example, we analyze data about your visits to our sites to optimize our programs.</p>
+                <h3>3.3 Analytics</h3>
+                <p>We analyze data about your visits to our sites to optimize our programs.</p>
                 
-                <h3>4. Communication</h3>
-                <p>We use the information we collect, like your email address, to interact with you directly. For example, your email address will be used to tell you when your registration is successful and release details necessary for your participation in the competition.</p>
-                
-                <h3>5. Security</h3>
-                <p>We use the information to help improve the safety and reliability of our services. This includes detecting, preventing, and responding to fraud, abuse, security risks, and technical issues.</p>
-                
-                <h3>6. Financial Transactions</h3>
-                <p>We use the information to bill and collect money owed to us for our programs and events. This includes sending you emails, invoices, and receipts.</p>
-                
-                <h3>7. Marketing Communications</h3>
-                <p>When you agree to this privacy policy, you agree that our sponsors, partners, and the IARCO committee can send you newsletters/admissions news/promotions.</p>
+                <h3>3.4 Communication</h3>
+                <p>We use your email address to communicate important information about your participation.</p>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-info-circle privacy-icon"></i> Your Information</h2>
+                <h2>4. Your Information</h2>
                 <p>IARCO may collect data and information in a variety of ways:</p>
                 
-                <h3>1. Registration Information</h3>
-                <p>Some information is required to register for the Competition, such as your real name, email address (not a school email address), school name, country of residence, age, your telephone number. This is the only information you have to provide to create an account with us. This information is treated as personally identifiable information.</p>
+                <h3>4.1 Registration Information</h3>
+                <p>Required information includes your name, email address, school name, country of residence, age, and telephone number.</p>
                 
-                <h3>2. Usage Information</h3>
-                <p>a. <strong>Log data:</strong> Our servers automatically collect information when you access or use our Websites or Services and record it in log files. This log data may include the Internet Protocol (IP) address, the address of the web page visited before using the Website or Services, browser type and settings, the date and time the Services were used, information about your devices, and cookie data.</p>
-                
-                <p>b. <strong>Location information:</strong> We receive information from you that helps us approximate your location. Unless you provide consent specifically for a location-based service, this type of information is only collected in an anonymized or aggregated format.</p>
-                
-                <h3>3. Cookie Information</h3>
-                <p>IARCO uses cookies and similar technologies in our Websites that help us collect other information. This type of information is only collected in an anonymized or aggregated format and is not personally identifiable.</p>
-                
-                <h3>4. Additional Information</h3>
-                <p>We receive other information when submitted to our Websites if you participate in an activity or event, request help or support, interact with our social media accounts, or otherwise communicate with IARCO.</p>
+                <h3>4.2 Usage Information</h3>
+                <p>We automatically collect information when you access or use our Websites including IP address, browser type, and date/time of access.</p>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-camera privacy-icon"></i> Intellectual Property and Recordings</h2>
-                <p>By participating in the Competition, you consent to be photographed and video-recorded during webinars/workshops, and have your research submission and presentation recorded and published on IARCO's Websites.</p>
-                
-                <p>As a registrant in the Competition, you may be required to produce materials including, but not limited to: reports, slide presentations, and vocal presentations over video conferencing software. By participating in the Competition, you consent to such materials to assist it in developing future events and for event promotion purposes.</p>
+                <h2>5. Intellectual Property and Recordings</h2>
+                <p>By participating in the Competition, you consent to be photographed and video-recorded during webinars/workshops.</p>
                 
                 <div class="highlight-box">
-                    <p>Some examples of these uses are: publishing materials on IARCO's Websites, announcing prize-winning team members, and including recordings in future promotional content for the Competition.</p>
+                    <p>Prize-winning team members will have their name, age, and country announced on IARCO's Websites.</p>
                 </div>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-cookie privacy-icon"></i> Cookies and Other Technologies</h2>
-                <p>To help analyze how you and other visitors navigate the Websites and help diagnose any problems with IARCO's servers, we, with assistance from third-party analytics service providers, may collect certain information when you visit our site.</p>
-                
-                <p>We may use cookies, pixel tags, web beacons, clear GIFs, or other similar tools on our websites or in our email messages to assist us in collecting and analyzing such information. We use this information to provide better, more relevant content on our site, to identify and fix problems, and to improve your overall experience on our websites.</p>
-                
-                <p>If you do not want information collected through the use of these technologies, there is a simple procedure in most browsers that allows you to automatically decline many of these technologies, or to be given the choice of declining or accepting them.</p>
+                <h2>6. Cookies and Other Technologies</h2>
+                <p>We use cookies and similar technologies to analyze how visitors navigate our Websites and to improve your experience.</p>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-envelope privacy-icon"></i> Email and Other Communications</h2>
-                <p>We may use your personal information to send important notices, such as communications about updates for IARCO events you have registered for and changes to our terms, conditions, and policies. We will do this via the email address you provide when you register. Because this information is important to your interaction with IARCO, you may not opt out of receiving these communications.</p>
-                
-                <p>We will also want to contact you about IARCO programs, general competition announcements, website updates, and special offers from our sponsors and partners. This type of communication requires your consent, and you may opt out of such email communications at any time by clicking the "unsubscribe" link found at the bottom of those emails.</p>
+                <h2>7. Sharing Your Information</h2>
+                <p>IARCO may share information with corporate sponsors and when required by law.</p>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-share-alt privacy-icon"></i> Sharing Your Information</h2>
-                <p>This section describes how IARCO may share and disclose Information.</p>
-                
-                <h3>1. Customer's Instructions</h3>
-                <p>IARCO will solely share and disclose user Personal Data in accordance with your instructions and in compliance with applicable law.</p>
-                
-                <h3>2. Corporate Sponsors</h3>
-                <p>IARCO may share other information with its corporate sponsors, parents, and/or subsidiaries.</p>
-                
-                <h3>3. Aggregated or De-identified Data</h3>
-                <p>We may disclose or use aggregated or de-identified other information for any purpose.</p>
-                
-                <h3>4. To Comply with Laws</h3>
-                <p>If we receive a request for information, we may disclose Other Information if we reasonably believe disclosure is in accordance with or required by any applicable law, regulation, or legal process.</p>
-                
-                <h3>5. To Enforce our Rights</h3>
-                <p>We may disclose other information to protect and defend the rights, property, or safety of IARCO or third parties, including enforcing contracts or policies, or in connection with investigating and preventing fraud or security issues.</p>
-                
-                <h3>6. With Consent</h3>
-                <p>IARCO may share other information with third parties, when we have consent to do so.</p>
-            </div>
-
-            <div class="privacy-section">
-                <h2><i class="fas fa-user-cog privacy-icon"></i> Your Rights</h2>
-                <p>If you reside in the European Economic Area, you have the right under the General Data Protection Regulation to request from IARCO access to and rectification or erasure of your Personal Data, data portability, restriction of processing of your Personal Data, and the right to object to the processing of your Personal Data.</p>
+                <h2>8. Your Rights</h2>
+                <p>You have the right to request access to or deletion of your Personal Data.</p>
                 
                 <div class="highlight-box">
-                    <p>To request access to or rectification, portability, or erasure of your Personal Data, or to cancel your registration, contact us directly at: hello@iarco.org</p>
+                    <p>To request access to or deletion of your Personal Data, contact us at: hello@iarco.org</p>
                 </div>
-                
-                <p>Please feel free to contact IARCO if you have any questions about this Privacy Policy or IARCO's practices, or if you are seeking to exercise any of your statutory rights.</p>
-                
-                <h3>EU Data Protection Authority</h3>
-                <p>Subject to applicable law, you also have the right to restrict IARCO's use of other information that constitutes your personal identifiable data and lodge a complaint with your local data protection authority.</p>
             </div>
 
             <div class="privacy-section">
-                <h2><i class="fas fa-sync-alt privacy-icon"></i> Modifications</h2>
-                <p>We may change this Privacy Policy at any time. The most recent version of the Privacy Policy is reflected by the version date located at the top of this Privacy Policy. All updates are effective immediately upon notice, which we may give by any means, including, but not limited to, by posting a revised version of this Privacy Policy or other notice on the Websites.</p>
-                
-                <p>We encourage you to review this Privacy Policy often to stay informed of changes that may affect you, as your continued use of the Website signifies your continuing consent to be bound by this Privacy Policy.</p>
+                <h2>9. Modifications</h2>
+                <p>We may change this Privacy Policy at any time. Updates are effective immediately upon notice.</p>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="privacy-footer fade-in">
+    <!-- Footer - Matched exactly to terms-conditions page -->
+    <footer>
         <div class="container">
-            <img src="assets/logo-white.png" alt="IARCO Logo" class="footer-logo">
-            <p>International Academic Research Competition (IARCO)</p>
-            
-            <div class="footer-social">
-                <a href="https://facebook.com/iarco.org" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/iarco_org" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/intresearchcomp" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com/company/iarco" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://youtube.com/@iarcomp" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <a href="about" class="mx-3 my-1">About Us</a>
-                        <a href="competition" class="mx-3 my-1">Competition</a>
-                        <a href="timeline" class="mx-3 my-1">Timeline</a>
-                        <a href="faq" class="mx-3 my-1">FAQs</a>
-                        <a href="contact" class="mx-3 my-1">Contact</a>
-                        <a href="terms-conditions" class="mx-3 my-1">Terms</a>
-                    </div>
+            <div class="row">
+                <div class="col-sm-4 pb-3">
+                    <img src="assets/logo.png" class="img-fluid">
+                    <h4 style="color: white;">Contact Us</h4>
+                    <p>Contact us at hello@iarco.org!</p>
+                    <p><a href="terms-conditions">Terms & Conditions</a></p>
+                </div>
+                <div class="col-sm-4 pb-2">
+                    <h4 style="color: white;">Social Media</h4>
+                    <p><a href="https://www.facebook.com/iarco.org"><i class="fab fa-facebook-square"></i> Facebook</a></p>
+                    <p><a href="https://www.instagram.com/intresearchcomp"><i class="fab fa-instagram"></i> Instagram</a></p>
+                    <p><a href="https://www.youtube.com/@iarcomp"><i class="fab fa-youtube"></i> Youtube</a></p>
+                    <p><a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin"></i> Linkedin</a> </p>
+                </div>
+
+                <div class="col-sm-4 pb-1">
+                    <h4 style="color: white;">Information</h4>
+                    <p><a href="what-is-iarco"><i class="fas fa-chart-bar"></i> About Competition</a></p>
+                    <p><a href="timeline"><i class="fas fa-calendar-alt"></i> Timeline</a></p>
+                    <p><a href="prizes"><i class="fas fa-trophy"></i> Prizes</a></p>
+                    <p><a href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a></p>
+                    <p><a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a></p>
                 </div>
             </div>
-            
-            <div class="footer-copyright">
-                &copy; <script>document.write(new Date().getFullYear())</script> International Academic Research Competition (IARCO). All Rights Reserved.
+
+            <div class="col-sm-4 pb-1 footer-subscribe">
+                <h5>Subscribe to Our Newsletter</h5>
+                <form class="subscribe-form" id="footer-subscribe-form">
+                    <input name="email" type="email" placeholder="Your Email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div class="subscribe-message" id="footer-subscribe-message"></div>
+            </div>
+
+            <div class="rights">
+                &copy; 2024 - <script>document.write(new Date().getFullYear());</script> All Rights reserved | International Academic Research Competition
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
-
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('active');
-            } else {
-                backToTop.classList.remove('active');
-            }
-        });
-        
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.privacy-section, .highlight-box');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(element);
-            });
-        });
+        // Footer subscription form handling
+        const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec'
+        const Fform = document.forms['footer-subscribe-form']
+        const FSubId = document.getElementById("footer-subscribe-message")
+
+        Fform.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
+                .then(response =>{
+                    FSubId.innerHTML = "Thank You for Subscribing us!"
+                    setTimeout(function(){
+                        FSubId.innerHTML = ""
+                    },3000)
+                    Fform.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
     </script>
 </body>
 </html>
