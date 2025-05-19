@@ -11,7 +11,7 @@
             },
              {
                 "name": "Md. Azmain Yakin Srizon",
-                "position": "IARCO Director & Host",
+                "position": "IARCO Director",
                 "institution": "CSE Dept Lecturer at RUET",
                 "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
                 "image": "https://yrjournal.org/images/azmain.png",
@@ -21,7 +21,7 @@
         "mentors": [
             {
                 "name": "Dr. Karthikeyan Parthasarathy",
-                "position": "IARCO Mentor",
+                "position": "Teach Research 5000+ Student",
                 "institution": "Head of the Department, Department of Management Studies, Kongu Engineering College",
                 "bio": "Dr.Karthikeyan Parthasarathy was awarded Ph.D in Management from Bharathiar University in 2009 and qualified with SET in the year 2006. Presently he is working as an Associate Professor in School of Management Studies at Kongu Engineering College.",
                 "image": "https://iarco.org/assets/mentor/drpk.PNG",
@@ -29,8 +29,8 @@
             },
              {
                 "name": "Md. Azmain Yakin Srizon",
-                "position": "IARCO Mentor",
-                "institution": "CSE Dept Lecturer at RUET",
+                "position": "Mentored 200+ Students & YRJ's Program",
+                "institution": "120+ Publications",
                 "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
                 "image": "https://yrjournal.org/images/azmain.png",
                 "country": "Bangla"
@@ -47,7 +47,7 @@
             },
              {
                 "name": "Md. Azmain Yakin Srizon",
-                "position": "IARCO Judge",
+                "position": "Reviewers of IEEE & Elsevier",
                 "institution": "CSE Dept Lecturer at RUET",
                 "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
                 "image": "https://yrjournal.org/images/azmain.png",
@@ -55,7 +55,7 @@
             },
             {
                 "name": "Md Sanaul Haque Shanto",
-                "position": "IARCO Judge",
+                "position": "Develop IARCO Judging Algorithm",
                 "institution": "President, Lead Researcher at YRJ",
                 "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
                 "image": "https://yrjournal.org/images/staff-01.jpg",
@@ -68,6 +68,13 @@
                 "position": "Research Assistant (RA) at Geisel School of Medicine at Dartmouth",
                 "institution": "Undergrad Student at Dartmouth",
                 "image": "https://iarco.org/assets/mentor/ahnaf.jpg",
+                "country": "United States"
+            },
+            {
+                "name": "Fahim Tajwar (Pending for time)",
+                "position": "ML PhD Student at Carnegie Mellon University",
+                "institution": "BS, MS at Stanford University",
+                "image": "https://iarco.org/assets/mentor/fahimt.PNG",
                 "country": "United States"
             },
             {
@@ -99,7 +106,7 @@
             },
              {
                 "name": "Md. Azmain Yakin Srizon",
-                "position": "IARCO Director & Host",
+                "position": "IARCO Director",
                 "institution": "CSE Dept Lecturer at RUET",
                 "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
                 "image": "https://yrjournal.org/images/azmain.png",
