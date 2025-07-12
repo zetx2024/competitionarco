@@ -47,14 +47,7 @@
         "name": "Looking for",
         "logo": "#",
         "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. ",
-        "type": "Gold Sponsor"
-      },
-      {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. ",
+        "description": "We are looking for our sponsor for providing best competition in the world. Mail at sponsor@iarco.org.",
         "type": "Gold Sponsor"
       }
     ],
@@ -63,40 +56,18 @@
         "name": "Looking for",
         "logo": "#",
         "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. ",
+        "description": "We are looking for our sponsor for providing best competition in the world. Mail at sponsor@iarco.org.",
         "type": "Gold Sponsor"
       }
     ],
-    "academic": [
-      {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. ",
-        "type": "Gold Sponsor"
-      },
-     {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. ",
-        "type": "Silver Sponsor"
-      }
-    ],
+   
     "payment": [
       {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our  international transaction and winner prize distribution sponsor for providing best competition in the world. ",
+        "name": "Hack Club",
+        "logo": "https://assets.hackclub.com/flag-orpheus-left.png",
+        "website": "https://hackclub.com",
+        "description": "A Network of 1000+ Coding Clubs. Join or start a Hack Club and be part of a network of high quality coding clubs where you learn to code entirely through ...",
         "type": "Platinum Payment Partner"
-      },
-     {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our international transaction and winner prize distribution sponsor for providing best competition in the world. ",
-        "type": "Gold Payment Partner"
       }
     ]
   }
