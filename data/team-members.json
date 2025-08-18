@@ -64,11 +64,11 @@
         ],
         "guestSpeakers": [
             {
-                "name": "Mubtaseem Ahnaf Aronno",
-                "position": "Research Assistant (RA) at Geisel School of Medicine at Dartmouth",
-                "institution": "Undergrad Student at Dartmouth",
-                "image": "https://iarco.org/assets/mentor/ahnaf.jpg",
-                "country": "United States"
+                "name": "Al Hasib Sifat",
+                "position": "Grad in Theoretical physics at Lomonosov Moscow State University",
+                "institution": "BSc in Mathematical & Theoretical Physics at Moscow Institute of Physics and Technology",
+                "image": "https://iarco.org/assets/mentor/sifat.jpg",
+                "country": "Russia"
             },
             {
                 "name": "Fahim Tajwar (Pending for time)",
@@ -83,13 +83,6 @@
                 "institution": "Student at McGill University",
                 "image": "https://iarco.org/assets/mentor/masnud.jpg",
                 "country": "Canada"
-            },
-            {
-                "name": "Shubhashis Roy Dipta",
-                "position": "PhD in CS at University of Maryland",
-                "institution": "Graduate Research Assistant at UMBC",
-                "image": "https://iarco.org/assets/mentor/dipto.jpg",
-                "country": "United States"
             }
         ]
         
