@@ -62,6 +62,16 @@
                 "country": "Bangla"
             }
         ],
+        "hostSpeakers": [ 
+            {
+                "name": "Safwan Nabiha",
+                "position": "IARCO 2025 Host",
+                "institution": "Maple Leaf International School",
+                "bio": "Bronze Medal Awardee at Flagship Program, BDEO Nationalist, and Alumni of YRJ.",
+                "image": "https://yrjournal.org/awardimg/wrp24/nabiha.jpeg",
+                "country": "Bangla"
+            }
+        ],
         "guestSpeakers": [
             {
                 "name": "Al Hasib Sifat",
@@ -69,13 +79,6 @@
                 "institution": "BSc in Mathematical & Theoretical Physics at Moscow Institute of Physics and Technology",
                 "image": "https://iarco.org/assets/mentor/sifat.jpg",
                 "country": "Russia"
-            },
-            {
-                "name": "Fahim Tajwar (Pending for time)",
-                "position": "ML PhD Student at Carnegie Mellon University",
-                "institution": "BS, MS at Stanford University",
-                "image": "https://iarco.org/assets/mentor/fahimt.PNG",
-                "country": "United States"
             },
             {
                 "name": "Mahadi Masnad",
