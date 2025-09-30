@@ -326,7 +326,7 @@
       const countryCount = new Set(studentData.map(s=>s.country)).size;
 
       document.getElementById("stats").innerHTML = 
-        `Total: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Schools: ${schoolCount}| Participating Countries: ${countryCount}`;
+        `Total Participants: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Schools: ${schoolCount}| Participating Countries: ${countryCount}`;
     }
 
     // Render student table
@@ -418,7 +418,7 @@
         if(name.includes(query)){
           row.classList.add("highlight");
           const selected = row.cells[5].textContent;
-          results.push(`${row.cells[2].textContent} is ${selected}`);
+          results.push(`${row.cells[2].textContent} is Selected: ${selected}`);
           foundCount++;
         }
       });
