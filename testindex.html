@@ -173,6 +173,7 @@
   <div class="container">
     <br >
     <h2>📊 IARCO 2025 Student Statistics</h2>
+      <h5>Powered by <a href="https://domain.me">domain.ME</a></h5>
        <hr>
     <div id="stats">Loading statistics...</div>
 
@@ -322,9 +323,10 @@
       const seniorYes = studentData.filter(s=>s.category==='Senior'&&s.selected==='Yes').length;
       const seniorNo = studentData.filter(s=>s.category==='Senior'&&s.selected==='No').length;
       const schoolCount = new Set(studentData.map(s=>s.school)).size;
+      const countryCount = new Set(studentData.map(s=>s.country)).size;
 
       document.getElementById("stats").innerHTML = 
-        `Total: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Schools: ${schoolCount}`;
+        `Total: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Schools: ${schoolCount}| Participating Countries: ${countryCount}`;
     }
 
     // Render student table
