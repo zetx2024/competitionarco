@@ -3,8 +3,16 @@
     "id": "ZScc9maa",
     "category": "Senior",
     "name": "CHADAPHATSANAN CHUMCHUEN",
-    "school": "School of International Cultural Exchange, Lanzhou University ",
+    "school": "School of International Cultural Exchange, Lanzhou University",
     "country": "Thailand",
+    "selected": "Yes"
+  },
+  {
+    "id": "ZS8c9maA",
+    "category": "Senior",
+    "name": "Syed Rahimeen Zaman",
+    "school": "Daffodil International University",
+    "country": "Bangladesh",
     "selected": "Yes"
   },
   {
