@@ -165,7 +165,7 @@
     "name": "Karymsakova Insana",
     "school": "Nazarbayev Intellectual School of Chemistry and Biology in Almaty",
     "country": "Kazakhstan",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "n8IvrY4w",
@@ -173,7 +173,7 @@
     "name": "Leo Powdrell",
     "school": "Rongotai College",
     "country": "New Zealand",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "27UD5F7a",
@@ -213,7 +213,7 @@
     "name": "Nayna Ahuja",
     "school": "Lawrence E. Elkins High School",
     "country": "United States",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "eFp4hXxN",
@@ -333,7 +333,7 @@
     "name": "Mrinal Yalageri",
     "school": "Obra D. Tompkins High School",
     "country": "United States",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "2BF9LrqR",
@@ -365,7 +365,7 @@
     "name": "Pawarate Vhaiprom",
     "school": "Sirindhorn School",
     "country": "Thailand",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "0Aroz7hf",
@@ -389,7 +389,7 @@
     "name": "Angeline Joan Wijaya",
     "school": "UPH College",
     "country": "Indonesia",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "w9oc5Ig2",
@@ -514,10 +514,10 @@
   {
     "id": "WXgG52dp",
     "category": "Junior",
-    "name": "Gales Epifanio Pérez Fernández ",
+    "name": "Gales Epifanio Pérez Fernández",
     "school": "Colegio de Alto Rendimiento - San Martín",
     "country": "Peru",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "E715gtHU",
@@ -613,7 +613,7 @@
     "name": "Reena Wyz V. Betonio",
     "school": "Philippine Science High School SOCCSKSARGEN Region Campus",
     "country": "Philippines",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "ZroyiSbi",
@@ -621,13 +621,13 @@
     "name": "Vedant Varhadkar",
     "school": "Inventure Academy",
     "country": "India",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "27tSGTxA",
     "category": "Junior",
     "name": "Muhammad Ibrahim Raja",
-    "school": "Beaconhouse College Programme, Margalla Islamabad.",
+    "school": "Beaconhouse College Programme, Margalla Islamabad",
     "country": "Pakistan",
     "selected": "Yes"
   },
@@ -661,7 +661,7 @@
     "name": "Nuzhat Nawar",
     "school": "Private",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "rOBEHsic",
@@ -714,10 +714,10 @@
   {
     "id": "h4AvoZdR",
     "category": "Junior",
-    "name": "Tasfia Tabassum",
+    "name": "Tasfia Tabassum Neha",
     "school": "Government City College, Chattogram",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "qavydMXp",
@@ -779,7 +779,7 @@
     "id": "m42ag11w",
     "category": "Junior",
     "name": "Muhammad Tahsin Abrar ",
-    "school": "Mastermind English Medium School, Uttara Dhaka ",
+    "school": "Mastermind English Medium School",
     "country": "Bangladesh",
     "selected": "Yes"
   },
@@ -819,9 +819,9 @@
     "id": "api2cped",
     "category": "Junior",
     "name": "Sarah Mushtaque ",
-    "school": "The Aga Khan Academy, Dhaka ",
+    "school": "The Aga Khan Academy, Dhaka",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "zwWrcUSo",
@@ -834,7 +834,7 @@
   {
     "id": "f8wRhZ3j",
     "category": "Junior",
-    "name": "Priyanka sabrina ",
+    "name": "Priyanka sabrina",
     "school": "Private",
     "country": "Bangladesh",
     "selected": "No"
@@ -885,7 +885,7 @@
     "name": "Mridul Hasan",
     "school": "Dhaka College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "Ap1dFs02",
@@ -1005,7 +1005,7 @@
     "name": "Syeda Tasfia Hoque",
     "school": "Holy Cross College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "2yrc0ccI",
@@ -1045,7 +1045,7 @@
     "name": "Hurayin Fairuze Suha",
     "school": "Cantonment English School and College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "vAfG5GN2",
@@ -1171,9 +1171,9 @@
     "id": "JiU1Cucy",
     "category": "Junior",
     "name": "Saifun Saleh Rajin",
-    "school": "Chattogram Collegiate College ",
+    "school": "Chattogram Collegiate College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "Vd04zH0W",
@@ -1189,7 +1189,7 @@
     "name": "Mashtura Haider Promita ",
     "school": "Private",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "qcVh5tby",
@@ -1197,7 +1197,15 @@
     "name": "Tarfi Subah Asif",
     "school": "Glenrich International School Uttara",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
+  },
+  {
+    "id": "qcV4XD9by",
+    "category": "Junior",
+    "name": "Ms.Punalwin Chotirattnaphithak",
+    "school": "Wellington College International School Bangkok",
+    "country": "Thailand",
+    "selected": "Yes"
   },
   {
     "id": "xr0xcIyS",
@@ -1261,7 +1269,7 @@
     "name": "Ashura Tabassum Arshi",
     "school": "Cantonment Public School & College, Rangpur",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "aRSmPCIj",
@@ -1293,7 +1301,7 @@
     "name": "Shamailah Islam",
     "school": "Sunbeams School",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "V9L5n0jk",
@@ -1349,45 +1357,45 @@
     "name": "Sajid Aman",
     "school": "Notre Dame College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "0JYzacy3",
     "category": "Junior",
-    "name": "Sima Chattopadhyay. ",
-    "school": "Rangpur Govt. College. ",
+    "name": "Sima Chattopadhyay",
+    "school": "Rangpur Govt. College",
     "country": "Bangladesh",
     "selected": "No"
   },
   {
     "id": "8KbQTFGX",
     "category": "Junior",
-    "name": "Nusrat Sultana Muntasir ",
-    "school": "Holy Cross College ",
+    "name": "Nusrat Sultana Muntasir",
+    "school": "Holy Cross College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "53oQ1oyC",
     "category": "Junior",
     "name": "Fariha Rahaman ",
-    "school": "Shaheed Police Smrity college ",
+    "school": "Shaheed Police Smrity college",
     "country": "Bangladesh",
     "selected": "No"
   },
   {
     "id": "AckmaRi6",
     "category": "Junior",
-    "name": "Wahida Jannati Adni ",
-    "school": "Dhaka Commerce College ",
+    "name": "Wahida Jannati Adni",
+    "school": "Dhaka Commerce College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "e9RSEfr2",
     "category": "Junior",
     "name": "Raiyan Hasan",
-    "school": "Mirpur Cantonment Public School and College ",
+    "school": "Mirpur Cantonment Public School and College",
     "country": "Bangladesh",
     "selected": "No"
   },
@@ -1485,7 +1493,7 @@
     "name": "Jarif Wasif",
     "school": "Methodist English Medium School",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "F8xN144w",
@@ -1493,7 +1501,7 @@
     "name": "Afra Anjum Amberin",
     "school": "Mastermind English Medium School",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "9sopjwsl",
@@ -1570,10 +1578,10 @@
   {
     "id": "WUbhDW6Y",
     "category": "Junior",
-    "name": "Shifan Sara Zakia ",
+    "name": "Shifan Sara Zakia",
     "school": "The New School Dhaka",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "j3oo2a9U",
@@ -1602,10 +1610,10 @@
   {
     "id": "atrV3XrQ",
     "category": "Junior",
-    "name": "Aaria Rahman ",
+    "name": "Aaria Rahman",
     "school": "Sunnydale",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "LUkjQxL9",
@@ -1685,7 +1693,7 @@
     "name": "Pinak Chakraborty",
     "school": "Jagannath University",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "OhhFZJzh",
@@ -1709,7 +1717,7 @@
     "name": "Nafiza Tasnim",
     "school": "Independent University, Bangladesh",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "iROq9T6n",
@@ -1749,15 +1757,15 @@
     "name": "Md. Minhazul Islam Royel",
     "school": "Brac University",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "KtaAKVee",
     "category": "Senior",
-    "name": "Rudro Karmokar ",
-    "school": "Rajshahi University of Engineering and Technology ",
+    "name": "Rudro Karmokar",
+    "school": "Rajshahi University of Engineering and Technology",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "pRz682Xc",
@@ -1845,7 +1853,7 @@
     "name": "Md Rayhanul Islam Lamun",
     "school": "Rajshahi University of Engineering & Technology",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "AkPwUomV",
@@ -1906,10 +1914,10 @@
   {
     "id": "e4MRxMrk",
     "category": "Senior",
-    "name": "Tashfia Siddiqua ",
-    "school": "Bangladesh University of Engineering and Technology ",
+    "name": "Tashfia Siddiqua",
+    "school": "Bangladesh University of Engineering and Technology",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "CIAs5uvk",
@@ -1973,7 +1981,7 @@
     "name": "Sahadat Hossain",
     "school": "Brac University",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "rUdq81cu",
@@ -2018,18 +2026,18 @@
   {
     "id": "BcMANr1k",
     "category": "Senior",
-    "name": "Tafsina Naznin Bijita ",
-    "school": "BRAC University ",
+    "name": "Tafsina Naznin Bijita",
+    "school": "BRAC University",
     "country": "Bangladesh",
     "selected": "Yes"
   },
   {
     "id": "yjAntn05",
     "category": "Senior",
-    "name": "Shaikh Samiol Islam ",
-    "school": "Mawlana Bhashani Science & Technology University ",
+    "name": "Shaikh Samiol Islam",
+    "school": "Mawlana Bhashani Science & Technology University",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "9qFp0nt9",
@@ -2085,7 +2093,7 @@
     "name": "Samia Azad Ani",
     "school": "Bangladesh University of Engineering & Technology",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "pQWi7yC2",
@@ -2101,6 +2109,6 @@
     "name": "S. M. Sohel Ahmed",
     "school": "University of Dhaka",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   }
 ]
