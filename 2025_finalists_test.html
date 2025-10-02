@@ -202,7 +202,7 @@
     <!-- Student Table -->
     <h3>📋 Participant List</h3>
       <center>
-      <p style="text-align: center; font-size: 6px;">*Sorted by Name in Alphabetical Order.</p>
+      <p style="text-align: center; font-size: 8px;">*Sorted by Name in Alphabetical Order.</p>
           </center>
         <br >
        <!-- Search -->
@@ -213,7 +213,7 @@
       <table id="student-table">
         <thead>
           <tr>
-            
+            <th>ID</th>
             <th>Category</th>
             <th>Name</th>
             <th>School</th>
@@ -329,7 +329,7 @@
       const countryCount = new Set(studentData.map(s=>s.country)).size;
 
       document.getElementById("stats").innerHTML = 
-        `Total Participants: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institution: ${schoolCount} | Participating Countries: ${countryCount}`;
+        `Total Participants: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institutions: ${schoolCount} | Participating Countries: ${countryCount}`;
     }
 
     // Render student table
@@ -341,7 +341,7 @@
       sorted.forEach(student => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          
+          <td>${student.id}</td>
           <td>${student.category}</td>
           <td>${student.name}</td>
           <td>${student.school}</td>
