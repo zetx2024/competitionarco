@@ -125,7 +125,7 @@
     "name": "Mohammad Abdullah Salman ",
     "school": "The City School PAF Chapter ",
     "country": "Pakistan",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "UgrYH8FC",
@@ -141,7 +141,7 @@
     "name": "SHIVANSH DIXIT",
     "school": "Indian School Al Ghubra",
     "country": "Oman",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "aeuZw65h",
@@ -258,10 +258,10 @@
   {
     "id": "0q03xr4U",
     "category": "Junior",
-    "name": "Kagiso Mahlati",
+    "name": "Ayola Kagiso Mahlati",
     "school": "St Stithians Boys' College",
     "country": "South Africa",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "rneKzsDA",
@@ -549,7 +549,7 @@
     "name": "Bareera Ali ",
     "school": "Becon houses school system ",
     "country": "Pakistan",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "rYJO9tnK",
@@ -578,10 +578,10 @@
   {
     "id": "4PurNW39",
     "category": "Junior",
-    "name": "Bora Bogdan",
+    "name": "Bora Bogdan-Alex",
     "school": "National College \"Emil Racovita\"",
     "country": "Romania",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "N32nDUGy",
@@ -717,7 +717,7 @@
     "name": "Suparba Sudha Biswas",
     "school": "CIDER International School",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "cw0SOeLs",
@@ -917,7 +917,7 @@
     "name": "Zarin Tasnim Jaima",
     "school": "Capstone School Dhaka",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "VcEfS9vp",
@@ -1149,7 +1149,7 @@
     "name": "Anisha Azreen Chowdhury ",
     "school": "Cantonment Public College Chattogram ",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "JiU1Cucy",
@@ -1197,7 +1197,7 @@
     "name": "Adira Raeesah Rahman ",
     "school": "Reverie School ",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "Od0oZFw3",
@@ -1322,10 +1322,10 @@
   {
     "id": "HOf1inEu",
     "category": "Junior",
-    "name": "Sayra Zafree ",
+    "name": "Sayra Zafree",
     "school": "Canadian Maple International School",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "FHZxFkaG",
@@ -1437,7 +1437,7 @@
     "name": "Rownak Morshed ",
     "school": "Earth House Alternative School ",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "Ii6tiNFV",
@@ -1459,9 +1459,9 @@
     "id": "4lVbF2EG",
     "category": "Junior",
     "name": "Sakibul Hasan ",
-    "school": "Agricultural University College ",
+    "school": "Agricultural University College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "b2mNi0Im",
@@ -1514,10 +1514,10 @@
   {
     "id": "OgHriUac",
     "category": "Junior",
-    "name": "Ervin Gomes",
+    "name": "Ervin Odrian Gomes",
     "school": "S.F.X. Greenherald International School",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "T5Fxhcbz",
@@ -1533,7 +1533,7 @@
     "name": "Sneva Ahsan",
     "school": "Mirpur Cantonment Public School & College",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "kSPNFJ55",
@@ -1653,7 +1653,7 @@
     "name": "Mohima Chakraborty ",
     "school": "East Delta University ",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "zH5u0bjq",
@@ -1701,7 +1701,7 @@
     "name": "Muhammad Ishrak Ahsan Khan",
     "school": "Bangladesh University of Professionals",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "00UBfNRC",
@@ -1714,10 +1714,10 @@
   {
     "id": "0Z9YNakZ",
     "category": "Senior",
-    "name": "Md. Jonaidul Islam ",
+    "name": "Md. Jonaidul Islam",
     "school": "Bangladesh University Of Professionals",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "Ikb0wu8e",
@@ -1853,7 +1853,7 @@
     "name": "MST. Rasme Aktar ",
     "school": "University of Dhaka",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "NvJAc983",
@@ -1933,7 +1933,7 @@
     "name": "Zaheen Tasfia Zuhair",
     "school": "Bangladesh University of Professionals",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "7M2Fx545",
@@ -1973,7 +1973,7 @@
     "name": "Mohima Sarwatun",
     "school": "Chattogram Veterinary & Animal Sciences University",
     "country": "Bangladesh",
-    "selected": "No"
+    "selected": "Yes"
   },
   {
     "id": "L4lJ4wE3",
