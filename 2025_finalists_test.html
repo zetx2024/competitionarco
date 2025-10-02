@@ -110,7 +110,7 @@
       white-space: nowrap; 
     }
     .selected-yes { background:#006400 !important; color:white; }
-    .highlight { background: #FFFF99 !important; }
+    .highlight { background: #242422 !important; color:white; }
     .flag-icon { width:20px; height:auto; display:inline-block; vertical-align:middle; }
 
     @media (max-width:600px){
@@ -200,7 +200,10 @@
     <div id="countryList" class="country-list"></div>
 
     <!-- Student Table -->
-    <h3>📋 Student List</h3>
+    <h3>📋 Participant List</h3>
+      <center>
+      <p style="text-align: center; font-size: 6px;">*Sorted by Name in Alphabetical Order.</p>
+          </center>
         <br >
        <!-- Search -->
     <input type="text" id="searchBox" placeholder="Search student by name..." />
@@ -210,7 +213,7 @@
       <table id="student-table">
         <thead>
           <tr>
-            <th>ID</th>
+            
             <th>Category</th>
             <th>Name</th>
             <th>School</th>
@@ -326,7 +329,7 @@
       const countryCount = new Set(studentData.map(s=>s.country)).size;
 
       document.getElementById("stats").innerHTML = 
-        `Total Participants: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Schools: ${schoolCount} | Participating Countries: ${countryCount}`;
+        `Total Participants: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institution: ${schoolCount} | Participating Countries: ${countryCount}`;
     }
 
     // Render student table
@@ -338,7 +341,7 @@
       sorted.forEach(student => {
         const row = document.createElement("tr");
         row.innerHTML = `
-          <td>${student.id}</td>
+          
           <td>${student.category}</td>
           <td>${student.name}</td>
           <td>${student.school}</td>
