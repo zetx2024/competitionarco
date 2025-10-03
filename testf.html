@@ -97,7 +97,6 @@
     .country-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin:12px 0; }
     .country-item { display:flex; align-items:center; gap:6px; background:#fff; padding:6px 8px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); font-size:13px; }
     .country-item .flag { width:18px; height:auto; display:inline-block; }
-    .country-count { color: #006400; font-weight: bold; }
 
     /* Table */
     .table-wrapper { overflow-x:auto; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); margin-bottom:20px; max-height:500px; overflow-y:auto; }
@@ -386,34 +385,35 @@
       });
     }
 
-    // Render country list with selection counts
-    function renderCountryList() {
-      const countryCounts = {};
-      const countrySelectedCounts = {};
-      
-      // Count total and selected students per country
-      studentData.forEach(s => {
-        countryCounts[s.country] = (countryCounts[s.country] || 0) + 1;
-        if (s.selected === "Yes") {
-          countrySelectedCounts[s.country] = (countrySelectedCounts[s.country] || 0) + 1;
-        }
-      });
-      
-      const countries = Object.keys(countryCounts).sort();
+    // Render country list
+function renderCountryList() {
+  const countryCounts = {};
+  const selectedCounts = {};
 
-      const container = document.getElementById("countryList");
-      container.innerHTML = "";
-      countries.forEach(country => {
-        const item = document.createElement("div");
-        item.classList.add("country-item");
-        
-        // Get selected count for this country (default to 0 if none selected)
-        const selectedCount = countrySelectedCounts[country] || 0;
-        
-        item.innerHTML = `<span class="flag">${flagData[country]||""}</span> ${country} (${countryCounts[country]}<text class="country-count">/${selectedCount}</text>)`;
-        container.appendChild(item);
-      });
+  studentData.forEach(s=>{
+    countryCounts[s.country] = (countryCounts[s.country]||0)+1;
+    if(s.selected==="Yes"){
+      selectedCounts[s.country] = (selectedCounts[s.country]||0)+1;
     }
+  });
+
+  const countries = Object.keys(countryCounts).sort();
+
+  const container = document.getElementById("countryList");
+  container.innerHTML = "";
+  countries.forEach(country=>{
+    const total = countryCounts[country];
+    const selected = selectedCounts[country] || 0;
+    const item = document.createElement("div");
+    item.classList.add("country-item");
+    item.innerHTML = `
+      <span class="flag">${flagData[country]||""}</span> 
+      ${country} (${total} / <span style="color:green; font-weight:bold;">${selected}</span>)
+    `;
+    container.appendChild(item);
+  });
+}
+
 
     // Search
     const searchBox = document.getElementById("searchBox");
