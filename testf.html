@@ -410,7 +410,7 @@
         // Get selected count for this country (default to 0 if none selected)
         const selectedCount = countrySelectedCounts[country] || 0;
         
-        item.innerHTML = `<span class="flag">${flagData[country]||""}</span> ${country} (${countryCounts[country]}<span class="country-count">/${selectedCount}</span>)`;
+        item.innerHTML = `<span class="flag">${flagData[country]||""}</span> ${country} (${countryCounts[country]}<text class="country-count">/${selectedCount}</text>)`;
         container.appendChild(item);
       });
     }
