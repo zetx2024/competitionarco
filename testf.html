@@ -121,27 +121,40 @@
     }
 
 
-      .selected-count {
-  color: green;
-  font-weight: 600;
-  margin-left: 2px;
-}
-.country-item {
+ .country-item {
   display: flex;
+  justify-content: space-between; /* name left, numbers right */
   align-items: center;
-  gap: 6px;
   background: #fff;
-  padding: 6px 8px;
+  padding: 6px 10px;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   font-size: 13px;
-  flex-wrap: wrap; /* responsive: allow wrapping on small screens */
+  gap: 10px;
 }
+
+.country-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0; /* allows text ellipsis */
+}
+
+.country-left span:last-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* handles long names like USA */
+}
+
+.selected-count {
+  color: green;
+  font-weight: 600;
+}
+
 @media (max-width:600px){
   .country-item {
     font-size: 12px;
     padding: 4px 6px;
-    gap: 4px;
   }
 }
 
@@ -411,7 +424,8 @@
       });
     }
 
-     function renderCountryList() {
+ 
+      function renderCountryList() {
   const countryCounts = {};
   const selectedCounts = {};
 
@@ -429,11 +443,15 @@
   countries.forEach(country=>{
     const total = countryCounts[country];
     const selected = selectedCounts[country] || 0;
+
     const item = document.createElement("div");
     item.classList.add("country-item");
     item.innerHTML = `
-      <span class="flag">${flagData[country]||""}</span>
-      <span>${country} (${total} / <span class="selected-count">${selected}</span>)</span>
+      <div class="country-left">
+        <span class="flag">${flagData[country]||""}</span>
+        <span>${country}</span>
+      </div>
+      <div>(${total}/<span class="selected-count">${selected}</span>)</div>
     `;
     container.appendChild(item);
   });
