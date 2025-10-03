@@ -120,8 +120,7 @@
       .country-item{font-size:12px;}
     }
 
-
- .country-item {
+    .country-item {
   display: flex;
   justify-content: space-between; /* name left, numbers right */
   align-items: center;
@@ -129,21 +128,21 @@
   padding: 6px 10px;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  font-size: 13px;
+  font-size: 13px;   /* base font */
   gap: 10px;
+  flex-wrap: nowrap;
 }
 
 .country-left {
   display: flex;
   align-items: center;
   gap: 6px;
-  min-width: 0; /* allows text ellipsis */
+  flex: 1; /* take up available space */
 }
 
 .country-left span:last-child {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* handles long names like USA */
+  white-space: normal; /* allow wrapping if needed */
+  line-height: 1.2;
 }
 
 .selected-count {
@@ -151,12 +150,18 @@
   font-weight: 600;
 }
 
-@media (max-width:600px){
-  .country-item {
-    font-size: 12px;
-    padding: 4px 6px;
-  }
+/*  Responsive font scaling */
+@media (max-width:800px){
+  .country-item { font-size: 12px; }
 }
+@media (max-width:600px){
+  .country-item { font-size: 11px; }
+}
+@media (max-width:400px){
+  .country-item { font-size: 10px; }
+}
+
+ 
 
   </style>
 </head>
@@ -424,7 +429,7 @@
       });
     }
 
- 
+     //Country List Rendering
       function renderCountryList() {
   const countryCounts = {};
   const selectedCounts = {};
