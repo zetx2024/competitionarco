@@ -1,6 +1,6 @@
 [
   {
-    "student_id": "2025-j1-5993",
+    "student_id": "2025-j1-4093",
     "name": "Aaria Rahman ",
     "school": "Sunnydale",
     "category": "Junior",
@@ -9,7 +9,7 @@
     "research_proposal_title": "Beyond TP53 Gene: Exploring Gene Network Robustness to Solve Peto's Paradox",
     "research_paper": {
       "research_problem": 18,
-      "existing_literature": 8,
+      "existing_literature": 9,
       "research_question": 17,
       "methodology": 15,
       "research_topic": 13,
@@ -17,24 +17,24 @@
       "plagiarism_check_percentile": 11,
       "presentation": {
         "persuasiveness": 16,
-        "video_quality": 11,
+        "video_quality": 12,
         "research_problem": 18,
         "research_question": 14,
         "methodology": 12
       }
     },
     "plagiarismPenalty": 0,
-    "researchPaperScore": 75,
-    "presentationScore": 71,
-    "submissionScore": 146,
-    "scaledFinalScore": 146,
+    "researchPaperScore": 76,
+    "presentationScore": 72,
+    "submissionScore": 148,
+    "scaledFinalScore": 148,
     "viewProposal": "https://iarco.org/storage/2025/junior/Junior_Aaria_Rahman.pdf",
     "videoPitch": "https://www.youtube.com/watch?v=jPxsMXBjq8I&t=2080s",
     "proposal_comment": "No Comment.",
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j2-7343",
+    "student_id": "2025-j2-8809",
     "name": "Adira Raeesah Rahman",
     "school": "Reverie School",
     "category": "Junior",
@@ -68,7 +68,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j3-2411",
+    "student_id": "2025-j3-1843",
     "name": "Adra Ahmed",
     "school": "Sunnydale",
     "category": "Junior",
@@ -102,7 +102,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j4-8158",
+    "student_id": "2025-j4-4539",
     "name": "Afra Anjum Amberin",
     "school": "Mastermind English Medium School",
     "category": "Junior",
@@ -136,7 +136,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j5-4254",
+    "student_id": "2025-j5-2478",
     "name": "Angeline Joan Wijaya",
     "school": "UPH College",
     "category": "Junior",
@@ -170,7 +170,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j6-5104",
+    "student_id": "2025-j6-1718",
     "name": "Anha Islam",
     "school": "Scholastica Senior Uttara Campus",
     "category": "Junior",
@@ -204,7 +204,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j7-5698",
+    "student_id": "2025-j7-5745",
     "name": "Anisha Azreen Chowdhury ",
     "school": "Cantonment Public College Chattogram",
     "category": "Junior",
@@ -238,7 +238,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j8-1704",
+    "student_id": "2025-j8-1078",
     "name": "Anubhav Mohapatra ",
     "school": "Prosper High School",
     "category": "Junior",
@@ -272,7 +272,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j9-8283",
+    "student_id": "2025-j9-4999",
     "name": "Aoi Mase",
     "school": "Mita International School",
     "category": "Junior",
@@ -306,7 +306,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j10-4231",
+    "student_id": "2025-j10-5391",
     "name": "Atikur Islam ",
     "school": "Notre Dame College, Dhaka",
     "category": "Junior",
@@ -340,7 +340,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j11-3028",
+    "student_id": "2025-j11-2656",
     "name": "Ayola Kagiso Mahlati",
     "school": "St Stithians Boys College",
     "category": "Junior",
@@ -374,7 +374,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j12-5237",
+    "student_id": "2025-j12-7545",
     "name": "Bareera Ali",
     "school": "Beaconhouse School System",
     "category": "Junior",
@@ -408,7 +408,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j13-9542",
+    "student_id": "2025-j13-4312",
     "name": "Ben Zhang",
     "school": "Milpitas High School",
     "category": "Junior",
@@ -442,7 +442,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j14-9494",
+    "student_id": "2025-j14-3696",
     "name": "Bora Bogdan",
     "school": "National College Emil Racovita",
     "category": "Junior",
@@ -476,7 +476,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j15-6591",
+    "student_id": "2025-j15-3188",
     "name": "Clara Lau ",
     "school": "International Christian School",
     "category": "Junior",
@@ -510,7 +510,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j16-9880",
+    "student_id": "2025-j16-9291",
     "name": "Dhruvin Bhandari",
     "school": "Divine Child International School",
     "category": "Junior",
@@ -544,7 +544,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j17-4408",
+    "student_id": "2025-j17-6445",
     "name": "Enaya Wafa Majid",
     "school": "Sunnydale",
     "category": "Junior",
@@ -578,7 +578,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j18-5216",
+    "student_id": "2025-j18-2447",
     "name": "Ervin Gomes",
     "school": "SFX Greenherald International School",
     "category": "Junior",
@@ -612,7 +612,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j19-6353",
+    "student_id": "2025-j19-5159",
     "name": "Eve Modra",
     "school": "St Mary’s Anglican Girl’s School",
     "category": "Junior",
@@ -646,7 +646,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j20-1459",
+    "student_id": "2025-j20-5856",
     "name": "Farhan Abrar",
     "school": "Presidency International School",
     "category": "Junior",
@@ -680,7 +680,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j21-2815",
+    "student_id": "2025-j21-7594",
     "name": "FATHIMATH SHAHANAS MS",
     "school": "ZAITOON INTERNATIONAL CAMPUS",
     "category": "Junior",
@@ -714,7 +714,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j22-5990",
+    "student_id": "2025-j22-4013",
     "name": "Firdavs Khusenov",
     "school": "Presidential School in Navoi",
     "category": "Junior",
@@ -748,7 +748,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j23-7886",
+    "student_id": "2025-j23-4474",
     "name": "Gamal El-Din Abdelwahab ",
     "school": "Ismailia stem high school",
     "category": "Junior",
@@ -782,7 +782,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j24-7517",
+    "student_id": "2025-j24-6301",
     "name": "H M Rahat Nabi",
     "school": "Little Jewels School",
     "category": "Junior",
@@ -816,7 +816,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j25-6986",
+    "student_id": "2025-j25-2247",
     "name": "Hanna Emily Salim ",
     "school": "Springfield school",
     "category": "Junior",
@@ -850,7 +850,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j26-2415",
+    "student_id": "2025-j26-5302",
     "name": "Houssam Essaadi",
     "school": "Lycee Ibn Batouta",
     "category": "Junior",
@@ -884,7 +884,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j27-6305",
+    "student_id": "2025-j27-3329",
     "name": "Hrishitaa Punjabi",
     "school": "Christ Junior College",
     "category": "Junior",
@@ -918,7 +918,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j28-7276",
+    "student_id": "2025-j28-8355",
     "name": "Huda Hassan",
     "school": "Zaitoon international girls campus",
     "category": "Junior",
@@ -952,7 +952,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j29-1639",
+    "student_id": "2025-j29-7597",
     "name": "Hurayin Fairuze Suha",
     "school": "Cantonment English School and College",
     "category": "Junior",
@@ -986,7 +986,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j30-5824",
+    "student_id": "2025-j30-9075",
     "name": "Imad Al Deen",
     "school": "Saint Joseph International School",
     "category": "Junior",
@@ -1020,7 +1020,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j31-5361",
+    "student_id": "2025-j31-8697",
     "name": "Insana Karymsakova",
     "school": "Nazarbayev Intellectual School of Science and Mathematics",
     "category": "Junior",
@@ -1054,7 +1054,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j32-6966",
+    "student_id": "2025-j32-7121",
     "name": "ISAAM WAFIDUR RAHMAN",
     "school": "SUNNYDALE",
     "category": "Junior",
@@ -1088,7 +1088,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j33-6184",
+    "student_id": "2025-j33-1447",
     "name": "Jarif Wasif",
     "school": "Methodist English Medium School",
     "category": "Junior",
@@ -1122,7 +1122,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j34-6057",
+    "student_id": "2025-j34-6666",
     "name": "Kashfia Anjum Arisha ",
     "school": "Maple Leaf International School",
     "category": "Junior",
@@ -1156,7 +1156,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j35-7709",
+    "student_id": "2025-j35-7101",
     "name": "Katharina Alt",
     "school": "Munich International School",
     "category": "Junior",
@@ -1190,7 +1190,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j36-9326",
+    "student_id": "2025-j36-7980",
     "name": "Kazi Nafisul Bashar",
     "school": "St. Joseph Higher Secondary School",
     "category": "Junior",
@@ -1224,7 +1224,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j37-9182",
+    "student_id": "2025-j37-5326",
     "name": "Kelly-Emmanuel Pierre",
     "school": "Charlotte Catholic High School",
     "category": "Junior",
@@ -1258,7 +1258,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j38-9756",
+    "student_id": "2025-j38-2564",
     "name": "khadija Tuj Zohora Dina ",
     "school": "Patuakhali Government Women's College",
     "category": "Junior",
@@ -1292,7 +1292,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j39-2969",
+    "student_id": "2025-j39-3701",
     "name": "Kurnia Ramadhani",
     "school": "MAN Insan Cendekia OKI",
     "category": "Junior",
@@ -1326,7 +1326,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j40-6766",
+    "student_id": "2025-j40-5356",
     "name": "Lai Hong Anh ",
     "school": "Chu Van An National High School for the Gifted",
     "category": "Junior",
@@ -1360,7 +1360,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j41-7369",
+    "student_id": "2025-j41-4819",
     "name": "Leo Powdrell",
     "school": "Rongotai College",
     "category": "Junior",
@@ -1368,7 +1368,7 @@
     "country": "New Zealand",
     "research_proposal_title": "The Potential Role of Social Media in Strengthening Indigenous Public Health, and the Limitations of Alternate Current Mediums — A Case Study of Modern New Zealand",
     "research_paper": {
-      "research_problem": 18,
+      "research_problem": 15,
       "existing_literature": 9,
       "research_question": 16,
       "methodology": 16,
@@ -1384,17 +1384,17 @@
       }
     },
     "plagiarismPenalty": 0,
-    "researchPaperScore": 76,
+    "researchPaperScore": 73,
     "presentationScore": 71,
-    "submissionScore": 147,
-    "scaledFinalScore": 147,
+    "submissionScore": 144,
+    "scaledFinalScore": 144,
     "viewProposal": "https://iarco.org/storage/2025/junior/Junior_Leo_Podrewal.PDF",
     "videoPitch": "https://www.youtube.com/watch?v=jPxsMXBjq8I&t=14275s",
     "proposal_comment": "No Comment.",
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j42-9228",
+    "student_id": "2025-j42-4192",
     "name": "Manuel Soto Advis",
     "school": "Deutsche Schule Sankt Thomas morus",
     "category": "Junior",
@@ -1402,7 +1402,7 @@
     "country": "Chile",
     "research_proposal_title": "Artificial Intelligence and Digital Art: Challenges of Authorship, Ethics, and Creativity in the Age of Generative Tools",
     "research_paper": {
-      "research_problem": 15,
+      "research_problem": 16,
       "existing_literature": 6,
       "research_question": 13,
       "methodology": 11,
@@ -1418,17 +1418,17 @@
       }
     },
     "plagiarismPenalty": 0,
-    "researchPaperScore": 59,
+    "researchPaperScore": 60,
     "presentationScore": 56,
-    "submissionScore": 115,
-    "scaledFinalScore": 115,
+    "submissionScore": 116,
+    "scaledFinalScore": 116,
     "viewProposal": "https://iarco.org/storage/2025/junior/Junior_Manuel_Soto_Advis.pdf",
     "videoPitch": "https://www.youtube.com/watch?v=jPxsMXBjq8I&t=14560s",
     "proposal_comment": "No Comment.",
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j43-3877",
+    "student_id": "2025-j43-1770",
     "name": "Manuela Ailin Sutanto",
     "school": "ACS Jakarta",
     "category": "Junior",
@@ -1462,7 +1462,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j44-6213",
+    "student_id": "2025-j44-2121",
     "name": "Mashtura Haider  Promita",
     "school": "Private candidate( Cambridge international)",
     "category": "Junior",
@@ -1496,7 +1496,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j45-5858",
+    "student_id": "2025-j45-3282",
     "name": "Md Naim Molla",
     "school": "Notre Dame College, Dhaka",
     "category": "Junior",
@@ -1530,7 +1530,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j46-5182",
+    "student_id": "2025-j46-1739",
     "name": "Mohammad Abdullah Salman ",
     "school": "The City School PAF Chapter",
     "category": "Junior",
@@ -1564,7 +1564,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j47-9278",
+    "student_id": "2025-j47-7299",
     "name": "Mridul Hasan",
     "school": "Dhaka College",
     "category": "Junior",
@@ -1598,7 +1598,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j48-2250",
+    "student_id": "2025-j48-9459",
     "name": "Mrinal Yalageri",
     "school": "Obra D. Tompkins High School",
     "category": "Junior",
@@ -1632,7 +1632,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j49-5864",
+    "student_id": "2025-j49-3559",
     "name": "Ms.Punlawin Chotirattanaphithak",
     "school": "Wellington College International School Bangkok",
     "category": "Junior",
@@ -1666,7 +1666,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j50-9908",
+    "student_id": "2025-j50-5712",
     "name": "Muhammad Tahsin Abrar",
     "school": "Mastermind English Medium School, Uttara,Dhaka",
     "category": "Junior",
@@ -1700,7 +1700,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j51-1003",
+    "student_id": "2025-j51-8972",
     "name": "Myeongjun Song",
     "school": "Daegu Science High School for the Gifted",
     "category": "Junior",
@@ -1734,7 +1734,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j52-9424",
+    "student_id": "2025-j52-4638",
     "name": "Nahian Adib Mahim",
     "school": "Motijheel Govt. Boys' High School",
     "category": "Junior",
@@ -1768,7 +1768,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j53-2846",
+    "student_id": "2025-j53-3416",
     "name": "Nayna Ahuja",
     "school": "Lawrence E. Elkins High School",
     "category": "Junior",
@@ -1802,7 +1802,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j54-1103",
+    "student_id": "2025-j54-2423",
     "name": "Nour El Houda Hicham",
     "school": "Belgian school of Rabat",
     "category": "Junior",
@@ -1836,7 +1836,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j55-8801",
+    "student_id": "2025-j55-6583",
     "name": "Nowrin Lyba ",
     "school": "Khulna Collegiate Girls' School & KCC Women's College",
     "category": "Junior",
@@ -1870,7 +1870,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j56-6600",
+    "student_id": "2025-j56-9506",
     "name": "Nusrat Sultana Muntasir ",
     "school": "Holy Cross College",
     "category": "Junior",
@@ -1904,7 +1904,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j57-7908",
+    "student_id": "2025-j57-1652",
     "name": "Nuzhat Nawar",
     "school": "Private",
     "category": "Junior",
@@ -1938,7 +1938,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j58-2469",
+    "student_id": "2025-j58-2379",
     "name": "Odrita Ahmed",
     "school": "Sunnydale School",
     "category": "Junior",
@@ -1972,7 +1972,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j59-7963",
+    "student_id": "2025-j59-9999",
     "name": "Pawarate Vhaiprom",
     "school": "Sirindhorn School",
     "category": "Junior",
@@ -2006,7 +2006,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j60-7380",
+    "student_id": "2025-j60-4468",
     "name": "Reena Wyz V. Betonio",
     "school": "Philippine Science High School SOCCSKSARGEN Region Campus",
     "category": "Junior",
@@ -2040,7 +2040,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j61-3229",
+    "student_id": "2025-j61-2743",
     "name": "Riyanti Pandanwangi",
     "school": "MAN 8 Jakarta",
     "category": "Junior",
@@ -2074,7 +2074,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j62-2804",
+    "student_id": "2025-j62-4380",
     "name": "Rownak Morshed",
     "school": "Earth House Alternative School",
     "category": "Junior",
@@ -2108,7 +2108,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j63-5455",
+    "student_id": "2025-j63-2655",
     "name": "Saifun Saleh Rajin",
     "school": "Chattogram Collegiate College",
     "category": "Junior",
@@ -2142,7 +2142,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j64-1969",
+    "student_id": "2025-j64-1090",
     "name": "Sajid Aman",
     "school": "Notre Dame College, Dhaka",
     "category": "Junior",
@@ -2176,7 +2176,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j65-2225",
+    "student_id": "2025-j65-9688",
     "name": "Sakibul Hasan ",
     "school": "Agricultural University College",
     "category": "Junior",
@@ -2210,7 +2210,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j66-3959",
+    "student_id": "2025-j66-1505",
     "name": "Samin Yeasar",
     "school": "Birshreshtha Munshi Abdur Rouf Public College",
     "category": "Junior",
@@ -2244,7 +2244,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j67-3984",
+    "student_id": "2025-j67-6457",
     "name": "Saniva Rakib Soha",
     "school": "Mirpur Cantonment Public School and College",
     "category": "Junior",
@@ -2278,7 +2278,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j68-1775",
+    "student_id": "2025-j68-2862",
     "name": "Sarah Mushtaque",
     "school": "The Aga Khan Academy, Dhaka",
     "category": "Junior",
@@ -2312,7 +2312,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j69-3950",
+    "student_id": "2025-j69-6277",
     "name": "Sayra Zafreen",
     "school": "Canadian Maple International School",
     "category": "Junior",
@@ -2346,7 +2346,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j70-7626",
+    "student_id": "2025-j70-2981",
     "name": "Senushi Dinara",
     "school": "Gap year",
     "category": "Junior",
@@ -2380,7 +2380,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j71-3051",
+    "student_id": "2025-j71-5595",
     "name": "Shaaira Mannan",
     "school": "Chittagong Grammar School",
     "category": "Junior",
@@ -2414,7 +2414,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j72-4597",
+    "student_id": "2025-j72-9727",
     "name": "Shamailah Islam",
     "school": "Sunbeams School",
     "category": "Junior",
@@ -2448,7 +2448,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j73-7632",
+    "student_id": "2025-j73-3331",
     "name": "Shaneela Samiha Khan",
     "school": "Aga Khan Academy, Dhaka",
     "category": "Junior",
@@ -2482,7 +2482,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j74-8767",
+    "student_id": "2025-j74-1197",
     "name": "Shifan Sara Zakia",
     "school": "The New School Dhaka (NSD)",
     "category": "Junior",
@@ -2516,7 +2516,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j75-9060",
+    "student_id": "2025-j75-3716",
     "name": "Shivansh Dixit",
     "school": "Indian school al Ghubra",
     "category": "Junior",
@@ -2550,7 +2550,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j76-1922",
+    "student_id": "2025-j76-5677",
     "name": "Srihaan Edla",
     "school": "Vista Del Lago High School",
     "category": "Junior",
@@ -2584,7 +2584,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j77-7262",
+    "student_id": "2025-j77-1378",
     "name": "Stephen Neon Swann",
     "school": "Glenrich International School",
     "category": "Junior",
@@ -2618,7 +2618,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j78-9477",
+    "student_id": "2025-j78-8069",
     "name": "Suparba Sudha Biswas ",
     "school": "CIDER International School",
     "category": "Junior",
@@ -2652,7 +2652,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j79-1458",
+    "student_id": "2025-j79-4674",
     "name": "Syed Suhayb Islam",
     "school": "Navy Anchorage School and College Dhaka",
     "category": "Junior",
@@ -2686,7 +2686,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j80-4387",
+    "student_id": "2025-j80-4544",
     "name": "Syeda Tasfia Hoque",
     "school": "Holy Cross College",
     "category": "Junior",
@@ -2720,7 +2720,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j81-1411",
+    "student_id": "2025-j81-5701",
     "name": "Tarfi Subah Asif ",
     "school": "Glenrich International School Uttara",
     "category": "Junior",
@@ -2754,7 +2754,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j82-7886",
+    "student_id": "2025-j82-8262",
     "name": "Tasfia Neha",
     "school": "Government City College Chattogram",
     "category": "Junior",
@@ -2788,7 +2788,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j83-4092",
+    "student_id": "2025-j83-5715",
     "name": "Upashana Siddique Ahona",
     "school": "Uttara High School and College",
     "category": "Junior",
@@ -2822,7 +2822,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j84-1135",
+    "student_id": "2025-j84-7729",
     "name": "Vedant Varhadkar",
     "school": "Inventure Academy",
     "category": "Junior",
@@ -2856,7 +2856,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j85-1564",
+    "student_id": "2025-j85-4726",
     "name": "Wahida Jannati Adni",
     "school": "Dhaka Commerce College",
     "category": "Junior",
@@ -2890,7 +2890,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j86-4058",
+    "student_id": "2025-j86-3710",
     "name": "Xyrus Baloloy",
     "school": "Camarines Norte Senior High School",
     "category": "Junior",
@@ -2924,7 +2924,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j87-7928",
+    "student_id": "2025-j87-3214",
     "name": "Ziran Zara Rukaiya",
     "school": "The New School Dhaka (NSD)",
     "category": "Junior",
@@ -2958,7 +2958,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-j88-7720",
+    "student_id": "2025-j88-3595",
     "name": "Zarin Tasnim Jaima",
     "school": "Capstone School Dhaka",
     "category": "Junior",
@@ -2968,8 +2968,8 @@
     "research_paper": {
       "research_problem": 16,
       "existing_literature": 9,
-      "research_question": 18,
-      "methodology": 16,
+      "research_question": 17,
+      "methodology": 15,
       "research_topic": 14,
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 12,
@@ -2982,17 +2982,17 @@
       }
     },
     "plagiarismPenalty": 0,
-    "researchPaperScore": 77,
+    "researchPaperScore": 75,
     "presentationScore": 74,
-    "submissionScore": 151,
-    "scaledFinalScore": 151,
+    "submissionScore": 149,
+    "scaledFinalScore": 149,
     "viewProposal": "https://iarco.org/storage/2025/junior/Junior_Zarin_Tasnim_Jaima.pdf",
     "videoPitch": "https://www.youtube.com/watch?v=jPxsMXBjq8I&t=27353s",
     "proposal_comment": "No Comment.",
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s89-3706",
+    "student_id": "2025-s89-1212",
     "name": "Ajoy Khetan",
     "school": "Sir Salimullah Medical College, Dhaka",
     "category": "Senior",
@@ -3026,7 +3026,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s90-3885",
+    "student_id": "2025-s90-6897",
     "name": "Anika Zaheen ",
     "school": "Bangladesh University of Engineering and Technology(BUET)",
     "category": "Senior",
@@ -3060,7 +3060,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s91-8088",
+    "student_id": "2025-s91-4366",
     "name": "Apurbo Kumar",
     "school": "Bangladesh University of Engineering and Technology",
     "category": "Senior",
@@ -3094,7 +3094,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s92-1877",
+    "student_id": "2025-s92-3393",
     "name": "Chadaphatsanan chumchuen ",
     "school": "Lanzhou University ",
     "category": "Senior",
@@ -3128,7 +3128,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s93-9814",
+    "student_id": "2025-s93-4278",
     "name": "Jarif Billah",
     "school": "Independent University, Bangladesh",
     "category": "Senior",
@@ -3162,7 +3162,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s94-8744",
+    "student_id": "2025-s94-6833",
     "name": "Khadiza",
     "school": "Pabna university of science and technology",
     "category": "Senior",
@@ -3196,7 +3196,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s95-9251",
+    "student_id": "2025-s95-3744",
     "name": "Mahiya Mannan ",
     "school": "North South University ",
     "category": "Senior",
@@ -3230,7 +3230,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s96-5659",
+    "student_id": "2025-s96-3147",
     "name": "Mansura Mubashira",
     "school": "BRAC University",
     "category": "Senior",
@@ -3264,7 +3264,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s97-2867",
+    "student_id": "2025-s97-1339",
     "name": "Md Rosly",
     "school": "University of Rajshahi",
     "category": "Senior",
@@ -3298,7 +3298,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s98-9951",
+    "student_id": "2025-s98-1296",
     "name": "Md. Jonaidul Islam ",
     "school": "Bangladesh University Of Professionals",
     "category": "Senior",
@@ -3332,7 +3332,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s99-6063",
+    "student_id": "2025-s99-5966",
     "name": "Md. Minhazul Islam Royel",
     "school": "BRAC University",
     "category": "Senior",
@@ -3366,7 +3366,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s100-4765",
+    "student_id": "2025-s100-1848",
     "name": "Md. Rayhanul Islam Lamun",
     "school": "Rajshahi University of Engineering & Technology",
     "category": "Senior",
@@ -3400,7 +3400,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s101-2128",
+    "student_id": "2025-s101-9836",
     "name": "Md. Sakib Mia",
     "school": "Govt. Titumir College",
     "category": "Senior",
@@ -3434,7 +3434,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s102-1844",
+    "student_id": "2025-s102-3104",
     "name": "Mohima Chakraborty ",
     "school": "East Delta University ",
     "category": "Senior",
@@ -3468,7 +3468,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s103-4819",
+    "student_id": "2025-s103-4550",
     "name": "MST. Rasme Aktar ",
     "school": "University of Dhaka ",
     "category": "Senior",
@@ -3502,7 +3502,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s104-1162",
+    "student_id": "2025-s104-1937",
     "name": "Muhammad Ishrak Ahsan Khan",
     "school": "Bangladesh University of Professionals",
     "category": "Senior",
@@ -3536,7 +3536,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s105-4251",
+    "student_id": "2025-s105-6435",
     "name": "Nafiza Tasnim",
     "school": "Independent University Bangladesh ",
     "category": "Senior",
@@ -3570,7 +3570,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s106-1115",
+    "student_id": "2025-s106-3736",
     "name": "Nguyen Thi Thuy Tien",
     "school": "VNUHCM – University of Social Sciences and Humanities",
     "category": "Senior",
@@ -3604,7 +3604,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s107-3826",
+    "student_id": "2025-s107-4807",
     "name": "Pinak Chakraborty",
     "school": "Jagannath University",
     "category": "Senior",
@@ -3638,7 +3638,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s108-2333",
+    "student_id": "2025-s108-5074",
     "name": "Sahadat Hossain",
     "school": "Brac University",
     "category": "Senior",
@@ -3672,7 +3672,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s109-9105",
+    "student_id": "2025-s109-3338",
     "name": "Sakib Nasir Khan",
     "school": "Bangladesh University of Engineering and Technology",
     "category": "Senior",
@@ -3706,7 +3706,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s110-8062",
+    "student_id": "2025-s110-2053",
     "name": "Samia Azad Ani",
     "school": "Bangladesh University of Engineering and Technology",
     "category": "Senior",
@@ -3740,7 +3740,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s111-1435",
+    "student_id": "2025-s111-3241",
     "name": "Sanchita Rahman",
     "school": "BRAC University",
     "category": "Senior",
@@ -3774,7 +3774,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s112-6832",
+    "student_id": "2025-s112-3432",
     "name": "Shahriar Habib",
     "school": "Khulna University of Engineering & Technology",
     "category": "Senior",
@@ -3808,7 +3808,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s113-8177",
+    "student_id": "2025-s113-5418",
     "name": "Shaikh Samiol Islam ",
     "school": "Mawlana Bhashani Science and Technology University",
     "category": "Senior",
@@ -3842,7 +3842,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s114-1336",
+    "student_id": "2025-s114-9862",
     "name": "Sidratul Muntaha Shishir ",
     "school": "Sher-e-Bangla Agricultural University ",
     "category": "Senior",
@@ -3876,7 +3876,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s115-9989",
+    "student_id": "2025-s115-2733",
     "name": "Tafsina Naznin Bijita",
     "school": "BRAC University",
     "category": "Senior",
@@ -3910,7 +3910,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s116-3328",
+    "student_id": "2025-s116-2940",
     "name": "Tashfia Siddiqua ",
     "school": "Bangladesh University of Engineering and Technology ",
     "category": "Senior",
@@ -3944,7 +3944,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s117-5705",
+    "student_id": "2025-s117-5800",
     "name": "Tasnuva Tabassum Anonna",
     "school": "Bangladesh University of Textiles",
     "category": "Senior",
@@ -3978,7 +3978,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s118-3442",
+    "student_id": "2025-s118-2016",
     "name": "Varuni H K ",
     "school": "PES University ",
     "category": "Senior",
@@ -4012,7 +4012,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s119-8174",
+    "student_id": "2025-s119-7398",
     "name": "Zaheen Tasfia Zuhair",
     "school": "Bangladesh University of Professionals",
     "category": "Senior",
@@ -4046,7 +4046,7 @@
     "presentation_comment": "No Comment."
   },
   {
-    "student_id": "2025-s120-8603",
+    "student_id": "2025-s120-3097",
     "name": "S.M. Sohel Ahmed",
     "school": "University of Dhaka",
     "category": "Senior",
