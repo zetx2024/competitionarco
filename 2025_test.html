@@ -625,7 +625,9 @@ async function generateTable(category, studentsData) {
     ? `<a href="${student.videoPitch}" target="_blank">
          <button class="video-pitch-btn">View Pitch</button>
        </a>` 
-    : `<button class="video-pitch-btn">View Pitch</button>`}
+    : `<a href="${student.videoPitch}" target="_blank">
+         <button class="video-pitch-btn">View Pitch</button>
+       </a>` }
 </td>
         `;
 
@@ -779,7 +781,7 @@ function triggerConfetti() {
 
     // Confetti animation
     confetti({
-        particleCount: 500,         // Increase the number of particles
+        particleCount: 1500,         // Increase the number of particles
         spread: 120,                // Spread it more
         origin: { y: 0.5 },         // Confetti originates from the middle vertically
         colors: colors,             // Use Gold, Silver, and Bronze colors
@@ -789,7 +791,7 @@ function triggerConfetti() {
 
     setTimeout(() => {
         document.body.removeChild(confettiContainer);  // Remove confetti after 5 seconds
-    }, 30000); // 30 seconds
+    }, 60000); // 30 seconds
 }
 
 // Function to play the congratulations audio
