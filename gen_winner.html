@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Data JSON Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 900px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    input[type="file"] {
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .json-output {
+      text-align: left;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 14px;
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .copy-btn {
+      background-color: #008CBA;
+    }
+
+    .copy-btn:hover {
+      background-color: #007bb5;
+    }
+
+    .download-btn {
+      background-color: #f39c12;
+    }
+
+    .download-btn:hover {
+      background-color: #e67e22;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Data JSON Generator</h1>
+    <input type="file" id="file-input" accept=".xls, .xlsx" />
+    <button id="generate-json-btn">Generate JSON</button>
+    <button id="download-excel-btn" class="download-btn">Download Excel</button>
+    <pre id="json-output" class="json-output"></pre>
+    <button id="copy-btn" class="copy-btn">Copy JSON to Clipboard</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  <script>
+    let latestData = [];
+
+    document.getElementById("generate-json-btn").addEventListener("click", generateJSON);
+    document.getElementById("copy-btn").addEventListener("click", copyToClipboard);
+    document.getElementById("download-excel-btn").addEventListener("click", downloadExcel);
+
+    function generateJSON() {
+      const fileInput = document.getElementById("file-input");
+      const file = fileInput.files[0];
+      if (!file) {
+        alert("Please upload an Excel file.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const data = event.target.result;
+        const workbook = XLSX.read(data, { type: "binary" });
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(sheet);
+
+        const formattedData = jsonData.map((row, index) => formatStudentData(row, index + 1));
+        latestData = formattedData;
+
+        document.getElementById("json-output").textContent = JSON.stringify(formattedData, null, 2);
+      };
+
+      reader.readAsBinaryString(file);
+    }
+
+    function formatStudentData(row, rank) {
+      const year = row["year"] || new Date().getFullYear();
+      const category = (row["category"] || "Junior").trim();
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const prefix = category.toLowerCase() === "senior" ? "s" : "j";
+      const student_id = `${year}-${prefix}${rank}-${randomNum}`;
+
+      // Research paper and presentation scores
+      const research_paper = {
+        research_problem: +row["paperScores.research_problem"] || 0,
+        existing_literature: +row["paperScores.existing_literature"] || 0,
+        research_question: +row["paperScores.research_question"] || 0,
+        methodology: +row["paperScores.methodology"] || 0,
+        research_topic: +row["paperScores.research_topic"] || 0,
+        quality_of_writing: +row["paperScores.quality_of_writing"] || 0,
+      };
+
+      const presentation = {
+        persuasiveness: +row["presentationScores.persuasiveness"] || 0,
+        video_quality: +row["presentationScores.video_quality"] || 0,
+        research_problem: +row["presentationScores.research_problem"] || 0,
+        research_question: +row["presentationScores.research_question"] || 0,
+        methodology: +row["presentationScores.methodology"] || 0,
+      };
+
+      // Calculate scores
+      const researchPaperScore =
+        research_paper.research_problem +
+        research_paper.existing_literature +
+        research_paper.research_question +
+        research_paper.methodology +
+        research_paper.research_topic +
+        research_paper.quality_of_writing;
+
+      const presentationScore =
+        presentation.persuasiveness +
+        presentation.video_quality +
+        presentation.research_problem +
+        presentation.research_question +
+        presentation.methodology;
+
+      const submissionScore = researchPaperScore + presentationScore;
+
+      // Plagiarism penalty
+      const plagiarism_percentile = +row["plagiarism_check_percentile"] || 0;
+      let plagiarismPenalty = 0;
+      if (plagiarism_percentile >= 0 && plagiarism_percentile <= 5) plagiarismPenalty = 15;
+      else if (plagiarism_percentile >= 6 && plagiarism_percentile <= 20) plagiarismPenalty = 0;
+      else if (plagiarism_percentile >= 21 && plagiarism_percentile <= 30) plagiarismPenalty = 20;
+      else if (plagiarism_percentile >= 31 && plagiarism_percentile <= 101) plagiarismPenalty = 50;
+
+      const scaledFinalScore = submissionScore - plagiarismPenalty;
+
+      return {
+        student_id,
+        name: row["name"] || "Unknown",
+        school: row["school"] || "Unknown",
+        category,
+        year,
+        country: row["country"] || "Unknown",
+        research_proposal_title: row["research_proposal_title"] || "N/A",
+        research_paper: {
+          ...research_paper,
+          plagiarism_check_percentile: plagiarism_percentile,
+          presentation: { ...presentation }
+        },
+        plagiarismPenalty,
+        researchPaperScore,
+        presentationScore,
+        submissionScore,
+        scaledFinalScore,
+        viewProposal: row["viewProposal"] || "",
+        videoPitch: row["videoPitch"] || "",
+        proposal_comment: row["proposal_comment"] || "No Comment.",
+        presentation_comment: row["presentation_comment"] || "No Comment."
+      };
+    }
+
+    function copyToClipboard() {
+      const jsonOutput = document.getElementById("json-output").textContent;
+      navigator.clipboard
+        .writeText(jsonOutput)
+        .then(() => alert("✅ JSON data copied to clipboard!"))
+        .catch((err) => alert("❌ Failed to copy text: " + err));
+    }
+
+    function downloadExcel() {
+      if (latestData.length === 0) {
+        alert("No data available. Please generate JSON first.");
+        return;
+      }
+
+      const flattenedData = latestData.map(item => ({
+        student_id: item.student_id,
+        name: item.name,
+        school: item.school,
+        category: item.category,
+        year: item.year,
+        country: item.country,
+        research_proposal_title: item.research_proposal_title,
+        research_problem: item.research_paper.research_problem,
+        existing_literature: item.research_paper.existing_literature,
+        research_question: item.research_paper.research_question,
+        methodology: item.research_paper.methodology,
+        research_topic: item.research_paper.research_topic,
+        quality_of_writing: item.research_paper.quality_of_writing,
+        plagiarism_check_percentile: item.research_paper.plagiarism_check_percentile,
+        persuasiveness: item.research_paper.presentation.persuasiveness,
+        video_quality: item.research_paper.presentation.video_quality,
+        pres_research_problem: item.research_paper.presentation.research_problem,
+        pres_research_question: item.research_paper.presentation.research_question,
+        pres_methodology: item.research_paper.presentation.methodology,
+        plagiarismPenalty: item.plagiarismPenalty,
+        researchPaperScore: item.researchPaperScore,
+        presentationScore: item.presentationScore,
+        submissionScore: item.submissionScore,
+        scaledFinalScore: item.scaledFinalScore,
+        proposal_comment: item.proposal_comment,
+        presentation_comment: item.presentation_comment,
+        viewProposal: item.viewProposal,
+        videoPitch: item.videoPitch
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(flattenedData);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "StudentScores");
+
+      XLSX.writeFile(workbook, "StudentData_Final.xlsx");
+      alert("📘 Excel file downloaded successfully!");
+    }
+  </script>
+</body>
+</html>
