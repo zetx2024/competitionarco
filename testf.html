@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preload" href="https://iarco.org/assets/achievements.mp3" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -622,9 +623,9 @@
     <center>
         <div class="container">
             <h2>IARCO 2025 Result</h2>
-            <h5>Powered by <a href="https://yrjournal.org">YRJ</a> & <a href="https://domain.me">domain.me</a></h5>
+            <h6>Powered by <a href="https://yrjournal.org">YRJ</a> & <a href="https://domain.me">domain.me</a></h6>
             </hr>
-            <p style="font-size: 6px;"><strong><a href="judging">[How we judge]</a> | <a href="https://cert.iarco.org/finalist">[Download Rank Based Certificate]</a></strong></p>
+            <p style="font-size: 9px;"><strong><a href="judging">[How we judge]</a> | <a href="https://cert.iarco.org/finalist">[Download Rank Based Certificate]</a></strong></p>
             <br>
 
             <div class="toggle-buttons">
@@ -721,7 +722,7 @@
     </footer>
 
     <!-- Add Audio Element -->
-    <audio id="congratsAudio" src="https://eptonline.org/assets/achievements.mp3" preload="auto"></audio>
+    <audio id="congratsAudio" src="https://iarco.org/assets/achievements.mp3" preload="auto"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -886,7 +887,7 @@
                 return;
             }
 
-            const { name, student_id, school, category, year, research_proposal_title, research_paper, proposal_comment, presentation_comment, viewProposal, videoPitch } = student;
+            const { name, student_id, school, category, year, country, research_proposal_title, research_paper, proposal_comment, presentation_comment, viewProposal, videoPitch } = student;
             const paperScores = research_paper;
             const presentationScores = paperScores.presentation;
 
@@ -946,6 +947,10 @@
                         <div class="student-detail">
                             <strong>Year:</strong>
                             <span>${year}</span>
+                        </div>
+                        <div class="student-detail">
+                            <strong>Country:</strong>
+                            <span>${country}</span>
                         </div>
                     </div>
                     <div class="proposal-title">
@@ -1464,10 +1469,10 @@
             // Confetti animation
             confetti({
                 particleCount: 1500,         // Increase the number of particles
-                spread: 120,                // Spread it more
+                spread: 180,                // Spread it more
                 origin: { y: 0.5 },         // Confetti originates from the middle vertically
                 colors: colors,             // Use Gold, Silver, and Bronze colors
-                gravity: 0.5,               // Lower gravity so the confetti falls slower
+                gravity: 0.3,               // Lower gravity so the confetti falls slower
                 scalar: 1,                // Increase size of each particle
             });
 
