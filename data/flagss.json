@@ -1,11 +1,150 @@
-{
-  "United States": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='30' height='15'><clipPath id='a'><path d='M0 0v30h60V0z'/></clipPath><clipPath id='b'><path d='M30 15h30v15zv15H0zH30v15zv15h30z'/></clipPath><g clip-path='url(#a)'><path d='M0 0v30h60V0z' fill='#012169'/><path d='M0 0l60 30m0-30L0 30' stroke='#fff' stroke-width='6'/><path d='M0 0l60 30m0-30L0 30' clip-path='url(#b)' stroke='#C8102E' stroke-width='4'/><path d='M30 0v30M0 15h60' stroke='#fff' stroke-width='10'/><path d='M30 0v30M0 15h60' stroke='#C8102E' stroke-width='6'/></g></svg>",
-  "United Kingdom": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='30' height='15'><clipPath id='a'><path d='M0 0v30h60V0z'/></clipPath><clipPath id='b'><path d='M30 15h30v15zv15H0zH30v15zv15h30z'/></clipPath><g clip-path='url(#a)'><path d='M0 0v30h60V0z' fill='#012169'/><path d='M0 0l60 30m0-30L0 30' stroke='#fff' stroke-width='6'/><path d='M0 0l60 30m0-30L0 30' clip-path='url(#b)' stroke='#C8102E' stroke-width='4'/><path d='M30 0v30M0 15h60' stroke='#fff' stroke-width='10'/><path d='M30 0v30M0 15h60' stroke='#C8102E' stroke-width='6'/></g></svg>",
-  "India": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='30' height='15'><path d='M0 0h60v30H0z' fill='#FF9933'/><path d='M0 10h60v10H0z' fill='#FFF'/><path d='M0 20h60v10H0z' fill='#138808'/><circle cx='30' cy='15' r='5' fill='#000080'/></svg>",
-  "Argentina": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='30' height='15'><path d='M0 0h60v30H0z' fill='#74ACDF'/><path d='M0 10h60v10H0z' fill='#FFF'/><circle cx='30' cy='15' r='5' fill='#F6B40E'/></svg>",
-  "Canada": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='30' height='15'><path d='M0 0h60v30H0z' fill='#FF0000'/><path d='M15 0h30v30H15z' fill='#FFF'/><path d='M25 0h10v30H25z' fill='#FF0000'/><path d='M0 15h60v10H0z' fill='#FF0000'/></svg>",
-  "South Korea": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='30' height='15'><path d='M0 0h60v30H0z' fill='#FFFFFF'/><circle cx='30' cy='15' r='8' fill='#000080'/><path d='M30 7l3.5 10.5h11l-9 6.5 3.5 10.5-9-6.5-9 6.5 3.5-10.5-9-6.5h11z' fill='#FF0000'/></svg>",
-  "Indonesia" : "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#DC1F26' d='M32 5H4a4 4 0 0 0-4 4v9h36V9a4 4 0 0 0-4-4z'></path><path fill='#EEE' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4v-9h36v9z'></path></g></svg>",
-  "Bangladesh" : "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#006A4D' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><circle fill='#F42A41' cx='16' cy='17.5' r='7'></circle></g></svg>",
-  "Bangla" : "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30' width='30' height='15'><path d='M0 0h60v30H0z' fill='#006a4e'/><circle cx='20' cy='15' r='6' fill='#f42a41'/></svg>"
-}
+[
+    {
+        "country": "United States",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#B22234' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFF' d='M0 9h36v2H0zm0 4h36v2H0zm0 4h36v2H0zm0 4h36v2H0zm0 4h36v2H0zm0 4h36v2H0z'></path><path fill='#3C3B6E' d='M0 9h14.4v18H0z'></path></g></svg>"
+    },
+    {
+        "country": "Bangladesh",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#006A4D' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><circle fill='#F42A41' cx='16.2' cy='18' r='7.2'></circle></g></svg>"
+    },
+    {
+        "country": "Moldova",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FCD116' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#0033A0' d='M0 9h9.6v18H0z'></path><path fill='#D21034' d='M26.4 9H36v18H26.4z'></path></g></svg>"
+    },
+    {
+        "country": "Oman",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#E70010' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFF' d='M0 9h12v18H0z'></path><path fill='#006747' d='M0 9h12v6h24v6H12v6h12v6H0V9z'></path></g></svg>"
+    },
+    {
+        "country": "Botswana",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#00A9E0' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFF' d='M0 14.4h36v3.6H0zm0 7.2h36v3.6H0z'></path></g></svg>"
+    },
+    {
+        "country": "Kazakhstan",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#00AFCA' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#F0C000' d='M0 30h36v-2.4H0zm0-25.2h36V2.4H0z'></path><path fill='#F0C000' d='M15.12 11.52a4.32 4.32 0 1 0 0 8.64 4.32 4.32 0 0 0 0-8.64z'></path><path fill='#00AFCA' d='M15.12 13.92a1.92 1.92 0 1 0 0 3.84 1.92 1.92 0 0 0 0-3.84z'></path></g></svg>"
+    },
+    {
+        "country": "New Zealand",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#00247D' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#CC142B' d='M0 0h14.4v2.4H0zm0 8.64h14.4v2.4H0zm0 8.64h14.4v2.4H0z'></path><path fill='#CC142B' d='M0 0h2.4v36H0zm8.64 0h2.4v36H8.64z'></path><path fill='#CC142B' d='m26.64 12.24-2.88 2.16 1.08-3.6-2.88-2.16h3.6l1.08-3.6 1.08 3.6h3.6l-2.88 2.16 1.08 3.6z'></path></g></svg>"
+    },
+    {
+        "country": "Morocco",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='crimson' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#006233' d='m18 12.96-2.52 1.8 0.9-3.06-2.52-1.8h3.24L18 7.56l0.9 3.06h3.24l-2.52 1.8 0.9 3.06z'></path></g></svg>"
+    },
+    {
+        "country": "Afghanistan",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#000001' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#D32011' d='M0 14.4h36v7.2H0z'></path><path fill='#007A36' d='M0 21.6h36v7.2H0z'></path><path fill='#FFFFFF' d='m12.24 12.24 2.16-2.88-3.6 1.08 2.16-2.88-3.6 1.08V7.92l2.16 2.88-3.6-1.08 2.16 2.88-3.6-1.08h4.32l2.16 2.88 2.16-2.88h4.32l-3.6 1.08 2.16-2.88-3.6-1.08v2.16l-3.6-1.08 2.16 2.88-3.6 1.08h4.32z'></path></g></svg>"
+    },
+    {
+        "country": "Indonesia",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#E70011' d='M0 21.6h36V36H0z'></path><path fill='#FFFFFF' d='M0 0h36v14.4H0z'></path></g></svg>"
+    },
+    {
+        "country": "Vietnam",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#DA251D' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFFF00' d='M18 5.76 20.52 10.8 18 15.84 15.48 10.8zM12.24 13.32l5.04-2.52L12.24 8.28l2.52 5.04-5.04-2.52zm11.52 0-5.04-2.52 5.04-2.52-2.52 5.04 5.04-2.52z'></path></g></svg>"
+    },
+    {
+        "country": "Philippines",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#0038A8' d='M0 0h18v36H0z'></path><path fill='#CE1126' d='M18 0h18v36H18z'></path><path fill='#FFFFFF' d='M0 0h36v18H0z'></path><path fill='#FCD116' d='m18 18-2.52 1.8 0.9-3.06-2.52-1.8h3.24L18 10.8l0.9 3.06h3.24l-2.52 1.8 0.9 3.06z'></path></g></svg>"
+    },
+    {
+        "country": "South Africa",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#E03C31' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#001489' d='M0 0h14.4v36H0z'></path><path fill='#007749' d='m36 0-14.4 36H36z'></path><path fill='#FFFFFF' d='m14.4 0 7.2 18-7.2 18H7.2l7.2-18-7.2-18z'></path><path fill='#FFB81C' d='m10.8 0 3.6 18-3.6 18H7.2l3.6-18-3.6-18z'></path></g></svg>"
+    },
+    {
+        "country": "United Arab Emirates",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#00732F' d='M0 0h36v7.2H0z'></path><path fill='#FFFFFF' d='M0 7.2h36v7.2H0z'></path><path fill='#000000' d='M0 14.4h36v7.2H0z'></path><path fill='#CE1126' d='M0 0h9.6v36H0z'></path></g></svg>"
+    },
+    {
+        "country": "Algeria",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FFFFFF' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#006233' d='M0 0h18v36H0z'></path><path fill='#D21034' d='m18 18-2.52 1.8 0.9-3.06-2.52-1.8h3.24L18 10.8l0.9 3.06h3.24l-2.52 1.8 0.9 3.06z'></path></g></svg>"
+    },
+    {
+        "country": "India",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#138808' d='M0 21.6h36V36H0z'></path><path fill='#FF9933' d='M0 0h36v7.2H0z'></path><path fill='#FFFFFF' d='M0 7.2h36v7.2H0z'></path><circle fill='#000080' cx='18' cy='10.8' r='2.16'></circle><circle fill='#FFFFFF' cx='18' cy='10.8' r='1.8'></circle></g></svg>"
+    },
+    {
+        "country": "Egypt",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#CE1126' d='M0 0h36v7.2H0z'></path><path fill='#FFFFFF' d='M0 7.2h36v7.2H0z'></path><path fill='#000000' d='M0 14.4h36v7.2H0z'></path><path fill='#C09300' d='M12.24 12.96h11.52v2.88H12.24z'></path></g></svg>"
+    },
+    {
+        "country": "Germany",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#DD0000' d='M0 21.6h36V36H0z'></path><path fill='#000000' d='M0 0h36v7.2H0z'></path><path fill='#FFCC00' d='M0 7.2h36v7.2H0z'></path></g></svg>"
+    },
+    {
+        "country": "China",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#DE2910' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFDE00' d='m7.2 5.76 1.08 3.24h3.6L9.48 11.88l1.08 3.24L7.2 13.32 4.32 15.12l1.08-3.24L2.52 9h3.6zm16.56 9.36-2.16-1.44-2.16 1.44 0.72-2.52-2.16-1.44h2.88l0.72-2.52 0.72 2.52h2.88l-2.16 1.44zm3.6-7.92-2.16-1.44-2.16 1.44 0.72-2.52-2.16-1.44h2.88l0.72-2.52 0.72 2.52h2.88l-2.16 1.44z'></path></g></svg>"
+    },
+    {
+        "country": "Thailand",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#ED1C24' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFFFFF' d='M0 7.2h36v3.6H0z'></path><path fill='#241D4F' d='M0 10.8h36v3.6H0z'></path><path fill='#FFFFFF' d='M0 14.4h36v3.6H0z'></path></g></svg>"
+    },
+    {
+        "country": "Georgia",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FFFFFF' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#DA0000' d='M0 0h36v5.4H0zm0 13.5h36v5.4H0zm0 13.5h36v5.4H0zM13.5 0h9v36h-9z'></path></g></svg>"
+    },
+    {
+        "country": "Brazil",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#009B3A' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FEDF00' d='M18 15.84 6.12 21.6l4.68-11.52L0 8.64h12.96L18 0l5.04 8.64H36l-10.8 2.88L29.88 21.6z'></path><circle fill='#002776' cx='18' cy='10.8' r='5.76'></circle></g></svg>"
+    },
+    {
+        "country": "Spain",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#C60B1E' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFC400' d='M0 7.2h36v7.2H0z'></path><path fill='#C60B1E' d='M10.8 8.64h14.4v4.32H10.8z'></path></g></svg>"
+    },
+    {
+        "country": "Turkey",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#E30A17' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFFFFF' d='m19.44 11.52-2.88 2.16 1.08-3.6-2.88-2.16h3.6l1.08-3.6 1.08 3.6h3.6l-2.88 2.16 1.08 3.6z'></path><path fill='#E30A17' d='m19.44 10.8-2.16 1.8 0.72-2.88-2.16-1.8h2.52l0.72-2.88 0.72 2.88h2.52l-2.16 1.8 0.72 2.88z'></path></g></svg>"
+    },
+    {
+        "country": "Pakistan",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#01411C' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFFFFF' d='M0 0h25.2v36H0z'></path><path fill='#01411C' d='m12.24 12.24 2.16-2.88-3.6 1.08 2.16-2.88-3.6 1.08V7.92l2.16 2.88-3.6-1.08 2.16 2.88-3.6-1.08h4.32l2.16 2.88 2.16-2.88h4.32l-3.6 1.08 2.16-2.88-3.6-1.08v2.16l-3.6-1.08 2.16 2.88-3.6 1.08h4.32z'></path></g></svg>"
+    },
+    {
+        "country": "Uzbekistan",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#1EB53A' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#0099B5' d='M0 7.2h36v3.6H0z'></path><path fill='#FFFFFF' d='M0 10.8h36v3.6H0z'></path><path fill='#0099B5' d='M0 14.4h36v3.6H0z'></path><path fill='#FFFFFF' d='M0 0h14.4v3.6H0zm0 18h14.4v3.6H0z'></path><path fill='#CE1126' d='M0 7.2h14.4v1.8H0zm0 12.6h14.4v1.8H0z'></path></g></svg>"
+    },
+    {
+        "country": "Chile",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FFFFFF' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#0039A6' d='M0 0h18v10.8H0z'></path><path fill='#D52B1E' d='M0 10.8h36v10.8H0z'></path><path fill='#FFFFFF' d='M9 5.4 8.28 7.56 6.12 6.84l2.16 2.16L6.12 11.16l2.16-2.16 2.16 2.16z'></path></g></svg>"
+    },
+    {
+        "country": "Peru",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#D91023' d='M0 0h12.6v36H0z'></path><path fill='#FFFFFF' d='M12.6 0h10.8v36H12.6z'></path><path fill='#D91023' d='M23.4 0H36v36H23.4z'></path></g></svg>"
+    },
+    {
+        "country": "South Korea",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FFFFFF' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><circle fill='#000000' cx='18' cy='10.8' r='7.2'></circle><circle fill='#FFFFFF' cx='18' cy='10.8' r='6.48'></circle><path fill='#000000' d='M11.52 5.76a6.48 6.48 0 0 1 12.96 0 6.48 6.48 0 0 1-12.96 0zm0 10.08a6.48 6.48 0 0 1 12.96 0 6.48 6.48 0 0 1-12.96 0z'></path><circle fill='#C60C30' cx='12.96' cy='8.64' r='2.16'></circle><circle fill='#003478' cx='23.04' cy='12.96' r='2.16'></circle></g></svg>"
+    },
+    {
+        "country": "Romania",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#002B7F' d='M0 0h12.06v36H0z'></path><path fill='#FCD116' d='M12.06 0h11.88v36H12.06z'></path><path fill='#CE1126' d='M23.94 0H36v36H23.94z'></path></g></svg>"
+    },
+    {
+        "country": "Australia",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#00008B' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFFFFF' d='M0 0h2.16v2.16H0zm4.32 0h2.16v2.16H4.32zm4.32 0h2.16v2.16H8.64zm4.32 0h2.16v2.16H12.96zm4.32 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16H21.6zm4.32 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16H34.56zM0 4.32h2.16v2.16H0zm4.32 0h2.16v2.16H4.32zm8.64 0h2.16v2.16H12.96zm4.32 0h2.16v2.16h-2.16zm8.64 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16h-2.16zM0 8.64h2.16v2.16H0zm4.32 0h2.16v2.16H4.32zm8.64 0h2.16v2.16H12.96zm12.96 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16h-2.16zM0 12.96h2.16v2.16H0zm4.32 0h2.16v2.16H4.32zm8.64 0h2.16v2.16H12.96zm12.96 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16h-2.16zM0 17.28h2.16v2.16H0zm4.32 0h2.16v2.16H4.32zm8.64 0h2.16v2.16H12.96zm12.96 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16h-2.16z'></path><path fill='#FFFFFF' d='M8.64 19.44h2.16v2.16H8.64zm4.32 0h2.16v2.16H12.96zm4.32 0h2.16v2.16h-2.16zm4.32 0h2.16v2.16H21.6zm4.32 0h2.16v2.16h-2.16z'></path><path fill='#FFFFFF' d='m30.24 7.2-2.16 2.16 2.16 2.16 2.16-2.16z'></path><path fill='#FFFFFF' d='m25.92 11.52-2.16 2.16 2.16 2.16 2.16-2.16z'></path><path fill='#FFFFFF' d='m30.24 15.84-2.16 2.16 2.16 2.16 2.16-2.16z'></path><path fill='#C60C30' d='M7.2 8.64h7.2v7.2H7.2z'></path><path fill='#00008B' d='M7.2 8.64h7.2v2.88H7.2zm0 4.32h7.2v2.88H7.2z'></path></g></svg>"
+    },
+    {
+        "country": "Nigeria",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#008753' d='M0 0h12.06v36H0z'></path><path fill='#FFFFFF' d='M12.06 0h11.88v36H12.06z'></path><path fill='#008753' d='M23.94 0H36v36H23.94z'></path></g></svg>"
+    },
+    {
+        "country": "Paraguay",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#CE1126' d='M0 0h36v7.2H0z'></path><path fill='#FFFFFF' d='M0 7.2h36v7.2H0z'></path><path fill='#0038A8' d='M0 14.4h36v7.2H0z'></path><path fill='#000000' d='M18 11.52a4.32 4.32 0 1 0 0 8.64 4.32 4.32 0 0 0 0-8.64z'></path><path fill='#FCD116' d='M18 13.92a1.92 1.92 0 1 0 0 3.84 1.92 1.92 0 0 0 0-3.84z'></path></g></svg>"
+    },
+    {
+        "country": "Sri Lanka",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FFB700' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FF0000' d='M0 7.2h36v3.6H0z'></path><path fill='#FF0000' d='M0 14.4h36v3.6H0z'></path><path fill='#FF0000' d='M0 0h14.4v36H0z'></path><path fill='#0054B5' d='M0 0h9.6v36H0z'></path><path fill='#FFFFFF' d='m5.76 12.24-2.88 2.16 1.08-3.6-2.88-2.16h3.6l1.08-3.6 1.08 3.6h3.6l-2.88 2.16 1.08 3.6z'></path></g></svg>"
+    },
+    {
+        "country": "United Kingdom",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#012169' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFFFFF' d='M0 0h2.16v9.36H0zm4.32 0h2.16v9.36H4.32zm4.32 0h2.16v9.36H8.64zm4.32 0h2.16v9.36H12.96zm4.32 0h2.16v9.36h-2.16zm4.32 0h2.16v9.36H21.6zm4.32 0h2.16v9.36h-2.16zm4.32 0h2.16v9.36h-2.16zm4.32 0h2.16v9.36H34.56zM0 12.24h2.16v3.6H0zm4.32 0h2.16v3.6H4.32zm8.64 0h2.16v3.6H12.96zm4.32 0h2.16v3.6h-2.16zm8.64 0h2.16v3.6h-2.16zm4.32 0h2.16v3.6h-2.16zm4.32 0h2.16v3.6h-2.16z'></path><path fill='#C8102E' d='M0 0h36v2.16H0zm0 4.32h36v2.16H0zm0 4.32h36v2.16H0zm0 4.32h36v2.16H0zm0 4.32h36v2.16H0zM0 19.44h36v2.16H0z'></path><path fill='#C8102E' d='M0 0h2.16v36H0zm4.32 0h2.16v36H4.32zm4.32 0h2.16v36H8.64zm4.32 0h2.16v36H12.96zm4.32 0h2.16v36h-2.16zm4.32 0h2.16v36H21.6zm4.32 0h2.16v36h-2.16zm4.32 0h2.16v36h-2.16zm4.32 0h2.16v36H34.56z'></path><path fill='#FFFFFF' d='M0 0h14.4v12.24H0zm21.6 0h14.4v12.24h-14.4zm-14.4 9.36h14.4v3.6H7.2z'></path><path fill='#C8102E' d='M0 0h12.06v9.36H0zm23.94 0H36v9.36H23.94zM12.06 12.24H36v3.6H12.06z'></path></g></svg>"
+    },
+    {
+        "country": "Japan",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FFFFFF' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><circle fill='#BC002D' cx='18' cy='10.8' r='6.48'></circle></g></svg>"
+    },
+    {
+        "country": "Canada",
+        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#FF0000' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#FFFFFF' d='M10.8 0h14.4v36H10.8z'></path><path fill='#FF0000' d='M18 3.96 15.84 6.3h1.26v3.24h1.62V6.3h1.26L18 3.96zm0 11.88-2.52-3.78h1.62v-1.8h1.62v1.8h1.62L18 15.84z'></path></g></svg>"
+    }
+]
