@@ -1778,17 +1778,17 @@
     "research_paper": {
       "research_problem": 18,
       "existing_literature": 8,
-      "research_question": 17,
+      "research_question": 18,
       "methodology": 14,
-      "research_topic": 13,
+      "research_topic": 14,
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 11,
       "presentation": {
         "persuasiveness": 16,
-        "video_quality": 11,
+        "video_quality": 16,
         "research_problem": 18,
         "research_question": 14,
-        "methodology": 12
+        "methodology": 15
       }
     },
     "plagiarismPenalty": 0,
@@ -1811,7 +1811,7 @@
     "research_proposal_title": "How do large satellite constellations, such as Starlink, affect the quality of ground-based astronomical observations in the visible and infrared spectrum — and what solutions are possible to mitigate this impact ?",
     "research_paper": {
       "research_problem": 19,
-      "existing_literature": 8,
+      "existing_literature": 9,
       "research_question": 18,
       "methodology": 15,
       "research_topic": 14,
@@ -1822,7 +1822,7 @@
         "video_quality": 11,
         "research_problem": 19,
         "research_question": 15,
-        "methodology": 12
+        "methodology": 13
       }
     },
     "plagiarismPenalty": 0,
@@ -2559,7 +2559,7 @@
     "research_proposal_title": "The Efficacy of Probiotic and Prebiotic Interventions on Adolescent Mental Health: Systematic Review and Gaps Analysis",
     "research_paper": {
       "research_problem": 19,
-      "existing_literature": 9,
+      "existing_literature": 5,
       "research_question": 18,
       "methodology": 16,
       "research_topic": 14,
@@ -2660,10 +2660,10 @@
     "country": "Bangladesh",
     "research_proposal_title": "Advancing Green Transitions: Understanding the Adaptation and Challenges of Green Building Initiatives in Educational Institutions in Dhaka, Bangladesh",
     "research_paper": {
-      "research_problem": 19,
+      "research_problem": 18,
       "existing_literature": 9,
-      "research_question": 18,
-      "methodology": 16,
+      "research_question": 17,
+      "methodology": 15,
       "research_topic": 14,
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 15,
@@ -2910,7 +2910,7 @@
         "video_quality": 9,
         "research_problem": 19,
         "research_question": 15,
-        "methodology": 13
+        "methodology": 15
       }
     },
     "plagiarismPenalty": 0,
@@ -3374,15 +3374,15 @@
     "country": "Bangladesh",
     "research_proposal_title": "Perovskite Based Materials for Sustainable Hydrogen Production: Opportunities and Challenges",
     "research_paper": {
-      "research_problem": 18,
+      "research_problem": 16,
       "existing_literature": 8,
-      "research_question": 17,
+      "research_question": 16,
       "methodology": 15,
       "research_topic": 13,
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 19,
       "presentation": {
-        "persuasiveness": 16,
+        "persuasiveness": 15,
         "video_quality": 10,
         "research_problem": 18,
         "research_question": 14,
@@ -3986,16 +3986,16 @@
     "country": "India",
     "research_proposal_title": "Grapheme Aware Tokenization For Kannada",
     "research_paper": {
-      "research_problem": 17,
-      "existing_literature": 7,
+      "research_problem": 18,
+      "existing_literature": 9,
       "research_question": 15,
-      "methodology": 14,
-      "research_topic": 12,
+      "methodology": 15,
+      "research_topic": 15,
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 9,
       "presentation": {
         "persuasiveness": 16,
-        "video_quality": 10,
+        "video_quality": 11,
         "research_problem": 17,
         "research_question": 12,
         "methodology": 12
