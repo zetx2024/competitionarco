@@ -330,6 +330,40 @@
             }
         }
 
+.flag-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 130%; /* Position above the flag */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px); /* Start slightly lower */
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.25s ease-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.flag-container:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
+      
   </style>
       
     </head>
@@ -572,7 +606,12 @@ async function generateTable(category, studentsData) {
             <td>${getMedalSVG(student.rank)}</td>
             <td><div class="student-name">${student.name}</div>
                 <div class="school-name">${student.school}</div></td>
-            <td><span class="country-flag">${flagSVG}</span></td>
+                <td>
+                  <div class="flag-container">
+                    <span class="country-flag">${flagSVG}</span>
+                    <span class="tooltip">${student.country}</span>
+                  </div>
+                </td>
             <td>${student.scaledFinalScore}</td>
             <td><a href="${student.viewProposal}" target="_blank">
     <button class="video-pitch-btn" ${isEnabled ? '' : 'disabled'}>View Proposal</button>
