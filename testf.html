@@ -1311,8 +1311,8 @@
                 penalty = 0;  // No penalty
             } else if (plagiarismPercentile >= 21 && plagiarismPercentile <= 30) {
                 penalty = 20; // Moderate penalty
-            } else if (plagiarismPercentile > 30) {
-                penalty = 30; // High penalty
+            } else if (plagiarismPercentile > 31) {
+                penalty = 50; // High penalty
             }
 
             return penalty;
