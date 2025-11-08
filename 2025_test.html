@@ -613,12 +613,20 @@ async function generateTable(category, studentsData) {
                   </div>
                 </td>
             <td>${student.scaledFinalScore}</td>
-            <td><a href="${student.viewProposal}" target="_blank">
-    <button class="video-pitch-btn" ${isEnabled ? '' : 'disabled'}>View Proposal</button>
-  </a></td>
-  <td><a href="${student.videoPitch}" target="_blank">
-    <button class="video-pitch-btn" ${isEnabled ? '' : 'disabled'}>View Pitch</button>
-  </a></td>
+            <td>
+  ${isEnabled 
+    ? `<a href="${student.viewProposal}" target="_blank">
+         <button class="video-pitch-btn">View Proposal</button>
+       </a>` 
+    : `<button class="video-pitch-btn" disabled>View Proposal</button>`}
+</td>
+<td>
+  ${isEnabled 
+    ? `<a href="${student.videoPitch}" target="_blank">
+         <button class="video-pitch-btn">View Pitch</button>
+       </a>` 
+    : `<button class="video-pitch-btn" disabled>View Pitch</button>`}
+</td>
         `;
 
         // Add event listener for double-clicking any table element to copy rank link
