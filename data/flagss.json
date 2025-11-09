@@ -36,8 +36,8 @@
         "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#000001' d='M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z'></path><path fill='#D32011' d='M0 14.4h36v7.2H0z'></path><path fill='#007A36' d='M0 21.6h36v7.2H0z'></path><path fill='#FFFFFF' d='m12.24 12.24 2.16-2.88-3.6 1.08 2.16-2.88-3.6 1.08V7.92l2.16 2.88-3.6-1.08 2.16 2.88-3.6-1.08h4.32l2.16 2.88 2.16-2.88h4.32l-3.6 1.08 2.16-2.88-3.6-1.08v2.16l-3.6-1.08 2.16 2.88-3.6 1.08h4.32z'></path></g></svg>"
     },
     {
-        "country": "Indonesia",
-        "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#E70011' d='M0 21.6h36V36H0z'></path><path fill='#FFFFFF' d='M0 0h36v14.4H0z'></path></g></svg>"
+    "country": "Indonesia",
+    "svg": "<svg viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' aria-hidden='true' role='img' class='iconify iconify--twemoji' preserveAspectRatio='xMidYMid meet' fill='#000000'><g id='SVGRepo_bgCarrier' stroke-width='0'></g><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g><g id='SVGRepo_iconCarrier'><path fill='#E70011' d='M0 0h36v18H0z'></path><path fill='#FFFFFF' d='M0 18h36v18H0z'></path></g></svg>"
     },
     {
         "country": "Vietnam",
