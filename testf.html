@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preload" href="https://iarco.org/assets/achievements.mp3" />
+    <link rel="preload" href="https://eptonline.org/assets/achievements.mp3" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script src="https://kit.fontawesome.com/0d89f9ac34.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -722,7 +722,7 @@
     </footer>
 
     <!-- Add Audio Element -->
-    <audio id="congratsAudio" src="https://iarco.org/assets/achievements.mp3" preload="auto"></audio>
+    <audio id="congratsAudio" src="https://eptonline.org/assets/achievements.mp3" preload="auto"></audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -1088,7 +1088,7 @@
                         </div>
                         <div class="summary-card">
                             <h4><i class="fas fa-award"></i> Final Score</h4>
-                            <p><strong>Plagiarism Adjusted Score:</strong> ${plagiarismAdjustedScore}</p>
+                            <p><strong>Plagiarism Adjusted Score:</strong> (${submissionScore} - ${plagiarismPenalty}) ${plagiarismAdjustedScore}</p>
                             <p><strong>Final Score:</strong> ${finalScore}</p>
                             <p><strong>Percentage:</strong> ${((finalScore / 200) * 100).toFixed(1)}%</p>
                         </div>
@@ -1121,7 +1121,7 @@
                     </div>
                     <div class="comment-box">
                         <h4><i class="fas fa-file-signature"></i> Research Paper Comments</h4>
-                        <p>${proposal_comment}</p>
+                        <p>${presentation_comment}</p>
                     </div>
                     <div class="comment-box">
                         <h4><i class="fas fa-video"></i> Presentation Comments</h4>
