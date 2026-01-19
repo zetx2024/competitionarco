@@ -1,0 +1,52 @@
+{
+  "brand": {
+    "href": "/",
+    "logo": "assets/logo.png",
+    "width": "80%",
+    "height": "70px"
+  },
+  "menu": [
+    {
+      "type": "dropdown",
+      "label": "About",
+      "icon": "fas fa-chart-bar",
+      "items": [
+        { "label": "What is IARCO?", "href": "what-is-iarco", "icon": "fas fa-question" },
+        { "label": "IARCO Backbone", "href": "iarco-backbone", "icon": "fas fa-users" },
+        { "label": "Prizes", "href": "prizes", "icon": "fas fa-trophy" },
+        { "label": "Partners", "href": "partners", "icon": "fas fa-handshake" }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "label": "Archive",
+      "icon": "fab fa-accusoft",
+      "items": [
+        { "label": "2026 Winners", "href": "2026-winners", "icon": "fas fa-trophy" },
+        { "label": "2026 Finalists", "href": "2026-finalists", "icon": "fas fa-running" },
+        { "label": "2025 Winners", "href": "2025-winners", "icon": "fas fa-trophy" },
+        { "label": "2025 Finalists", "href": "2025-finalists", "icon": "fas fa-running" },
+        { "label": "2024 Winners", "href": "2024-winners", "icon": "fas fa-trophy" },
+        { "label": "2024 Finalists", "href": "2024-finalists", "icon": "fas fa-running" }
+      ]
+    },
+    {
+      "type": "dropdown",
+      "label": "Competition Hubs",
+      "icon": "fab fa-hubspot",
+      "items": [
+        { "label": "Bootcamps", "href": "bootcamps", "icon": "fas fa-dumbbell" },
+        { "label": "Guidelines", "href": "guidelines", "icon": "fas fa-chalkboard-teacher" },
+        { "label": "2026 Winners", "href": "2026-winners", "icon": "fas fa-trophy" },
+        { "label": "2025 Winners", "href": "2025-winners", "icon": "fas fa-trophy" },
+        { "label": "2024 Winners", "href": "2024-winners", "icon": "fas fa-trophy" }
+      ]
+    },
+    {
+      "type": "link",
+      "label": "FAQs",
+      "icon": "fas fa-question",
+      "href": "faq"
+    }
+  ]
+}
