@@ -1,10 +1,14 @@
+
+
 (async function () {
     const root = document.getElementById("navbar-root");
     if (!root) return;
 
+    // Fetch JSON menu
     const res = await fetch("https://iarco.org/navbar/navbar.json");
     const data = await res.json();
 
+    // Build dropdown menu HTML
     const buildDropdown = (item) => `
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -23,6 +27,7 @@
         </li>
     `;
 
+    // Build single link HTML
     const buildLink = (item) => `
         <li class="nav-item">
             <a class="nav-link" href="${item.href}">
@@ -31,8 +36,9 @@
         </li>
     `;
 
+    // Inject navbar HTML
     root.innerHTML = `
-        <nav class="navbar sticky-top navbar-expand-lg navbar-light">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-uppercase" href="${data.brand.href}">
                     <img src="${data.brand.logo}"
@@ -42,7 +48,10 @@
 
                 <button class="navbar-toggler" type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent">
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -59,11 +68,18 @@
         </nav>
     `;
 
-    // Active link handling
+    // Add body padding equal to navbar height to prevent overlap
+    const navbar = document.querySelector(".navbar");
+    const navbarHeight = navbar.offsetHeight;
+    document.body.style.paddingTop = navbarHeight + "px";
+
+    // Handle active links based on current page URL
     const current = window.location.pathname.replace("/", "").replace(".html", "");
 
     document.querySelectorAll(".navbar a[href]").forEach(link => {
         const href = link.getAttribute("href");
+        if (!href || href === "#") return;
+
         if (href === current || (current === "" && href === "/")) {
             link.classList.add("active");
 
@@ -74,5 +90,3 @@
         }
     });
 })();
-
-
