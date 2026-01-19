@@ -52,7 +52,54 @@
         ]
       }
     ],
-    "senior": []
+    "senior": [
+      {
+        "badge": "1st Place",
+        "title": "Champion",
+        "amount": "$300",
+        "icon": "fas fa-medal medal-icon",
+        "items": [
+          "Cash prize of $300 USD",
+          "Featured on IARCO website",
+          "Digital winner's badge",
+          "Certificate of Excellence"
+        ]
+      },
+      {
+        "badge": "2nd Place",
+        "title": "First Runner-Up",
+        "amount": "$200",
+        "icon": "fas fa-medal medal-icon",
+        "items": [
+          "Cash prize of $200 USD",
+          "Featured on IARCO website",
+          "Digital winner's badge",
+          "Certificate of Excellence"
+        ]
+      },
+      {
+        "badge": "3rd Place",
+        "title": "Second Runner-Up",
+        "amount": "$100",
+        "icon": "fas fa-medal medal-icon",
+        "items": [
+          "Cash prize of $100 USD",
+          "Featured on IARCO website",
+          "Digital winner's badge",
+          "Certificate of Excellence"
+        ]
+      },
+      {
+        "badge": "Top 10",
+        "title": "4th–10th",
+        "amount": "Recognition",
+        "icon": "fas fa-award medal-icon",
+        "items": [
+          "Featured on IARCO website",
+          "Digital finalist badge",
+          "Certificate of Achievement"
+        ]
+      }]
   },
 
   "2025": {
