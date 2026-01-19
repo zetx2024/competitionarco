@@ -1,6 +1,9 @@
 (function () {
+
+    /* =========================
+       FOOTER HTML (Single Source)
+    ========================== */
     const footerHTML = `
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -33,7 +36,7 @@
 
                 <div class="footer-subscribe">
                     <h3 class="footer-title">Newsletter</h3>
-                    <form class="subscribe-form" id="footer-subscribe-form">
+                    <form class="subscribe-form" id="footer-subscribe-form" name="footer-subscribe-form">
                         <input name="email" type="email" placeholder="Your Email" required>
                         <button type="submit"><i class="fas fa-paper-plane"></i></button>
                     </form>
@@ -49,26 +52,86 @@
     </footer>
     `;
 
+    /* =========================
+       FOOTER LOAD
+    ========================== */
     document.addEventListener('DOMContentLoaded', () => {
         const footerContainer = document.getElementById('site-footer');
         if (footerContainer) {
             footerContainer.innerHTML = footerHTML;
         }
+
+        initFooterSubscription();
+        initScrollAnimation();
     });
 
-    // Expose active link setter globally
+    /* =========================
+       ACTIVE FOOTER LINK
+    ========================== */
     window.setActiveFooterLink = function (key) {
         document.addEventListener('DOMContentLoaded', () => {
             document
                 .querySelectorAll('[data-footer]')
                 .forEach(link => link.classList.remove('active'));
 
-            const activeLink = document.querySelector(
-                `[data-footer="${key}"]`
-            );
+            const activeLink = document.querySelector(`[data-footer="${key}"]`);
             if (activeLink) {
                 activeLink.classList.add('active');
             }
         });
     };
+
+    /* =========================
+       NEWSLETTER SUBSCRIPTION
+    ========================== */
+    function initFooterSubscription() {
+        const FscriptURL =
+            'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
+
+        const Fform = document.forms['footer-subscribe-form'];
+        const FSubId = document.getElementById('footer-subscribe-message');
+
+        if (!Fform || !FSubId) return;
+
+        Fform.addEventListener('submit', e => {
+            e.preventDefault();
+
+            fetch(FscriptURL, {
+                method: 'POST',
+                body: new FormData(Fform)
+            })
+                .then(() => {
+                    FSubId.innerHTML = 'Thank You for Subscribing!';
+                    setTimeout(() => (FSubId.innerHTML = ''), 3000);
+                    Fform.reset();
+                })
+                .catch(error => {
+                    console.error('Subscription Error:', error.message);
+                });
+        });
+    }
+
+    /* =========================
+       SCROLL ANIMATION
+    ========================== */
+    function initScrollAnimation() {
+        const prizeCards = document.querySelectorAll('.prize-card');
+        if (!prizeCards.length) return;
+
+        const observer = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        prizeCards.forEach(card => observer.observe(card));
+    }
+
 })();
