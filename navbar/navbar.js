@@ -45,7 +45,7 @@
 
     // ===== 4. Inject navbar HTML =====
     root.innerHTML = `
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light custom-navbar bg-light shadow-sm">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light custom-navbar shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-uppercase" href="${data.brand.href}">
                     <img src="${data.brand.logo}"
@@ -97,3 +97,4 @@
         }
     });
 })();
+
