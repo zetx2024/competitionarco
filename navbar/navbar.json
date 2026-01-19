@@ -23,8 +23,6 @@
       "label": "Archive",
       "icon": "fab fa-accusoft",
       "items": [
-        { "label": "2026 Winners", "href": "2026-winners", "icon": "fas fa-trophy" },
-        { "label": "2026 Finalists", "href": "2026-finalists", "icon": "fas fa-running" },
         { "label": "2025 Winners", "href": "2025-winners", "icon": "fas fa-trophy" },
         { "label": "2025 Finalists", "href": "2025-finalists", "icon": "fas fa-running" },
         { "label": "2024 Winners", "href": "2024-winners", "icon": "fas fa-trophy" },
@@ -38,9 +36,10 @@
       "items": [
         { "label": "Bootcamps", "href": "bootcamps", "icon": "fas fa-dumbbell" },
         { "label": "Guidelines", "href": "guidelines", "icon": "fas fa-chalkboard-teacher" },
-        { "label": "2026 Winners", "href": "2026-winners", "icon": "fas fa-trophy" },
         { "label": "2025 Winners", "href": "2025-winners", "icon": "fas fa-trophy" },
-        { "label": "2024 Winners", "href": "2024-winners", "icon": "fas fa-trophy" }
+         { "label": "2025 Finalists", "href": "2025-finalists", "icon": "fas fa-running" },
+        { "label": "2024 Winners", "href": "2024-winners", "icon": "fas fa-trophy" },
+         { "label": "2024 Finalists", "href": "2024-finalists", "icon": "fas fa-running" }
       ]
     },
     {
@@ -51,4 +50,5 @@
     }
   ]
 }
+
 
