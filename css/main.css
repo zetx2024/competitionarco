@@ -876,7 +876,7 @@ html {
    FOOTER BASE
 ========================= */
 footer {
-    background: #0b0b0b;
+    background: rgba(0, 51, 102, 0.97);
     color: #ffffff;
     width: 100%;
 }
