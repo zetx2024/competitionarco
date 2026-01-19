@@ -623,6 +623,81 @@
         padding: 1.5rem;
       }
     }
+
+        .timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: var(--box-shadow);
+    background-color: var(--white);
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .timeline-table th, .timeline-table td {
+    padding: 15px 20px;
+    text-align: left;
+  }
+
+  .timeline-table th {
+    background-color: var(--header-bg);
+    color: var(--white);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-table tr:nth-child(even) {
+    background-color: var(--medium-gray);
+  }
+
+  .timeline-table tr:hover {
+    background-color: var(--accent-blue);
+    color: var(--white);
+    transition: 0.3s;
+  }
+
+  .date-cell {
+    font-weight: bold;
+    color: var(--primary-blue);
+    min-width: 140px;
+  }
+
+  .event-cell {
+    color: var(--dark-gray);
+  }
+
+  @media screen and (max-width: 768px) {
+    .timeline-table thead {
+      display: none;
+    }
+
+    .timeline-table tr {
+      display: block;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--medium-gray);
+    }
+
+    .timeline-table td {
+      display: block;
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+
+    .timeline-table td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 15px;
+      width: 45%;
+      text-align: left;
+      font-weight: bold;
+      color: var(--primary-blue);
+    }
+
+    .timeline-table td:last-child {
+      padding-bottom: 10px;
+    }
+  }
     </style>
 </head>
 <body>
