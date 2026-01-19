@@ -2,7 +2,7 @@
     const root = document.getElementById("navbar-root");
     if (!root) return;
 
-    const res = await fetch("/assets/data/navbar.json");
+    const res = await fetch("/navbar.json");
     const data = await res.json();
 
     const buildDropdown = (item) => `
@@ -74,3 +74,4 @@
         }
     });
 })();
+
