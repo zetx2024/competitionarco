@@ -1,14 +1,22 @@
 
-
 (async function () {
     const root = document.getElementById("navbar-root");
     if (!root) return;
 
-    // Fetch JSON menu
+    // ===== 1. Preload main CSS dynamically =====
+    const cssHref = "https://iarco.org/css/main.css"; // <-- adjust path to your main CSS
+    if (!document.querySelector(`link[href="${cssHref}"]`)) {
+        const linkEl = document.createElement("link");
+        linkEl.rel = "stylesheet";
+        linkEl.href = cssHref;
+        document.head.appendChild(linkEl);
+    }
+
+    // ===== 2. Fetch navbar JSON =====
     const res = await fetch("https://iarco.org/navbar/navbar.json");
     const data = await res.json();
 
-    // Build dropdown menu HTML
+    // ===== 3. Build dropdown menu HTML =====
     const buildDropdown = (item) => `
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -27,7 +35,6 @@
         </li>
     `;
 
-    // Build single link HTML
     const buildLink = (item) => `
         <li class="nav-item">
             <a class="nav-link" href="${item.href}">
@@ -36,9 +43,9 @@
         </li>
     `;
 
-    // Inject navbar HTML
+    // ===== 4. Inject navbar HTML =====
     root.innerHTML = `
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow-sm">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light custom-navbar bg-light shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-uppercase" href="${data.brand.href}">
                     <img src="${data.brand.logo}"
@@ -68,15 +75,15 @@
         </nav>
     `;
 
-    // Add body padding equal to navbar height to prevent overlap
-    const navbar = document.querySelector(".navbar");
+    // ===== 5. Add body padding equal to navbar height =====
+    const navbar = document.querySelector(".custom-navbar");
     const navbarHeight = navbar.offsetHeight;
     document.body.style.paddingTop = navbarHeight + "px";
 
-    // Handle active links based on current page URL
+    // ===== 6. Active link handling =====
     const current = window.location.pathname.replace("/", "").replace(".html", "");
 
-    document.querySelectorAll(".navbar a[href]").forEach(link => {
+    document.querySelectorAll(".custom-navbar a[href]").forEach(link => {
         const href = link.getAttribute("href");
         if (!href || href === "#") return;
 
