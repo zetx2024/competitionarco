@@ -60,7 +60,7 @@
 <div class="container">
     <h2>Excel Reviews → JSON Generator</h2>
 
-    <input type="file" id="excelFile" accept=".xlsx, .xls">
+    <input type="file" id="excelFile" accept=".xlsx,.xls">
     <br>
     <button onclick="generateJSON()">Generate JSON</button>
 
@@ -86,16 +86,17 @@ function generateJSON() {
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
 
+        // Read Excel rows using header names
         const rows = XLSX.utils.sheet_to_json(sheet, { defval: "" });
 
         const jsonData = rows.map(row => ({
-            image: row.image,
+            image: row.Image,
             name: row.name,
             institution: row.institution,
             category: row.category,
             country: row.country,
             year: String(row.year),
-            result: row.result,
+            result: "Finalist", // default or modify if you add column later
             rating: Number(row.rating),
             review: row.review
         }));
