@@ -22,83 +22,6 @@
         "review": "A lot of videos and a lot of resources are available to you, which I found really helpful for getting started on research despite having no prior experience."
     },
     {
-        "image": "https://iarco.org/assets/participant/2025/Revision.jpeg",
-        "name": "Gales Epifanio Pérez Fernández",
-        "institution": "Colegio de Alto Rendimiento (COAR) - San Martín",
-        "category": "Junior",
-        "country": "Peru",
-        "year": "2025",
-        "result": "Finalist",
-        "rating": 5,
-        "review": "The International Academic Research Competition (IARCO) is an inspiring opportunity for students to share their ideas on a global stage. What makes it so special is how open it is to every discipline—from science and technology to the humanities—giving everyone a chance to shine. The guidelines are clear and fair, making sure each proposal is judged on originality, creativity, and solid research methods. I really admire how it encourages students to follow high academic standards while still being innovative"
-    },
-    {
-        "image": "https://iarco.org/assets/participant/2025/VaruniHK.jpeg",
-        "name": "Varuni H K ",
-        "institution": "PES University ",
-        "category": "Senior",
-        "country": "India",
-        "year": "2025",
-        "result": "Finalist",
-        "rating": 3,
-        "review": "liked the quality "
-    },
-    {
-        "image": "https://iarco.org/assets/participant/2025/HudaHassan.jpg",
-        "name": "Huda Hassan",
-        "institution": "Zaitoon international campus",
-        "category": "Junior",
-        "country": "India",
-        "year": "2025",
-        "result": "Finalist",
-        "rating": 3,
-        "review": "wonderful experience"
-    },
-    {
-        "image": "https://iarco.org/assets/participant/2025/Hrishitaa.jpeg",
-        "name": "Hrishitaa P",
-        "institution": "Christ Junior College",
-        "category": "Junior",
-        "country": "India",
-        "year": "2025",
-        "result": "Finalist",
-        "rating": 3,
-        "review": "Great opportunity"
-    },
-    {
-        "image": "https://iarco.org/assets/participant/2025/KellyPierre.jpg",
-        "name": "Kelly-Emmanuel Pierre",
-        "institution": "Charlotte Catholic High School",
-        "category": "Junior",
-        "country": "United States",
-        "year": "2025",
-        "result": "Finalist",
-        "rating": 4,
-        "review": "Very clear cut guidelines, access to the winning proposals helped me structure my own."
-    },
-    {
-        "image": "https://iarco.org/assets/participant/2025/MrinalYalageri.jpg",
-        "name": "Mrinal Yalageri",
-        "institution": "Obra D. Tompkins High School",
-        "category": "Junior",
-        "country": "United States",
-        "year": "2025",
-        "result": "Finalist",
-        "rating": 4,
-        "review": "I think IARCO is a great organization, and I truly am appreciative of what the organization stands for.  "
-    },
-    {
-        "image": "https://iarco.org/assets/participant/2025/XusenovFirdavsJamshid.JPG",
-        "name": "Firdavs Xusenov",
-        "institution": "Presidential School in Navoi",
-        "category": "Junior",
-        "country": "Uzbekistan",
-        "year": "2025",
-        "result": "Finalist",
-        "rating": 3,
-        "review": "IARCO offered me a chance of experiencing a researching sphere, which was my first experience in such stuff."
-    },
-    {
         "image": "https://iarco.org/assets/participant/2025/HongAnhLai.jpg",
         "name": "Lai Hong Anh ",
         "institution": "Chu Van An National High School for the Gifted ",
@@ -218,6 +141,83 @@
         "result": "Finalist",
         "rating": 4,
         "review": "Participating in IARCO has been a truly wonderful experience. The entire process – from preparing the research to receiving feedback – was very well organized and enriching. I really liked how the competition encouraged originality, critical thinking, and proper academic formatting, which helped me grow as a researcher. The judging guidelines were clear and professional, and the opportunity to share ideas on a global platform made the experience even more valuable. Overall, IARCO has provided me with a lot of learning, exposure, and confidence, and I would highly recommend it to other students interested in research."
+    },
+      {
+        "image": "https://iarco.org/assets/participant/2025/MrinalYalageri.jpg",
+        "name": "Mrinal Yalageri",
+        "institution": "Obra D. Tompkins High School",
+        "category": "Junior",
+        "country": "United States",
+        "year": "2025",
+        "result": "Finalist",
+        "rating": 4,
+        "review": "I think IARCO is a great organization, and I truly am appreciative of what the organization stands for.  "
+    },
+      {
+        "image": "https://iarco.org/assets/participant/2025/Revision.jpeg",
+        "name": "Gales Epifanio Pérez Fernández",
+        "institution": "Colegio de Alto Rendimiento (COAR) - San Martín",
+        "category": "Junior",
+        "country": "Peru",
+        "year": "2025",
+        "result": "Finalist",
+        "rating": 5,
+        "review": "The International Academic Research Competition (IARCO) is an inspiring opportunity for students to share their ideas on a global stage. What makes it so special is how open it is to every discipline—from science and technology to the humanities—giving everyone a chance to shine. The guidelines are clear and fair, making sure each proposal is judged on originality, creativity, and solid research methods. I really admire how it encourages students to follow high academic standards while still being innovative"
+    },
+    {
+        "image": "https://iarco.org/assets/participant/2025/VaruniHK.jpeg",
+        "name": "Varuni H K ",
+        "institution": "PES University ",
+        "category": "Senior",
+        "country": "India",
+        "year": "2025",
+        "result": "Finalist",
+        "rating": 3,
+        "review": "liked the quality "
+    },
+    {
+        "image": "https://iarco.org/assets/participant/2025/HudaHassan.jpg",
+        "name": "Huda Hassan",
+        "institution": "Zaitoon international campus",
+        "category": "Junior",
+        "country": "India",
+        "year": "2025",
+        "result": "Finalist",
+        "rating": 3,
+        "review": "wonderful experience"
+    },
+    {
+        "image": "https://iarco.org/assets/participant/2025/Hrishitaa.jpeg",
+        "name": "Hrishitaa P",
+        "institution": "Christ Junior College",
+        "category": "Junior",
+        "country": "India",
+        "year": "2025",
+        "result": "Finalist",
+        "rating": 3,
+        "review": "Great opportunity"
+    },
+    {
+        "image": "https://iarco.org/assets/participant/2025/KellyPierre.jpg",
+        "name": "Kelly-Emmanuel Pierre",
+        "institution": "Charlotte Catholic High School",
+        "category": "Junior",
+        "country": "United States",
+        "year": "2025",
+        "result": "Finalist",
+        "rating": 4,
+        "review": "Very clear cut guidelines, access to the winning proposals helped me structure my own."
+    },
+    {
+        "image": "https://iarco.org/assets/participant/2025/XusenovFirdavsJamshid.JPG",
+        "name": "Firdavs Xusenov",
+        "institution": "Presidential School in Navoi",
+        "category": "Junior",
+        "country": "Uzbekistan",
+        "year": "2025",
+        "result": "Finalist",
+        "rating": 3,
+        "review": "IARCO offered me a chance of experiencing a researching sphere, which was my first experience in such stuff."
     },
     {
         "image": "https://iarco.org/assets/participant/2025/Vedant.jpg",
