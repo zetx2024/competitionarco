@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YRJ Review Graphics Generator</title>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+    /* Theme variables you requested */
+    :root{
+      --primary-blue: #003366;
+      --secondary-blue: #0749b3;
+      --accent-blue: #4b9cd3;
+      --primary-gold: #ffd700;
+      --secondary-gold: #daa520;
+      --white: #ffffff;
+      --light-gray: #f8f9fa;
+      --dark-gray: #343a40;
+      --text-color: #2c3e50;
+    }
+
+    /* Base Styles for UI (kept your layout & sizes intact) */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--light-gray);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--text-color);
+    }
+
+    .container {
+        background-color: var(--white);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 30px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    h1 { color: var(--secondary-blue); margin-bottom: 10px; }
+    p { margin-bottom: 15px; line-height: 1.5; }
+
+    input[type="file"] { margin-bottom: 12px; padding: 8px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; }
+    label.small { display:block; font-size:0.9rem; margin-bottom:6px; text-align:left; color: #555; }
+
+    .controls-row { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:16px; }
+    .controls-row .field { display:flex; flex-direction:column; gap:6px; min-width:160px; }
+
+    .button-group { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .button-group button {
+        background-color: var(--secondary-blue); color: var(--white); border: none; padding: 12px 18px;
+        border-radius: 5px; cursor: pointer; font-size: 15px; transition: background-color 0.2s ease;
+    }
+    .button-group .download-btn { background-color: var(--secondary-gold); color: #000; }
+    .button-group button:hover:not(:disabled) { background-color: var(--primary-blue); }
+    .button-group .download-btn:hover:not(:disabled) { background-color: var(--secondary-gold); filter:brightness(.95); }
+    .button-group button:disabled { background-color: #cccccc; cursor: not-allowed; }
+
+    #reviewCardsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    /* --- Card Sizing --- */
+    :root {
+        --card-width: 1080px;
+        --card-height: 1080px;
+        --preview-scale: 0.45; /* Adjust this to make previews larger/smaller */
+    }
+
+    /* Scale preview only */
+    #reviewCardsContainer .review-card {
+        transform: scale(var(--preview-scale));
+        transform-origin: top left;
+        margin-right: calc(var(--card-width) * (var(--preview-scale) - 1) + 30px);
+        margin-bottom: calc(var(--card-height) * (var(--preview-scale) - 1) + 30px);
+    }
+
+    .review-card {
+        width: var(--card-width);
+        height: var(--card-height);
+        background-color: #f8fff9;
+        overflow: hidden;
+        position: relative;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text-color);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Header uses primary blue from theme */
+    .card-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 240px;
+        background-color: var(--primary-blue);
+        color: var(--white);
+        box-sizing: border-box;
+    }
+    .card-title {
+        position: absolute;
+        top: 80px;
+        left: 50px;
+        font-size: 5em;
+        font-weight: 800;
+        letter-spacing: 4px;
+        margin: 0;
+    }
+    .card-subtitle {
+        position: absolute;
+        top: 30px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        font-weight: 500;
+    }
+
+    .card-content-background {
+        position: absolute;
+        top: 200px;
+        left: 40px;
+        right: 40px;
+        bottom: 0;
+        background-color: var(--white);
+        border-radius: 40px 40px 0 0;
+        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+    }
+
+    .profile-section {
+        position: absolute;
+        top: 140px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 10px solid var(--white);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+    .profile-pic {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .feedback-section {
+        position: absolute;
+        top: 370px;
+        left: 90px;
+        right: 90px;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        box-sizing: border-box;
+        z-index: 5;
+    }
+    .feedback-text {
+        font-size: 2.2em;
+        line-height: 1.5;
+        color: #444;
+        text-align: justify;
+        position: relative;
+        z-index: 1;
+        padding: 0 20px;
+    }
+    .quote { position:absolute; font-size:8em; color:#e0e0e0; font-family:serif; line-height:0.6; z-index:0; }
+    .quote-top { top:-20px; left:0; }
+    .quote-bottom { bottom:-30px; right:0; transform:rotate(180deg); }
+
+    .student-info-section {
+        position: absolute;
+        bottom: 120px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+        z-index: 5;
+    }
+    .student-name { font-weight: bold; font-size: 2.4em; color: #333; margin-bottom:8px; }
+    .student-school-class { font-size: 1.8em; color: #666; margin-bottom:15px; }
+    .student-class::before { content:' | '; margin:0 10px; }
+    .star-rating { display:flex; gap:5px; justify-content:center; }
+    .star { color: #ffc107; font-size: 2.5em; }
+
+    .card-footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background-color: var(--white);
+        padding: 0 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 2px solid #eee;
+        box-sizing: border-box;
+        z-index: 5;
+    }
+    .footer-group { display:flex; flex-direction:column; gap:10px; }
+    .social-link { display:flex; align-items:center; text-decoration:none; color:#555; font-size:1.5em; gap:8px; }
+    .social-link img { width:32px; height:32px; }
+    .website-center { flex-grow:1; text-align:center; }
+    .website { font-size:1.8em; font-weight:bold; color:#333; display:inline-flex; align-items:center; gap:10px; }
+    .website img { width:36px; height:36px; }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>YRJ Review Graphics Generator</h1>
+        <p>Excel columns required (order supported): <strong>category | year | country | name | institution | rating | review | Image</strong></p>
+
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; align-items:center; margin-bottom:10px;">
+            <input type="file" id="excelFileInput" accept=".xlsx, .xls">
+            <div style="min-width:280px; text-align:left;">
+                <div class="controls-row">
+                    <div class="field">
+                        <label class="small">Facebook handle (text)</label>
+                        <input id="facebookHandle" type="text" placeholder="yrjournal" value="yrjournal">
+                    </div>
+                    <div class="field">
+                        <label class="small">YouTube handle (text)</label>
+                        <input id="youtubeHandle" type="text" placeholder="@yrjournal" value="@yrjournal">
+                    </div>
+                    <div class="field">
+                        <label class="small">Instagram handle (text)</label>
+                        <input id="instagramHandle" type="text" placeholder="youthrjournal" value="youthrjournal">
+                    </div>
+                    <div class="field">
+                        <label class="small">LinkedIn handle (text)</label>
+                        <input id="linkedinHandle" type="text" placeholder="company/yrj" value="company/yrj">
+                    </div>
+                    <div class="field">
+                        <label class="small">Website (text)</label>
+                        <input id="websiteText" type="text" placeholder="yrjournal.org" value="yrjournal.org">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button id="previewCardsBtn" disabled>Preview Review</button>
+            <button id="downloadCardsBtn" disabled class="download-btn">Download All as PNG</button>
+        </div>
+
+        <div id="reviewCardsContainer"></div>
+    </div>
+
+    <!-- Template (kept structure & content) -->
+    <template id="reviewCardTemplate">
+        <div class="review-card">
+            <div class="card-header">
+                <div class="card-subtitle">Winter Research Program 2025</div>
+                <div class="card-title">REVIEW</div>
+            </div>
+
+            <div class="card-content-background"></div>
+
+            <div class="profile-section">
+                <img src="" alt="Profile Picture" class="profile-pic">
+            </div>
+
+            <div class="feedback-section">
+                <div class="quote quote-top">“</div>
+                <p class="feedback-text"></p>
+                <div class="quote quote-bottom">”</div>
+            </div>
+
+            <div class="student-info-section">
+                <div class="student-name"></div>
+                <div class="student-school-class">
+                    <span class="student-school"></span>
+                    <span class="student-class"></span>
+                </div>
+                <div class="star-rating"></div>
+            </div>
+
+            <div class="card-footer">
+                <div class="footer-group footer-left-group">
+                    <a href="#" class="social-link footer-facebook"><img src="https://img.icons8.com/ios-filled/50/000000/facebook-new.png" alt="Facebook"> <span class="footer-facebook-text">facebook</span></a>
+                    <a href="#" class="social-link footer-youtube"><img src="https://img.icons8.com/ios-filled/50/000000/youtube.png" alt="YouTube"> <span class="footer-youtube-text">youtube</span></a>
+                </div>
+                <div class="website-center">
+                    <div class="website">
+                        <img src="https://img.icons8.com/ios-filled/24/000000/globe--v1.png" alt="Website"> <span class="footer-website-text">website</span>
+                    </div>
+                </div>
+                <div class="footer-group footer-right-group">
+                    <a href="#" class="social-link footer-instagram"><img src="https://img.icons8.com/ios-filled/50/000000/instagram-new--v1.png" alt="Instagram"> <span class="footer-instagram-text">instagram</span></a>
+                    <a href="#" class="social-link footer-linkedin"><img src="https://img.icons8.com/ios-filled/50/000000/linkedin.png" alt="LinkedIn"> <span class="footer-linkedin-text">linkedin</span></a>
+                </div>
+            </div>
+        </div>
+    </template>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const excelFileInput = document.getElementById('excelFileInput');
+    const previewCardsBtn = document.getElementById('previewCardsBtn');
+    const downloadCardsBtn = document.getElementById('downloadCardsBtn');
+    const reviewCardsContainer = document.getElementById('reviewCardsContainer');
+    const reviewCardTemplate = document.getElementById('reviewCardTemplate');
+
+    // social handle inputs
+    const facebookHandleInput = document.getElementById('facebookHandle');
+    const youtubeHandleInput = document.getElementById('youtubeHandle');
+    const instagramHandleInput = document.getElementById('instagramHandle');
+    const linkedinHandleInput = document.getElementById('linkedinHandle');
+    const websiteTextInput = document.getElementById('websiteText');
+
+    let rows = [];
+
+    // robust image/CORS handling (keeps your drive parsing logic)
+    function getFixedImageUrl(link) {
+        if (!link) return '';
+        // Accept Google Drive links and convert; otherwise use CORS proxy
+        const driveRegex = /(?:drive\.google\.com\/(?:file\/d\/|open\?id=)|docs.google.com\/uc\?id=)([a-zA-Z0-9_-]+)/;
+        const idMatch = link.match(driveRegex);
+        if (idMatch && idMatch[1]) {
+            const fileId = idMatch[1];
+            return `https://corsproxy.io/?https://drive.google.com/uc?export=view&id=${fileId}`;
+        }
+        return `https://corsproxy.io/?${link}`;
+    }
+
+    function adjustFeedbackFontSize(feedbackElement, containerElement) {
+        let fontSize = 2.2; 
+        feedbackElement.style.fontSize = fontSize + 'em';
+        const maxAttempts = 20;
+        let attempts = 0;
+        while (feedbackElement.scrollHeight > containerElement.clientHeight && attempts < maxAttempts) {
+            fontSize -= 0.1;
+            if (fontSize < 1.0) {
+                fontSize = 1.0;
+                break;
+            }
+            feedbackElement.style.fontSize = fontSize + 'em';
+            attempts++;
+        }
+    }
+
+    // map raw row (case-insensitive) to our expected keys
+    function normalizeRow(raw) {
+        const norm = {};
+        for (const k in raw) norm[k.toLowerCase().trim()] = raw[k];
+        return {
+            category: norm['category'] ?? '',
+            year: norm['year'] ?? '',
+            country: norm['country'] ?? '',
+            name: norm['name'] ?? '',
+            institution: norm['institution'] ?? '',
+            rating: norm['rating'] ?? norm['rating '] ?? 0,
+            review: norm['review'] ?? '',
+            Image: norm['image'] ?? norm['Image'] ?? norm['image link'] ?? norm['image_link'] ?? ''
+        };
+    }
+
+    function populateCard(card, student) {
+        // text blocks
+        card.querySelector('.feedback-text').textContent = student.review || "No feedback provided.";
+        card.querySelector('.student-name').textContent = student.name || "";
+        card.querySelector('.student-school').textContent = student.institution || "";
+        // class will show category (per your sheet)
+        card.querySelector('.student-class').textContent = student.category || "";
+
+        // star rating
+        const starRatingContainer = card.querySelector('.star-rating');
+        starRatingContainer.innerHTML = '';
+        const rating = Math.min(5, Math.max(0, parseInt(student.rating) || 0));
+        for (let i = 0; i < 5; i++) {
+            const span = document.createElement('span');
+            span.classList.add('star');
+            span.innerHTML = i < rating ? '&#9733;' : '&#9734;';
+            starRatingContainer.appendChild(span);
+        }
+
+        // footer handles (read from inputs)
+        card.querySelector('.footer-facebook-text').textContent = facebookHandleInput.value || 'facebook';
+        card.querySelector('.footer-youtube-text').textContent = youtubeHandleInput.value || 'youtube';
+        card.querySelector('.footer-instagram-text').textContent = instagramHandleInput.value || 'instagram';
+        card.querySelector('.footer-linkedin-text').textContent = linkedinHandleInput.value || 'linkedin';
+        card.querySelector('.footer-website-text').textContent = websiteTextInput.value || '';
+
+        // set footer links (simple hrefs — keep as text handles unless user prefers full urls)
+        const fbAnchor = card.querySelector('.footer-facebook');
+        const ytAnchor = card.querySelector('.footer-youtube');
+        const igAnchor = card.querySelector('.footer-instagram');
+        const liAnchor = card.querySelector('.footer-linkedin');
+        const siteAnchorText = card.querySelector('.footer-website-text');
+
+        // Build basic hrefs (do not alter text if it's not a full url)
+        const fbHandle = facebookHandleInput.value || '';
+        fbAnchor.href = fbHandle.startsWith('http') ? fbHandle : `https://facebook.com/${encodeURIComponent(fbHandle)}`;
+
+        const ytHandle = youtubeHandleInput.value || '';
+        ytAnchor.href = ytHandle.startsWith('http') ? ytHandle : `https://www.youtube.com/${encodeURIComponent(ytHandle.replace(/^@/,''))}`;
+
+        const igHandle = instagramHandleInput.value || '';
+        igAnchor.href = igHandle.startsWith('http') ? igHandle : `https://instagram.com/${encodeURIComponent(igHandle.replace(/^@/,''))}`;
+
+        const liHandle = linkedinHandleInput.value || '';
+        liAnchor.href = liHandle.startsWith('http') ? liHandle : `https://www.linkedin.com/${encodeURIComponent(liHandle)}`;
+
+        // website text -> try to build link
+        const websiteText = websiteTextInput.value || '';
+        const siteAnchor = siteAnchorText.parentElement.closest('.website').parentElement;
+        // simpler: set parent website text anchor href via nearest .website-center (we don't have real anchor; leave text only)
+        // (If you want clickable URL in template, we can change to an <a> tag — left as simple text per original design.)
+        // End footer handles
+
+        // profile image element
+        const profilePic = card.querySelector('.profile-pic');
+        profilePic.alt = (student.name || 'Profile') + ' Profile';
+
+        // font size adjust
+        adjustFeedbackFontSize(card.querySelector('.feedback-text'), card.querySelector('.feedback-section'));
+        return profilePic;
+    }
+
+    excelFileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (!file) {
+            rows = [];
+            previewCardsBtn.disabled = true;
+            downloadCardsBtn.disabled = true;
+            reviewCardsContainer.innerHTML = '';
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+            const firstSheetName = workbook.SheetNames[0];
+            const worksheet = workbook.Sheets[firstSheetName];
+            const raw = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
+
+            // Normalize rows to expected keys (case-insensitive)
+            rows = raw.map(r => normalizeRow(r));
+
+            // required columns check (we allow case-insensitive by normalizing)
+            const first = raw[0] || {};
+            const headerKeys = Object.keys(first).map(k => k.toLowerCase().trim());
+            const required = ['category','year','country','name','institution','rating','review','image'];
+            const missing = required.filter(k => !headerKeys.includes(k));
+            if (missing.length > 0) {
+                alert(`Error: Missing required columns (case-insensitive): ${missing.join(', ')}.`);
+                rows = [];
+                previewCardsBtn.disabled = true;
+                downloadCardsBtn.disabled = true;
+            } else {
+                previewCardsBtn.disabled = false;
+                downloadCardsBtn.disabled = true;
+            }
+        };
+        reader.readAsArrayBuffer(file);
+    });
+
+    previewCardsBtn.addEventListener('click', () => {
+        if (!rows.length) { alert("Please upload an Excel file first."); return; }
+        generateReviewCards(rows);
+        downloadCardsBtn.disabled = false;
+    });
+
+    downloadCardsBtn.addEventListener('click', () => {
+        if (!rows.length) { alert("Please preview the cards first."); return; }
+        downloadAllCardsAsPng();
+    });
+
+    function generateReviewCards(data) {
+        reviewCardsContainer.innerHTML = '';
+        data.forEach((student) => {
+            const cardNode = reviewCardTemplate.content.cloneNode(true).firstElementChild;
+            const profilePic = populateCard(cardNode, student);
+            const imageUrl = getFixedImageUrl(student.Image || '');
+            profilePic.src = imageUrl || 'https://via.placeholder.com/200/E0E0E0/808080?text=NO+IMG';
+            reviewCardsContainer.appendChild(cardNode);
+        });
+    }
+
+    // Robust download function (kept your process)
+    async function downloadAllCardsAsPng() {
+        if (!rows.length) return;
+        downloadCardsBtn.textContent = 'Downloading... 0%';
+        downloadCardsBtn.disabled = true;
+        previewCardsBtn.disabled = true;
+
+        for (let i = 0; i < rows.length; i++) {
+            const student = rows[i];
+            downloadCardsBtn.textContent = `Downloading... ${Math.round(((i + 1) / rows.length) * 100)}%`;
+
+            const card = reviewCardTemplate.content.cloneNode(true).firstElementChild;
+            card.style.position = 'absolute';
+            card.style.left = '-9999px';
+            card.style.top = '0px';
+            card.style.transform = 'none';
+            document.body.appendChild(card);
+
+            const profilePic = populateCard(card, student);
+            const imageUrl = getFixedImageUrl(student.Image || '');
+
+            // wait for image load or error
+            await new Promise(resolve => {
+                let resolved = false;
+                profilePic.onload = () => { if (!resolved) { resolved = true; resolve(); } };
+                profilePic.onerror = () => {
+                    console.warn(`Image load failed for ${student.name}. Using placeholder.`);
+                    profilePic.src = 'https://via.placeholder.com/200/E0E0E0/808080?text=NO+IMG';
+                    if (!resolved) { resolved = true; resolve(); }
+                };
+                profilePic.src = imageUrl || 'https://via.placeholder.com/200/E0E0E0/808080?text=NO+IMG';
+                // If image already cached
+                if (profilePic.complete) {
+                    if (!resolved) { resolved = true; resolve(); }
+                }
+            });
+
+            try {
+                const canvas = await html2canvas(card, {
+                    scale: 1,
+                    useCORS: true,
+                    allowTaint: false,
+                    backgroundColor: null,
+                    width: 1080,
+                    height: 1080
+                });
+                const link = document.createElement('a');
+                const timestamp = Date.now();
+                const filename = (student.name || 'review').replace(/[^a-zA-Z0-9]/g,'_').substring(0,40);
+                link.download = `${filename}_${timestamp}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (err) {
+                console.error(`Error generating image for ${student.name}:`, err);
+                alert(`Failed to generate image for ${student.name}. See console.`);
+            }
+
+            document.body.removeChild(card);
+        }
+
+        alert("All review cards have been generated and downloaded!");
+        downloadCardsBtn.textContent = 'Download All as PNG';
+        downloadCardsBtn.disabled = false;
+        previewCardsBtn.disabled = false;
+    }
+});
+</script>
+</body>
+</html>
