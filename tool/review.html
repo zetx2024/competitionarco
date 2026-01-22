@@ -86,10 +86,11 @@
 
     .card-header {
         position: absolute; top:0; left:0; width:100%; height:240px;
-        background-color: var(--primary-blue); color: var(--white); box-sizing:border-box;
+        background-color: var(--primary-blue); box-sizing:border-box;
     }
-    .card-title { position:absolute; top:80px; left:50px; font-size:5em; font-weight:800; letter-spacing:4px; margin:0; }
-    .card-subtitle { position:absolute; top:30px; left:0; width:100%; text-align:center; font-size:2em; font-weight:500; }
+    /* Changed: title & subtitle color -> gold */
+    .card-title { position:absolute; top:80px; left:50px; font-size:5em; font-weight:800; letter-spacing:4px; margin:0; color:var(--primary-gold); }
+    .card-subtitle { position:absolute; top:30px; left:0; width:100%; text-align:center; font-size:2em; font-weight:500; color:var(--primary-gold); }
 
     .card-content-background { position:absolute; top:200px; left:40px; right:40px; bottom:0; background-color: var(--white); border-radius:40px 40px 0 0; box-shadow:0 -5px 15px rgba(0,0,0,0.1); }
 
@@ -180,7 +181,7 @@
     <!-- Template -->
     <template id="reviewCardTemplate">
         <div class="review-card">
-            <!-- per-card download button -->
+            <!-- per-card download button (visible in preview only) -->
             <button class="download-single">Download</button>
 
             <div class="card-header">
@@ -248,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let rows = [];
     let flagMap = {}; // maps lowercase country -> svg string
 
-    // Load flags JSON (expects data/flagss.json next to this html or served at that path)
+    // Load flags JSON (expects data/flagss.json next to this html or hosted)
     fetch('https://iarco.org/data/flagss.json')
         .then(resp => {
             if (!resp.ok) throw new Error('flagss.json not found');
@@ -272,34 +273,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!link) return '';
         link = link.toString().trim();
 
-        // 1) Extract Google Drive file id from many common patterns
+        // Google Drive extraction patterns
         const driveIdPatterns = [
             /\/file\/d\/([a-zA-Z0-9_-]{10,})/,               // /file/d/<id>/
             /open\?id=([a-zA-Z0-9_-]{10,})/,                 // open?id=<id>
             /uc\?id=([a-zA-Z0-9_-]{10,})/,                   // uc?id=<id>
-            /\/d\/([a-zA-Z0-9_-]{10,})/,                     // /d/<id>/ (fallback)
+            /\/d\/([a-zA-Z0-9_-]{10,})/,                     // /d/<id>/
             /\/folders\/([a-zA-Z0-9_-]{10,})/                // folder id (not direct image)
         ];
         for (const re of driveIdPatterns) {
             const m = link.match(re);
             if (m && m[1]) {
                 const id = m[1];
-                // Use drive direct view endpoint and proxy to avoid CORS
                 return `https://corsproxy.io/?https://drive.google.com/uc?export=view&id=${id}`;
             }
         }
 
-        // 2) If it's already a Googleusercontent direct link, use it via proxy
+        // direct googleusercontent links
         if (/^https?:\/\/lh3\.googleusercontent\.com\//i.test(link) ||
             /^https?:\/\/drive\.googleusercontent\.com\//i.test(link) ||
             /^https?:\/\/docs\.googleusercontent\.com\//i.test(link)) {
             return `https://corsproxy.io/?${link}`;
         }
 
-        // 3) If it's a data URI or an SVG inline, return as-is
+        // data URI or inline SVG
         if (link.startsWith('data:') || link.trim().startsWith('<svg')) return link;
 
-        // 4) Otherwise route through the CORS proxy for general URLs
+        // default proxy
         return `https://corsproxy.io/?${link}`;
     }
 
@@ -316,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Normalize row keys for case-insensitive mapping; return expected fields
     function normalizeRow(raw) {
         const map = {};
         for (const k in raw) {
@@ -341,16 +340,15 @@ document.addEventListener('DOMContentLoaded', () => {
         card.querySelector('.student-school').textContent = student.institution || "";
         card.querySelector('.student-class').textContent = student.category || "";
 
-        // Country flag or text (insert after name)
+        // Country flag or text
         const flagContainer = card.querySelector('.country-flag');
         const countryTextEl = card.querySelector('.country-text');
         flagContainer.innerHTML = '';
         countryTextEl.textContent = '';
         const countryKey = (student.country || '').toString().toLowerCase().trim();
         if (countryKey && flagMap[countryKey]) {
-            // Insert SVG (flagMap stores raw SVG string)
             flagContainer.innerHTML = flagMap[countryKey];
-            countryTextEl.textContent = ''; // hide name when svg exists
+            countryTextEl.textContent = '';
         } else if (student.country) {
             countryTextEl.textContent = student.country;
         }
@@ -373,14 +371,10 @@ document.addEventListener('DOMContentLoaded', () => {
         card.querySelector('.footer-linkedin-text').textContent = linkedinHandleInput.value || 'linkedin';
         card.querySelector('.footer-website-text').textContent = websiteTextInput.value || '';
 
-        // make sure website center remains text-only like original design (no href)
-        // profile image alt
         const profilePic = card.querySelector('.profile-pic');
         profilePic.alt = (student.name || 'Profile') + ' Profile';
 
-        // adjust text size to fit
         adjustFeedbackFontSize(card.querySelector('.feedback-text'), card.querySelector('.feedback-section'));
-
         return profilePic;
     }
 
@@ -397,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const raw = XLSX.utils.sheet_to_json(worksheet, { defval: '' });
             rows = raw.map(r => normalizeRow(r));
 
-            // validate required headers case-insensitively
+            // validate headers case-insensitively
             const headerKeys = Object.keys(raw[0] || {}).map(k => k.toLowerCase().trim());
             const required = ['category','year','country','name','institution','rating','review','image'];
             const missing = required.filter(k => !headerKeys.includes(k));
@@ -414,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsArrayBuffer(file);
     });
 
-    // generate preview cards inside container
+    // generate preview cards
     previewCardsBtn.addEventListener('click', () => {
         if (!rows.length) { alert('Please upload an Excel file first.'); return; }
         reviewCardsContainer.innerHTML = '';
@@ -422,23 +416,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const node = reviewCardTemplate.content.cloneNode(true).firstElementChild;
             const imgEl = populateCard(node, student);
             const imgUrl = getFixedImageUrl(student.Image || '');
-            // set preview src using proxy fallback; use placeholder on empty
             imgEl.src = imgUrl || 'https://via.placeholder.com/200/E0E0E0/808080?text=NO+IMG';
-            // append
             reviewCardsContainer.appendChild(node);
 
-            // setup per-card download click (find the last appended node)
+            // attach single-download handler to visible button (preview)
             const appended = reviewCardsContainer.lastElementChild;
             const downloadBtn = appended.querySelector('.download-single');
             downloadBtn.addEventListener('click', () => {
-                // Use same download flow but for single student
                 downloadSingleCard(student).catch(err => { console.error(err); alert('Failed to download card. See console.'); });
             });
         });
         downloadCardsBtn.disabled = false;
     });
 
-    // All cards download (existing robust function)
+    // Download all (batch)
     downloadCardsBtn.addEventListener('click', async () => {
         if (!rows.length) { alert('Please preview the cards first.'); return; }
         downloadCardsBtn.textContent = 'Downloading... 0%';
@@ -450,6 +441,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // create temp card off-screen
             const card = reviewCardTemplate.content.cloneNode(true).firstElementChild;
+            // hide per-card download button in the clone to avoid capturing it
+            const btn = card.querySelector('.download-single');
+            if (btn) btn.style.display = 'none';
+
             card.style.position = 'absolute';
             card.style.left = '-9999px';
             card.style.top = '0';
@@ -491,9 +486,12 @@ document.addEventListener('DOMContentLoaded', () => {
         previewCardsBtn.disabled = false;
     });
 
-    // single card download reuses the robust flow
+    // Single card download (off-screen clone, hide download button before capture)
     async function downloadSingleCard(student) {
         const card = reviewCardTemplate.content.cloneNode(true).firstElementChild;
+        const btn = card.querySelector('.download-single');
+        if (btn) btn.style.display = 'none';
+
         card.style.position = 'absolute';
         card.style.left = '-9999px';
         card.style.top = '0';
