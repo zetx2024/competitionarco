@@ -23,42 +23,58 @@
 
         .flags-container {
             background: white;
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 24px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 1200px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            max-width: 900px;
             width: 100%;
         }
 
         h3 {
-            color: #333;
+            color: #1a1a1a;
             margin-bottom: 20px;
             font-size: 18px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stats-badge {
+            background: #f0f0f0;
+            color: #4a4a4a;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 30px;
         }
 
         .flags-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
             align-items: center;
             justify-content: flex-start;
+            min-height: 80px;
         }
 
         .flag-item {
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
             background: #f8f9fa;
-            padding: 6px 12px;
-            border-radius: 30px;
+            border-radius: 50%;
             border: 1px solid #e9ecef;
             transition: all 0.2s ease;
+            cursor: default;
         }
 
         .flag-item:hover {
-            background: #e9ecef;
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-color: #d0d0d0;
         }
 
         .flag-icon {
@@ -67,196 +83,162 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .flag-icon img,
+        .flag-icon svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* For emoji fallback */
+        .flag-icon span {
             font-size: 20px;
             line-height: 1;
-            margin-right: 6px;
         }
 
-        .country-name {
-            font-size: 14px;
-            color: #495057;
-            font-weight: 500;
-        }
-
-        /* Loading state */
-        .loading {
+        .loading, .error {
             text-align: center;
             padding: 40px;
             color: #6c757d;
             font-size: 14px;
+            width: 100%;
         }
 
-        /* Error state */
         .error {
-            text-align: center;
-            padding: 40px;
             color: #dc3545;
-            font-size: 14px;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .flags-container {
                 padding: 16px;
             }
             
-            .flag-item {
-                padding: 4px 10px;
-            }
-            
-            .country-name {
-                font-size: 13px;
-            }
-        }
-
-        @media (max-width: 480px) {
             .flags-list {
-                gap: 8px;
+                gap: 12px;
             }
             
             .flag-item {
-                padding: 4px 8px;
+                width: 36px;
+                height: 36px;
             }
         }
     </style>
 </head>
 <body>
     <div class="flags-container">
-        <h3>🌍 Selected Countries</h3>
+        <h3>
+            🌍 Selected Countries
+            <span class="stats-badge" id="countryCount">0</span>
+        </h3>
         <div id="flagsList" class="flags-list">
             <div class="loading">Loading flags...</div>
         </div>
     </div>
 
     <script>
-        // Sample flag data (emoji flags as SVGs aren't available, using emoji as placeholder)
-        // In production, replace emoji with actual SVG flag icons
-        const flagData = {
-            "United States": "🇺🇸",
-            "United Kingdom": "🇬🇧",
-            "Canada": "🇨🇦",
-            "Australia": "🇦🇺",
-            "Germany": "🇩🇪",
-            "France": "🇫🇷",
-            "Japan": "🇯🇵",
-            "China": "🇨🇳",
-            "India": "🇮🇳",
-            "Brazil": "🇧🇷",
-            "South Africa": "🇿🇦",
-            "Mexico": "🇲🇽",
-            "Italy": "🇮🇹",
-            "Spain": "🇪🇸",
-            "Netherlands": "🇳🇱",
-            "Sweden": "🇸🇪",
-            "Norway": "🇳🇴",
-            "Denmark": "🇩🇰",
-            "Finland": "🇫🇮",
-            "Switzerland": "🇨🇭",
-            "Singapore": "🇸🇬",
-            "South Korea": "🇰🇷",
-            "New Zealand": "🇳🇿",
-            "Ireland": "🇮🇪",
-            "Belgium": "🇧🇪"
-        };
-
-        // Selected countries (you can modify this list)
-        const selectedCountries = [
-            "United States",
-            "United Kingdom",
-            "Canada",
-            "Australia",
-            "Germany",
-            "France",
-            "Japan",
-            "China",
-            "India",
-            "Brazil",
-            "South Africa",
-            "Mexico",
-            "Italy",
-            "Spain",
-            "Netherlands",
-            "Sweden",
-            "Singapore",
-            "South Korea",
-            "New Zealand"
-        ];
-
-        // Function to render flags
-        function renderFlags() {
+        // Main function to load and display flags
+        async function loadSelectedCountryFlags() {
             const container = document.getElementById('flagsList');
+            const countSpan = document.getElementById('countryCount');
             
-            if (!selectedCountries || selectedCountries.length === 0) {
-                container.innerHTML = '<div class="error">No countries selected</div>';
-                return;
-            }
-
-            let flagsHTML = '';
-            
-            selectedCountries.forEach(country => {
-                const flag = flagData[country] || '🏳️'; // Default flag if country not found
-                flagsHTML += `
-                    <div class="flag-item">
-                        <span class="flag-icon">${flag}</span>
-                      
-                    </div>
-                `;
-            });
-
-            container.innerHTML = flagsHTML;
-        }
-
-        // Simulate loading data (remove this in production)
-        setTimeout(renderFlags, 500);
-
-        // For production with actual data fetching:
-        /*
-        async function loadData() {
             try {
-                const container = document.getElementById('flagsList');
-                
-                // Fetch both files
+                // Load both JSON files
                 const [studentsRes, flagsRes] = await Promise.all([
                     fetch('data/participation_2025.json'),
-                    fetch('data/flagss.json')
+                    fetch('data/flags.json')
                 ]);
-                
+
+                if (!studentsRes.ok || !flagsRes.ok) {
+                    throw new Error('Failed to load data files');
+                }
+
                 const students = await studentsRes.json();
                 const flags = await flagsRes.json();
-                
+
                 // Get unique countries where selected === "Yes"
                 const selectedCountriesSet = new Set();
+                
                 students.forEach(student => {
                     if (student.selected === "Yes") {
                         selectedCountriesSet.add(student.country);
                     }
                 });
-                
+
                 // Convert to array and sort
                 const selectedCountries = Array.from(selectedCountriesSet).sort();
                 
-                // Render flags
+                // Update count
+                countSpan.textContent = selectedCountries.length;
+
+                // If no selected countries
+                if (selectedCountries.length === 0) {
+                    container.innerHTML = '<div class="error">No selected countries found</div>';
+                    return;
+                }
+
+                // Generate HTML for flags only
                 let flagsHTML = '';
+                
                 selectedCountries.forEach(country => {
-                    const flag = flags[country] || '🏳️';
-                    flagsHTML += `
-                        <div class="flag-item">
-                            <span class="flag-icon">${flag}</span>
-                        </div>
-                    `;
+                    const flagIcon = flags[country];
+                    
+                    if (flagIcon) {
+                        // Check if flagIcon is an SVG string or image path
+                        if (flagIcon.trim().startsWith('<svg')) {
+                            // It's an SVG string
+                            flagsHTML += `
+                                <div class="flag-item" title="${country}">
+                                    <div class="flag-icon">${flagIcon}</div>
+                                </div>
+                            `;
+                        } else if (flagIcon.match(/\.(jpg|jpeg|png|gif|svg|webp)$/i)) {
+                            // It's an image path
+                            flagsHTML += `
+                                <div class="flag-item" title="${country}">
+                                    <div class="flag-icon">
+                                        <img src="${flagIcon}" alt="${country} flag">
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            // It's likely an emoji or text
+                            flagsHTML += `
+                                <div class="flag-item" title="${country}">
+                                    <div class="flag-icon"><span>${flagIcon}</span></div>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        // Fallback emoji if flag not found
+                        flagsHTML += `
+                            <div class="flag-item" title="${country}">
+                                <div class="flag-icon"><span>🏳️</span></div>
+                            </div>
+                        `;
+                    }
                 });
-                
-                container.innerHTML = flagsHTML || '<div class="error">No selected countries found</div>';
-                
+
+                container.innerHTML = flagsHTML;
+
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('flagsList').innerHTML = '<div class="error">Error loading flags</div>';
+                container.innerHTML = `
+                    <div class="error">
+                        Error loading flags. Please make sure:<br>
+                        1. The JSON files exist in the 'data' folder<br>
+                        2. The files are properly formatted<br>
+                        3. You're running this from a server (not file:// protocol)
+                    </div>
+                `;
+                countSpan.textContent = '0';
             }
         }
-        
+
         // Load data when page loads
-        loadData();
-        */
+        document.addEventListener('DOMContentLoaded', loadSelectedCountryFlags);
     </script>
 </body>
 </html>
