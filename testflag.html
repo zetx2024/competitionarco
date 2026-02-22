@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selected Countries Flags</title>
+    <title>All Countries Flags</title>
     <style>
         * {
             margin: 0;
@@ -189,7 +189,7 @@
 <body>
     <div class="flags-container">
         <h3>
-            🌍 Selected Countries
+            🌍 All Countries
             <span class="stats-badge" id="countryCount">0</span>
         </h3>
         <div id="flagsList" class="flags-list">
@@ -198,57 +198,43 @@
     </div>
 
     <script>
-        async function loadSelectedCountryFlags() {
+        async function loadAllCountryFlags() {
             const container = document.getElementById('flagsList');
             const countSpan = document.getElementById('countryCount');
             
             try {
-                // Load both JSON files
-                const [studentsRes, flagsRes] = await Promise.all([
-                    fetch('data/participation_2025.json'),
-                    fetch('data/flagss.json')
-                ]);
+                // Load flag.json file only (we don't need participation data anymore)
+                const flagsRes = await fetch('data/flagss.json');
 
-                if (!studentsRes.ok || !flagsRes.ok) {
-                    throw new Error('Failed to load data files');
+                if (!flagsRes.ok) {
+                    throw new Error('Failed to load flag data file');
                 }
 
-                const students = await studentsRes.json();
                 const flagsData = await flagsRes.json();
 
+                // Extract all countries from flag.json
+                const allCountries = flagsData.map(item => item.country).sort();
+                
                 // Create a map of country to SVG
                 const flagMap = {};
                 flagsData.forEach(item => {
                     flagMap[item.country] = item.svg;
                 });
 
-                // Get UNIQUE countries where selected === "Yes"
-                // Using Set automatically eliminates duplicates
-                const selectedCountriesSet = new Set();
-                
-                students.forEach(student => {
-                    if (student.selected === "Yes") {
-                        selectedCountriesSet.add(student.country);
-                    }
-                });
+                // Update count (shows number of all countries)
+                countSpan.textContent = allCountries.length;
 
-                // Convert to array and sort alphabetically
-                const selectedCountries = Array.from(selectedCountriesSet).sort();
-                
-                // Update count (shows number of unique countries)
-                countSpan.textContent = selectedCountries.length;
-
-                // If no selected countries
-                if (selectedCountries.length === 0) {
-                    container.innerHTML = '<div class="error">No selected countries found</div>';
+                // If no countries found
+                if (allCountries.length === 0) {
+                    container.innerHTML = '<div class="error">No countries found</div>';
                     return;
                 }
 
                 // Clear container
                 container.innerHTML = '';
 
-                // Create flag elements for each unique country
-                selectedCountries.forEach(country => {
+                // Create flag elements for each country
+                allCountries.forEach(country => {
                     const svgString = flagMap[country];
                     
                     // Create flag item container
@@ -308,8 +294,8 @@
                 container.innerHTML = `
                     <div class="error">
                         Error loading flags. Please make sure:<br>
-                        1. The JSON files exist in the 'data' folder<br>
-                        2. The files are properly formatted<br>
+                        1. The flag.json file exists in the 'data' folder<br>
+                        2. The file is properly formatted<br>
                         3. You're running this from a server
                     </div>
                 `;
@@ -318,7 +304,7 @@
         }
 
         // Load data when page loads
-        document.addEventListener('DOMContentLoaded', loadSelectedCountryFlags);
+        document.addEventListener('DOMContentLoaded', loadAllCountryFlags);
     </script>
 </body>
 </html>
