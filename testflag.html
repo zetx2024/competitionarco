@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Countries Flags</title>
+    <title>All Participating Countries Flags</title>
     <style>
         * {
             margin: 0;
@@ -189,7 +189,7 @@
 <body>
     <div class="flags-container">
         <h3>
-            🌍 All Countries
+            🌍 All Participating Countries
             <span class="stats-badge" id="countryCount">0</span>
         </h3>
         <div id="flagsList" class="flags-list">
@@ -198,43 +198,54 @@
     </div>
 
     <script>
-        async function loadAllCountryFlags() {
+        async function loadAllParticipatingCountries() {
             const container = document.getElementById('flagsList');
             const countSpan = document.getElementById('countryCount');
             
             try {
-                // Load flag.json file only (we don't need participation data anymore)
-                const flagsRes = await fetch('data/flagss.json');
+                // Load both JSON files
+                const [studentsRes, flagsRes] = await Promise.all([
+                    fetch('data/participation_2025.json'),
+                    fetch('data/flagss.json')
+                ]);
 
-                if (!flagsRes.ok) {
-                    throw new Error('Failed to load flag data file');
+                if (!studentsRes.ok || !flagsRes.ok) {
+                    throw new Error('Failed to load data files');
                 }
 
+                const students = await studentsRes.json();
                 const flagsData = await flagsRes.json();
 
-                // Extract all countries from flag.json
-                const allCountries = flagsData.map(item => item.country).sort();
-                
-                // Create a map of country to SVG
+                // Create a map of country to SVG from flag.json
                 const flagMap = {};
                 flagsData.forEach(item => {
                     flagMap[item.country] = item.svg;
                 });
 
-                // Update count (shows number of all countries)
-                countSpan.textContent = allCountries.length;
+                // Get UNIQUE countries from participants (ALL countries, regardless of selected status)
+                const participatingCountriesSet = new Set();
+                
+                students.forEach(student => {
+                    participatingCountriesSet.add(student.country);
+                });
+
+                // Convert to array and sort alphabetically
+                const participatingCountries = Array.from(participatingCountriesSet).sort();
+                
+                // Update count (shows number of unique participating countries)
+                countSpan.textContent = participatingCountries.length;
 
                 // If no countries found
-                if (allCountries.length === 0) {
-                    container.innerHTML = '<div class="error">No countries found</div>';
+                if (participatingCountries.length === 0) {
+                    container.innerHTML = '<div class="error">No participating countries found</div>';
                     return;
                 }
 
                 // Clear container
                 container.innerHTML = '';
 
-                // Create flag elements for each country
-                allCountries.forEach(country => {
+                // Create flag elements for each unique participating country
+                participatingCountries.forEach(country => {
                     const svgString = flagMap[country];
                     
                     // Create flag item container
@@ -281,6 +292,7 @@
                             iconDiv.style.fontSize = '30px';
                         }
                     } else {
+                        // Fallback emoji if flag not found
                         iconDiv.textContent = '🏳️';
                         iconDiv.style.fontSize = '30px';
                     }
@@ -294,8 +306,8 @@
                 container.innerHTML = `
                     <div class="error">
                         Error loading flags. Please make sure:<br>
-                        1. The flag.json file exists in the 'data' folder<br>
-                        2. The file is properly formatted<br>
+                        1. Both JSON files exist in the 'data' folder<br>
+                        2. The files are properly formatted<br>
                         3. You're running this from a server
                     </div>
                 `;
@@ -304,7 +316,7 @@
         }
 
         // Load data when page loads
-        document.addEventListener('DOMContentLoaded', loadAllCountryFlags);
+        document.addEventListener('DOMContentLoaded', loadAllParticipatingCountries);
     </script>
 </body>
 </html>
