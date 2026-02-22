@@ -23,80 +23,84 @@
 
         .flags-container {
             background: white;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            max-width: 900px;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
             width: 100%;
         }
 
         h3 {
             color: #1a1a1a;
-            margin-bottom: 20px;
-            font-size: 18px;
+            margin-bottom: 25px;
+            font-size: 20px;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            justify-content: center;
         }
 
         .stats-badge {
             background: #f0f0f0;
             color: #4a4a4a;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
-            padding: 4px 10px;
+            padding: 5px 12px;
             border-radius: 30px;
         }
 
         .flags-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 15px;
             align-items: center;
-            justify-content: flex-start;
-            min-height: 60px;
+            justify-content: center;
+            min-height: 80px;
         }
 
         .flag-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 70px;
+            height: 70px;
             background: #f8f9fa;
-            border-radius: 50%;
+            border-radius: 18px;
             border: 1px solid #e9ecef;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             cursor: default;
             overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .flag-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            border-color: #d0d0d0;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: #adb5bd;
+            background: white;
         }
 
         .flag-icon {
-            width: 20px;
-            height: 20px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
         .flag-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 45px;
+            height: 45px;
             display: block;
+            border-radius: 4px;
         }
 
         .loading, .error {
             text-align: center;
-            padding: 40px;
+            padding: 50px;
             color: #6c757d;
-            font-size: 14px;
+            font-size: 16px;
             width: 100%;
         }
 
@@ -104,18 +108,80 @@
             color: #dc3545;
         }
 
-        @media (max-width: 600px) {
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
             .flags-container {
-                padding: 16px;
+                padding: 20px;
+            }
+            
+            .flag-item {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .flag-icon {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .flag-icon svg {
+                width: 38px;
+                height: 38px;
+            }
+            
+            .flags-list {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flags-container {
+                padding: 15px;
+            }
+            
+            h3 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            
+            .flag-item {
+                width: 52px;
+                height: 52px;
+            }
+            
+            .flag-icon {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .flag-icon svg {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .flags-list {
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .flag-item {
+                width: 46px;
+                height: 46px;
+            }
+            
+            .flag-icon {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .flag-icon svg {
+                width: 28px;
+                height: 28px;
             }
             
             .flags-list {
                 gap: 8px;
-            }
-            
-            .flag-item {
-                width: 36px;
-                height: 36px;
             }
         }
     </style>
@@ -140,7 +206,7 @@
                 // Load both JSON files
                 const [studentsRes, flagsRes] = await Promise.all([
                     fetch('data/participation_2025.json'),
-                    fetch('data/flag.json')
+                    fetch('data/flagss.json')
                 ]);
 
                 if (!studentsRes.ok || !flagsRes.ok) {
@@ -156,7 +222,8 @@
                     flagMap[item.country] = item.svg;
                 });
 
-                // Get unique countries where selected === "Yes"
+                // Get UNIQUE countries where selected === "Yes"
+                // Using Set automatically eliminates duplicates
                 const selectedCountriesSet = new Set();
                 
                 students.forEach(student => {
@@ -165,10 +232,10 @@
                     }
                 });
 
-                // Convert to array and sort
+                // Convert to array and sort alphabetically
                 const selectedCountries = Array.from(selectedCountriesSet).sort();
                 
-                // Update count
+                // Update count (shows number of unique countries)
                 countSpan.textContent = selectedCountries.length;
 
                 // If no selected countries
@@ -177,41 +244,63 @@
                     return;
                 }
 
-                // Generate HTML for flags
-                let flagsHTML = '';
-                
+                // Clear container
+                container.innerHTML = '';
+
+                // Create flag elements for each unique country
                 selectedCountries.forEach(country => {
                     const svgString = flagMap[country];
                     
+                    // Create flag item container
+                    const flagItem = document.createElement('div');
+                    flagItem.className = 'flag-item';
+                    flagItem.title = country; // Shows country name on hover
+                    
+                    // Create icon container
+                    const iconDiv = document.createElement('div');
+                    iconDiv.className = 'flag-icon';
+                    
                     if (svgString) {
-                        // Create a container for the flag
-                        flagsHTML += `
-                            <div class="flag-item" title="${country}">
-                                <div class="flag-icon">
-                                    ${svgString}
-                                </div>
-                            </div>
-                        `;
+                        try {
+                            // Parse SVG string
+                            const parser = new DOMParser();
+                            const svgDoc = parser.parseFromString(svgString, 'image/svg+xml');
+                            const svgElement = svgDoc.documentElement;
+                            
+                            // Check for parsing errors
+                            const parserError = svgDoc.querySelector('parsererror');
+                            if (parserError) {
+                                throw new Error('SVG parsing error');
+                            }
+                            
+                            // Set dimensions for larger icons
+                            svgElement.setAttribute('width', '45');
+                            svgElement.setAttribute('height', '45');
+                            svgElement.style.width = '45px';
+                            svgElement.style.height = '45px';
+                            
+                            // Remove any conflicting attributes
+                            svgElement.removeAttribute('class');
+                            svgElement.removeAttribute('aria-hidden');
+                            
+                            // Ensure viewBox is preserved for proper scaling
+                            if (!svgElement.hasAttribute('viewBox')) {
+                                svgElement.setAttribute('viewBox', '0 0 512 512');
+                            }
+                            
+                            iconDiv.appendChild(svgElement);
+                        } catch (e) {
+                            console.error('Error parsing SVG for', country, e);
+                            iconDiv.textContent = '🏳️';
+                            iconDiv.style.fontSize = '30px';
+                        }
                     } else {
-                        // Fallback emoji if flag not found
-                        flagsHTML += `
-                            <div class="flag-item" title="${country}">
-                                <div class="flag-icon">🏳️</div>
-                            </div>
-                        `;
+                        iconDiv.textContent = '🏳️';
+                        iconDiv.style.fontSize = '30px';
                     }
-                });
-
-                container.innerHTML = flagsHTML;
-
-                // Fix SVG attributes to ensure proper sizing
-                const svgs = container.querySelectorAll('svg');
-                svgs.forEach(svg => {
-                    svg.setAttribute('width', '20');
-                    svg.setAttribute('height', '20');
-                    svg.removeAttribute('class'); // Remove iconify class if present
-                    svg.style.width = '20px';
-                    svg.style.height = '20px';
+                    
+                    flagItem.appendChild(iconDiv);
+                    container.appendChild(flagItem);
                 });
 
             } catch (error) {
@@ -228,100 +317,8 @@
             }
         }
 
-        // Alternative method if the above doesn't work (uses DOMParser)
-        async function loadSelectedCountryFlagsAlt() {
-            const container = document.getElementById('flagsList');
-            const countSpan = document.getElementById('countryCount');
-            
-            try {
-                const [studentsRes, flagsRes] = await Promise.all([
-                    fetch('data/participation_2025.json'),
-                    fetch('data/flagss.json')
-                ]);
-
-                const students = await studentsRes.json();
-                const flagsData = await flagsRes.json();
-
-                // Create map
-                const flagMap = {};
-                flagsData.forEach(item => {
-                    flagMap[item.country] = item.svg;
-                });
-
-                // Get selected countries
-                const selectedCountriesSet = new Set();
-                students.forEach(student => {
-                    if (student.selected === "Yes") {
-                        selectedCountriesSet.add(student.country);
-                    }
-                });
-
-                const selectedCountries = Array.from(selectedCountriesSet).sort();
-                countSpan.textContent = selectedCountries.length;
-
-                if (selectedCountries.length === 0) {
-                    container.innerHTML = '<div class="error">No selected countries found</div>';
-                    return;
-                }
-
-                // Clear container
-                container.innerHTML = '';
-
-                // Create flag elements
-                selectedCountries.forEach(country => {
-                    const svgString = flagMap[country];
-                    
-                    // Create flag item container
-                    const flagItem = document.createElement('div');
-                    flagItem.className = 'flag-item';
-                    flagItem.title = country;
-                    
-                    // Create icon container
-                    const iconDiv = document.createElement('div');
-                    iconDiv.className = 'flag-icon';
-                    
-                    if (svgString) {
-                        try {
-                            // Parse SVG string
-                            const parser = new DOMParser();
-                            const svgDoc = parser.parseFromString(svgString, 'image/svg+xml');
-                            const svgElement = svgDoc.documentElement;
-                            
-                            // Set dimensions
-                            svgElement.setAttribute('width', '20');
-                            svgElement.setAttribute('height', '20');
-                            svgElement.style.width = '20px';
-                            svgElement.style.height = '20px';
-                            
-                            // Remove any conflicting attributes
-                            svgElement.removeAttribute('class');
-                            
-                            iconDiv.appendChild(svgElement);
-                        } catch (e) {
-                            console.error('Error parsing SVG for', country, e);
-                            iconDiv.textContent = '🏳️';
-                        }
-                    } else {
-                        iconDiv.textContent = '🏳️';
-                    }
-                    
-                    flagItem.appendChild(iconDiv);
-                    container.appendChild(flagItem);
-                });
-
-            } catch (error) {
-                console.error('Error loading data:', error);
-                container.innerHTML = '<div class="error">Error loading flags</div>';
-                countSpan.textContent = '0';
-            }
-        }
-
-        // Use the alternative method (more reliable for SVG parsing)
-        document.addEventListener('DOMContentLoaded', loadSelectedCountryFlagsAlt);
-
-        // If you want to use the first method instead, comment the line above
-        // and uncomment the line below:
-        // document.addEventListener('DOMContentLoaded', loadSelectedCountryFlags);
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadSelectedCountryFlags);
     </script>
 </body>
 </html>
