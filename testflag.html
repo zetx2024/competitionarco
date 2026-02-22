@@ -52,10 +52,10 @@
         .flags-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
             align-items: center;
             justify-content: flex-start;
-            min-height: 80px;
+            min-height: 60px;
         }
 
         .flag-item {
@@ -69,6 +69,7 @@
             border: 1px solid #e9ecef;
             transition: all 0.2s ease;
             cursor: default;
+            overflow: hidden;
         }
 
         .flag-item:hover {
@@ -85,18 +86,10 @@
             justify-content: center;
         }
         
-        .flag-icon img,
         .flag-icon svg {
             width: 20px;
             height: 20px;
             display: block;
-            object-fit: contain;
-        }
-
-        /* For emoji fallback */
-        .flag-icon span {
-            font-size: 20px;
-            line-height: 1;
         }
 
         .loading, .error {
@@ -117,7 +110,7 @@
             }
             
             .flags-list {
-                gap: 12px;
+                gap: 8px;
             }
             
             .flag-item {
@@ -139,7 +132,6 @@
     </div>
 
     <script>
-        // Main function to load and display flags
         async function loadSelectedCountryFlags() {
             const container = document.getElementById('flagsList');
             const countSpan = document.getElementById('countryCount');
@@ -148,7 +140,7 @@
                 // Load both JSON files
                 const [studentsRes, flagsRes] = await Promise.all([
                     fetch('data/participation_2025.json'),
-                    fetch('data/flags.json')
+                    fetch('data/flag.json')
                 ]);
 
                 if (!studentsRes.ok || !flagsRes.ok) {
@@ -156,7 +148,13 @@
                 }
 
                 const students = await studentsRes.json();
-                const flags = await flagsRes.json();
+                const flagsData = await flagsRes.json();
+
+                // Create a map of country to SVG
+                const flagMap = {};
+                flagsData.forEach(item => {
+                    flagMap[item.country] = item.svg;
+                });
 
                 // Get unique countries where selected === "Yes"
                 const selectedCountriesSet = new Set();
@@ -179,49 +177,42 @@
                     return;
                 }
 
-                // Generate HTML for flags only
+                // Generate HTML for flags
                 let flagsHTML = '';
                 
                 selectedCountries.forEach(country => {
-                    const flagIcon = flags[country];
+                    const svgString = flagMap[country];
                     
-                    if (flagIcon) {
-                        // Check if flagIcon is an SVG string or image path
-                        if (flagIcon.trim().startsWith('<svg')) {
-                            // It's an SVG string
-                            flagsHTML += `
-                                <div class="flag-item" title="${country}">
-                                    <div class="flag-icon">${flagIcon}</div>
+                    if (svgString) {
+                        // Create a container for the flag
+                        flagsHTML += `
+                            <div class="flag-item" title="${country}">
+                                <div class="flag-icon">
+                                    ${svgString}
                                 </div>
-                            `;
-                        } else if (flagIcon.match(/\.(jpg|jpeg|png|gif|svg|webp)$/i)) {
-                            // It's an image path
-                            flagsHTML += `
-                                <div class="flag-item" title="${country}">
-                                    <div class="flag-icon">
-                                        <img src="${flagIcon}" alt="${country} flag">
-                                    </div>
-                                </div>
-                            `;
-                        } else {
-                            // It's likely an emoji or text
-                            flagsHTML += `
-                                <div class="flag-item" title="${country}">
-                                    <div class="flag-icon"><span>${flagIcon}</span></div>
-                                </div>
-                            `;
-                        }
+                            </div>
+                        `;
                     } else {
                         // Fallback emoji if flag not found
                         flagsHTML += `
                             <div class="flag-item" title="${country}">
-                                <div class="flag-icon"><span>🏳️</span></div>
+                                <div class="flag-icon">🏳️</div>
                             </div>
                         `;
                     }
                 });
 
                 container.innerHTML = flagsHTML;
+
+                // Fix SVG attributes to ensure proper sizing
+                const svgs = container.querySelectorAll('svg');
+                svgs.forEach(svg => {
+                    svg.setAttribute('width', '20');
+                    svg.setAttribute('height', '20');
+                    svg.removeAttribute('class'); // Remove iconify class if present
+                    svg.style.width = '20px';
+                    svg.style.height = '20px';
+                });
 
             } catch (error) {
                 console.error('Error loading data:', error);
@@ -230,15 +221,107 @@
                         Error loading flags. Please make sure:<br>
                         1. The JSON files exist in the 'data' folder<br>
                         2. The files are properly formatted<br>
-                        3. You're running this from a server (not file:// protocol)
+                        3. You're running this from a server
                     </div>
                 `;
                 countSpan.textContent = '0';
             }
         }
 
-        // Load data when page loads
-        document.addEventListener('DOMContentLoaded', loadSelectedCountryFlags);
+        // Alternative method if the above doesn't work (uses DOMParser)
+        async function loadSelectedCountryFlagsAlt() {
+            const container = document.getElementById('flagsList');
+            const countSpan = document.getElementById('countryCount');
+            
+            try {
+                const [studentsRes, flagsRes] = await Promise.all([
+                    fetch('data/participation_2025.json'),
+                    fetch('data/flagss.json')
+                ]);
+
+                const students = await studentsRes.json();
+                const flagsData = await flagsRes.json();
+
+                // Create map
+                const flagMap = {};
+                flagsData.forEach(item => {
+                    flagMap[item.country] = item.svg;
+                });
+
+                // Get selected countries
+                const selectedCountriesSet = new Set();
+                students.forEach(student => {
+                    if (student.selected === "Yes") {
+                        selectedCountriesSet.add(student.country);
+                    }
+                });
+
+                const selectedCountries = Array.from(selectedCountriesSet).sort();
+                countSpan.textContent = selectedCountries.length;
+
+                if (selectedCountries.length === 0) {
+                    container.innerHTML = '<div class="error">No selected countries found</div>';
+                    return;
+                }
+
+                // Clear container
+                container.innerHTML = '';
+
+                // Create flag elements
+                selectedCountries.forEach(country => {
+                    const svgString = flagMap[country];
+                    
+                    // Create flag item container
+                    const flagItem = document.createElement('div');
+                    flagItem.className = 'flag-item';
+                    flagItem.title = country;
+                    
+                    // Create icon container
+                    const iconDiv = document.createElement('div');
+                    iconDiv.className = 'flag-icon';
+                    
+                    if (svgString) {
+                        try {
+                            // Parse SVG string
+                            const parser = new DOMParser();
+                            const svgDoc = parser.parseFromString(svgString, 'image/svg+xml');
+                            const svgElement = svgDoc.documentElement;
+                            
+                            // Set dimensions
+                            svgElement.setAttribute('width', '20');
+                            svgElement.setAttribute('height', '20');
+                            svgElement.style.width = '20px';
+                            svgElement.style.height = '20px';
+                            
+                            // Remove any conflicting attributes
+                            svgElement.removeAttribute('class');
+                            
+                            iconDiv.appendChild(svgElement);
+                        } catch (e) {
+                            console.error('Error parsing SVG for', country, e);
+                            iconDiv.textContent = '🏳️';
+                        }
+                    } else {
+                        iconDiv.textContent = '🏳️';
+                    }
+                    
+                    flagItem.appendChild(iconDiv);
+                    container.appendChild(flagItem);
+                });
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+                container.innerHTML = '<div class="error">Error loading flags</div>';
+                countSpan.textContent = '0';
+            }
+        }
+
+        // Use the alternative method (more reliable for SVG parsing)
+        document.addEventListener('DOMContentLoaded', loadSelectedCountryFlagsAlt);
+
+        // If you want to use the first method instead, comment the line above
+        // and uncomment the line below:
+        // document.addEventListener('DOMContentLoaded', loadSelectedCountryFlags);
     </script>
 </body>
 </html>
