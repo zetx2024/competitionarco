@@ -21,7 +21,7 @@
     <meta name="copyright" content="Md Sanaul Haque Shanto">
     <meta name="language" content="ES">
     <meta name="robots" content="index,follow">
-    <meta name="revised" content="2025-11-8T02:13:15.028Z">
+    <meta name="revised" content="2026-01-18T02:13:15.028Z">
     <meta name="abstract" content="International Academic Research Competition | IARCO">
     <meta name="topic" content="International Academic Research Competition | IARCO">
     <meta name="summary" content="International Academic Research Competition | IARCO">
@@ -1007,6 +1007,9 @@
     <!-- Timeline Section -->
     <section class="timeline-section">
         <div class="container">
+            <div class="section-title">
+                <h2>Competition Timeline</h2>
+            </div>
            <table class="timeline-table">
   <thead>
     <tr>
@@ -1161,23 +1164,7 @@
             .catch(error => console.error('Error!', error.message));
     });
 
-    // Footer Form Submission
-    const FscriptURL = 'https://script.google.com/macros/s/AKfycbzygrg2R9ubz8wwovssC4UUhXLbEMjqSh3So08-cFXnVvAxRiHm9H0tPszGrF4i4dtJ1g/exec';
-    const Fform = document.forms['footer-subscribe-form'];
-    const FSubId = document.getElementById("footer-subscribe-message");
-
-    Fform.addEventListener('submit', e => {
-        e.preventDefault();
-        fetch(FscriptURL, { method: 'POST', body: new FormData(Fform)})
-            .then(response => {
-                FSubId.innerHTML = "Thank You for Subscribing!";
-                setTimeout(function() {
-                    FSubId.innerHTML = "";
-                }, 3000);
-                Fform.reset();
-            })
-            .catch(error => console.error('Error!', error.message));
-    });
+   
 </script>
     <script>
        // Load Reviews and Flags
