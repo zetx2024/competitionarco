@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanaul Haque | Full-Stack Architect & Consultant</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --bg-color: #0b0f19;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --card-bg: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography & Layout */
+        h1, h2, h3 { color: #ffffff; font-weight: 600; margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2rem; }
+        p { margin-bottom: 1rem; color: var(--text-muted); font-size: 1.1rem; }
+        section { padding: 6rem 10%; }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            background: linear-gradient(135deg, #0b0f19 0%, #172033 100%);
+            position: relative;
+        }
+        #hero h1 { font-size: 4rem; letter-spacing: 2px; }
+        .typing-text { font-size: 1.8rem; color: var(--accent); min-height: 40px; margin-bottom: 2rem;}
+        .hero-btn {
+            padding: 12px 28px;
+            background-color: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            font-weight: bold;
+        }
+        .hero-btn:hover { background-color: var(--accent-hover); }
+
+        /* Grid Layouts */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-left: 4px solid var(--accent);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
+        }
+        .card h3 { color: var(--accent); font-size: 1.5rem; }
+        .card ul { margin-left: 1.5rem; color: var(--text-muted); margin-top: 1rem;}
+        .card li { margin-bottom: 0.5rem; }
+
+        /* Tag Pills */
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
+        .tag { background: #334155; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; color: var(--text-main); }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Photography Section specific */
+        .art-section {
+            background: linear-gradient(rgba(11, 15, 25, 0.9), rgba(11, 15, 25, 0.9)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
+            text-align: center;
+        }
+        .art-section p { color: #fff; max-width: 800px; margin: 0 auto 2rem auto; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            #hero h1 { font-size: 2.5rem; }
+            section { padding: 4rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <section id="hero">
+        <div class="fade-in">
+            <h1>Sanaul Haque</h1>
+            <div class="typing-text" id="typewriter"></div>
+            <p style="max-width: 600px; font-size: 1.2rem; margin-bottom: 2rem;">
+                From a 10 PM idea to a fully deployed digital skeleton by morning. I don't just write code—I build, scale, and market complete digital empires. Competitive programming since 2015, professional development since 2016.
+            </p>
+            <a href="#contact" class="hero-btn">Consult With Me</a>
+        </div>
+    </section>
+
+    <section id="skills" class="fade-in">
+        <h2>Technical Arsenal</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Web Development</h3>
+                <p>Monolithic, Service-Oriented (SOA), and Microservices architectures.</p>
+                <div class="tags">
+                    <span class="tag">Angular.js</span> <span class="tag">React</span> <span class="tag">Next.js</span>
+                    <span class="tag">Node.js</span> <span class="tag">PHP</span> <span class="tag">Python</span> 
+                    <span class="tag">Go (Golang)</span> <span class="tag">HTML/CSS/JS</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Application & Game Dev</h3>
+                <p>Native and cross-platform mobile apps, plus game development.</p>
+                <div class="tags">
+                    <span class="tag">Android (Java)</span> <span class="tag">iOS (Swift)</span> 
+                    <span class="tag">React Native</span> <span class="tag">Flutter</span> 
+                    <span class="tag">Dart</span> <span class="tag">Unity 3D/2D</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Infrastructure & Scaling</h3>
+                <p>Serving millions with robust databases, caching, and server management.</p>
+                <div class="tags">
+                    <span class="tag">MySQL</span> <span class="tag">Redis Caching</span> 
+                    <span class="tag">Custom SMTP</span> <span class="tag">DNS Routing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background-color: #0f172a;">
+        <div class="fade-in">
+            <h2>Flagship Initiatives</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>ArenaBoard Online Judge</h3>
+                    <p>Built a high-performance Online Judge using SOA, Bootstrap frontend, Go backend, and Redis caching. Scaled to <strong>25,000+ active users</strong>.</p>
+                    <p><em>Leadership Impact:</em> Secured authorization to host the Bangladesh selection round for the International Economics Olympiad in 2019, capturing a nationwide audience.</p>
+                </div>
+                <div class="card">
+                    <h3>Youth Research Journal</h3>
+                    <p>Registered organization founded in 2023 to teach proper Academic Research. Mentored <strong>600+ students</strong>.</p>
+                    <p><em>Leadership Impact:</em> Launched the International Academic Research Competition in 2024. As a solo developer, I built all in-house digital applications to manage this global initiative.</p>
+                </div>
+                <div class="card">
+                    <h3>Enterprise Email Marketing SaaS</h3>
+                    <p>Bypassed expensive third-party platforms by building a massive, custom email marketing and SMTP platform from scratch.</p>
+                    <p><em>Scale:</em> Currently serving an audience of <strong>1 Million+ subscribers</strong>. Highly optimized for inbox deliverability, capable of flawlessly routing 20,000+ emails in a matter of weeks with strict DNS and server configurations.</p>
+                </div>
+                <div class="card">
+                    <h3>Play Store Ecosystem</h3>
+                    <p>Successfully deployed and managed multiple live applications on the Google Play Store, dominating niches in educational tools and streaming applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="fade-in">
+        <h2>Consultancy Services</h2>
+        <p>I charge flexibly based on the business needs and time invested. If your project involves learning something new or creating something beautiful, I am open to low-budget partnerships.</p>
+        <div class="grid-3" style="margin-top: 2rem;">
+            <div class="card">
+                <h3>1. Custom Email Platforms</h3>
+                <p>Stop paying high monthly fees. I build scalable, independent email infrastructures handling millions of subscribers with perfect deliverability.</p>
+            </div>
+            <div class="card">
+                <h3>2. Application & Web Dev</h3>
+                <p>End-to-end creation of Android, iOS, Desktop, Cross-Platform apps, and Event/Influencer specific web platforms.</p>
+            </div>
+            <div class="card">
+                <h3>3. Social Media & Hype</h3>
+                <p>Organic and high-impact marketing across Facebook, Instagram, YouTube, and TikTok at low spending margins.</p>
+            </div>
+            <div class="card">
+                <h3>4. Digital Streamlining</h3>
+                <p>Connecting the technical dots of your business. I provide clear pathways, audits, financial reporting, and tech skeleton deployments.</p>
+            </div>
+            <div class="card">
+                <h3>5. Academic Consultation</h3>
+                <p>Step-by-step guidance on how to properly conduct, format, and publish rigorous academic research.</p>
+            </div>
+            <div class="card">
+                <h3>6. Artistic Photography</h3>
+                <p>Professional artistic and boudoir portrait photography using DSLR, plus fantasy YouTube video production.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="art" class="art-section fade-in">
+        <h2>Beyond the Screen</h2>
+        <p>Just seeing the beautiful creation of the universe is a calming experience. When I step away from code and servers, I am an artist. I shoot artistic and boudoir portraits, create fantasy YouTube content, and am currently executing a lifelong plan to travel the world—documenting every memory in my own private, digital archive.</p>
+    </section>
+
+    <section id="contact" class="fade-in" style="text-align: center; background-color: #0b0f19;">
+        <h2>Ready to Build?</h2>
+        <p>If you need a digital company by 10 PM, tomorrow morning you will have the skeleton.</p>
+        <br>
+        <a href="mailto:your.email@example.com" class="hero-btn">Get In Touch</a>
+        <p style="margin-top: 3rem; font-size: 0.9rem;">&copy; 2026 Sanaul Haque. All Rights Reserved.</p>
+    </section>
+
+    <script>
+        // Typing Effect in Hero Section
+        const textArray = ["Full-Stack Architect", "Digital Strategist", "Mobile & Web Developer", "Creative Consultant"];
+        let textIndex = 0;
+        let charIndex = 0;
+        const speed = 100;
+        const delayBetweenTexts = 2000;
+        const typewriterElement = document.getElementById("typewriter");
+
+        function typeWriter() {
+            if (charIndex < textArray[textIndex].length) {
+                typewriterElement.innerHTML += textArray[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, speed);
+            } else {
+                setTimeout(eraseText, delayBetweenTexts);
+            }
+        }
+
+        function eraseText() {
+            if (charIndex > 0) {
+                typewriterElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(eraseText, speed / 2);
+            } else {
+                textIndex++;
+                if (textIndex >= textArray.length) textIndex = 0;
+                setTimeout(typeWriter, speed);
+            }
+        }
+        
+        // Start typing effect on load
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Scroll Fade-In Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
