@@ -1,282 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanaul Haque | Full-Stack Architect & Consultant</title>
-    <style>
-        /* CSS Styles */
-        :root {
-            --bg-color: #0b0f19;
-            --text-main: #e2e8f0;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-hover: #0284c7;
-            --card-bg: #1e293b;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sanaul Haque | Full-Stack Architect & Digital Strategist</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #111827;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    /* Typography – blue/black scheme */
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
 
-        /* Typography & Layout */
-        h1, h2, h3 { color: #ffffff; font-weight: 600; margin-bottom: 1rem; }
-        h2 { font-size: 2.5rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 0.5rem; margin-bottom: 2rem; }
-        p { margin-bottom: 1rem; color: var(--text-muted); font-size: 1.1rem; }
-        section { padding: 6rem 10%; }
-        
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            background: linear-gradient(135deg, #0b0f19 0%, #172033 100%);
-            position: relative;
-        }
-        #hero h1 { font-size: 4rem; letter-spacing: 2px; }
-        .typing-text { font-size: 1.8rem; color: var(--accent); min-height: 40px; margin-bottom: 2rem;}
-        .hero-btn {
-            padding: 12px 28px;
-            background-color: var(--accent);
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-            font-weight: bold;
-        }
-        .hero-btn:hover { background-color: var(--accent-hover); }
+    h1 {
+      font-size: 3.2rem;
+      background: linear-gradient(135deg, #0f2b4d, #1e4a76);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
 
-        /* Grid Layouts */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    h2 {
+      font-size: 2.2rem;
+      color: #0a2b44;
+      border-left: 5px solid #1e6fdf;
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+    }
 
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            border-left: 4px solid var(--accent);
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.15);
-        }
-        .card h3 { color: var(--accent); font-size: 1.5rem; }
-        .card ul { margin-left: 1.5rem; color: var(--text-muted); margin-top: 1rem;}
-        .card li { margin-bottom: 0.5rem; }
+    h3 {
+      font-size: 1.5rem;
+      color: #0f3b6f;
+      margin-bottom: 0.75rem;
+    }
 
-        /* Tag Pills */
-        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1rem; }
-        .tag { background: #334155; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; color: var(--text-main); }
+    .section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
 
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* subtle divider */
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(90deg, #e2e8f0, #b9d0f0, #e2e8f0);
+      width: 100%;
+      margin: 1rem 0;
+    }
 
-        /* Photography Section specific */
-        .art-section {
-            background: linear-gradient(rgba(11, 15, 25, 0.9), rgba(11, 15, 25, 0.9)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2000&auto=format&fit=crop') center/cover fixed;
-            text-align: center;
-        }
-        .art-section p { color: #fff; max-width: 800px; margin: 0 auto 2rem auto; }
+    /* buttons & cards */
+    .btn-hire {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0a2b44;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      margin-top: 1.2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            #hero h1 { font-size: 2.5rem; }
-            section { padding: 4rem 5%; }
-        }
-    </style>
+    .btn-hire i {
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-hire:hover {
+      background: #0f3f66;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -8px rgba(10,43,68,0.3);
+    }
+
+    .btn-hire:hover i {
+      transform: translateX(4px);
+    }
+
+    /* card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .service-card, .project-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      transition: all 0.35s cubic-bezier(0.2, 0, 0, 1);
+      backdrop-filter: blur(0px);
+      border: 1px solid #eff3f8;
+    }
+
+    .service-card:hover, .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0, 20, 40, 0.12);
+      border-color: #cbdff5;
+    }
+
+    .service-icon {
+      font-size: 2.2rem;
+      color: #1e6fdf;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p, .project-card p {
+      color: #2c3e4e;
+      margin: 0.75rem 0;
+      line-height: 1.5;
+    }
+
+    .competency-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      background: #fafcff;
+      border-radius: 2rem;
+      padding: 1.8rem;
+      border: 1px solid #eef3fc;
+    }
+
+    .comp-list {
+      list-style: none;
+    }
+
+    .comp-list li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .comp-list li i {
+      color: #1e6fdf;
+      width: 24px;
+      font-size: 1.1rem;
+    }
+
+    /* animation classes */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* responsive */
+    @media (max-width: 780px) {
+      h1 { font-size: 2.3rem; }
+      h2 { font-size: 1.8rem; }
+      .section { padding: 2.5rem 1.5rem; }
+      .competency-grid { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+
+    .badge-light {
+      background: #eef4ff;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #0a2b44;
+      display: inline-block;
+    }
+
+    .highlight-blue {
+      color: #1a5d9c;
+      font-weight: 600;
+    }
+
+    footer {
+      background: #f8fafd;
+      border-top: 1px solid #eef2f8;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      color: #4b5563;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: #2c4b6e;
+      max-width: 800px;
+    }
+  </style>
 </head>
 <body>
 
-    <section id="hero">
-        <div class="fade-in">
-            <h1>Sanaul Haque</h1>
-            <div class="typing-text" id="typewriter"></div>
-            <p style="max-width: 600px; font-size: 1.2rem; margin-bottom: 2rem;">
-                From a 10 PM idea to a fully deployed digital skeleton by morning. I don't just write code—I build, scale, and market complete digital empires. Competitive programming since 2015, professional development since 2016.
-            </p>
-            <a href="#contact" class="hero-btn">Consult With Me</a>
+  <main>
+    <!-- Hero Section -->
+    <div class="section fade-up" id="hero">
+      <div style="max-width: 1000px;">
+        <span class="badge-light"><i class="fas fa-code"></i> Since 2016 • Architect & Strategist</span>
+        <h1>Sanaul Haque<br>Full-Stack Architect, Entrepreneur & Digital Strategist</h1>
+        <p class="hero-sub">I build complete digital empires — from rapid prototypes to scalable infrastructure serving millions. Rooted in competitive programming (2015) and pro development (2016), I merge code with business vision.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+          <a href="#consultancy" class="btn-hire" style="background:#0f3b6f;"><i class="fas fa-rocket"></i> Explore services</a>
+          <a href="#contact-trigger" class="btn-hire" style="background:transparent; border:1px solid #0a2b44; color:#0a2b44; box-shadow:none;"><i class="fas fa-envelope"></i> Quick connect</a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="skills" class="fade-in">
-        <h2>Technical Arsenal</h2>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Web Development</h3>
-                <p>Monolithic, Service-Oriented (SOA), and Microservices architectures.</p>
-                <div class="tags">
-                    <span class="tag">Angular.js</span> <span class="tag">React</span> <span class="tag">Next.js</span>
-                    <span class="tag">Node.js</span> <span class="tag">PHP</span> <span class="tag">Python</span> 
-                    <span class="tag">Go (Golang)</span> <span class="tag">HTML/CSS/JS</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Application & Game Dev</h3>
-                <p>Native and cross-platform mobile apps, plus game development.</p>
-                <div class="tags">
-                    <span class="tag">Android (Java)</span> <span class="tag">iOS (Swift)</span> 
-                    <span class="tag">React Native</span> <span class="tag">Flutter</span> 
-                    <span class="tag">Dart</span> <span class="tag">Unity 3D/2D</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Infrastructure & Scaling</h3>
-                <p>Serving millions with robust databases, caching, and server management.</p>
-                <div class="tags">
-                    <span class="tag">MySQL</span> <span class="tag">Redis Caching</span> 
-                    <span class="tag">Custom SMTP</span> <span class="tag">DNS Routing</span>
-                </div>
-            </div>
+    <!-- Core Technical Competencies -->
+    <div class="section fade-up">
+      <h2>⚡ Core Technical Competencies</h2>
+      <div class="competency-grid">
+        <div>
+          <h3 style="margin-bottom: 1rem;"><i class="fas fa-globe"></i> Web Development (Full Stack)</h3>
+          <ul class="comp-list">
+            <li><i class="fab fa-angular"></i> Angular.js, React, Next.js, HTML5/CSS3, Bootstrap</li>
+            <li><i class="fab fa-node-js"></i> Node.js, PHP, Python, Go (Golang)</li>
+            <li><i class="fas fa-cubes"></i> Monolithic, SOA, Microservices</li>
+            <li><i class="fas fa-database"></i> MySQL, NoSQL, MongoDB, Redis</li>
+          </ul>
         </div>
-    </section>
-
-    <section id="projects" style="background-color: #0f172a;">
-        <div class="fade-in">
-            <h2>Flagship Initiatives</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>ArenaBoard Online Judge</h3>
-                    <p>Built a high-performance Online Judge using SOA, Bootstrap frontend, Go backend, and Redis caching. Scaled to <strong>25,000+ active users</strong>.</p>
-                    <p><em>Leadership Impact:</em> Secured authorization to host the Bangladesh selection round for the International Economics Olympiad in 2019, capturing a nationwide audience.</p>
-                </div>
-                <div class="card">
-                    <h3>Youth Research Journal</h3>
-                    <p>Registered organization founded in 2023 to teach proper Academic Research. Mentored <strong>600+ students</strong>.</p>
-                    <p><em>Leadership Impact:</em> Launched the International Academic Research Competition in 2024. As a solo developer, I built all in-house digital applications to manage this global initiative.</p>
-                </div>
-                <div class="card">
-                    <h3>Enterprise Email Marketing SaaS</h3>
-                    <p>Bypassed expensive third-party platforms by building a massive, custom email marketing and SMTP platform from scratch.</p>
-                    <p><em>Scale:</em> Currently serving an audience of <strong>1 Million+ subscribers</strong>. Highly optimized for inbox deliverability, capable of flawlessly routing 20,000+ emails in a matter of weeks with strict DNS and server configurations.</p>
-                </div>
-                <div class="card">
-                    <h3>Play Store Ecosystem</h3>
-                    <p>Successfully deployed and managed multiple live applications on the Google Play Store, dominating niches in educational tools and streaming applications.</p>
-                </div>
-            </div>
+        <div>
+          <h3 style="margin-bottom: 1rem;"><i class="fas fa-mobile-alt"></i> App & Game Development</h3>
+          <ul class="comp-list">
+            <li><i class="fab fa-android"></i> Native Android (Java), iOS (Swift)</li>
+            <li><i class="fab fa-react"></i> React Native, Flutter, Dart</li>
+            <li><i class="fas fa-gamepad"></i> Unity 3D/2D Game Development</li>
+            <li><i class="fas fa-store"></i> Multiple live apps on Google Play (EdTech, media streaming)</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="services" class="fade-in">
-        <h2>Consultancy Services</h2>
-        <p>I charge flexibly based on the business needs and time invested. If your project involves learning something new or creating something beautiful, I am open to low-budget partnerships.</p>
-        <div class="grid-3" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>1. Custom Email Platforms</h3>
-                <p>Stop paying high monthly fees. I build scalable, independent email infrastructures handling millions of subscribers with perfect deliverability.</p>
-            </div>
-            <div class="card">
-                <h3>2. Application & Web Dev</h3>
-                <p>End-to-end creation of Android, iOS, Desktop, Cross-Platform apps, and Event/Influencer specific web platforms.</p>
-            </div>
-            <div class="card">
-                <h3>3. Social Media & Hype</h3>
-                <p>Organic and high-impact marketing across Facebook, Instagram, YouTube, and TikTok at low spending margins.</p>
-            </div>
-            <div class="card">
-                <h3>4. Digital Streamlining</h3>
-                <p>Connecting the technical dots of your business. I provide clear pathways, audits, financial reporting, and tech skeleton deployments.</p>
-            </div>
-            <div class="card">
-                <h3>5. Academic Consultation</h3>
-                <p>Step-by-step guidance on how to properly conduct, format, and publish rigorous academic research.</p>
-            </div>
-            <div class="card">
-                <h3>6. Artistic Photography</h3>
-                <p>Professional artistic and boudoir portrait photography using DSLR, plus fantasy YouTube video production.</p>
-            </div>
+    <!-- Flagship Projects & Leadership -->
+    <div class="section fade-up">
+      <h2>🏆 Flagship Projects & Leadership</h2>
+      <div class="card-grid">
+        <div class="project-card">
+          <i class="fas fa-trophy service-icon"></i>
+          <h3>ArenaBoard Online Judge & The Economics Olympiad</h3>
+          <p>High-performance Online Judge using SOA + Go backend + Redis caching. Scaled to <strong>25,000+ active users</strong>. Officially hosted the Bangladesh selection round for the International Economics Olympiad (2019).</p>
         </div>
-    </section>
+        <div class="project-card">
+          <i class="fas fa-chalkboard-user service-icon"></i>
+          <h3>Youth Research Journal & Global Competitions</h3>
+          <p>Founded registered educational organization (2023), mentored <strong>600+ students</strong> in academic research. Launched International Academic Research Competition (2024) with in-house SaaS tools.</p>
+        </div>
+        <div class="project-card">
+          <i class="fas fa-mail-bulk service-icon"></i>
+          <h3>Custom Enterprise Email Marketing Infrastructure</h3>
+          <p>Built scalable, independent SMTP platform managing <strong>1M+ subscribers</strong> with high deliverability. Replaces costly third-party marketing tools.</p>
+        </div>
+      </div>
+    </div>
 
-    <section id="art" class="art-section fade-in">
-        <h2>Beyond the Screen</h2>
-        <p>Just seeing the beautiful creation of the universe is a calming experience. When I step away from code and servers, I am an artist. I shoot artistic and boudoir portraits, create fantasy YouTube content, and am currently executing a lifelong plan to travel the world—documenting every memory in my own private, digital archive.</p>
-    </section>
+    <!-- Business Acumen & Rapid Deployment -->
+    <div class="section fade-up">
+      <h2>📈 Business Acumen & Rapid Deployment</h2>
+      <div style="background:#F9FBFE; border-radius: 32px; padding: 2rem; border:1px solid #eef2fa;">
+        <p style="font-size:1.1rem; margin-bottom: 1rem;">Real-world corporate experience: <strong>international partnerships, corporate audits, financial reporting & taxation</strong>. I don't just deliver code — I streamline entire digital ecosystems.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1rem;">
+          <div><i class="fas fa-bolt highlight-blue"></i> <strong>Rapid Digital Prototyping:</strong> From idea to deployed skeleton overnight.</div>
+          <div><i class="fas fa-chart-line highlight-blue"></i> <strong>Scalable infrastructure:</strong> Microservices & cloud-native solutions.</div>
+          <div><i class="fas fa-handshake highlight-blue"></i> <strong>Strategic tech consulting:</strong> Align engineering with growth.</div>
+        </div>
+      </div>
+    </div>
 
-    <section id="contact" class="fade-in" style="text-align: center; background-color: #0b0f19;">
-        <h2>Ready to Build?</h2>
-        <p>If you need a digital company by 10 PM, tomorrow morning you will have the skeleton.</p>
-        <br>
-        <a href="mailto:your.email@example.com" class="hero-btn">Get In Touch</a>
-        <p style="margin-top: 3rem; font-size: 0.9rem;">&copy; 2026 Sanaul Haque. All Rights Reserved.</p>
-    </section>
+    <!-- CONSULTANCY SERVICES (CARDS + HIRE ME BUTTON) -->
+    <div class="section fade-up" id="consultancy">
+      <h2>💡 Consultancy Services — Tailored to your vision</h2>
+      <p style="margin-bottom: 1.5rem;">Every engagement is custom-built. Choose your focus — from deep tech to creative media — and let's bring your project to life. <strong>Photography, social hype, marketing at low spending</strong> also available as standalone services.</p>
+      <div class="card-grid" id="services-grid">
+        <!-- Service 1: Custom Email Marketing Platform -->
+        <div class="service-card">
+          <i class="fas fa-envelope-open-text service-icon"></i>
+          <h3>📧 Custom Email Marketing Platform</h3>
+          <p>Build your own scalable SMTP infrastructure, bypass SaaS fees, manage 1M+ subscribers with high deliverability and analytics.</p>
+          <a href="mailto:shanto@eptonline.org?subject=Consultancy%20Inquiry%3A%20Custom%20Email%20Marketing%20Platform&body=Hi%20Sanaul%2C%0A%0AI%20am%20interested%20in%20your%20%22Custom%20Email%20Marketing%20Platform%20Development%22%20service.%20I%20would%20like%20to%20discuss%20options%2C%20pricing%2C%20and%20timeline.%0A%0APlease%20share%20your%20availability%20and%20any%20portfolio%20examples.%0A%0AThank%20you!" class="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        </div>
+        <!-- Service 2: Comprehensive Digital Streamlining -->
+        <div class="service-card">
+          <i class="fas fa-cloud-upload-alt service-icon"></i>
+          <h3>📡 Digital Streamlining & Automation</h3>
+          <p>Evaluate business needs and create interconnected web/app/server ecosystems to automate operations, reduce costs, and scale seamlessly.</p>
+          <a href="mailto:shanto@eptonline.org?subject=Consultancy%3A%20Digital%20Streamlining%20%26%20Automation&body=Hi%20Sanaul%2C%0A%0AI%20need%20a%20comprehensive%20digital%20streamlining%20assessment.%20My%20business%20needs%20automation%20and%20scalable%20tools.%20Let's%20discuss%20my%20current%20setup%20and%20goals.%0A%0ARegards." class="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        </div>
+        <!-- Service 3: Application Development (Mobile/Desktop/Cross) -->
+        <div class="service-card">
+          <i class="fas fa-mobile-alt service-icon"></i>
+          <h3>📱 App Development (Android/iOS/Desktop)</h3>
+          <p>End-to-end native, cross-platform (Flutter, React Native) or desktop apps. Published apps on Play Store & educational platforms.</p>
+          <a href="mailto:shanto@eptonline.org?subject=Consultancy%3A%20App%20Development%20Project&body=Hi%20Sanaul%2C%0A%0AI%20am%20looking%20for%20an%20expert%20to%20build%20a%20mobile%2Fdesktop%20application.%20Here%20are%20my%20initial%20ideas%3A%20%5Bdescribe%20briefly%5D.%20Please%20let%20me%20know%20your%20process%20and%20estimated%20timeline.%0A%0AThanks!" class="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        </div>
+        <!-- Service 4: Event & Influencer-Specific Platforms -->
+        <div class="service-card">
+          <i class="fas fa-calendar-alt service-icon"></i>
+          <h3>🎤 Event & Influencer Platforms</h3>
+          <p>Rapid deployment of bespoke websites/apps for events, campaigns, competitions or personal brands. High-traffic ready.</p>
+          <a href="mailto:shanto@eptonline.org?subject=Event%20Platform%20Inquiry&body=Hi%20Sanaul%2C%0A%0AI%20need%20a%20custom%20platform%20for%20my%20event%20%2F%20influencer%20campaign.%20The%20estimated%20audience%20size%20is%20%5B...%5D.%20Let's%20discuss%20features%20and%20deployment%20speed.%0A%0ABest%20regards." class="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        </div>
+        <!-- Service 5: Academic Research Consultation -->
+        <div class="service-card">
+          <i class="fas fa-graduation-cap service-icon"></i>
+          <h3>📚 Academic Research Consultation</h3>
+          <p>Guidance on research methodology, formatting, publication strategy, and building academic platforms. Mentored 600+ students.</p>
+          <a href="mailto:shanto@eptonline.org?subject=Academic%20Research%20Consultation&body=Hello%20Sanaul%2C%0A%0AI%20would%20like%20to%20discuss%20academic%20research%20mentorship%20or%20help%20with%20publishing.%20Please%20share%20your%20packages%20and%20availability.%0A%0AThank%20you." class="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        </div>
+        <!-- Service 6: Artistic & Boudoir Portrait Photography -->
+        <div class="service-card">
+          <i class="fas fa-camera-retro service-icon"></i>
+          <h3>📸 Artistic & Boudoir Portrait Photography</h3>
+          <p>Premium portrait, artistic, and boudoir photography for personal branding, portfolios, or creative projects. High-end visual storytelling.</p>
+          <a href="mailto:shanto@eptonline.org?subject=Photography%20Service%20Inquiry&body=Hi%20Sanaul%2C%0A%0AI%20am%20interested%20in%20your%20photography%20services%20(artistic%20%2F%20boudoir%20portraits).%20I'd%20like%20to%20know%20pricing%2C%20availability%2C%20and%20your%20portfolio.%0A%0AThank%20you!" class="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        </div>
+        <!-- Service 7: Social Media Growth & Hype Marketing (Low Spending) -->
+        <div class="service-card">
+          <i class="fas fa-chart-simple service-icon"></i>
+          <h3>🚀 Social Media Growth & Hype Marketing</h3>
+          <p>Facebook, Instagram, YouTube, TikTok — affordable hype, viral marketing strategies, low-spending campaigns to boost visibility and engagement.</p>
+          <a href="mailto:shanto@eptonline.org?subject=Social%20Media%20%26%20Hype%20Marketing%20Inquiry&body=Hi%20Sanaul%2C%0A%0AI%20need%20help%20with%20social%20media%20growth%20on%20%5Bplatforms%5D.%20My%20budget%20is%20flexible%20but%20looking%20for%20low-spending%20high-impact%20hype.%20Please%20provide%20strategy%20options.%0A%0AThanks!" class="btn-hire"><i class="fas fa-paper-plane"></i> Hire Me</a>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; background: #F0F6FF; padding: 1rem 1.5rem; border-radius: 60px; text-align: center;">
+        <i class="fas fa-gem"></i> <strong>Pricing note:</strong> Project-dependent & flexible — if your idea brings unique learning or passion alignment, I'm open to lower-budget collaborations.
+      </div>
+    </div>
 
-    <script>
-        // Typing Effect in Hero Section
-        const textArray = ["Full-Stack Architect", "Digital Strategist", "Mobile & Web Developer", "Creative Consultant"];
-        let textIndex = 0;
-        let charIndex = 0;
-        const speed = 100;
-        const delayBetweenTexts = 2000;
-        const typewriterElement = document.getElementById("typewriter");
+    <!-- Rapid prototype & additional value -->
+    <div class="section fade-up">
+      <h2>⚙️ Rapid Digital Prototyping — from vision to reality</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; justify-content: space-between;">
+        <div style="flex:1; min-width: 200px;">
+          <p><strong>“If you have an idea at 10:00 PM, I can engineer and deploy the operational skeleton of your digital company by the next morning.”</strong> — complete end-to-end architecture, connecting tech so you focus on growth.</p>
+          <p style="margin-top: 1rem;"><i class="fas fa-check-circle highlight-blue"></i> Corporate audits, financial reporting, international partnership experience included.</p>
+        </div>
+        <div style="background:#eef3fc; padding: 1.3rem 2rem; border-radius: 48px;">
+          <i class="fas fa-bolt"></i> <span class="highlight-blue">ArenaBoard, 1M+ email infra, 25k+ users</span> — proven scale
+        </div>
+      </div>
+    </div>
 
-        function typeWriter() {
-            if (charIndex < textArray[textIndex].length) {
-                typewriterElement.innerHTML += textArray[textIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, speed);
-            } else {
-                setTimeout(eraseText, delayBetweenTexts);
-            }
+    <!-- Beyond the Screen (creative side) -->
+    <div class="section fade-up">
+      <h2>🎨 Beyond the Screen</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <p><i class="fas fa-camera"></i> <strong>Artistic & Boudoir Portrait Photographer</strong> — capturing the calming beauty of the universe through my DSLR. Also produce fantasy content for YouTube and document a lifelong travel journey.</p>
+        <p><i class="fas fa-chalkboard"></i> Passionate about mentoring, creative arts, and merging tech with human stories.</p>
+        <div class="badge-light" style="width: fit-content;"><i class="fab fa-youtube"></i> <i class="fab fa-instagram"></i> <i class="fab fa-tiktok"></i> Content creation & travel diaries</div>
+      </div>
+    </div>
+
+    <!-- final CTA / global email note -->
+    <div class="section fade-up" id="contact-trigger" style="text-align: center; padding-top: 1rem;">
+      <div style="background: linear-gradient(115deg, #F9FCFE, #FFFFFF); border-radius: 48px; padding: 2rem; border: 1px solid #dce7f5;">
+        <i class="fas fa-envelope" style="font-size: 2.5rem; color: #1e6fdf;"></i>
+        <h3 style="margin-top: 0.5rem;">Ready to build something extraordinary?</h3>
+        <p>Select any service card above and click "Hire Me" — it will open your default email app with a tailored subject & pre-filled message.<br> Or directly reach me at <strong>shanto@eptonline.org</strong> for any custom request.</p>
+        <a href="mailto:shanto@eptonline.org?subject=General%20Consultation%20Request%20(Sanaul)&body=Hi%20Sanaul%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20potential%20project.%20Please%20let%20me%20know%20a%20good%20time%20to%20connect.%0A%0ABest%20regards." class="btn-hire" style="background: #0a2b44;"><i class="fas fa-envelope-open-text"></i> Direct Email Inquiry</a>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 Sanaul Haque — Full-Stack Architect, Entrepreneur & Digital Strategist. <br>Based on global impact: 25k+ users, 1M+ email subscribers, 600+ mentored students.</p>
+      <p style="margin-top: 0.5rem;"><i class="fas fa-camera"></i> Photography | <i class="fas fa-chart-line"></i> Hype & Social Media Marketing | <i class="fas fa-microchip"></i> Full-Stack Engineering</p>
+    </footer>
+  </main>
+
+  <script>
+    // Intersection Observer for fade-up animation (professional scroll reveal)
+    const fadeElements = document.querySelectorAll('.fade-up');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // once visible, stop observing
         }
-
-        function eraseText() {
-            if (charIndex > 0) {
-                typewriterElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(eraseText, speed / 2);
-            } else {
-                textIndex++;
-                if (textIndex >= textArray.length) textIndex = 0;
-                setTimeout(typeWriter, speed);
-            }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+    
+    fadeElements.forEach(el => observer.observe(el));
+    
+    // also set any immediate visible elements that might be already in view
+    window.addEventListener('load', () => {
+      fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('visible');
         }
-        
-        // Start typing effect on load
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(typeWriter, 1000);
-        });
+      });
+    });
 
-        // Scroll Fade-In Animation Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Only animate once
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+    // optional: add a small interactive hover polish to buttons, already styled
+    // ensure mailto links are fully functional and template-driven (each card uses custom subject/body)
+    // No extra JS needed for email — anchor tags do the job perfectly
+    console.log("Portfolio ready — each consultancy card has a dedicated Hire Me email button with template.");
+  </script>
 </body>
 </html>
