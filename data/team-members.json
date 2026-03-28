@@ -1,4 +1,70 @@
 {
+    "2026": {
+         "iarcoCommittee": [
+            {
+                "name": "Md Sanaul Haque Shanto",
+                "position": "IARCO Brain & Host",
+                "institution": "President, Lead Researcher at YRJ",
+                "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
+                "image": "https://yrjournal.org/images/staff-01.jpg",
+                "country": "Bangla"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "IARCO Director",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangla"
+            }
+        ],
+        "mentors": [
+            {
+                "name": "Dr. Karthikeyan Parthasarathy",
+                "position": "Teach Research 5000+ Student",
+                "institution": "Head of the Department, Department of Management Studies, Kongu Engineering College",
+                "bio": "Dr.Karthikeyan Parthasarathy was awarded Ph.D in Management from Bharathiar University in 2009 and qualified with SET in the year 2006. Presently he is working as an Associate Professor in School of Management Studies at Kongu Engineering College.",
+                "image": "https://iarco.org/assets/mentor/drpk.PNG",
+                "country": "India"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "Mentored 200+ Students & YRJ's Program",
+                "institution": "150+ Publications",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangla"
+            }
+        ],
+        "judges": [
+            {
+                "name": "Dr. Karthikeyan Parthasarathy",
+                "position": "IARCO Judge",
+                "institution": "Head of the Department, Department of Management Studies, Kongu Engineering College",
+                "bio": "Dr.Karthikeyan Parthasarathy was awarded Ph.D in Management from Bharathiar University in 2009 and qualified with SET in the year 2006. Presently he is working as an Associate Professor in School of Management Studies at Kongu Engineering College.",
+                "image": "https://iarco.org/assets/mentor/drpk.PNG",
+                "country": "India"
+            },
+             {
+                "name": "Md. Azmain Yakin Srizon",
+                "position": "Reviewers of IEEE & Elsevier",
+                "institution": "CSE Dept Lecturer at RUET",
+                "bio": "Md. Azmain Yakin Srizon is an Assistant Professor in the CSE department at RUET. He specializes in deep learning, computer vision, and biomedical engineering, and holds both B.Sc. and M.Sc. degrees from RUET.",
+                "image": "https://yrjournal.org/images/azmain.png",
+                "country": "Bangla"
+            },
+            {
+                "name": "Md Sanaul Haque Shanto",
+                "position": "Develop IARCO Judging Algorithm",
+                "institution": "President, Lead Researcher at YRJ",
+                "bio": "Oversees all aspects of the IARCO competition and YRJ organization.",
+                "image": "https://yrjournal.org/images/staff-01.jpg",
+                "country": "Bangla"
+            }
+        ]
+    },
+    
+    
     "2025": {
          "iarcoCommittee": [
             {
