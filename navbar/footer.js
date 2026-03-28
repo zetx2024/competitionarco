@@ -22,6 +22,7 @@
                     <a href="https://www.instagram.com/iarco_org"><i class="fab fa-instagram"></i> Instagram</a>
                     <a href="https://www.youtube.com/@iarco_org"><i class="fab fa-youtube"></i> YouTube</a>
                     <a href="https://www.linkedin.com/company/iarco"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                    <a href="https://x.com/iarco_org"><i class="fab fa-x-twitter"></i> X (Twitter)</a>
                 </div>
 
                 <div class="footer-links">
@@ -30,7 +31,6 @@
                     <a data-footer="backbone" href="iarco-backbone"><i class="fas fa-users"></i> IARCO Backbone</a>
                     <a data-footer="archive" href="archive"><i class="fab fa-accusoft"></i> Archive</a>
                     <a data-footer="prizes" href="prizes"><i class="fas fa-trophy"></i> Prizes</a>
-                    <a data-footer="bootcamps" href="bootcamps"><i class="fas fa-dumbbell"></i> Bootcamp</a>
                     <a href="https://cert.iarco.org/"><i class="fas fa-certificate"></i> Certificate</a>
                 </div>
 
