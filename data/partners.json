@@ -70,5 +70,32 @@
         "type": "Platinum Payment Partner"
       }
     ]
+  },
+    "2026": {
+    "sponsor": [
+      {
+        "name": "Youth Research Journal",
+        "logo": "https://yrjournal.org/images/Logo.PNG",
+        "website": "https://yrjournal.org",
+        "description": "Continuing our partnership to elevate student research and provide publishing opportunities for competition participants.",
+        "type": "Platinum Sponsor"
+      },
+      {
+        "name": "Looking for",
+        "logo": "#",
+        "website": "#",
+        "description": "We are looking for our sponsor for providing best competition in the world. Mail at sponsor@iarco.org.",
+        "type": "Gold Sponsor"
+      }
+    ],
+    "media": [
+      {
+        "name": "Looking for",
+        "logo": "#",
+        "website": "#",
+        "description": "We are looking for our sponsor for providing best competition in the world. Mail at sponsor@iarco.org.",
+        "type": "Gold Sponsor"
+      }
+    ]
   }
 }
