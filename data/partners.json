@@ -7,13 +7,6 @@
         "website": "https://yrjournal.org",
         "description": "Promoting young researchers and writers by guiding them through standard publishing procedures. Through monthly issues, we showcase quality content while encouraging independent research and self-learning.",
         "type": "Gold Sponsor"
-      },
-      {
-        "name": "Youth Research Journal",
-        "logo": "https://yrjournal.org/images/Logo.PNG",
-        "website": "https://yrjournal.org",
-        "description": "Promoting young researchers and writers by guiding them through standard publishing procedures. Through monthly issues, we showcase quality content while encouraging independent research and self-learning.",
-        "type": "Silver Sponsor"
       }
     ],
     "academic": [
@@ -51,15 +44,6 @@
         "type": "Gold Sponsor"
       }
     ],
-    "media": [
-      {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. Mail at sponsor@iarco.org.",
-        "type": "Gold Sponsor"
-      }
-    ],
    
     "payment": [
       {
@@ -81,25 +65,27 @@
         "type": "Platinum Sponsor"
       },
       {
-        "name": ".ME Domain",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/5/52/Domainme.png",
-        "website": "https://domain.me/",
-        "description": "We're Excited to Partner with .ME! The .ME domain registry is generously providing free goodies and domain name coupons for the top 20 winners in each category.",
+        "name": "SaveMyExams.com",
+        "logo": "https://cdn.savemyexams.com/logo/sme-logo-3line.svg",
+        "website": "https://savemyexams.com/",
+        "description": "As part of our commitment to fostering academic excellence, Save My Exams is awarding a 1-Year Premium Subscription to the Top 20 Junior Winners of IARCO 2026. This scholarship provides these high-achieving students with unlimited access to an elite suite of study tools for 12 full months.",
         "type": "Gold Sponsor"
       },
       {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. Mail at sponsor@iarco.org.",
-        "type": "Silver Sponsor"
-      },
+        "name": ".ME Domain",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/5/52/Domainme.png",
+        "website": "https://domain.me/",
+        "description": ""We're excited to partner with .ME! The .ME domain registry is generously offering domain name coupons to the top 20 winners in each category, as well as a 50% discount for all registered participants.",
+        "type": "Gold Sponsor"
+      }
+    ],
+    "payment": [
       {
-        "name": "Looking for",
-        "logo": "#",
-        "website": "#",
-        "description": "We are looking for our sponsor for providing best competition in the world. Mail at sponsor@iarco.org.",
-        "type": "Bronze Sponsor"
+        "name": "Hack Club",
+        "logo": "https://assets.hackclub.com/flag-orpheus-left.png",
+        "website": "https://hackclub.com",
+        "description": "A Network of 1000+ Coding Clubs. Join Hack Club and be part of a network of high quality coding clubs where you learn to code entirely through ...",
+        "type": "Platinum Payment Partner"
       }
     ],
     "media": [
