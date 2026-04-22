@@ -445,6 +445,47 @@
             color: var(--primary-blue);
             font-weight: 500;
         }
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 10px 0;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.ticker-move {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 25s linear infinite;
+}
+
+.ticker-move:hover {
+  animation-play-state: paused; /* Pauses when user hovers to read */
+}
+
+.ticker-item {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  padding-right: 100%; /* Ensures smooth looping */
+}
+
+.ticker-item a {
+  color: #D4AF37; /* The gold color from your original code */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.ticker-item a:hover {
+  text-decoration: underline;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
     </style>
 	   
 </head>
@@ -468,7 +509,15 @@
         <p id="heroDesc" class="slide-up"></p>
     </div>
 </section>
-
+<div class="ticker-wrap">
+  <div class="ticker-move">
+    <span class="ticker-item">
+ <strong>IARCO 2026 is sponsored powered by:</strong> 
+      <a href="https://savemyexams.com/">SaveMyExams</a> (Awarding 1-Year Premium Subscriptions to the Top 20 Junior Winners) & 
+      <a href="https://domain.me">domain.ME</a> (Free domain coupons for Top 20 winners in each category & 50% off for all participants!).
+    </span>
+  </div>
+</div>
 <!-- JUNIOR -->
 <section class="prize-section">
     <div class="container">
@@ -499,10 +548,7 @@
             <div class="col-md-4">
                 <div class="partner-card">
                     <img src="https://yrjournal.org/fevicon/logo.png" class="img-fluid">
-                    <p>Youth Research Journal (YRJ) promotes young researchers through structured research publishing guidance.</p>
-                    <a href="https://yrjournal.org" target="_blank">
-                        Visit YRJ <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <p></p>
                 </div>
             </div>
         </div>
