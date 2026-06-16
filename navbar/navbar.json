@@ -1,6 +1,7 @@
 
 {
   "brand": {
+    "id": "wc-logo-animate",
     "href": "/",
     "logo": "assets/logo.png",
     "width": "80%",
