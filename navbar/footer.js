@@ -135,3 +135,27 @@
     }
 
 })();
+
+
+
+document.addEventListener('click', function(e) {
+    // Check if the click happened on our animated logo area
+    const logoContainer = e.target.closest('#wc-logo-animate');
+    if (logoContainer) {
+        e.preventDefault(); // Stop main logo click temporarily
+        
+        // Match the 15-second loop timing to know which logo is currently showing
+        const time = (new Date().getTime() / 1000) % 15; 
+        
+        if (time >= 0 && time < 3.5) {
+            window.open('https://savemyexams.com', '_blank');
+        } else if (time >= 3.6 && time < 7.1) {
+            window.open('https://yrjournal.org', '_blank');
+        } else if (time >= 7.2 && time < 10.7) {
+            window.open('https://domain.me', '_blank');
+        } else {
+            // If main logo is showing, go to the main brand href
+            window.location.href = logoContainer.getAttribute('href'); 
+        }
+    }
+});
