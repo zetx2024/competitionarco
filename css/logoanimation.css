@@ -1,0 +1,170 @@
+/* ==========================================
+   ULTIMATE GALAXY ORBIT + HOLOGRAPHIC POP-OUT
+   (100% Pure CSS - No HTML Changes)
+   ========================================== */
+
+/* Main container: Fixed exact size */
+#wc-logo-animate {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px !important;
+  height: 50px !important;
+  /* CRITICAL: Allows the ring and pop-outs to expand freely outside the navbar */
+  overflow: visible !important; 
+  text-decoration: none;
+  transform-style: preserve-3d; 
+  perspective: 800px;
+}
+
+/* --- 1. THE MAIN LOGO (Blink, Zoom & Highlight) --- */
+#wc-logo-animate img {
+  position: relative;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  z-index: 5;
+  /* 24 seconds total loop */
+  animation: main-logo-action 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity, filter;
+}
+
+/* --- 2. THE GALAXY RING (3D Orbit) --- */
+#wc-logo-animate::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 220px;
+  height: 220px;
+  margin-top: -110px;
+  margin-left: -110px;
+  border-radius: 50%;
+  border: 1px dashed rgba(200, 200, 200, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1) inset;
+  z-index: 1;
+  pointer-events: none;
+
+  /* The 3 tiny logos on the ring */
+  background-image:
+    url('https://cdn.savemyexams.com/logo/sme-logo-3line.svg'),
+    url('https://yrjournal.org/images/Logo.PNG'),
+    url('https://upload.wikimedia.org/wikipedia/commons/5/52/Domainme.png');
+  background-size: 40px auto, 35px auto, 40px auto;
+  background-repeat: no-repeat;
+  
+  /* Placed as a triangle on the ring */
+  background-position: 50% 0%, 93% 75%, 7% 75%;
+
+  animation: galaxy-orbit-spin 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* --- 3. THE HOLOGRAPHIC POP-OUT & TEXT --- */
+#wc-logo-animate::after {
+  content: ""; 
+  position: absolute;
+  /* Positioned slightly below the main logo (at the bottom rim of the orbit) */
+  left: 50%; top: 110px; 
+  width: 250px;
+  height: 60px;
+  z-index: 10;
+  pointer-events: none;
+  
+  /* Image setup */
+  background-size: auto 40px;
+  background-position: center top;
+  background-repeat: no-repeat;
+  
+  /* Text Styling */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color: #fff;
+  white-space: nowrap;
+  padding-bottom: 2px;
+  
+  /* Premium Glowing Text Shadow */
+  text-shadow: 
+    0px 2px 4px rgba(0, 0, 0, 1), 
+    0px 0px 8px rgba(0, 200, 255, 0.9),
+    0px 0px 15px rgba(0, 200, 255, 0.6);
+    
+  animation: holographic-popout 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity, content, background-image;
+}
+
+/* ==========================================
+   ANIMATION TIMELINES (24-Second Master Loop)
+   ========================================== */
+
+/* 1. Orbit Spin (Pauses when a logo hits the front) */
+@keyframes galaxy-orbit-spin {
+  /* Phase 1: Logo 1 at front */
+  0%, 15%   { opacity: 1; transform: rotateX(70deg) rotateZ(180deg); }
+  /* Spin to Logo 2 */
+  15%, 25%  { opacity: 1; transform: rotateX(70deg) rotateZ(60deg); }
+  /* Phase 2: Logo 2 at front */
+  25%, 40%  { opacity: 1; transform: rotateX(70deg) rotateZ(60deg); }
+  /* Spin to Logo 3 */
+  40%, 50%  { opacity: 1; transform: rotateX(70deg) rotateZ(-60deg); }
+  /* Phase 3: Logo 3 at front */
+  50%, 65%  { opacity: 1; transform: rotateX(70deg) rotateZ(-60deg); }
+  /* Spin to start, then fade out for Main Logo highlight */
+  65%, 72%  { opacity: 1; transform: rotateX(70deg) rotateZ(-180deg); }
+  73%, 98%  { opacity: 0; transform: rotateX(70deg) rotateZ(-180deg); } /* Hidden while main logo zooms */
+  99%, 100% { opacity: 0; transform: rotateX(70deg) rotateZ(180deg); }  /* Instant silent reset */
+}
+
+/* 2. Holographic Pop-Out & Text (Fires during orbit pauses) */
+@keyframes holographic-popout {
+  /* --- SPONSOR 1: Save My Exams --- */
+  0%  { opacity: 0; transform: translate(-50%, -50%) scale(0); content: "Your Academic Solution."; background-image: url('https://cdn.savemyexams.com/logo/sme-logo-3line.svg'); }
+  2%, 13% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); content: "Your Academic Solution."; background-image: url('https://cdn.savemyexams.com/logo/sme-logo-3line.svg'); filter: drop-shadow(0 0 10px rgba(255,255,255,0.6)); }
+  15% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: "Your Academic Solution."; background-image: url('https://cdn.savemyexams.com/logo/sme-logo-3line.svg'); }
+  
+  16%, 24% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: ""; background-image: none; }
+
+  /* --- SPONSOR 2: YRJ --- */
+  25% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: "IARCO's Power House."; background-image: url('https://yrjournal.org/images/Logo.PNG'); }
+  27%, 38% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); content: "IARCO's Power House."; background-image: url('https://yrjournal.org/images/Logo.PNG'); filter: drop-shadow(0 0 10px rgba(255,255,255,0.6)); }
+  40% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: "IARCO's Power House."; background-image: url('https://yrjournal.org/images/Logo.PNG'); }
+
+  41%, 49% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: ""; background-image: none; }
+
+  /* --- SPONSOR 3: Domain.me --- */
+  50% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: "Your Online Presence Solution."; background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/52/Domainme.png'); }
+  52%, 63% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); content: "Your Online Presence Solution."; background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/52/Domainme.png'); filter: drop-shadow(0 0 10px rgba(255,255,255,0.6)); }
+  65% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: "Your Online Presence Solution."; background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/52/Domainme.png'); }
+  
+  /* Blank while Main Logo highlights */
+  66%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0); content: ""; background-image: none; }
+}
+
+/* 3. Main Logo (Blinks & Zooms at the end of the loop) */
+@keyframes main-logo-action {
+  /* Normal resting state while sponsors show */
+  0%, 72% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)); }
+  
+  /* Double Blink */
+  74% { opacity: 0; transform: scale(1); }
+  76% { opacity: 1; filter: drop-shadow(0 0 10px rgba(255,255,255,0.8)); }
+  78% { opacity: 0; }
+  80% { opacity: 1; }
+
+  /* Smooth Zoom In & Golden Highlight */
+  82% { transform: scale(1); }
+  92% { 
+    transform: scale(1.4); 
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); /* Golden Glow */
+  }
+  
+  /* Zoom out back to normal */
+  98%, 100% { 
+    transform: scale(1); 
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.2)); 
+  }
+}
