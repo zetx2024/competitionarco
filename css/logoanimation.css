@@ -40,8 +40,8 @@
   margin-top: -110px;
   margin-left: -110px;
   border-radius: 50%;
-  border: 1px dashed rgba(200, 200, 200, 0.3);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1) inset;
+  border: 1px solid rgba(255, 255, 255, 0.5); /* Brighter orbit line */
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5); /* Neon halo */
   z-index: 1;
   pointer-events: none;
 
@@ -83,15 +83,17 @@
   font-family: sans-serif;
   font-size: 13px;
   font-weight: 900;
-  color: #fff;
+  
   white-space: nowrap;
   padding-bottom: 2px;
   
   /* Premium Glowing Text Shadow */
+  /* Neon Blue/Cyan Text Shadow for Visibility on Blue Background */
   text-shadow: 
-    0px 2px 4px rgba(0, 0, 0, 1), 
-    0px 0px 8px rgba(0, 200, 255, 0.9),
-    0px 0px 15px rgba(0, 200, 255, 0.6);
+    0 0 5px #00ffff, 
+    0 0 10px #00ffff, 
+    0 0 20px #000; /* Darker outline for contrast */
+  color: #ffffff; /* Brighter text color */
     
   animation: holographic-popout 24s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   will-change: transform, opacity, content, background-image;
