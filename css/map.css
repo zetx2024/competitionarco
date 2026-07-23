@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* ফ্রেমের ভেতরে স্ক্রলবার এড়াতে */
+}
+
+.iarc-map-widget {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    background: #021024;
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.iarc-map-widget svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.country-path {
+    fill: #1A365D;
+    stroke: #021024;
+    stroke-width: 0.5;
+    transition: fill 0.2s ease;
+}
+
+.active-country {
+    fill: #FFD700;
+    stroke: #FFA500;
+    stroke-width: 1;
+    cursor: pointer;
+    animation: goldenPulse 2s infinite alternate;
+}
+
+@keyframes goldenPulse {
+    0% { filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5)); fill: #FFD700; }
+    100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 1)); fill: #FFC000; }
+}
+
+.map-tooltip {
+    position: absolute;
+    background: rgba(2, 16, 36, 0.95);
+    border: 1px solid #FFD700;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out, left 0.2s ease, top 0.2s ease;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    z-index: 10;
+    min-width: 130px;
+    transform: translate(-50%, -100%);
+}
+
+.map-tooltip.visible {
+    opacity: 1;
+}
+
+.tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+    padding-bottom: 4px;
+}
+
+.flag-icon {
+    width: 20px;
+    height: 14px;
+    display: flex;
+}
+
+.flag-icon svg {
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.tooltip-header h4 {
+    margin: 0;
+    color: #FFD700;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.map-tooltip p {
+    margin: 2px 0;
+    font-size: 11px;
+    color: #E2E8F0;
+}
+
+.map-tooltip .highlight {
+    color: #FFD700;
+    font-weight: bold;
+}
