@@ -2,20 +2,21 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background: #021024;
+    width: 100vw;
+    height: 100vh;
 }
 
 .iarc-map-widget {
     position: relative;
     width: 100%;
-    max-width: 1000px;
+    height: 100%; /* পুরো স্ক্রিন দখল করবে */
     background: #021024;
-    border-radius: 12px;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 16 / 9; /* রেস্পন্সিভের জন্য পারফেক্ট রেশিও */
 }
 
 .iarc-map-widget svg {
@@ -36,7 +37,6 @@ body {
     stroke: #FFA500;
     stroke-width: 1px;
     cursor: pointer;
-    /* জুম অবস্থায় লাইট ইফেক্ট */
     animation: goldenPulse 2s infinite alternate;
 }
 
@@ -45,7 +45,6 @@ body {
     100% { filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8)); fill: #FFC000; }
 }
 
-/* লোকেশন মার্কার (সেন্টার পজিশন) */
 .map-marker {
     position: absolute;
     left: 50%;
@@ -69,7 +68,6 @@ body {
     to { transform: translate(-50%, -140%); }
 }
 
-/* টুলটিপ (সেন্টার পজিশন) */
 .map-tooltip {
     position: absolute;
     left: 50%;
@@ -86,7 +84,6 @@ body {
     z-index: 10;
     min-width: 120px;
     box-sizing: border-box;
-    /* মার্কারের ঠিক উপরে থাকার জন্য */
     transform: translate(-50%, calc(-100% - 35px));
 }
 
@@ -133,18 +130,18 @@ body {
     font-weight: bold;
 }
 
-/* স্টুডিও/ক্যাপচার বাটন স্টাইল */
-.capture-btn {
+/* ভিডিও রেকর্ডিং বাটন */
+.record-btn {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     background: rgba(2, 16, 36, 0.8);
     border: 1px solid #FFD700;
     color: #FFD700;
-    padding: 8px 15px;
+    padding: 10px 18px;
     border-radius: 6px;
     font-family: inherit;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     z-index: 20;
@@ -155,7 +152,7 @@ body {
     backdrop-filter: blur(4px);
 }
 
-.capture-btn:hover {
+.record-btn:hover {
     background: #FFD700;
     color: #021024;
 }
