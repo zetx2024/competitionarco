@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <h4>${currentData.originalName}</h4>
                         </div>
                         <p>Years: <span class="highlight">${currentData.years.join(', ')}</span></p>
-                        <p>Participants: <span class="highlight">${currentData.total}</span></p>
+                        <p>Finalists: <span class="highlight">${currentData.total}</span></p>
                     `;
 
                     tooltip.classList.add("visible");
