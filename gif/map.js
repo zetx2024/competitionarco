@@ -57,8 +57,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         total: d.total
     }));
 
-    const width = 960;
-    const height = 500;
+    // হার্ডকোডেড সাইজের বদলে ফুল স্ক্রিনের ডাইমেনশন নেওয়া হচ্ছে
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     const container = d3.select("#iarc-map-container");
     
     const svg = container.append("svg")
@@ -66,6 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .attr("preserveAspectRatio", "xMidYMid meet");
 
     const mapGroup = svg.append("g").attr("id", "map-group");
+    // fitSize ডাইনামিক স্ক্রিন সাইজের সাথে খাপ খাইয়ে ম্যাপটি রেন্ডার করবে
     const projection = d3.geoMercator().fitSize([width, height], geoData);
     const pathGen = d3.geoPath().projection(projection);
 
@@ -82,19 +84,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const tooltip = document.getElementById("map-auto-tooltip");
     const marker = document.getElementById("map-location-marker");
-    const captureBtn = document.getElementById("capture-btn");
+    const recordBtn = document.getElementById("record-btn");
     
     let currentIndex = 0;
     let idleTimer;
 
-    // কোর অ্যানিমেশন ফাংশন (একটি নির্দিষ্ট দেশের জন্য)
     const animateCountry = (index, callback) => {
         const currentData = finalParticipants[index];
 
         tooltip.classList.remove("visible");
         marker.classList.remove("visible");
 
-        // জুম আউট
         mapGroup.transition()
             .duration(500)
             .attr("transform", "translate(0,0) scale(1)");
@@ -111,7 +111,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const scale = Math.max(1, Math.min(3, 0.5 / Math.max((x1 - x0) / width, (y1 - y0) / height)));
                 const translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-                // জুম ইন
                 mapGroup.transition()
                     .duration(700)
                     .attr("transform", `translate(${translate[0]},${translate[1]}) scale(${scale})`);
@@ -132,8 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     tooltip.classList.add("visible");
                     marker.classList.add("visible");
                     
-                    // ইনফরমেশন দেখানোর পর কলব্যাক
-                    if (callback) setTimeout(callback, 2000);
+                    if (callback) setTimeout(callback, 2000); 
                 }, 700); 
             } else {
                 if (callback) setTimeout(callback, 500);
@@ -141,7 +139,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 600); 
     };
 
-    // সাধারণ অবস্থায় লুপ চলার ফাংশন
     const loopIdle = () => {
         if(finalParticipants.length === 0) return;
         animateCountry(currentIndex, () => {
@@ -150,40 +147,71 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     };
 
-    // শুরুতে ম্যাপ লোড হওয়ার পর আইডল অ্যানিমেশন শুরু
     setTimeout(loopIdle, 1000);
 
-    // --- ক্যাপচার মোড লজিক ---
-    captureBtn.addEventListener("click", () => {
-        // ১. সাধারণ লুপ বন্ধ করা এবং বাটন হাইড করা
-        clearTimeout(idleTimer);
-        captureBtn.style.display = "none";
-        
-        // ২. সিকোয়েন্স একদম প্রথম দেশ থেকে শুরু করা
-        currentIndex = 0;
-
-        const runSequence = () => {
-            // যদি সব দেশের লিস্ট শেষ হয়ে যায়
-            if (currentIndex >= finalParticipants.length) {
-                captureBtn.style.display = "flex"; // বাটন আবার শো করবে
-                currentIndex = 0;
-                
-                // ম্যাপ রিসেট করে আবার সাধারণ লুপ চালু করা
-                mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
-                tooltip.classList.remove("visible");
-                marker.classList.remove("visible");
-                
-                idleTimer = setTimeout(loopIdle, 1000);
-                return;
-            }
-
-            // একটি দেশের অ্যানিমেশন শেষ হলে পরেরটিতে যাবে
-            animateCountry(currentIndex, () => {
-                currentIndex++;
-                runSequence();
+    // --- WebM রেকর্ডিং লজিক ---
+    recordBtn.addEventListener("click", async () => {
+        try {
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                video: { preferCurrentTab: true, frameRate: 30 }
             });
-        };
 
-        runSequence();
+            recordBtn.style.display = "none";
+            clearTimeout(idleTimer);
+
+            const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+            const chunks = [];
+
+            mediaRecorder.ondataavailable = e => {
+                if (e.data.size > 0) chunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(chunks, { type: 'video/webm' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'iarc_map_animation.webm';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                stream.getTracks().forEach(track => track.stop()); 
+                
+                recordBtn.style.display = "flex";
+                idleTimer = setTimeout(loopIdle, 1000);
+            };
+
+            mediaRecorder.start();
+
+            let recIndex = 0;
+
+            const recordSequence = () => {
+                if (recIndex >= finalParticipants.length) {
+                    mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
+                    tooltip.classList.remove("visible");
+                    marker.classList.remove("visible");
+
+                    setTimeout(() => {
+                        if (mediaRecorder.state === "recording") {
+                            mediaRecorder.stop();
+                        }
+                    }, 1000);
+                    return;
+                }
+
+                animateCountry(recIndex, () => {
+                    recIndex++;
+                    recordSequence();
+                });
+            };
+
+            recordSequence();
+
+        } catch (err) {
+            console.error("Recording failed or cancelled:", err);
+            recordBtn.style.display = "flex"; 
+        }
     });
 });
