@@ -57,9 +57,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         total: d.total
     }));
 
-    // হার্ডকোডেড সাইজের বদলে ফুল স্ক্রিনের ডাইমেনশন নেওয়া হচ্ছে
     const width = window.innerWidth;
-    const height = window.innerHeight;
+    const height = window.innerHeight - 60; // কন্ট্রোল প্যানেলের ৬০ পিক্সেল বাদ দেওয়া হলো
     const container = d3.select("#iarc-map-container");
     
     const svg = container.append("svg")
@@ -67,7 +66,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         .attr("preserveAspectRatio", "xMidYMid meet");
 
     const mapGroup = svg.append("g").attr("id", "map-group");
-    // fitSize ডাইনামিক স্ক্রিন সাইজের সাথে খাপ খাইয়ে ম্যাপটি রেন্ডার করবে
     const projection = d3.geoMercator().fitSize([width, height], geoData);
     const pathGen = d3.geoPath().projection(projection);
 
@@ -85,19 +83,19 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tooltip = document.getElementById("map-auto-tooltip");
     const marker = document.getElementById("map-location-marker");
     const recordBtn = document.getElementById("record-btn");
+    const statusDisplay = document.getElementById("status-display");
     
     let currentIndex = 0;
     let idleTimer;
 
+    // কোর অ্যানিমেশন (প্রতিটি দেশের জন্য ৩.৩ সেকেন্ড সময় নেয়)
     const animateCountry = (index, callback) => {
         const currentData = finalParticipants[index];
 
         tooltip.classList.remove("visible");
         marker.classList.remove("visible");
 
-        mapGroup.transition()
-            .duration(500)
-            .attr("transform", "translate(0,0) scale(1)");
+        mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
 
         setTimeout(() => {
             const feature = geoData.features.find(f => f.properties.name === currentData.d3Name);
@@ -111,9 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const scale = Math.max(1, Math.min(3, 0.5 / Math.max((x1 - x0) / width, (y1 - y0) / height)));
                 const translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-                mapGroup.transition()
-                    .duration(700)
-                    .attr("transform", `translate(${translate[0]},${translate[1]}) scale(${scale})`);
+                mapGroup.transition().duration(700).attr("transform", `translate(${translate[0]},${translate[1]}) scale(${scale})`);
 
                 setTimeout(() => {
                     const flagObj = flagData.find(f => f.country === currentData.originalName);
@@ -125,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             <h4>${currentData.originalName}</h4>
                         </div>
                         <p>Years: <span class="highlight">${currentData.years.join(', ')}</span></p>
-                        <p>Participants: <span class="highlight">${currentData.total}</span></p>
+                        <p>Finalists: <span class="highlight">${currentData.total}</span></p>
                     `;
 
                     tooltip.classList.add("visible");
@@ -139,6 +135,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 600); 
     };
 
+    // সাধারণ লুপ
     const loopIdle = () => {
         if(finalParticipants.length === 0) return;
         animateCountry(currentIndex, () => {
@@ -149,69 +146,104 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     setTimeout(loopIdle, 1000);
 
-    // --- WebM রেকর্ডিং লজিক ---
+    // --- রেকর্ডিং লজিক ও কাউন্টডাউন ---
     recordBtn.addEventListener("click", async () => {
         try {
+            // ১. স্ক্রিন শেয়ার পারমিশন
             const stream = await navigator.mediaDevices.getDisplayMedia({
                 video: { preferCurrentTab: true, frameRate: 30 }
             });
 
-            recordBtn.style.display = "none";
+            recordBtn.disabled = true;
             clearTimeout(idleTimer);
 
-            const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
-            const chunks = [];
-
-            mediaRecorder.ondataavailable = e => {
-                if (e.data.size > 0) chunks.push(e.data);
-            };
-
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(chunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'iarc_map_animation.webm';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                
-                stream.getTracks().forEach(track => track.stop()); 
-                
-                recordBtn.style.display = "flex";
-                idleTimer = setTimeout(loopIdle, 1000);
-            };
-
-            mediaRecorder.start();
-
-            let recIndex = 0;
-
-            const recordSequence = () => {
-                if (recIndex >= finalParticipants.length) {
-                    mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
-                    tooltip.classList.remove("visible");
-                    marker.classList.remove("visible");
-
-                    setTimeout(() => {
-                        if (mediaRecorder.state === "recording") {
-                            mediaRecorder.stop();
-                        }
-                    }, 1000);
-                    return;
+            // ২. ৫ সেকেন্ডের প্রাক-রেকর্ডিং কাউন্টডাউন
+            let preCount = 5;
+            statusDisplay.innerHTML = `Recording starts in: ${preCount}s...`;
+            
+            const preTimer = setInterval(() => {
+                preCount--;
+                if (preCount > 0) {
+                    statusDisplay.innerHTML = `Recording starts in: ${preCount}s...`;
+                } else {
+                    clearInterval(preTimer);
+                    startActualRecording(stream);
                 }
-
-                animateCountry(recIndex, () => {
-                    recIndex++;
-                    recordSequence();
-                });
-            };
-
-            recordSequence();
+            }, 1000);
 
         } catch (err) {
             console.error("Recording failed or cancelled:", err);
-            recordBtn.style.display = "flex"; 
+            statusDisplay.innerHTML = `Recording Cancelled`;
+            setTimeout(() => { statusDisplay.innerHTML = `Ready for recording`; }, 3000);
         }
     });
+
+    function startActualRecording(stream) {
+        const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
+        const chunks = [];
+
+        mediaRecorder.ondataavailable = e => {
+            if (e.data.size > 0) chunks.push(e.data);
+        };
+
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(chunks, { type: 'video/webm' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'iarc_map_animation.webm';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            stream.getTracks().forEach(track => track.stop()); 
+            
+            recordBtn.disabled = false;
+            statusDisplay.innerHTML = `Download Complete!`;
+            setTimeout(() => { statusDisplay.innerHTML = `Ready for recording`; }, 3000);
+            
+            idleTimer = setTimeout(loopIdle, 1000);
+        };
+
+        mediaRecorder.start();
+
+        // ৩. এস্টিমেটেড টাইম কাউন্টডাউন শুরু
+        let timeLeft = Math.ceil(finalParticipants.length * 3.3); // প্রতিটি দেশ ৩.৩ সেকেন্ড
+        statusDisplay.innerHTML = `Recording... Estimated time left: ${timeLeft}s`;
+
+        const progressTimer = setInterval(() => {
+            timeLeft--;
+            if (timeLeft >= 0) {
+                statusDisplay.innerHTML = `Recording... Estimated time left: ${timeLeft}s`;
+            }
+        }, 1000);
+
+        // ৪. রেকর্ডিং সিকোয়েন্স শুরু
+        let recIndex = 0;
+        const recordSequence = () => {
+            if (recIndex >= finalParticipants.length) {
+                clearInterval(progressTimer);
+                statusDisplay.innerHTML = `Processing video...`;
+                
+                mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
+                tooltip.classList.remove("visible");
+                marker.classList.remove("visible");
+
+                setTimeout(() => {
+                    if (mediaRecorder.state === "recording") {
+                        mediaRecorder.stop();
+                    }
+                }, 1000);
+                return;
+            }
+
+            animateCountry(recIndex, () => {
+                recIndex++;
+                recordSequence();
+            });
+        };
+
+        recordSequence();
+    }
 });
