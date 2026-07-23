@@ -3,19 +3,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     const FLAG_JSON_URL = "https://iarco.org/data/flagss.json";
     const CONFIG_JSON_URL = "https://iarco.org/data/files_config.json"; 
 
-    // জিও ম্যাপে নাম মেলানোর জন্য ম্যাপার
     const countryNameMap = {
         "United States": "USA",
         "United Kingdom": "England"
     };
 
-    // ডেটা এগ্রিগেশন (সব ফাইল থেকে ডেটা এক করার জন্য)
     let aggregatedData = {};
     let flagData = [];
     let geoData = null;
 
     try {
-        // ১. কনফিগারেশন, ফ্ল্যাগ এবং জিও-ডেটা ফেচ করা
         const [config, fetchedFlags, fetchedGeo] = await Promise.all([
             fetch(CONFIG_JSON_URL).then(res => res.json()),
             fetch(FLAG_JSON_URL).then(res => res.json()).catch(() => []),
@@ -25,7 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         flagData = fetchedFlags;
         geoData = fetchedGeo;
 
-        // ২. কনফিগারেশনের সব ফাইল থেকে ডেটা ফেচ করে কাউন্ট করা
         const fetchPromises = config.map(file => 
             fetch(file.url).then(res => res.json()).then(data => {
                 data.forEach(student => {
@@ -55,7 +51,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
     }
 
-    // Set থেকে Array তে কনভার্ট করা ম্যাপের লজিকের জন্য
     const finalParticipants = Object.values(aggregatedData).map(d => ({
         originalName: d.originalName,
         d3Name: d.d3Name,
@@ -63,7 +58,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         total: d.total
     }));
 
-    // ৩. ম্যাপ রেন্ডার করা
     const width = 960;
     const height = 480;
     const container = d3.select("#iarc-map-container");
@@ -72,7 +66,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
 
-    const projection = d3.geoMercator().scale(130).translate([width / 2, height / 1.5]);
+    // আপডেট: ম্যাপের স্কেল 130 থেকে 110 করা হয়েছে যাতে পুরো ম্যাপ ফ্রেমে ফিট থাকে
+    const projection = d3.geoMercator().scale(110).translate([width / 2, height / 1.55]);
     const pathGen = d3.geoPath().projection(projection);
 
     svg.append("g")
@@ -87,8 +82,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         })
         .attr("data-country", d => d.properties.name);
 
-    // ৪. রেস্পন্সিভ অটো-টুলটিপ লজিক (বাউন্ডারি ফিক্স সহ)
     const tooltip = document.getElementById("map-auto-tooltip");
+    const marker = document.getElementById("map-location-marker"); // মার্কার ইলিমেন্ট
     const mapContainerRect = document.getElementById("iarc-map-container");
     let currentIndex = 0;
 
@@ -111,9 +106,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <p>Participants: <span class="highlight">${currentData.total}</span></p>
             `;
 
-            // দৃশ্যমান করার পর ডাইমেনশন নেওয়া (অদৃশ্য অবস্থায় height/width 0 থাকে)
             tooltip.style.opacity = '0';
             tooltip.classList.add("visible");
+            marker.classList.add("visible"); // মার্কার শো করা
             
             const tooltipRect = tooltip.getBoundingClientRect();
             const pathRect = countryPath.getBoundingClientRect();
@@ -123,27 +118,32 @@ document.addEventListener("DOMContentLoaded", async () => {
             let targetX = (pathRect.left + pathRect.width / 2) - containerRect.left;
             let targetY = (pathRect.top + pathRect.height / 2) - containerRect.top;
 
-            let leftPos = targetX - (tooltipRect.width / 2);
-            let topPos = targetY - tooltipRect.height - 10;
+            // মার্কারটি ঠিক দেশের মাঝখানে বসবে
+            marker.style.left = `${targetX}px`;
+            marker.style.top = `${targetY}px`;
 
-            // Boundary Detection (যাতে ফ্রেমের বাইরে না যায়)
+            // টুলটিপ মার্কারের একটু উপরে (30px) বসবে যাতে মার্কার ঢেকে না যায়
+            let leftPos = targetX - (tooltipRect.width / 2);
+            let topPos = targetY - tooltipRect.height - 30;
+
             if (leftPos < 10) {
-                leftPos = 10; // বাম দিকে বাইরে গেলে
+                leftPos = 10;
             } else if (leftPos + tooltipRect.width > containerRect.width - 10) {
-                leftPos = containerRect.width - tooltipRect.width - 10; // ডান দিকে বাইরে গেলে
+                leftPos = containerRect.width - tooltipRect.width - 10;
             }
 
             if (topPos < 10) {
-                topPos = targetY + 10; // উপরে বাইরে গেলে দেশের নিচে শো করবে
+                topPos = targetY + 15; // যদি উপরে জায়গা না থাকে, মার্কারের নিচে টুলটিপ শো করবে
             }
 
             tooltip.style.left = `${leftPos}px`;
             tooltip.style.top = `${topPos}px`;
             tooltip.style.opacity = '1';
             
-            // ২ সেকেন্ড পর হাইড
+            // ২ সেকেন্ড পর মার্কার ও টুলটিপ হাইড
             setTimeout(() => {
                 tooltip.classList.remove("visible");
+                marker.classList.remove("visible");
             }, 2000);
         }
 
