@@ -8,18 +8,10 @@
 </head>
 <body>
 
-    <!-- ম্যাপের বাইরের কন্ট্রোল প্যানেল (ভিডিও থেকে অনায়াসে ক্রপ করা যাবে) -->
-    <div class="control-panel">
-        <button id="record-btn" class="record-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10"></circle>
-            </svg>
-            Record WebM
-        </button>
-        <div class="status-text" id="status-display">Ready for recording</div>
-    </div>
+    <!-- রেকর্ডিংয়ের সময় সাময়িক মেসেজ দেখানোর জন্য (এটি রেকর্ডিং ভিডিওতে আসবে না) -->
+    <div id="temp-msg" style="position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); color:#FFD700; font-size:24px; font-weight:bold; z-index:9999; display:none; background:rgba(2,16,36,0.9); padding:15px 25px; border-radius:8px; border:1px solid #FFD700;"></div>
 
-    <!-- মেইন ম্যাপ কন্টেইনার (একদম ক্লিন থাকবে) -->
+    <!-- মেইন ম্যাপ কন্টেইনার -->
     <div class="iarc-map-widget" id="iarc-map-container">
         
         <div class="map-marker" id="map-location-marker">
