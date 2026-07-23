@@ -133,8 +133,8 @@ body {
     font-weight: bold;
 }
 
-/* রেকর্ড বাটন স্টাইল */
-.record-btn {
+/* স্টুডিও/ক্যাপচার বাটন স্টাইল */
+.capture-btn {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -155,19 +155,7 @@ body {
     backdrop-filter: blur(4px);
 }
 
-.record-btn:hover {
+.capture-btn:hover {
     background: #FFD700;
     color: #021024;
-}
-
-.record-btn.recording {
-    background: #FF2400;
-    color: #fff;
-    border-color: #FF2400;
-    animation: blinkRecord 1s infinite alternate;
-}
-
-@keyframes blinkRecord {
-    from { opacity: 1; }
-    to { opacity: 0.7; }
 }
