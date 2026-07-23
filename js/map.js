@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
 
-    // আপডেট: ম্যাপের স্কেল 130 থেকে 110 করা হয়েছে যাতে পুরো ম্যাপ ফ্রেমে ফিট থাকে
-    const projection = d3.geoMercator().scale(110).translate([width / 2, height / 1.55]);
+    // আপডেট: স্কেল ৯৫ করা হয়েছে এবং ওয়াই-অ্যাক্সিস (Y-axis) অ্যাডজাস্ট করা হয়েছে যেন ম্যাপের ওপরের অংশ না কাটে
+    const projection = d3.geoMercator().scale(95).translate([width / 2, height / 1.4]);
     const pathGen = d3.geoPath().projection(projection);
 
     svg.append("g")
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .attr("data-country", d => d.properties.name);
 
     const tooltip = document.getElementById("map-auto-tooltip");
-    const marker = document.getElementById("map-location-marker"); // মার্কার ইলিমেন্ট
+    const marker = document.getElementById("map-location-marker");
     const mapContainerRect = document.getElementById("iarc-map-container");
     let currentIndex = 0;
 
@@ -108,21 +108,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             tooltip.style.opacity = '0';
             tooltip.classList.add("visible");
-            marker.classList.add("visible"); // মার্কার শো করা
+            marker.classList.add("visible"); 
             
             const tooltipRect = tooltip.getBoundingClientRect();
             const pathRect = countryPath.getBoundingClientRect();
             const containerRect = mapContainerRect.getBoundingClientRect();
             
-            // সেন্টারে পজিশন ক্যালকুলেট
             let targetX = (pathRect.left + pathRect.width / 2) - containerRect.left;
             let targetY = (pathRect.top + pathRect.height / 2) - containerRect.top;
 
-            // মার্কারটি ঠিক দেশের মাঝখানে বসবে
             marker.style.left = `${targetX}px`;
             marker.style.top = `${targetY}px`;
 
-            // টুলটিপ মার্কারের একটু উপরে (30px) বসবে যাতে মার্কার ঢেকে না যায়
             let leftPos = targetX - (tooltipRect.width / 2);
             let topPos = targetY - tooltipRect.height - 30;
 
@@ -133,14 +130,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             if (topPos < 10) {
-                topPos = targetY + 15; // যদি উপরে জায়গা না থাকে, মার্কারের নিচে টুলটিপ শো করবে
+                topPos = targetY + 15; 
             }
 
             tooltip.style.left = `${leftPos}px`;
             tooltip.style.top = `${topPos}px`;
             tooltip.style.opacity = '1';
             
-            // ২ সেকেন্ড পর মার্কার ও টুলটিপ হাইড
             setTimeout(() => {
                 tooltip.classList.remove("visible");
                 marker.classList.remove("visible");
