@@ -30,12 +30,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                         let d3Name = countryNameMap[originalName] || originalName;
 
                         if (!aggregatedData[d3Name]) {
-                            aggregatedData[d3Name] = { 
-                                originalName: originalName, 
-                                d3Name: d3Name, 
-                                years: new Set(), 
-                                total: 0 
-                            };
+                            aggregatedData[d3Name] = { originalName, d3Name, years: new Set(), total: 0 };
                         }
                         aggregatedData[d3Name].years.add(file.year);
                         aggregatedData[d3Name].total += 1;
@@ -57,8 +52,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         total: d.total
     }));
 
-    const width = window.innerWidth;
-    const height = window.innerHeight - 60; // কন্ট্রোল প্যানেলের ৬০ পিক্সেল বাদ দেওয়া হলো
+    // ম্যাপের বেস রেজোলিউশন ফিক্সড করা হলো (1280x720) যাতে ফুলস্ক্রিন হলেও পজিশন ঠিক থাকে
+    const width = 1280;
+    const height = 720;
     const container = d3.select("#iarc-map-container");
     
     const svg = container.append("svg")
@@ -82,19 +78,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const tooltip = document.getElementById("map-auto-tooltip");
     const marker = document.getElementById("map-location-marker");
-    const recordBtn = document.getElementById("record-btn");
-    const statusDisplay = document.getElementById("status-display");
+    const msgObj = document.getElementById("temp-msg");
+    const mapContainerRect = document.getElementById("iarc-map-container");
     
     let currentIndex = 0;
     let idleTimer;
+    let isRecording = false;
 
-    // কোর অ্যানিমেশন (প্রতিটি দেশের জন্য ৩.৩ সেকেন্ড সময় নেয়)
     const animateCountry = (index, callback) => {
         const currentData = finalParticipants[index];
 
         tooltip.classList.remove("visible");
         marker.classList.remove("visible");
-
         mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
 
         setTimeout(() => {
@@ -124,6 +119,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                         <p>Finalists: <span class="highlight">${currentData.total}</span></p>
                     `;
 
+                    // পজিশনিং ক্যালকুলেশন
+                    const svgRect = svg.node().getBoundingClientRect();
+                    const scaleX = svgRect.width / width;
+                    const scaleY = svgRect.height / height;
+                    const visualX = (translate[0] + x * scale) * scaleX;
+                    const visualY = (translate[1] + y * scale) * scaleY;
+
+                    marker.style.left = `${visualX}px`;
+                    marker.style.top = `${visualY}px`;
+                    
+                    tooltip.style.left = `${visualX}px`;
+                    tooltip.style.top = `${visualY - 30}px`;
+
                     tooltip.classList.add("visible");
                     marker.classList.add("visible");
                     
@@ -135,9 +143,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }, 600); 
     };
 
-    // সাধারণ লুপ
     const loopIdle = () => {
-        if(finalParticipants.length === 0) return;
+        if(finalParticipants.length === 0 || isRecording) return;
         animateCountry(currentIndex, () => {
             currentIndex = (currentIndex + 1) % finalParticipants.length;
             idleTimer = setTimeout(loopIdle, 300);
@@ -146,39 +153,54 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     setTimeout(loopIdle, 1000);
 
-    // --- রেকর্ডিং লজিক ও কাউন্টডাউন ---
-    recordBtn.addEventListener("click", async () => {
+    // --- ডাবল ক্লিক বা 'R' কীবোর্ড প্রেস ইভেন্ট ---
+    document.addEventListener("dblclick", startRecordingProcess);
+    document.addEventListener("keydown", (e) => {
+        if (e.key.toLowerCase() === 'r') startRecordingProcess();
+    });
+
+    async function startRecordingProcess() {
+        if (isRecording) return;
+        isRecording = true;
+        clearTimeout(idleTimer);
+
         try {
-            // ১. স্ক্রিন শেয়ার পারমিশন
+            // ১. পেজটিকে অটোমেটিক ফুল-স্ক্রিন করা
+            if (!document.fullscreenElement) {
+                await document.documentElement.requestFullscreen().catch(err => console.log(err));
+            }
+
+            // ২. স্ক্রিন শেয়ার পপ-আপ (Entire Screen অপশনের জন্য এনকারেজ করা)
             const stream = await navigator.mediaDevices.getDisplayMedia({
-                video: { preferCurrentTab: true, frameRate: 30 }
+                video: { displaySurface: "monitor", frameRate: 30 }
             });
 
-            recordBtn.disabled = true;
-            clearTimeout(idleTimer);
-
-            // ২. ৫ সেকেন্ডের প্রাক-রেকর্ডিং কাউন্টডাউন
-            let preCount = 5;
-            statusDisplay.innerHTML = `Recording starts in: ${preCount}s...`;
+            // ৩. ৫ সেকেন্ডের কাউন্টডাউন মেসেজ
+            msgObj.style.display = "block";
+            let count = 5;
+            msgObj.innerHTML = `Recording starts in: ${count}s...`;
             
-            const preTimer = setInterval(() => {
-                preCount--;
-                if (preCount > 0) {
-                    statusDisplay.innerHTML = `Recording starts in: ${preCount}s...`;
+            const timer = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    msgObj.innerHTML = `Recording starts in: ${count}s...`;
                 } else {
-                    clearInterval(preTimer);
-                    startActualRecording(stream);
+                    clearInterval(timer);
+                    // কাউন্টডাউন শেষ হলে লেখাটি পুরোপুরি লুকিয়ে ফেলা
+                    msgObj.style.display = "none";
+                    beginCapture(stream);
                 }
             }, 1000);
 
         } catch (err) {
-            console.error("Recording failed or cancelled:", err);
-            statusDisplay.innerHTML = `Recording Cancelled`;
-            setTimeout(() => { statusDisplay.innerHTML = `Ready for recording`; }, 3000);
+            console.error("Recording Cancelled:", err);
+            isRecording = false;
+            if (document.fullscreenElement) document.exitFullscreen();
+            idleTimer = setTimeout(loopIdle, 1000);
         }
-    });
+    }
 
-    function startActualRecording(stream) {
+    function beginCapture(stream) {
         const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
         const chunks = [];
 
@@ -199,33 +221,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             
             stream.getTracks().forEach(track => track.stop()); 
             
-            recordBtn.disabled = false;
-            statusDisplay.innerHTML = `Download Complete!`;
-            setTimeout(() => { statusDisplay.innerHTML = `Ready for recording`; }, 3000);
+            // রেকর্ডিং শেষে ফুল-স্ক্রিন থেকে বেরিয়ে আসা
+            if (document.fullscreenElement) document.exitFullscreen();
             
+            msgObj.style.display = "block";
+            msgObj.innerHTML = "Download Complete!";
+            setTimeout(() => { msgObj.style.display = "none"; }, 3000);
+
+            isRecording = false;
             idleTimer = setTimeout(loopIdle, 1000);
         };
 
         mediaRecorder.start();
 
-        // ৩. এস্টিমেটেড টাইম কাউন্টডাউন শুরু
-        let timeLeft = Math.ceil(finalParticipants.length * 3.3); // প্রতিটি দেশ ৩.৩ সেকেন্ড
-        statusDisplay.innerHTML = `Recording... Estimated time left: ${timeLeft}s`;
-
-        const progressTimer = setInterval(() => {
-            timeLeft--;
-            if (timeLeft >= 0) {
-                statusDisplay.innerHTML = `Recording... Estimated time left: ${timeLeft}s`;
-            }
-        }, 1000);
-
-        // ৪. রেকর্ডিং সিকোয়েন্স শুরু
         let recIndex = 0;
         const recordSequence = () => {
             if (recIndex >= finalParticipants.length) {
-                clearInterval(progressTimer);
-                statusDisplay.innerHTML = `Processing video...`;
-                
                 mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
                 tooltip.classList.remove("visible");
                 marker.classList.remove("visible");
