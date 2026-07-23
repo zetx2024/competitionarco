@@ -12,7 +12,6 @@ body {
     border-radius: 12px;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* মোবাইল স্ক্রিনে উচ্চতা ব্যালেন্স করার জন্য */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,6 +43,29 @@ body {
     100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 1)); fill: #FFC000; }
 }
 
+/* নতুন লোকেশন মার্কার (পিন) এর ডিজাইন */
+.map-marker {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 9;
+    /* মার্কারের নিচের কোণা যেন ঠিক দেশের মাঝে থাকে */
+    transform: translate(-50%, -100%); 
+    transition: opacity 0.2s ease;
+}
+
+.map-marker.visible {
+    opacity: 1;
+    animation: markerBounce 0.5s ease-in-out alternate infinite;
+}
+
+@keyframes markerBounce {
+    from { transform: translate(-50%, -100%); }
+    to { transform: translate(-50%, -140%); }
+}
+
 .map-tooltip {
     position: absolute;
     background: rgba(2, 16, 36, 0.95);
@@ -53,7 +75,7 @@ body {
     border-radius: 6px;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.2s ease-in-out; /* গ্লিচ এড়াতে পজিশন ট্রানজিশন বাদ দেওয়া হয়েছে */
+    transition: opacity 0.2s ease-in-out;
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
     z-index: 10;
     min-width: 120px;
