@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Participants Map</title>
+    
+    <!-- D3.js (শুধুমাত্র GeoJSON থেকে ম্যাপ রেন্ডার করার জন্য) -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <style>
+        /* উইজেটের মূল কন্টেইনার (রেস্পন্সিভ এবং ব্লু থিম) */
+        .iarc-map-widget {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #021024; /* Deep Blue Background */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .iarc-map-widget svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* সাধারণ দেশের ম্যাপ স্টাইল */
+        .country-path {
+            fill: #1A365D; /* Lighter Blue */
+            stroke: #021024;
+            stroke-width: 0.5;
+            transition: fill 0.3s ease;
+        }
+
+        /* অ্যাক্টিভ দেশের গোল্ডেন থিম এবং অ্যানিমেশন */
+        .active-country {
+            fill: #FFD700; /* Golden */
+            stroke: #FFA500;
+            stroke-width: 1;
+            cursor: pointer;
+            animation: goldenPulse 2.5s infinite alternate;
+        }
+
+        @keyframes goldenPulse {
+            0% { filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5)); fill: #FFD700; }
+            100% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 1)); fill: #FFC000; }
+        }
+
+        /* অটো-টুলটিপ ডিজাইন */
+        .map-tooltip {
+            position: absolute;
+            background: rgba(2, 16, 36, 0.95);
+            border: 1px solid #FFD700;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out, left 0.3s ease, top 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.25);
+            z-index: 10;
+            min-width: 160px;
+            text-align: center;
+            transform: translate(-50%, -100%);
+        }
+
+        .map-tooltip.visible {
+            opacity: 1;
+        }
+
+        /* টুলটিপের ভেতরের কনটেন্ট */
+        .map-tooltip .flag-container {
+            width: 50px;
+            margin: 0 auto 10px auto;
+        }
+
+        .map-tooltip .flag-container svg {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .map-tooltip h4 {
+            margin: 0 0 8px 0;
+            color: #FFD700; /* Golden Title */
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .map-tooltip p {
+            margin: 4px 0;
+            font-size: 13px;
+            color: #E2E8F0;
+        }
+
+        .map-tooltip .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- আপনি এই কন্টেইনারটি যেকোনো সাইটে পেস্ট করতে পারবেন -->
+<div class="iarc-map-widget" id="iarc-map-container">
+    <div class="map-tooltip" id="map-auto-tooltip">
+        <!-- জাভাস্ক্রিপ্ট দিয়ে ডাইনামিক ডেটা এখানে লোড হবে -->
+    </div>
+</div>
+
+<script>
+    // ১. আপনার লোকাল/ইন্টারনাল JSON ডেটা (পার্টিসিপেন্ট লিস্ট)
+    const participantsData = [
+        { country: "United Arab Emirates", count: 120, years: [2024, 2025, 2026] },
+        { country: "Bangladesh", count: 450, years: [2024, 2025, 2026] },
+        { country: "United States", count: 310, years: [2025, 2026] },
+        { country: "United Kingdom", count: 85, years: [2026] },
+        { country: "India", count: 280, years: [2024, 2025, 2026] }
+    ];
+
+    // ২. ম্যাপের বেসিক সেটআপ
+    const width = 960;
+    const height = 500;
+    const container = d3.select("#iarc-map-container");
+    
+    // রেস্পন্সিভ SVG তৈরি
+    const svg = container.append("svg")
+        .attr("viewBox", `0 0 ${width} ${height}`)
+        .attr("preserveAspectRatio", "xMidYMid meet");
+
+    // ম্যাপ প্রজেকশন (Mercator)
+    const projection = d3.geoMercator()
+        .scale(130)
+        .translate([width / 2, height / 1.5]);
+    const pathGen = d3.geoPath().projection(projection);
+
+    // ৩. ওয়ার্ল্ড ম্যাপের GeoJSON এবং আপনার Flag JSON একসাথে ফেচ করা
+    Promise.all([
+        d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson"),
+        fetch("https://iarco.org/data/flagss.json").then(res => res.json()).catch(() => []) 
+    ]).then(([geoData, flagData]) => {
+        
+        // ম্যাপ রেন্ডার করা
+        svg.append("g")
+            .selectAll("path")
+            .data(geoData.features)
+            .enter()
+            .append("path")
+            .attr("d", pathGen)
+            .attr("class", d => {
+                // চেক করা হচ্ছে দেশটি আমাদের লিস্টে আছে কি না
+                const isParticipant = participantsData.find(p => p.country === d.properties.name);
+                return isParticipant ? "country-path active-country" : "country-path";
+            })
+            .attr("data-country", d => d.properties.name);
+
+        // ৪. অটো-টুলটিপ লজিক
+        const tooltip = document.getElementById("map-auto-tooltip");
+        const mapContainerRect = document.getElementById("iarc-map-container");
+        let currentIndex = 0;
+
+        // প্রতি ৪ সেকেন্ড পরপর টুলটিপ চেঞ্জ হবে
+        setInterval(() => {
+            if(participantsData.length === 0) return;
+            
+            const currentData = participantsData[currentIndex];
+            const countryPath = document.querySelector(`path[data-country="${currentData.country}"]`);
+            
+            if (countryPath) {
+                // JSON থেকে দেশের ফ্ল্যাগ বের করা
+                const flagObj = flagData.find(f => f.country === currentData.country);
+                const flagSvg = flagObj && flagObj.svg ? flagObj.svg : '<span>ফ্ল্যাগ নেই</span>';
+
+                // টুলটিপের ভেতরে ডেটা ইনজেক্ট করা
+                tooltip.innerHTML = `
+                    <div class="flag-container">${flagSvg}</div>
+                    <h4>${currentData.country}</h4>
+                    <p>Years: <span class="highlight">${currentData.years.join(', ')}</span></p>
+                    <p>Participants: <span class="highlight">${currentData.count}</span></p>
+                `;
+
+                // পজিশন ক্যালকুলেট করা (ম্যাপের ঐ নির্দিষ্ট দেশের ওপর টুলটিপ দেখানোর জন্য)
+                const pathRect = countryPath.getBoundingClientRect();
+                const containerRect = mapContainerRect.getBoundingClientRect();
+                
+                const centerX = (pathRect.left + pathRect.width / 2) - containerRect.left;
+                const centerY = (pathRect.top + pathRect.height / 2) - containerRect.top;
+
+                // টুলটিপ সেট করা
+                tooltip.style.left = `${centerX}px`;
+                tooltip.style.top = `${centerY - 10}px`;
+                tooltip.classList.add("visible");
+                
+                // ৩ সেকেন্ড পর টুলটিপ হাইড করে দেওয়া
+                setTimeout(() => {
+                    tooltip.classList.remove("visible");
+                }, 3000);
+            }
+
+            // পরবর্তী দেশের জন্য ইনডেক্স আপডেট করা
+            currentIndex = (currentIndex + 1) % participantsData.length;
+        }, 4000); 
+    });
+</script>
+
+</body>
+</html>
