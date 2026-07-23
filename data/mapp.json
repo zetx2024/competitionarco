@@ -1,0 +1,22 @@
+[
+    {
+        "country": "United Arab Emirates",
+        "years": { "2024": 50, "2025": 40, "2026": 30 }
+    },
+    {
+        "country": "Bangladesh",
+        "years": { "2024": 150, "2025": 100, "2026": 200 }
+    },
+    {
+        "country": "United States",
+        "years": { "2025": 110, "2026": 200 }
+    },
+    {
+        "country": "United Kingdom",
+        "years": { "2026": 85 }
+    },
+    {
+        "country": "India",
+        "years": { "2024": 80, "2025": 100, "2026": 100 }
+    }
+]
