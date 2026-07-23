@@ -82,21 +82,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const tooltip = document.getElementById("map-auto-tooltip");
     const marker = document.getElementById("map-location-marker");
+    const captureBtn = document.getElementById("capture-btn");
+    
     let currentIndex = 0;
-    let animationInterval;
+    let idleTimer;
 
-    const runAnimationCycle = () => {
-        if(finalParticipants.length === 0) return;
+    // কোর অ্যানিমেশন ফাংশন (একটি নির্দিষ্ট দেশের জন্য)
+    const animateCountry = (index, callback) => {
+        const currentData = finalParticipants[index];
 
         tooltip.classList.remove("visible");
         marker.classList.remove("visible");
 
+        // জুম আউট
         mapGroup.transition()
             .duration(500)
             .attr("transform", "translate(0,0) scale(1)");
 
         setTimeout(() => {
-            const currentData = finalParticipants[currentIndex];
             const feature = geoData.features.find(f => f.properties.name === currentData.d3Name);
 
             if (feature) {
@@ -108,6 +111,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const scale = Math.max(1, Math.min(3, 0.5 / Math.max((x1 - x0) / width, (y1 - y0) / height)));
                 const translate = [width / 2 - scale * x, height / 2 - scale * y];
 
+                // জুম ইন
                 mapGroup.transition()
                     .duration(700)
                     .attr("transform", `translate(${translate[0]},${translate[1]}) scale(${scale})`);
@@ -127,79 +131,59 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                     tooltip.classList.add("visible");
                     marker.classList.add("visible");
+                    
+                    // ইনফরমেশন দেখানোর পর কলব্যাক
+                    if (callback) setTimeout(callback, 2000);
                 }, 700); 
+            } else {
+                if (callback) setTimeout(callback, 500);
             }
-
-            currentIndex = (currentIndex + 1) % finalParticipants.length;
         }, 600); 
     };
 
-    // স্টার্ট অ্যানিমেশন
-    setTimeout(runAnimationCycle, 1000);
-    animationInterval = setInterval(runAnimationCycle, 3000); 
+    // সাধারণ অবস্থায় লুপ চলার ফাংশন
+    const loopIdle = () => {
+        if(finalParticipants.length === 0) return;
+        animateCountry(currentIndex, () => {
+            currentIndex = (currentIndex + 1) % finalParticipants.length;
+            idleTimer = setTimeout(loopIdle, 300);
+        });
+    };
 
-    // --- রেকর্ডিং লজিক ---
-    const recordBtn = document.getElementById("record-btn");
-    
-    recordBtn.addEventListener("click", async () => {
-        try {
-            // ইউজারের কাছে ট্যাব রেকর্ড করার পারমিশন চাওয়া
-            const stream = await navigator.mediaDevices.getDisplayMedia({
-                video: { preferCurrentTab: true, frameRate: 30 }
-            });
+    // শুরুতে ম্যাপ লোড হওয়ার পর আইডল অ্যানিমেশন শুরু
+    setTimeout(loopIdle, 1000);
 
-            const mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm' });
-            const chunks = [];
+    // --- ক্যাপচার মোড লজিক ---
+    captureBtn.addEventListener("click", () => {
+        // ১. সাধারণ লুপ বন্ধ করা এবং বাটন হাইড করা
+        clearTimeout(idleTimer);
+        captureBtn.style.display = "none";
+        
+        // ২. সিকোয়েন্স একদম প্রথম দেশ থেকে শুরু করা
+        currentIndex = 0;
 
-            mediaRecorder.ondataavailable = e => {
-                if (e.data.size > 0) chunks.push(e.data);
-            };
-
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(chunks, { type: 'video/webm' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'iarc_map_animation.webm';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
+        const runSequence = () => {
+            // যদি সব দেশের লিস্ট শেষ হয়ে যায়
+            if (currentIndex >= finalParticipants.length) {
+                captureBtn.style.display = "flex"; // বাটন আবার শো করবে
+                currentIndex = 0;
                 
-                stream.getTracks().forEach(track => track.stop()); // স্ক্রিন শেয়ার বন্ধ করা
-                recordBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg> Record Map`;
-                recordBtn.classList.remove("recording");
-                recordBtn.disabled = false;
-            };
+                // ম্যাপ রিসেট করে আবার সাধারণ লুপ চালু করা
+                mapGroup.transition().duration(500).attr("transform", "translate(0,0) scale(1)");
+                tooltip.classList.remove("visible");
+                marker.classList.remove("visible");
+                
+                idleTimer = setTimeout(loopIdle, 1000);
+                return;
+            }
 
-            mediaRecorder.start();
+            // একটি দেশের অ্যানিমেশন শেষ হলে পরেরটিতে যাবে
+            animateCountry(currentIndex, () => {
+                currentIndex++;
+                runSequence();
+            });
+        };
 
-            // বাটন আপডেট করা
-            recordBtn.innerHTML = `Recording...`;
-            recordBtn.classList.add("recording");
-            recordBtn.disabled = true;
-
-            // অ্যানিমেশন একদম শুরু থেকে রিস্টার্ট করা
-            clearInterval(animationInterval);
-            currentIndex = 0;
-            runAnimationCycle();
-            animationInterval = setInterval(runAnimationCycle, 3000);
-
-            // অটো-স্টপ ক্যালকুলেশন (কতগুলো দেশ আছে তার উপর ভিত্তি করে)
-            const totalAnimationTime = finalParticipants.length * 3000;
-            
-            setTimeout(() => {
-                if (mediaRecorder.state === "recording") {
-                    mediaRecorder.stop();
-                }
-            }, totalAnimationTime + 500); // বাফার টাইম যোগ করা হয়েছে
-
-        } catch (err) {
-            console.error("Recording failed or cancelled by user:", err);
-            recordBtn.innerHTML = `Record Failed - Try Again`;
-            setTimeout(() => {
-                recordBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg> Record Map`;
-            }, 3000);
-        }
+        runSequence();
     });
 });
