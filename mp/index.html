@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Participants Map</title>
+    
+<style>
+    .map-responsive-container {
+        position: relative;
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+        /* মোবাইল স্ক্রিনে ব্যালেন্স রাখার জন্য */
+        aspect-ratio: 16 / 9; 
+    }
+    .map-responsive-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 12px;
+    }
+</style>
+</head>
+<body>
+<!-- আপনার পুরানো ওয়েবসাইটের যেকোনো জায়গায় এই কোডটি দিন -->
+
+<div class="map-responsive-container">
+    <iframe src="map-widget.html" title="IARC Participants Map" scrolling="no"></iframe>
+</div>
+
+</body>
+</html>
