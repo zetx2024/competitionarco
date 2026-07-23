@@ -8,16 +8,20 @@
 </head>
 <body>
 
+    <!-- ম্যাপের বাইরের কন্ট্রোল প্যানেল (ভিডিও থেকে অনায়াসে ক্রপ করা যাবে) -->
+    <div class="control-panel">
+        <button id="record-btn" class="record-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+            </svg>
+            Record WebM
+        </button>
+        <div class="status-text" id="status-display">Ready for recording</div>
+    </div>
+
+    <!-- মেইন ম্যাপ কন্টেইনার (একদম ক্লিন থাকবে) -->
     <div class="iarc-map-widget" id="iarc-map-container">
         
-        <!-- নতুন স্টুডিও ক্যাপচার বাটন -->
-        <button id="capture-btn" class="capture-btn">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z"/>
-            </svg>
-            Play for Capture
-        </button>
-
         <div class="map-marker" id="map-location-marker">
             <svg viewBox="0 0 24 24" fill="#FF2400" width="24px" height="24px">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
