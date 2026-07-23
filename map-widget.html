@@ -5,16 +5,22 @@
     <title>Map Widget</title>
     <!-- D3.js লাইব্রেরি -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <!-- আলাদা CSS কল করা হলো -->
     <link rel="stylesheet" href="css/map.css">
 </head>
 <body>
 
     <div class="iarc-map-widget" id="iarc-map-container">
+        
+        <!-- নতুন লোকেশন পিন আইকন -->
+        <div class="map-marker" id="map-location-marker">
+            <svg viewBox="0 0 24 24" fill="#FFD700" width="24px" height="24px">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+        </div>
+
         <div class="map-tooltip" id="map-auto-tooltip"></div>
     </div>
 
-    <!-- আলাদা JS কল করা হলো -->
     <script src="js/map.js"></script>
 
 </body>
