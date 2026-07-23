@@ -1,10 +1,10 @@
 [
     {
         "year": "2024",
-        "url": "finalist2024.json"
+        "url": "https://iarco.org/data/finalist2024.json"
     },
     {
         "year": "2025",
-        "url": "participants_2025.json"
+        "url": "https://iarco.org/data/participants_2025.json"
     }
 ]
