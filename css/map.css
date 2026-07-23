@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* ফ্রেমের ভেতরে স্ক্রলবার এড়াতে */
+    overflow: hidden;
 }
 
 .iarc-map-widget {
@@ -12,6 +12,10 @@ body {
     border-radius: 12px;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* মোবাইল স্ক্রিনে উচ্চতা ব্যালেন্স করার জন্য */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .iarc-map-widget svg {
@@ -45,15 +49,15 @@ body {
     background: rgba(2, 16, 36, 0.95);
     border: 1px solid #FFD700;
     color: #fff;
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 6px;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.2s ease-in-out, left 0.2s ease, top 0.2s ease;
+    transition: opacity 0.2s ease-in-out; /* গ্লিচ এড়াতে পজিশন ট্রানজিশন বাদ দেওয়া হয়েছে */
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
     z-index: 10;
-    min-width: 130px;
-    transform: translate(-50%, -100%);
+    min-width: 120px;
+    box-sizing: border-box;
 }
 
 .map-tooltip.visible {
@@ -63,15 +67,15 @@ body {
 .tooltip-header {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 4px;
     border-bottom: 1px solid rgba(255, 215, 0, 0.3);
     padding-bottom: 4px;
 }
 
 .flag-icon {
-    width: 20px;
-    height: 14px;
+    width: 18px;
+    height: 12px;
     display: flex;
 }
 
@@ -84,13 +88,13 @@ body {
 .tooltip-header h4 {
     margin: 0;
     color: #FFD700;
-    font-size: 13px;
+    font-size: 12px;
     white-space: nowrap;
 }
 
 .map-tooltip p {
     margin: 2px 0;
-    font-size: 11px;
+    font-size: 10px;
     color: #E2E8F0;
 }
 
