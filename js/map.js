@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // আপনার JSON ফাইলগুলোর লিংক (এখানে আপনার আসল লিংক বসান)
     const FLAG_JSON_URL = "https://iarco.org/data/flagss.json";
-    const PARTICIPANTS_JSON_URL = "participants.json"; // আপনার পার্টিসিপেন্ট ডেটা লিংক
+    const PARTICIPANTS_JSON_URL = "https://iarco.org/data/mapp.json"; // আপনার পার্টিসিপেন্ট ডেটা লিংক
 
     // কিছু দেশের নাম GeoJSON ফাইলে আলাদা থাকে, সেগুলো মেলানোর জন্য ম্যাপার
     const countryNameMap = {
