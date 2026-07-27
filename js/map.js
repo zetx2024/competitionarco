@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .attr("viewBox", `0 0 ${width} ${height}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
 
-    // আপডেট: স্কেল ৯৫ করা হয়েছে এবং ওয়াই-অ্যাক্সিস (Y-axis) অ্যাডজাস্ট করা হয়েছে যেন ম্যাপের ওপরের অংশ না কাটে
+   ে
     const projection = d3.geoMercator().scale(95).translate([width / 2, height / 1.4]);
     const pathGen = d3.geoPath().projection(projection);
 
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <h4>${currentData.originalName}</h4>
                 </div>
                 <p>Years: <span class="highlight">${currentData.years.join(', ')}</span></p>
-                <p>Participants: <span class="highlight">${currentData.total}</span></p>
+                <p>Finalists: <span class="highlight">${currentData.total}</span></p>
             `;
 
             tooltip.style.opacity = '0';
