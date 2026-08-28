@@ -61,6 +61,16 @@
                 "image": "https://yrjournal.org/images/staff-01.jpg",
                 "country": "Bangla"
             }
+        ],
+        "hostSpeakers": [ 
+            {
+                "name": "Zaima Haque",
+                "position": "IARCO 2026 Host",
+                "institution": "Legend International School",
+                "bio": "",
+                "image": "https://iarco.org/assets/mentor/zaima.JPG",
+                "country": "Bangla"
+            }
         ]
     },
     
