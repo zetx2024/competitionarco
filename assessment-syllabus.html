@@ -1,14 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C5LLP0WEBK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-C5LLP0WEBK');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO -->
-    <title>Research 101 | IARCO</title>
-    <meta name="description" content="Research 101 syllabus and study curriculum for IARCO participants. Learn research fundamentals, research questions, hypotheses, methodology, data analysis, statistics, ethics, literature review, proposals, and IEEE referencing.">
+    <title>IARCO Research Assessment</title>
+    <meta name="description" content="Research Assessment syllabus and study curriculum for IARCO participants. Learn research fundamentals, research questions, hypotheses, methodology, data analysis, statistics, ethics, literature review, proposals, and IEEE referencing.">
+    <meta name="keywords" content="Global, USA, United State of America, Competiton, IARCO, International, Academic, International Academic Research Competition, Bangladesh, Summer, SRP, WRP,YRJ, yrj, Youth Research Journal, Education, Lumiere Education, Spring, Research Program, Summer Activities, Winter Research, Winter Program, Winter Activities, undergraduate, research, journal, electronic, online, multidisciplinary, open access, articles, essays, Houston, Texas, Journal of Student Research, jofsr, Jofsr, JofSR, student research journal, undergraduate rsesearch journal, student research, high school, hs, high school publication, high school research, school research, high school edition, hs edition, hs portal, high school portal, high school edition research, machine learning, computational biology, machine, computational, biology.">
+    <meta name="subject" content="International Academic Research Competition | Research Assessment">
+    <meta name="copyright" content="Md Sanaul Haque Shanto">
+    <meta name="language" content="ES">
+    <meta name="robots" content="index,follow">
+    <meta name="revised" content="2026-09-01T03:13:15.028Z">
+    <meta name="abstract" content="International Academic Research Competition | Research Assessment">
+    <meta name="topic" content="International Academic Research Competition | Research Assessment">
+    <meta name="summary" content="International Academic Research Competition | Research Assessment">
+    <meta name="Classification" content="Educational">
+    <meta name="author" content="Md Sanaul Haque Shanto, hello@iarco.org">
+    <meta name="designer" content="Md Sanaul Haque Shanto">
+    <meta name="reply-to" content="hello@iarco.org">
+    <meta name="owner" content="Md Sanaul Haque Shanto">
+    <meta name="url" content="https://iarco.org/">
+    <meta name="identifier-URL" content="https://iarco.org/">
+    <meta name="directory" content="submission">
+    <meta name="category" content="Educational">
+    <meta name="coverage" content="Worldwide">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta property="og:title" content="International Academic Research Competition | Research Assessment"/>
+    <meta property="og:type" content="Educational"/>
+    <meta property="og:url" content="https://iarco.org/"/>
+    <meta property="og:image" content="https://hello@iarco.org">
+    <meta property="og:site_name" content="International Academic Research Competition | Research Assessment"/>
+    <meta property="og:description" content="Research Assessment syllabus and study curriculum for IARCO participants. Learn research fundamentals, research questions, hypotheses, methodology, data analysis, statistics, ethics, literature review, proposals, and IEEE referencing."/>
+    <meta property="fb:page_id" content="405729912624141" />
+    <meta property="og:email" content="hello@iarco.org"/>
+    <meta property="og:phone_number" content="+8801766009306"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Research Assessment | International Academic Research Competition"/>
+    <meta name="twitter:description" content="Research Assessment syllabus and study curriculum for IARCO participants. Learn research fundamentals, research questions, hypotheses, methodology, data analysis, statistics, ethics, literature review, proposals, and IEEE referencing.">
 
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="fevicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="fevicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="fevicon/favicon-512x512.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0749b3">
+    
     <!-- Schema.org -->
     <script type="application/ld+json">
     {
@@ -2680,7 +2731,23 @@
             });
 
         });
+    // Form Submission
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxwJfZuGHnWBcX4SON32OwzywcjddUbKQl1ZXDUCQLcjlbKmLqcBXt4MJ-gr_g30a0qmg/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const SubId = document.getElementById("subsid");
 
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                SubId.innerHTML = "Thank You! We'll email you about IARCO 2027 dates.";
+                setTimeout(function() {
+                    SubId.innerHTML = "";
+                }, 3000);
+                form.reset();
+            })
+            .catch(error => console.error('Error!', error.message));
+    });
     </script>
 
 </body>
