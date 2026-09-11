@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>Research 101 | IARCO</title>
+    <meta name="description" content="Research 101 syllabus and study curriculum for IARCO participants. Learn research fundamentals, research questions, hypotheses, methodology, data analysis, statistics, ethics, literature review, proposals, and IEEE referencing.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Research Competition",
+      "url": "https://iarco.org"
+    }
+    </script>
+
+    <script src="https://iarco.org/navbar/navbar.js"></script>
+
+    <!-- CSS & Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="https://iarco.org/css/logoanimation.css" />
+
+    <style>
+
+        :root {
+            --iarco-blue: #003366;
+            --iarco-blue-light: #0749b3;
+            --iarco-sky: #4b9cd3;
+            --iarco-gold: #ffd700;
+            --iarco-gold-dark: #daa520;
+            --text-dark: #1d2939;
+            --text-muted: #667085;
+            --bg-light: #f6f8fb;
+            --border: #e4e7ec;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            font-family: Inter, Arial, Helvetica, sans-serif;
+        }
+
+        /* ===============================
+           PRELOADER
+        =============================== */
+
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #preloader img {
+            max-width: 90px;
+        }
+
+        /* ===============================
+           HERO
+        =============================== */
+
+        .research-hero {
+            background:
+                radial-gradient(circle at 85% 20%, rgba(255,215,0,.16), transparent 30%),
+                linear-gradient(135deg, #003366 0%, #0749b3 100%);
+            color: #fff;
+            padding: 90px 20px 75px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .research-hero::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 50%;
+            right: -150px;
+            top: -160px;
+        }
+
+        .research-hero::after {
+            content: "";
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(255,215,0,.15);
+            border-radius: 50%;
+            left: -130px;
+            bottom: -160px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.22);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.1rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -.04em;
+            margin-bottom: 18px;
+        }
+
+        .hero-title span {
+            color: var(--iarco-gold);
+        }
+
+        .hero-description {
+            max-width: 800px;
+            margin: auto;
+            color: rgba(255,255,255,.88);
+            font-size: 1.08rem;
+            line-height: 1.8;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .hero-meta-item {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.15);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: .9rem;
+        }
+
+        /* ===============================
+           PAGE NAVIGATION
+        =============================== */
+
+        .curriculum-nav {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .curriculum-nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .curriculum-nav a {
+            white-space: nowrap;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: .82rem;
+            font-weight: 700;
+            padding: 9px 12px;
+            border-radius: 8px;
+            transition: .2s ease;
+        }
+
+        .curriculum-nav a:hover {
+            color: var(--iarco-blue);
+            background: #eef4ff;
+        }
+
+        /* ===============================
+           MAIN CONTENT
+        =============================== */
+
+        .curriculum-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 55px 15px 80px;
+        }
+
+        .section-heading {
+            margin-bottom: 30px;
+        }
+
+        .section-label {
+            color: var(--iarco-blue-light);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            color: var(--iarco-blue);
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--text-muted);
+            max-width: 800px;
+            line-height: 1.75;
+        }
+
+        /* ===============================
+           INTRO CARD
+        =============================== */
+
+        .intro-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 35px rgba(16,24,40,.05);
+        }
+
+        .intro-card h2 {
+            color: var(--iarco-blue);
+            font-weight: 800;
+        }
+
+        .intro-card p {
+            color: #475467;
+            line-height: 1.8;
+        }
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .learning-item {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 17px;
+        }
+
+        .learning-item i {
+            color: var(--iarco-gold-dark);
+            margin-right: 8px;
+        }
+
+        .learning-item strong {
+            color: var(--iarco-blue);
+        }
+
+        /* ===============================
+           MODULES
+        =============================== */
+
+        .module {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 28px rgba(16,24,40,.04);
+            scroll-margin-top: 80px;
+        }
+
+        .module-header {
+            padding: 25px 28px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            background: linear-gradient(90deg, #f8fbff, #fff);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .module-number {
+            min-width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            background: var(--iarco-blue);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .module-header h3 {
+            color: var(--iarco-blue);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin: 0 0 5px;
+        }
+
+        .module-header p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: .92rem;
+        }
+
+        .module-body {
+            padding: 28px;
+        }
+
+        .topic {
+            margin-bottom: 30px;
+        }
+
+        .topic:last-child {
+            margin-bottom: 0;
+        }
+
+        .topic h4 {
+            color: #172b4d;
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .topic p {
+            color: #475467;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .topic ul {
+            color: #475467;
+            line-height: 1.85;
+            padding-left: 22px;
+        }
+
+        .topic li {
+            margin-bottom: 5px;
+        }
+
+        .concept-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--iarco-blue-light);
+            border-radius: 0 10px 10px 0;
+            padding: 17px 19px;
+            margin: 15px 0;
+        }
+
+        .concept-box strong {
+            color: var(--iarco-blue);
+        }
+
+        .gold-box {
+            background: #fffbea;
+            border-left: 4px solid var(--iarco-gold-dark);
+            border-radius: 0 10px 10px 0;
+            padding: 17px 19px;
+            margin: 15px 0;
+        }
+
+        .gold-box strong {
+            color: #8a6500;
+        }
+
+        /* ===============================
+           TABLES
+        =============================== */
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 18px 0;
+        }
+
+        .curriculum-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        .curriculum-table th {
+            background: var(--iarco-blue);
+            color: #fff;
+            padding: 13px;
+            text-align: left;
+            font-size: .86rem;
+        }
+
+        .curriculum-table td {
+            padding: 13px;
+            border: 1px solid var(--border);
+            color: #475467;
+            font-size: .9rem;
+            vertical-align: top;
+        }
+
+        .curriculum-table tr:nth-child(even) td {
+            background: #fafcff;
+        }
+
+        /* ===============================
+           FORMULA CARDS
+        =============================== */
+
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .formula-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .formula-card h5 {
+            color: var(--iarco-blue);
+            font-weight: 800;
+            margin-bottom: 9px;
+        }
+
+        .formula {
+            background: #fff;
+            border: 1px dashed #cbd5e1;
+            padding: 12px;
+            border-radius: 8px;
+            font-family: "Courier New", monospace;
+            font-size: .9rem;
+            color: #172b4d;
+        }
+
+        /* ===============================
+           TEST SELECTOR
+        =============================== */
+
+        .test-card {
+            background: linear-gradient(135deg, #003366, #0749b3);
+            color: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .test-card h4 {
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .test-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1.4fr;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,.18);
+            border-bottom: none;
+        }
+
+        .test-row:last-child {
+            border-bottom: 1px solid rgba(255,255,255,.18);
+        }
+
+        .test-row div {
+            padding: 11px 13px;
+            border-right: 1px solid rgba(255,255,255,.18);
+            font-size: .85rem;
+        }
+
+        .test-row div:last-child {
+            border-right: none;
+        }
+
+        .test-head {
+            background: rgba(255,215,0,.14);
+            font-weight: 800;
+            color: var(--iarco-gold);
+        }
+
+        /* ===============================
+           CHECKLIST
+        =============================== */
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .check-item {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 10px;
+            color: #475467;
+            line-height: 1.55;
+        }
+
+        .check-item i {
+            color: #198754;
+            margin-top: 4px;
+        }
+
+        /* ===============================
+           QUICK REFERENCE
+        =============================== */
+
+        .quick-reference {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 35px;
+        }
+
+        .quick-reference h3 {
+            color: var(--iarco-blue);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .reference-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .reference-card h5 {
+            color: var(--iarco-blue);
+            font-weight: 800;
+            font-size: .95rem;
+        }
+
+        .reference-card p {
+            color: var(--text-muted);
+            font-size: .86rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ===============================
+           FINAL PREPARATION
+        =============================== */
+
+        .final-card {
+            background: linear-gradient(135deg, #fffbea, #fff);
+            border: 1px solid #eadb91;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 35px;
+        }
+
+        .final-card h3 {
+            color: var(--iarco-blue);
+            font-weight: 800;
+        }
+
+        .final-card p {
+            color: #475467;
+            line-height: 1.8;
+        }
+
+        /* ===============================
+           BACK TO TOP
+        =============================== */
+
+        #backToTop {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            border-radius: 50%;
+            background: var(--iarco-blue);
+            color: #fff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,.18);
+            z-index: 1500;
+        }
+
+        #backToTop:hover {
+            background: var(--iarco-blue-light);
+        }
+
+        /* ===============================
+           RESPONSIVE
+        =============================== */
+
+        @media (max-width: 991px) {
+
+            .learning-grid,
+            .reference-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .test-row {
+                grid-template-columns: 1fr;
+            }
+
+            .test-row div {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,.12);
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .research-hero {
+                padding: 65px 18px 55px;
+            }
+
+            .curriculum-container {
+                padding: 40px 12px 60px;
+            }
+
+            .module-header {
+                padding: 20px;
+            }
+
+            .module-body {
+                padding: 20px;
+            }
+
+            .learning-grid,
+            .checklist,
+            .reference-grid,
+            .formula-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-card,
+            .quick-reference,
+            .final-card {
+                padding: 22px;
+            }
+
+            .hero-description {
+                font-size: .98rem;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="assets/preloader.gif" alt="Loading...">
+    </div>
+
+    <!-- ================= NAVBAR PLACEHOLDER ================= -->
+    <div id="navbar-root"></div>
+    <!-- ====================================================== -->
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="research-hero">
+
+        <div class="hero-content">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-book-open"></i>
+                IARCO Research 101
+            </div>
+
+            <h1 class="hero-title">
+                Research <span>101</span>
+            </h1>
+
+            <p class="hero-description">
+                A foundational curriculum covering the essential concepts,
+                methods, statistics, ethics, academic writing, literature review,
+                research proposals, and referencing skills required for the
+                IARCO Research Assessment.
+            </p>
+
+            <div class="hero-meta">
+
+                <div class="hero-meta-item">
+                    <i class="fa-regular fa-clock"></i>
+                    60-Minute Assessment
+                </div>
+
+                <div class="hero-meta-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    70 Questions
+                </div>
+
+                <div class="hero-meta-item">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    Research Fundamentals
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CURRICULUM NAV ================= -->
+
+    <div class="curriculum-nav">
+
+        <div class="curriculum-nav-inner">
+
+            <a href="#module1">Foundations</a>
+            <a href="#module2">Research Questions</a>
+            <a href="#module3">Variables & Data</a>
+            <a href="#module4">Methodology</a>
+            <a href="#module5">Ethics</a>
+            <a href="#module6">Literature</a>
+            <a href="#module7">Proposal</a>
+            <a href="#module8">Statistics</a>
+            <a href="#module9">Inferential Statistics</a>
+            <a href="#module10">Visualization</a>
+            <a href="#module11">Referencing</a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="curriculum-container">
+
+
+        <!-- INTRODUCTION -->
+
+        <section class="intro-card">
+
+            <div class="section-label">Before You Begin</div>
+
+            <h2>What is Research 101?</h2>
+
+            <p>
+                Research 101 is the foundational knowledge component of the
+                IARCO Research Assessment. It is designed to test whether a
+                participant understands the basic principles used to plan,
+                conduct, analyze, and communicate research.
+            </p>
+
+            <p>
+                The assessment does not focus only on memorizing definitions.
+                You should be able to recognize concepts in practical research
+                situations, identify appropriate methodologies, interpret basic
+                statistical results, distinguish different types of variables,
+                understand research ethics, and identify appropriate academic
+                writing and referencing practices.
+            </p>
+
+            <div class="learning-grid">
+
+                <div class="learning-item">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <strong>Understand</strong><br>
+                    Learn the fundamental concepts of research.
+                </div>
+
+                <div class="learning-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <strong>Apply</strong><br>
+                    Use concepts in realistic research scenarios.
+                </div>
+
+                <div class="learning-item">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <strong>Analyze</strong><br>
+                    Interpret basic statistical information.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 1 -->
+
+        <section class="module" id="module1">
+
+            <div class="module-header">
+
+                <div class="module-number">01</div>
+
+                <div>
+                    <h3>Introduction to Research</h3>
+                    <p>Understanding what research is and how systematic inquiry works.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>1.1 What is research?</h4>
+
+                    <p>
+                        Research is a systematic process of investigating and
+                        analyzing information to answer questions, solve problems,
+                        or generate new knowledge.
+                    </p>
+
+                    <div class="concept-box">
+                        <strong>Remember:</strong>
+                        Research is systematic. It is not simply collecting random
+                        facts, copying existing reports, or presenting information
+                        discovered by others.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>1.2 The research process</h4>
+
+                    <p>
+                        A typical research process begins with identifying a topic
+                        or problem and progressively develops it into a focused,
+                        feasible research study.
+                    </p>
+
+                    <ol>
+                        <li>Identify a research topic or problem.</li>
+                        <li>Conduct a preliminary literature review.</li>
+                        <li>Formulate research questions and/or hypotheses.</li>
+                        <li>Select an appropriate methodology.</li>
+                        <li>Design the research plan.</li>
+                        <li>Collect and analyze data.</li>
+                        <li>Interpret findings.</li>
+                        <li>Communicate the results.</li>
+                    </ol>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>1.3 Research thinking</h4>
+
+                    <p>
+                        Good researchers do not select methods first and then
+                        attempt to fit a question to them. The research question,
+                        type of evidence required, variables, design, and analysis
+                        should work together.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 2 -->
+
+        <section class="module" id="module2">
+
+            <div class="module-header">
+
+                <div class="module-number">02</div>
+
+                <div>
+                    <h3>Research Questions & Hypotheses</h3>
+                    <p>Turning broad interests into focused and testable research problems.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>2.1 Research questions</h4>
+
+                    <p>
+                        A research question is the central question that guides
+                        a research study. It determines what information needs
+                        to be collected and what analysis may be appropriate.
+                    </p>
+
+                    <p>A strong research question should generally be:</p>
+
+                    <ul>
+                        <li>Clear</li>
+                        <li>Relevant</li>
+                        <li>Focused</li>
+                        <li>Feasible</li>
+                        <li>Researchable</li>
+                        <li>Specific enough to investigate</li>
+                    </ul>
+
+                    <div class="concept-box">
+                        <strong>Avoid ambiguity.</strong>
+                        A good research question should not be so vague that
+                        different researchers could interpret it in completely
+                        different ways.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>2.2 Zero Research Question</h4>
+
+                    <p>
+                        In early-stage research planning, a Zero Research Question
+                        can be used as a broad starting question. It helps a
+                        researcher explore an area before developing more focused
+                        research questions.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>2.3 Hypotheses</h4>
+
+                    <p>
+                        A hypothesis is a testable statement about an expected
+                        relationship, difference, or effect.
+                    </p>
+
+                    <p>
+                        A null hypothesis, commonly written as H<sub>0</sub>,
+                        usually represents no difference, no association, or no
+                        effect.
+                    </p>
+
+                    <div class="gold-box">
+                        <strong>Example:</strong>
+                        For a two-group comparison, a suitable null hypothesis
+                        may state that there is no difference in the mean outcome
+                        between Group A and Group B.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>2.4 Independent and dependent variables</h4>
+
+                    <p>
+                        When forming a hypothesis, identify what is being changed,
+                        compared, or used as a predictor and what outcome is being
+                        measured.
+                    </p>
+
+                    <div class="table-wrap">
+
+                        <table class="curriculum-table">
+
+                            <tr>
+                                <th>Concept</th>
+                                <th>Meaning</th>
+                                <th>Example</th>
+                            </tr>
+
+                            <tr>
+                                <td>Independent Variable (IV)</td>
+                                <td>The variable used as the predictor, condition, or factor being compared.</td>
+                                <td>LED light spectrum</td>
+                            </tr>
+
+                            <tr>
+                                <td>Dependent Variable (DV)</td>
+                                <td>The outcome being measured.</td>
+                                <td>Lettuce yield</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 3 -->
+
+        <section class="module" id="module3">
+
+            <div class="module-header">
+
+                <div class="module-number">03</div>
+
+                <div>
+                    <h3>Variables, Data Types & Measurement Scales</h3>
+                    <p>Recognizing the structure and level of measurement of research data.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>3.1 Categorical and numerical variables</h4>
+
+                    <p>
+                        Variables can represent categories or numerical quantities.
+                        Understanding the nature of a variable helps determine
+                        appropriate summaries, visualizations, and statistical tests.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>3.2 Measurement scales</h4>
+
+                    <div class="table-wrap">
+
+                        <table class="curriculum-table">
+
+                            <tr>
+                                <th>Scale</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Nominal</strong></td>
+                                <td>Categories without an inherent order.</td>
+                                <td>Eye color</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Ordinal</strong></td>
+                                <td>Categories with an order, but the intervals between categories are not necessarily equal.</td>
+                                <td>Letter grades, educational degree</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Interval</strong></td>
+                                <td>Numerical values with meaningful equal intervals but no true zero.</td>
+                                <td>Temperature in Celsius</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Ratio</strong></td>
+                                <td>Numerical values with equal intervals and a meaningful zero.</td>
+                                <td>Number of competitions entered</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>3.3 Likert-scale data</h4>
+
+                    <p>
+                        Responses such as Strongly Disagree, Disagree, Neutral,
+                        Agree, and Strongly Agree are typically treated as
+                        <strong>ordinal</strong> measurements for introductory
+                        analysis.
+                    </p>
+
+                    <div class="concept-box">
+                        <strong>Study point:</strong>
+                        Do not automatically assume that individual Likert items
+                        are ratio-scale variables.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>3.4 Primary and secondary data</h4>
+
+                    <div class="table-wrap">
+
+                        <table class="curriculum-table">
+
+                            <tr>
+                                <th>Data</th>
+                                <th>Meaning</th>
+                                <th>Example</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Primary data</strong></td>
+                                <td>Data collected directly by the researcher for the study.</td>
+                                <td>Observations collected in person</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Secondary data</strong></td>
+                                <td>Existing data originally collected by another person or organization.</td>
+                                <td>Government reports or census datasets</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 4 -->
+
+        <section class="module" id="module4">
+
+            <div class="module-header">
+
+                <div class="module-number">04</div>
+
+                <div>
+                    <h3>Research Methodology & Study Design</h3>
+                    <p>Selecting an appropriate research approach and understanding study designs.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>4.1 Quantitative research</h4>
+
+                    <p>
+                        Quantitative research focuses on measurable variables,
+                        numerical data, statistical analysis, and testing
+                        relationships, differences, or effects.
+                    </p>
+
+                    <p>
+                        Examples include surveys with numerical responses,
+                        standardized tests, measurements, and experiments.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>4.2 Qualitative research</h4>
+
+                    <p>
+                        Qualitative research explores experiences, meanings,
+                        perspectives, context, and descriptions in depth.
+                    </p>
+
+                    <p>
+                        In-depth interviews are appropriate when the objective is
+                        to understand how participants describe and experience a
+                        phenomenon.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>4.3 Experimental design</h4>
+
+                    <p>
+                        In an experiment, the researcher deliberately controls
+                        or manipulates an independent variable and observes its
+                        effect on an outcome.
+                    </p>
+
+                    <div class="gold-box">
+                        <strong>Example:</strong>
+                        Assigning plants to different LED light treatments and
+                        measuring their growth is an experimental design.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>4.4 Randomization</h4>
+
+                    <p>
+                        Randomization assigns participants or experimental units
+                        to treatment groups using a random process. It helps
+                        reduce selection bias and can improve baseline comparability
+                        between groups.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>4.5 Sampling and external validity</h4>
+
+                    <p>
+                        Sampling determines which individuals or units are included
+                        in a study. A sample that is restricted to a narrow group
+                        may not represent the wider population.
+                    </p>
+
+                    <div class="concept-box">
+                        <strong>Sampling bias:</strong>
+                        Recruiting participants from only one specific group,
+                        such as one school club, can limit generalization to the
+                        broader population.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 5 -->
+
+        <section class="module" id="module5">
+
+            <div class="module-header">
+
+                <div class="module-number">05</div>
+
+                <div>
+                    <h3>Research Ethics</h3>
+                    <p>Protecting participants and maintaining responsible research practices.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>5.1 Informed consent</h4>
+
+                    <p>
+                        Participants should understand what participation involves,
+                        including relevant procedures, risks, benefits, and their
+                        right to participate voluntarily.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>5.2 Privacy and confidentiality</h4>
+
+                    <p>
+                        Researchers should protect participant information and
+                        avoid unnecessarily exposing personally identifiable
+                        information.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>5.3 Research involving minors</h4>
+
+                    <p>
+                        When research involves minors, appropriate consent
+                        procedures must be followed. Depending on the research
+                        setting and applicable requirements, parental or guardian
+                        consent may be necessary.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>5.4 Voluntary participation</h4>
+
+                    <p>
+                        Participants should not be improperly pressured or forced
+                        to participate. Researchers should communicate participation
+                        conditions clearly.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>5.5 Ethical research checklist</h4>
+
+                    <div class="checklist">
+
+                        <div class="check-item">
+                            <i class="fa-solid fa-check"></i>
+                            Obtain appropriate informed consent.
+                        </div>
+
+                        <div class="check-item">
+                            <i class="fa-solid fa-check"></i>
+                            Protect participant privacy.
+                        </div>
+
+                        <div class="check-item">
+                            <i class="fa-solid fa-check"></i>
+                            Explain voluntary participation.
+                        </div>
+
+                        <div class="check-item">
+                            <i class="fa-solid fa-check"></i>
+                            Consider risks and benefits.
+                        </div>
+
+                        <div class="check-item">
+                            <i class="fa-solid fa-check"></i>
+                            Follow appropriate procedures for minors.
+                        </div>
+
+                        <div class="check-item">
+                            <i class="fa-solid fa-check"></i>
+                            Do not manipulate participants to support a hypothesis.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 6 -->
+
+        <section class="module" id="module6">
+
+            <div class="module-header">
+
+                <div class="module-number">06</div>
+
+                <div>
+                    <h3>Literature Review & Research Gap</h3>
+                    <p>Understanding existing knowledge and identifying opportunities for research.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>6.1 Purpose of a literature review</h4>
+
+                    <p>
+                        A literature review investigates relevant existing research
+                        to understand what is already known and to identify gaps,
+                        limitations, disagreements, or opportunities for further
+                        research.
+                    </p>
+
+                    <div class="concept-box">
+                        <strong>Important:</strong>
+                        A literature review is not simply a list of everything
+                        ever published on a topic.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>6.2 What to look for in previous studies</h4>
+
+                    <ul>
+                        <li>What questions have already been investigated?</li>
+                        <li>What methods have researchers used?</li>
+                        <li>What populations or samples were studied?</li>
+                        <li>What findings have been reported?</li>
+                        <li>Where do studies disagree?</li>
+                        <li>What limitations have been identified?</li>
+                        <li>What questions remain unanswered?</li>
+                    </ul>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>6.3 Research gaps</h4>
+
+                    <p>
+                        A research gap is an area where existing research does not
+                        adequately answer a question, where evidence is limited,
+                        or where a new context, population, method, or relationship
+                        could be investigated.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>6.4 Paraphrasing and attribution</h4>
+
+                    <p>
+                        Rewriting a source in your own words does not remove the
+                        requirement for attribution. If an idea or information
+                        comes from a source, cite the source appropriately.
+                    </p>
+
+                    <div class="gold-box">
+                        <strong>Good practice:</strong>
+                        Paraphrase genuinely in your own wording and provide the
+                        appropriate citation.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 7 -->
+
+        <section class="module" id="module7">
+
+            <div class="module-header">
+
+                <div class="module-number">07</div>
+
+                <div>
+                    <h3>Research Proposals</h3>
+                    <p>Planning and communicating a study before conducting the full research.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>7.1 What is a research proposal?</h4>
+
+                    <p>
+                        A research proposal describes what you plan to investigate,
+                        why the study matters, how you intend to conduct it, and
+                        how the resulting data will be analyzed.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>7.2 Why write a proposal?</h4>
+
+                    <p>
+                        A proposal provides a clear plan of the research goals,
+                        methods, timeline, and resources before the full study
+                        is conducted.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>7.3 Proposal vs. research paper</h4>
+
+                    <div class="table-wrap">
+
+                        <table class="curriculum-table">
+
+                            <tr>
+                                <th>Research Proposal</th>
+                                <th>Research Paper</th>
+                            </tr>
+
+                            <tr>
+                                <td>Plans and justifies a study.</td>
+                                <td>Reports a completed study.</td>
+                            </tr>
+
+                            <tr>
+                                <td>Describes proposed methods.</td>
+                                <td>Reports the methods actually used.</td>
+                            </tr>
+
+                            <tr>
+                                <td>Contains expected outcomes where appropriate.</td>
+                                <td>Presents actual findings and interpretation.</td>
+                            </tr>
+
+                            <tr>
+                                <td>Written before the full study.</td>
+                                <td>Normally written after data collection and analysis.</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>7.4 Major proposal components</h4>
+
+                    <ul>
+                        <li>Title</li>
+                        <li>Abstract</li>
+                        <li>Introduction / research problem</li>
+                        <li>Research questions</li>
+                        <li>Hypotheses where appropriate</li>
+                        <li>Literature review</li>
+                        <li>Methodology</li>
+                        <li>Data analysis plan</li>
+                        <li>Timeline / project schedule</li>
+                        <li>References</li>
+                    </ul>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>7.5 Abstract</h4>
+
+                    <p>
+                        The abstract briefly summarizes the key aims, methods,
+                        and expected outcomes of a proposal.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>7.6 Methodology</h4>
+
+                    <p>
+                        The methodology explains why the selected methods are
+                        appropriate and how the research will be conducted and
+                        analyzed.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>7.7 Timeline</h4>
+
+                    <p>
+                        A project timeline organizes research activities and
+                        milestones. A Gantt chart is a common way of presenting
+                        such a schedule.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 8 -->
+
+        <section class="module" id="module8">
+
+            <div class="module-header">
+
+                <div class="module-number">08</div>
+
+                <div>
+                    <h3>Descriptive Statistics</h3>
+                    <p>Summarizing and understanding numerical data.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>8.1 Mean</h4>
+
+                    <p>
+                        The mean is calculated by adding all observations and
+                        dividing by the number of observations.
+                    </p>
+
+                    <div class="formula-grid">
+
+                        <div class="formula-card">
+                            <h5>Mean</h5>
+                            <div class="formula">
+                                Mean = ΣX / n
+                            </div>
+                        </div>
+
+                        <div class="formula-card">
+                            <h5>Example</h5>
+                            <div class="formula">
+                                (10 + 12 + 14 + 16 + 18) / 5 = 14
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>8.2 Median</h4>
+
+                    <p>
+                        The median is the middle value after observations have
+                        been arranged in order.
+                    </p>
+
+                    <p>
+                        For an odd number of observations, there is one middle
+                        observation. For an even number, the median is the average
+                        of the two middle observations.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>8.3 Mode</h4>
+
+                    <p>
+                        The mode is the value that occurs most frequently in a
+                        dataset.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>8.4 Mean, median and outliers</h4>
+
+                    <p>
+                        The mean is sensitive to extreme values. A large positive
+                        outlier can pull the mean toward the right side of the
+                        distribution, potentially making the mean greater than
+                        the median.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>8.5 Variance and standard deviation</h4>
+
+                    <p>
+                        Variance describes the average squared deviation from
+                        the mean. Standard deviation is the square root of
+                        variance.
+                    </p>
+
+                    <div class="formula-grid">
+
+                        <div class="formula-card">
+                            <h5>Sample variance</h5>
+                            <div class="formula">
+                                s² = Σ(X − x̄)² / (n − 1)
+                            </div>
+                        </div>
+
+                        <div class="formula-card">
+                            <h5>Standard deviation</h5>
+                            <div class="formula">
+                                s = √s²
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="concept-box">
+                        <strong>Remember:</strong>
+                        Standard deviation is a measure of dispersion.
+                        It describes how spread out observations are around
+                        the mean.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 9 -->
+
+        <section class="module" id="module9">
+
+            <div class="module-header">
+
+                <div class="module-number">09</div>
+
+                <div>
+                    <h3>Inferential Statistics & Hypothesis Testing</h3>
+                    <p>Using samples to evaluate evidence about populations.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>9.1 Normal distribution</h4>
+
+                    <p>
+                        A normal distribution is commonly represented as a
+                        symmetric, bell-shaped distribution centered around
+                        its mean.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>9.2 Checking normality</h4>
+
+                    <p>
+                        Normality assessment can help determine whether assumptions
+                        for certain parametric analyses are reasonable.
+                    </p>
+
+                    <div class="table-wrap">
+
+                        <table class="curriculum-table">
+
+                            <tr>
+                                <th>Situation</th>
+                                <th>Typical procedure emphasized in this assessment</th>
+                            </tr>
+
+                            <tr>
+                                <td>Approximately 30 observations</td>
+                                <td>Shapiro–Wilk test</td>
+                            </tr>
+
+                            <tr>
+                                <td>More than 50 observations</td>
+                                <td>Kolmogorov–Smirnov or other large-sample normality procedures</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>9.3 p-values</h4>
+
+                    <p>
+                        A p-value describes how compatible the observed data are
+                        with the null hypothesis under the statistical model.
+                    </p>
+
+                    <div class="gold-box">
+                        <strong>At α = 0.05:</strong>
+                        If p &lt; 0.05, the result is typically considered
+                        statistically significant and the null hypothesis is
+                        rejected.
+                    </div>
+
+                    <p>
+                        A p-value is <strong>not</strong> the probability that
+                        the null hypothesis is true, nor does statistical
+                        significance automatically mean that an effect is
+                        practically important.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>9.4 Fail to reject the null</h4>
+
+                    <p>
+                        When p ≥ 0.05 under the stated significance level, the
+                        appropriate introductory interpretation is generally
+                        to fail to reject the null hypothesis.
+                    </p>
+
+                    <p>
+                        This does not prove that the null hypothesis is true.
+                        Researchers may need to consider sample size, assumptions,
+                        measurement quality, effect size, and study design.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>9.5 Type I and Type II errors</h4>
+
+                    <div class="table-wrap">
+
+                        <table class="curriculum-table">
+
+                            <tr>
+                                <th>Error</th>
+                                <th>Meaning</th>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Type I error</strong></td>
+                                <td>False positive: rejecting a true null hypothesis.</td>
+                            </tr>
+
+                            <tr>
+                                <td><strong>Type II error</strong></td>
+                                <td>False negative: failing to reject a false null hypothesis.</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>9.6 Confidence intervals</h4>
+
+                    <p>
+                        A confidence interval provides a range of plausible values
+                        for a population parameter under the stated confidence
+                        procedure.
+                    </p>
+
+                    <div class="concept-box">
+                        <strong>Difference between two groups:</strong>
+                        If a 95% confidence interval for a difference contains
+                        zero, the difference is not statistically significant at
+                        the corresponding two-sided 5% level.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>9.7 Confidence interval for a population mean</h4>
+
+                    <div class="formula-card">
+
+                        <h5>One-sample t confidence interval</h5>
+
+                        <div class="formula">
+                            x̄ ± t* × (s / √n)
+                        </div>
+
+                    </div>
+
+                    <p style="margin-top:15px;">
+                        Where:
+                    </p>
+
+                    <ul>
+                        <li>x̄ = sample mean</li>
+                        <li>t* = appropriate critical t value</li>
+                        <li>s = sample standard deviation</li>
+                        <li>n = sample size</li>
+                    </ul>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>9.8 Effect size and statistical significance</h4>
+
+                    <p>
+                        Statistical significance and practical importance are
+                        different concepts. A small p-value provides evidence
+                        against the null hypothesis under the chosen model, but
+                        researchers should also consider the magnitude and
+                        practical meaning of the effect.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 10 -->
+
+        <section class="module" id="module10">
+
+            <div class="module-header">
+
+                <div class="module-number">10</div>
+
+                <div>
+                    <h3>Choosing Statistical Tests</h3>
+                    <p>Matching research questions and data structures with appropriate analyses.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>10.1 The basic decision process</h4>
+
+                    <p>
+                        Do not choose a statistical test simply because it is
+                        familiar. Consider the research question, variable types,
+                        number of groups, whether observations are independent
+                        or paired, distributional assumptions, and the desired
+                        comparison or relationship.
+                    </p>
+
+                    <ol>
+                        <li>Identify the research question.</li>
+                        <li>Identify the variables and measurement scales.</li>
+                        <li>Check relevant assumptions and distributions.</li>
+                        <li>Select an appropriate statistical procedure.</li>
+                        <li>Run the analysis.</li>
+                        <li>Interpret the p-value and effect size where appropriate.</li>
+                    </ol>
+
+                </div>
+
+                <div class="test-card">
+
+                    <h4>Core Test Selection Guide</h4>
+
+                    <div class="test-row test-head">
+                        <div>Research situation</div>
+                        <div>Typical test</div>
+                        <div>Key condition</div>
+                    </div>
+
+                    <div class="test-row">
+                        <div>Two independent groups</div>
+                        <div>Independent-samples t-test</div>
+                        <div>Approximately normal outcome; assumptions considered</div>
+                    </div>
+
+                    <div class="test-row">
+                        <div>Same participants measured twice</div>
+                        <div>Paired-samples t-test</div>
+                        <div>Difference scores approximately normal</div>
+                    </div>
+
+                    <div class="test-row">
+                        <div>Two independent groups, non-normal data</div>
+                        <div>Mann–Whitney U</div>
+                        <div>Independent observations</div>
+                    </div>
+
+                    <div class="test-row">
+                        <div>Relationship between two continuous variables</div>
+                        <div>Correlation / regression</div>
+                        <div>Depends on research question and assumptions</div>
+                    </div>
+
+                    <div class="test-row">
+                        <div>Categorical proportions</div>
+                        <div>Categorical-data methods</div>
+                        <div>Depends on table structure and research question</div>
+                    </div>
+
+                </div>
+
+                <div class="topic" style="margin-top:30px;">
+
+                    <h4>10.2 Independent-samples t-test</h4>
+
+                    <p>
+                        Used to compare the means of two independent groups when
+                        the assumptions for the test are reasonably satisfied.
+                    </p>
+
+                    <p>
+                        Example: comparing the average number of competitions
+                        entered by two independent groups of students.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>10.3 Paired-samples t-test</h4>
+
+                    <p>
+                        Used when the observations are naturally paired, such as
+                        measurements from the same students before and after an
+                        intervention.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>10.4 Mann–Whitney U test</h4>
+
+                    <p>
+                        A nonparametric approach used for comparing two independent
+                        groups when the assumptions required for a standard
+                        independent-samples t-test are not appropriate.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>10.5 Correlation does not imply causation</h4>
+
+                    <p>
+                        An observational association between two variables does
+                        not by itself establish that one variable causes the other.
+                    </p>
+
+                    <div class="gold-box">
+                        <strong>Example:</strong>
+                        If students who watch more coding tutorials have higher
+                        coding scores, the observed correlation alone does not
+                        establish that watching the tutorials caused the higher
+                        scores.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>10.6 Parametric vs. nonparametric tests</h4>
+
+                    <p>
+                        Parametric tests generally make stronger assumptions about
+                        the data and, when those assumptions are reasonably met,
+                        can have greater statistical power.
+                    </p>
+
+                    <p>
+                        Nonparametric procedures can be useful when the assumptions
+                        of common parametric methods are not appropriate.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MODULE 11 -->
+
+        <section class="module" id="module11">
+
+            <div class="module-header">
+
+                <div class="module-number">11</div>
+
+                <div>
+                    <h3>Data Visualization & Academic Referencing</h3>
+                    <p>Presenting research data clearly and documenting sources correctly.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>11.1 Choosing a visualization</h4>
+
+                    <div class="table-wrap">
+
+                        <table class="curriculum-table">
+
+                            <tr>
+                                <th>Data / Objective</th>
+                                <th>Suitable visualization</th>
+                            </tr>
+
+                            <tr>
+                                <td>Categorical proportions</td>
+                                <td>Bar chart or pie chart</td>
+                            </tr>
+
+                            <tr>
+                                <td>Many categorical groups</td>
+                                <td>Ordered/horizontal bar chart or frequency table</td>
+                            </tr>
+
+                            <tr>
+                                <td>Two continuous variables</td>
+                                <td>Scatter plot</td>
+                            </tr>
+
+                            <tr>
+                                <td>Distribution of numerical data</td>
+                                <td>Histogram or other distribution-focused plot</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>11.2 High-cardinality categorical data</h4>
+
+                    <p>
+                        Pie charts become difficult to interpret when there are
+                        many categories. A pie chart with a very large number of
+                        slices is generally a poor visualization choice.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>11.3 IEEE referencing</h4>
+
+                    <p>
+                        IARCO Research 101 includes basic recognition of IEEE
+                        reference formatting.
+                    </p>
+
+                    <p>
+                        Participants should understand the structure of an IEEE
+                        journal reference, including author information, article
+                        title, journal name, volume, issue, article/page information,
+                        year, and DOI when available.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>11.4 DOI</h4>
+
+                    <p>
+                        When a DOI is available, the assessment expects participants
+                        to recognize the DOI presentation used in the provided
+                        IEEE-style references.
+                    </p>
+
+                    <div class="concept-box">
+                        <strong>Study the pattern:</strong>
+                        The quiz specifically tests recognition of the lowercase
+                        <strong>doi:</strong> format followed by the identifier.
+                    </div>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>11.5 References section</h4>
+
+                    <p>
+                        Sources cited in the research work should appear in the
+                        reference list according to the required citation style.
+                        A peer-reviewed journal article cited in the literature
+                        review is an example of a source that belongs in the
+                        References section.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RELIABILITY & VALIDITY -->
+
+        <section class="module">
+
+            <div class="module-header">
+
+                <div class="module-number">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+                    <h3>Reliability & Validity</h3>
+                    <p>Understanding consistency and whether a measure measures what it intends to measure.</p>
+                </div>
+
+            </div>
+
+            <div class="module-body">
+
+                <div class="topic">
+
+                    <h4>Reliability</h4>
+
+                    <p>
+                        Reliability refers to the consistency of a measurement.
+                        A reliable instrument should produce reasonably consistent
+                        results under consistent conditions.
+                    </p>
+
+                </div>
+
+                <div class="topic">
+
+                    <h4>Validity</h4>
+
+                    <p>
+                        Validity concerns whether an instrument or measurement
+                        actually measures the concept it is intended to measure.
+                    </p>
+
+                </div>
+
+                <div class="concept-box">
+                    <strong>Core distinction:</strong>
+                    Reliability = consistency.
+                    Validity = measuring the intended concept.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK REFERENCE -->
+
+        <section class="quick-reference">
+
+            <div class="section-label">Rapid Review</div>
+
+            <h3>Research 101 Quick Reference</h3>
+
+            <div class="reference-grid">
+
+                <div class="reference-card">
+                    <h5>Research</h5>
+                    <p>
+                        Systematic investigation used to answer questions,
+                        solve problems, or generate knowledge.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Research Question</h5>
+                    <p>
+                        The foundation that guides the entire research study.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Hypothesis</h5>
+                    <p>
+                        A testable statement about an expected relationship,
+                        difference, or effect.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Independent Variable</h5>
+                    <p>
+                        Predictor, factor, or condition used to explain or
+                        influence an outcome.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Dependent Variable</h5>
+                    <p>
+                        Outcome that is measured.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Primary Data</h5>
+                    <p>
+                        Data collected directly by the researcher.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Secondary Data</h5>
+                    <p>
+                        Existing data collected by another source.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Mean</h5>
+                    <p>
+                        Sum of observations divided by the number of observations.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Median</h5>
+                    <p>
+                        Middle value after ordering observations.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Mode</h5>
+                    <p>
+                        Most frequently occurring value.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Standard Deviation</h5>
+                    <p>
+                        Measure describing the dispersion of observations.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>p-value</h5>
+                    <p>
+                        Measures compatibility of observed data with the null
+                        hypothesis under the statistical model.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Type I Error</h5>
+                    <p>
+                        False positive: rejecting a true null hypothesis.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Type II Error</h5>
+                    <p>
+                        False negative: failing to reject a false null hypothesis.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Reliability</h5>
+                    <p>
+                        Consistency of measurement.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Validity</h5>
+                    <p>
+                        Whether the measure captures what it intends to measure.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Scatter Plot</h5>
+                    <p>
+                        Used to display the relationship between two continuous
+                        variables.
+                    </p>
+                </div>
+
+                <div class="reference-card">
+                    <h5>Literature Review</h5>
+                    <p>
+                        Examines existing research and identifies knowledge gaps
+                        or opportunities.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL PREPARATION -->
+
+        <section class="final-card">
+
+            <div class="section-label">Assessment Preparation</div>
+
+            <h3>Before taking the Research 101 Assessment</h3>
+
+            <p>
+                You should be able to explain the concepts in this curriculum
+                without relying only on memorized definitions. The assessment
+                includes conceptual questions, practical research scenarios,
+                basic calculations, statistical interpretation, methodology
+                decisions, and academic writing/reference recognition.
+            </p>
+
+            <div class="checklist">
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Explain the purpose and process of research.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Identify strong and weak research questions.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Distinguish independent and dependent variables.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Distinguish nominal, ordinal, interval, and ratio scales.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Distinguish primary and secondary data.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Distinguish qualitative and quantitative research.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Recognize experimental designs and randomization.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Understand informed consent and participant privacy.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Explain the purpose of a literature review.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Understand the difference between a proposal and a paper.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Calculate mean, median, mode, variance, and standard deviation.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Interpret p-values and confidence intervals.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Distinguish Type I and Type II errors.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Recognize appropriate statistical tests for common scenarios.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Understand correlation versus causation.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Select appropriate visualizations for common data types.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Distinguish reliability from validity.
+                </div>
+
+                <div class="check-item">
+                    <i class="fa-solid fa-check"></i>
+                    Recognize basic IEEE reference and DOI formatting.
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <div id="site-footer"></div>
+
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://iarco.org/navbar/navbar.js"></script>
+    <script src="https://iarco.org/navbar/footer.js"></script>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* ===============================
+               PRELOADER
+            =============================== */
+
+            const preloader = document.getElementById("preloader");
+
+            window.addEventListener("load", function () {
+
+                setTimeout(function () {
+
+                    if (preloader) {
+                        preloader.style.opacity = "0";
+                        preloader.style.transition = "opacity .35s ease";
+
+                        setTimeout(function () {
+                            preloader.style.display = "none";
+                        }, 350);
+                    }
+
+                }, 250);
+
+            });
+
+
+            /* ===============================
+               ACTIVE CURRICULUM NAVIGATION
+            =============================== */
+
+            const sections = document.querySelectorAll(".module[id]");
+            const navLinks = document.querySelectorAll(".curriculum-nav a");
+
+            function updateActiveNav() {
+
+                let current = "";
+
+                sections.forEach(function (section) {
+
+                    const sectionTop = section.offsetTop - 130;
+
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute("id");
+                    }
+
+                });
+
+                navLinks.forEach(function (link) {
+
+                    link.classList.remove("active");
+
+                    const href = link.getAttribute("href");
+
+                    if (href === "#" + current) {
+                        link.classList.add("active");
+                    }
+
+                });
+
+            }
+
+            window.addEventListener("scroll", updateActiveNav);
+
+            updateActiveNav();
+
+
+            /* ===============================
+               BACK TO TOP
+            =============================== */
+
+            const backToTop = document.createElement("button");
+
+            backToTop.id = "backToTop";
+            backToTop.setAttribute("aria-label", "Back to top");
+            backToTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+
+            document.body.appendChild(backToTop);
+
+            window.addEventListener("scroll", function () {
+
+                if (window.scrollY > 500) {
+                    backToTop.style.display = "flex";
+                } else {
+                    backToTop.style.display = "none";
+                }
+
+            });
+
+            backToTop.addEventListener("click", function () {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            });
+
+
+            /* ===============================
+               SMOOTH NAVIGATION
+            =============================== */
+
+            document.querySelectorAll('.curriculum-nav a').forEach(function (link) {
+
+                link.addEventListener("click", function (event) {
+
+                    const targetId = this.getAttribute("href");
+
+                    if (!targetId || !targetId.startsWith("#")) {
+                        return;
+                    }
+
+                    const target = document.querySelector(targetId);
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    const offset = 75;
+
+                    const targetPosition =
+                        target.getBoundingClientRect().top +
+                        window.pageYOffset -
+                        offset;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
