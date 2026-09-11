@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#008542">
+  <meta name="description" content="Easy Gold scratch card experience">
+  <title>Easy Gold Scratch Card</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="fx-layer" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-badge">GP</div>
+      <div>
+        <strong>Easy Gold</strong>
+        <span>Classic Scratch Card</span>
+      </div>
+    </div>
+    <div class="header-chip">Demo Site!</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">A CLASSIC CARD EXPERIENCE</p>
+      <h1>Claim your <span>Easy Gold</span> card</h1>
+      <p>Pick a card, open the physical-looking back, then drag the scissors across the covered number. The coating is removed exactly where you scratch.</p>
+    </section>
+
+    <section class="cards-section" aria-label="Available Easy Gold cards">
+      <div id="card-grid" class="card-grid"></div>
+      <div id="empty-state" class="empty-state hidden">No cards are available right now.</div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" aria-label="Close" data-close-modal>×</button>
+
+      <div class="modal-meta">
+        <span id="modal-validity">VALIDITY: —</span>
+      </div>
+
+      <div class="flip-scene">
+        <div id="card-shell" class="card-shell">
+          <div class="card-face card-front">
+            <div class="front-art">
+              <img id="front-image" alt="">
+              <div class="front-overlay"></div>
+              <div class="front-brand">Easy Gold</div>
+              <div class="front-small">CLASSIC RECHARGE CARD</div>
+              <div class="front-stamp">CLAIM</div>
+            </div>
+          </div>
+
+          <div class="card-face card-back">
+            <!-- Completely HTML/CSS/JS-built reproduction of the printed card-back composition. -->
+            <div class="printed-back">
+              <div class="paper-grain"></div>
+
+              <div class="back-top-row">
+                <div id="secret-zone" class="secret-zone" aria-label="Scratch area">
+                  <div class="scratch-base">
+                    <div class="scratch-number" id="scratch-number">1054 487 985 184</div>
+                    <div class="scratch-strip-mark"></div>
+                  </div>
+                  <canvas id="scratch-canvas"></canvas>
+                  <div id="scissor" class="scissor" aria-hidden="true">✂</div>
+                  <div id="scratch-hint" class="scratch-hint">SCRATCH TO REVEAL</div>
+                </div>
+
+                <div class="expiry-box">
+                  <div class="expiry-en">Expires in <strong id="expiry-days">21 days</strong> after recharging</div>
+                  <div class="price-line"><span>TK</span> <strong id="card-price">300</strong></div>
+                  <div class="expiry-bn">রিচার্জ করার <strong id="expiry-days-bn">২১ দিন</strong> পর মেয়াদ শেষ হবে</div>
+                </div>
+              </div>
+
+              <div class="printed-copy">
+                <p>Gently scratch off the covered area above to reveal the hidden number. Now dial <b>*555*hidden number#</b> from your mobile and press the send button.</p>
+                <p>You will soon receive a message on your mobile showing the account status. To check your account balance, dial <b>*566#</b> and press the send button.</p>
+                <p class="small-note">Recharge is also possible through the standard recharge service. Please tear off the used card after successfully recharging your account.</p>
+              </div>
+
+              <div class="bengali-copy" aria-hidden="true">
+                <p>উপরের আবৃত অংশ হালকা ভাবে ঘষে গোপন নম্বরটি জেনে নিন। এরপর আপনার মোবাইল থেকে ডায়াল করুন <b>*555*গোপন নম্বর#</b>।</p>
+                <p>কিছুক্ষণের মধ্যেই আপনি রিচার্জের তথ্য মোবাইলের স্ক্রিনে দেখতে পাবেন। ব্যালেন্স জানতে <b>*566#</b> ডায়াল করুন।</p>
+              </div>
+
+              <div class="barcode-area">
+                <div id="barcode" class="barcode" aria-label="Barcode"></div>
+                <div id="barcode-text" class="barcode-text">6198-15982-17773</div>
+              </div>
+
+              <div class="bottom-tear-note">PLEASE TEAR OFF THE USED CARD AFTER RECHARGING</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-copy">
+        <h2 id="modal-title">Easy Gold</h2>
+        <p id="modal-description">Use the scissors to remove the printed silver coating from the hidden number strip.</p>
+
+        <div class="scratch-status">
+          <div class="status-line">
+            <span id="status-text">0% scratched</span>
+            <span id="status-distance">Start at the left and sweep across</span>
+          </div>
+          <div class="status-track">
+            <div id="status-fill"></div>
+          </div>
+        </div>
+
+        <div id="success-message" class="success-message" hidden>
+          <span class="success-check">✓</span>
+          <span>Your number has been fully revealed.</span>
+        </div>
+
+        <button id="reset-button" class="reset-button" type="button" hidden>Scratch Again</button>
+      </div>
+    </section>
+  </div>
+
+  <template id="card-template">
+    <article class="claim-card">
+      <div class="card-thumb">
+        <img class="thumb-image" alt="" loading="lazy">
+        <div class="thumb-shine"></div>
+        <span class="thumb-validity"></span>
+      </div>
+      <div class="card-body">
+        <div class="card-title-row">
+          <div>
+            <div class="card-kicker">EASY GOLD</div>
+            <h2 class="card-name"></h2>
+          </div>
+          <div class="card-dots">••••</div>
+        </div>
+        <p class="card-description"></p>
+        <button class="claim-button" type="button">
+          <span>Claim Card</span>
+          <span>→</span>
+        </button>
+      </div>
+    </article>
+  </template>
+
+  <footer class="footer">
+    <span>Built with 🥰 By <code><a href="https://iarco.org/sanaul-haque">Sanaul Haque</a></code></span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
