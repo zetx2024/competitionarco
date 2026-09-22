@@ -669,6 +669,9 @@
   @media (prefers-reduced-motion:reduce){
     .participation-card{animation:none}
   }
+.magic-intro{margin:0 0 14px;display:block}.magic-intro.is-hidden{display:none}
+  .magic-stage.is-hidden{display:none}
+  #worldMap path.participant-country{fill:#ffd700 !important;stroke:#fff3a3;stroke-width:.7}
 </style>
 
 <style>
@@ -678,7 +681,16 @@
   body.searching-table #student-table thead{display:table-header-group}
   body.searching-table #student-table tbody tr{display:table-row;margin:0;border:0;border-radius:0;box-shadow:none}
   body.searching-table #student-table td{display:table-cell;width:auto !important;border:1px solid #ddd;padding:8px 6px;text-align:center}
+  body.searching-table .table-wrapper{overflow-x:hidden;overflow-y:auto}
+  body.searching-table #student-table{table-layout:fixed;border-collapse:collapse;display:table !important}
+  body.searching-table #student-table tbody{display:table-row-group !important}
   body.searching-table #student-table td::before{display:none !important}
+  body.searching-table #student-table th,body.searching-table #student-table td{box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;vertical-align:middle}
+  body.searching-table #student-table th:nth-child(1),body.searching-table #student-table td:nth-child(1){width:13%}
+  body.searching-table #student-table th:nth-child(2),body.searching-table #student-table td:nth-child(2){width:23%}
+  body.searching-table #student-table th:nth-child(3),body.searching-table #student-table td:nth-child(3){width:29%}
+  body.searching-table #student-table th:nth-child(4),body.searching-table #student-table td:nth-child(4){width:20%}
+  body.searching-table #student-table th:nth-child(5),body.searching-table #student-table td:nth-child(5){width:15%}
 
 </style>
 </head>
@@ -696,6 +708,22 @@
         <p id="magicStatus">Preparing the participant list...</p>
       </div>
     </div>
+
+    <section id="magicParticipation" class="participation-showcase magic-intro" aria-label="IARCO participation highlights">
+      <h3 class="participation-heading">🌍 A Global Research Community</h3>
+      <p class="participation-subtitle">Connecting young researchers across borders</p>
+      <div class="participation-content">
+        <div class="world-map-wrap"><svg id="worldMap" role="img" aria-label="Animated world map"></svg></div>
+        <div>
+          <div class="participation-cards">
+            <div class="participation-card"><div class="participation-icon"><i class="fas fa-users"></i></div><div class="participation-number" data-target="490">0</div><div class="participation-label">Total Participants</div></div>
+            <div class="participation-card"><div class="participation-icon"><i class="fas fa-school"></i></div><div class="participation-number" data-target="200">0</div><div class="participation-label">Participating Institutions</div></div>
+            <div class="participation-card"><div class="participation-icon"><i class="fas fa-location-dot"></i></div><div class="participation-number" data-target="37">0</div><div class="participation-label">Participating Countries</div></div>
+          </div>
+          <div class="participation-location"><i class="fas fa-globe-asia"></i> International participation from around the world</div>
+        </div>
+      </div>
+    </section>
 
     <div class="magic-progress">
       <div id="magicProgressBar"></div>
@@ -725,42 +753,6 @@
       <h5>Powered by <a href="https://domain.me">domain.ME</a></h5>
        <hr>
     <div id="stats">Loading statistics...</div>
-
-    <!-- Animated participation showcase -->
-    <section class="participation-showcase" aria-label="IARCO participation highlights">
-      <h3 class="participation-heading">🌍 A Global Research Community</h3>
-      <p class="participation-subtitle">Connecting young researchers across borders</p>
-      <div class="participation-content">
-        <div class="world-map-wrap">
-          <svg id="worldMap" role="img" aria-label="Animated world map"></svg>
-        </div>
-        <div>
-          <div class="participation-cards">
-            <div class="participation-card">
-              <div class="participation-icon"><i class="fas fa-users"></i></div>
-              <div class="participation-number" data-target="490">0</div>
-              <div class="participation-label">Total Participants</div>
-            </div>
-            <div class="participation-card">
-              <div class="participation-icon"><i class="fas fa-school"></i></div>
-              <div class="participation-number" data-target="200">0</div>
-              <div class="participation-label">Participating Institutions</div>
-            </div>
-            <div class="participation-card">
-              <div class="participation-icon"><i class="fas fa-location-dot"></i></div>
-              <div class="participation-number" data-target="37">0</div>
-              <div class="participation-label">Participating Countries</div>
-            </div>
-          </div>
-          <div class="participation-location">
-            <i class="fas fa-globe-asia"></i> International participation from around the world
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-   
 
     <!-- Charts -->
     <div class="charts">
@@ -845,41 +837,35 @@
       });
     }
 
-    async function renderWorldMap(){
+    async function renderWorldMap(participantCountries = []){
       const svg = d3.select("#worldMap");
       if(svg.empty()) return;
       try{
-        const geo = await fetch("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")
-          .then(res=>{
-            if(!res.ok) throw new Error("World map unavailable");
-            return res.json();
-          });
-        const node = document.getElementById("worldMap");
-        const width = Math.max(node.clientWidth || 500, 260);
-        const height = 210;
-        svg.attr("viewBox", `0 0 ${width} ${height}`);
-        const projection = d3.geoNaturalEarth1()
-          .fitSize([width - 16, height - 16], geo);
-        const path = d3.geoPath().projection(projection);
-        svg.selectAll("path")
-          .data(geo.features)
-          .join("path")
-          .attr("d", path)
-          .attr("opacity", 0)
-          .transition()
-          .duration(900)
-          .delay((d,i)=>Math.min(i*8,700))
-          .attr("opacity",1);
+        const geo = await fetch("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(res=>{
+          if(!res.ok) throw new Error("World map unavailable");
+          return res.json();
+        });
+        const node=document.getElementById("worldMap");
+        const width=Math.max(node.clientWidth || 500,260), height=210;
+        svg.attr("viewBox",`0 0 ${width} ${height}`);
+        const projection=d3.geoNaturalEarth1().fitSize([width-16,height-16],geo);
+        const path=d3.geoPath().projection(projection);
+        const normalize=value=>String(value||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+        const wanted=new Set(participantCountries.map(normalize));
+        svg.selectAll("path").remove();
+        svg.selectAll("path").data(geo.features).join("path")
+          .attr("d",path).attr("opacity",0)
+          .attr("class",d=>{
+            const props=d.properties||{};
+            const names=[props.name,props.NAME,props.admin,props.ADMIN,props.name_long,props.sovereignt].map(normalize);
+            return names.some(n=>wanted.has(n)) ? "participant-country" : "";
+          })
+          .transition().duration(650).delay((d,i)=>Math.min(i*5,450)).attr("opacity",1);
       }catch(error){
-        console.warn("World map could not be loaded:", error);
+        console.warn("World map could not be loaded:",error);
         svg.html('<text x="50%" y="50%" text-anchor="middle" fill="#dbeafe" font-size="12">🌍 Global participation</text>');
       }
     }
-
-    document.addEventListener("DOMContentLoaded",()=>{
-      animateParticipationNumbers();
-      renderWorldMap();
-    });
 
     // Load data first. The public page remains untouched while the
     // transparent magical loading layer performs its reveal.
@@ -921,7 +907,8 @@
       renderCountryList();
       renderTable();
       createParticipantStructuredData(studentData);
-      runMagicalReveal(studentData).then(() => {
+      const participantCountries = [...new Set(studentData.map(s => s.country).filter(Boolean))];
+      runMagicalReveal(studentData, participantCountries).then(() => {
         revealFinished = true;
         document.getElementById("magicalReveal").classList.add("magic-done");
         document.body.classList.remove("magic-lock");
@@ -1080,7 +1067,7 @@
       It does NOT animate the real public table, so there is no layout
       shifting, horizontal scrolling, or interaction glitch.
     */
-    async function runMagicalReveal(list) {
+    async function runMagicalReveal(list, participantCountries = []) {
       const overlay = document.getElementById("magicalReveal");
       const stage = document.getElementById("magicStage");
       const rowsContainer = document.getElementById("magicRows");
@@ -1091,6 +1078,18 @@
       if (!overlay || !stage || !rowsContainer) return;
 
       document.body.classList.add("magic-lock");
+      const intro=document.getElementById("magicParticipation");
+      intro?.classList.remove("is-hidden");
+      stage?.classList.add("is-hidden");
+      status.textContent="Mapping the countries represented by our participants...";
+      await renderWorldMap(participantCountries);
+      await wait(950);
+      status.textContent="Counting the global research community...";
+      animateParticipationNumbers();
+      await wait(1750);
+      intro?.classList.add("is-hidden");
+      stage?.classList.remove("is-hidden");
+      status.textContent="Preparing the finalist leaderboard...";
       rowsContainer.innerHTML = "";
 
       // Create all rows before starting the animation.
