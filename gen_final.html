@@ -7,8 +7,6 @@
  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
   <style type="text/css"> 
-  /* styles.css */
-
 /* Basic reset */
 * {
   margin: 0;
@@ -48,7 +46,6 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-
   </style>
 </head>
 <body>
@@ -66,10 +63,7 @@ pre {
   <pre id="json-output" style="display: none;"></pre>
 
   <script>
-
-    // script.js
-
-// Function to generate random ID in the format azAZ1-9
+// Function to generate random ID in the format azAZ0-9
 function generateRandomID() {
   const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let result = '';
@@ -98,20 +92,27 @@ document.getElementById('excel-file').addEventListener('change', function(event)
     const sheet = workbook.Sheets[workbook.SheetNames[0]]; // Getting the first sheet
     const sheetData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-    // Process the sheet data (skip the header)
+    // Process the sheet data (skip the header row)
     const studentData = [];
     for (let i = 1; i < sheetData.length; i++) {
-      const studentName = sheetData[i][0]; // First column = Student Name
-      const schoolName = sheetData[i][1];  // Second column = School Name
+      const row = sheetData[i];
 
-      if (studentName && schoolName) {
+      // Extract values from Excel columns with fallbacks for missing values
+      const studentName = row[0] ? row[0].toString().trim() : ''; 
+      const schoolName  = row[1] ? row[1].toString().trim() : ''; 
+      const category    = row[2] ? row[2].toString().trim() : ''; 
+      const country     = row[3] ? row[3].toString().trim() : ''; 
+      const selected    = row[4] ? row[4].toString().trim() : ''; 
+
+      // Process only rows that have a student name
+      if (studentName) {
         const student = {
-          id: generateRandomID(),        // Generate random ID
-          category: 'Senior',            // Default category
-          name: studentName,             // From Excel
-          school: schoolName,            // From Excel
-          country: 'Bangladesh',         // Default country
-          selected: 'No'                 // Default selected status
+          id: generateRandomID(),  // Randomly generated ID
+          category: category,      // From Excel (Column C)
+          name: studentName,       // From Excel (Column A)
+          school: schoolName,      // From Excel (Column B)
+          country: country,        // From Excel (Column D)
+          selected: selected       // From Excel (Column E)
         };
         studentData.push(student);
       }
@@ -122,7 +123,7 @@ document.getElementById('excel-file').addEventListener('change', function(event)
     jsonOutput.textContent = JSON.stringify(studentData, null, 2);
     jsonOutput.style.display = 'block';
 
-    // Show the "Generate JSON" and "Show JSON" buttons
+    // Show action buttons
     document.getElementById('generate-json-btn').style.display = 'inline-block';
     document.getElementById('show-json-btn').style.display = 'inline-block';
     document.getElementById('copy-json-btn').style.display = 'inline-block';
@@ -138,22 +139,28 @@ document.getElementById('show-json-btn').addEventListener('click', function() {
   jsonOutput.style.display = isVisible ? 'none' : 'block';
 });
 
-// Copy the JSON to clipboard
+// Copy the JSON to clipboard using modern Clipboard API with legacy fallback
 document.getElementById('copy-json-btn').addEventListener('click', function() {
   const jsonOutput = document.getElementById('json-output');
   const textToCopy = jsonOutput.textContent;
 
-  // Create a temporary textarea element to copy the JSON text
-  const tempTextArea = document.createElement('textarea');
-  tempTextArea.value = textToCopy;
-  document.body.appendChild(tempTextArea);
-  tempTextArea.select();
-  document.execCommand('copy');
-  document.body.removeChild(tempTextArea);
-
-  alert('JSON copied to clipboard!');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      alert('JSON copied to clipboard!');
+    }).catch(err => {
+      alert('Failed to copy: ' + err);
+    });
+  } else {
+    // Fallback for older browsers
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = textToCopy;
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempTextArea);
+    alert('JSON copied to clipboard!');
+  }
 });
-
   </script>
 </body>
 </html>
