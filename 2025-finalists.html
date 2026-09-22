@@ -18,9 +18,9 @@
         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>2025 Finalists | International Academic Research Competition</title>
+    <title>2025 IARCO Finalists | International Academic Research Competition</title>
     <link rel="icon" href="assets/logo.png"/>
-    <link rel="canonical" href="https://iarco.org"/>
+    <link rel="canonical" href="https://iarco.org/2025-finalists"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
@@ -38,15 +38,15 @@
     <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="revised" content="2025-10-04T19:01:57.028Z" />
+    <meta name="revised" content="2025-09-24T19:01:57.028Z" />
     <meta name="theme-color" content="#0749b3">
-    <meta name="keywords" content="Global, USA, United State of America, Competiton, IARCO, International, Academic, International Academic Research Competition, Bangladesh, Summer, SRP, WRP,YRJ, yrj, Youth Research Journal, Education, Lumiere Education, Spring, Research Program, Summer Activities, Winter Research, Winter Program, Winter Activities, undergraduate, research, journal, electronic, online, multidisciplinary, open access, articles, essays, Houston, Texas, Journal of Student Research, jofsr, Jofsr, JofSR, student research journal, undergraduate rsesearch journal, student research, high school, hs, high school publication, high school research, school research, high school edition, hs edition, hs portal, high school portal, high school edition research, machine learning, computational biology, machine, computational, biology."/>
-    <meta name="description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
+    <meta name="keywords" content="IARCO 2025 finalists, International Academic Research Competition 2025, IARCO finalists, IARCO participants, student research competition, research competition finalists, high school research, undergraduate research, student names, finalist schools, international research competition"/>
+    <meta name="description" content="View the official IARCO 2025 finalist participant list, including student names, schools, categories, countries, and selection status from the International Academic Research Competition."/>
     <meta name="subject" content="2025 Finalists | International Academic Research Competition">
     <meta name="copyright"content="Md Sanaul Haque Shanto">
     <meta name="language" content="ES">
     <meta name="robots" content="index,follow" />
-    <meta name="revised" content="2025-10-04T19:13:15.028Z" />
+    <meta name="revised" content="2025-09-24T19:13:15.028Z" />
     <meta name="abstract" content="2025 Finalists | International Academic Research Competition">
     <meta name="topic" content="2025 Finalists | International Academic Research Competition">
     <meta name="summary" content="2025 Finalists | International Academic Research Competition">
@@ -79,93 +79,731 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: Arial, sans-serif; background: #f9fafb; margin:0; padding:0; }
-    .container { max-width: 1100px; margin:auto; padding:12px; }
-    h2, h3 { text-align: center; margin-bottom: 6px; }
-    #stats { text-align:center; margin-bottom:12px; font-size:14px; color:#333; }
+    :root{
+      --iarco-blue:#003366;
+      --iarco-blue-2:#0749b3;
+      --iarco-green:#006400;
+      --iarco-gold:#ffd700;
+      --page-bg:#f9fafb;
+    }
+
+    *{box-sizing:border-box}
+    body.magic-lock{overflow:hidden}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,sans-serif;
+      background:var(--page-bg);
+      margin:0;
+      padding:0;
+      color:#222;
+      overflow-x:hidden;
+    }
+    .container{max-width:1100px;margin:auto;padding:12px}
+    h2,h3{text-align:center;margin-bottom:6px}
+    #stats{text-align:center;margin-bottom:12px;font-size:14px;color:#333}
 
     /* Search */
-    #searchBox { display:block; margin:0 auto 6px auto; padding:6px 10px; width:90%; max-width:300px; border-radius:6px; border:1px solid #ccc; font-size:14px; }
-    #searchResult { text-align:center; font-size:13px; margin-bottom:12px; color:#333; min-height:18px; }
+    #searchBox{
+      display:block;
+      margin:0 auto 6px;
+      padding:8px 10px;
+      width:min(90%,420px);
+      border-radius:6px;
+      border:1px solid #ccc;
+      font-size:14px;
+      outline:none;
+    }
+    #searchBox:focus{border-color:#0749b3;box-shadow:0 0 0 3px rgba(7,73,179,.10)}
+    #searchResult{text-align:center;font-size:13px;margin-bottom:12px;color:#333;min-height:18px}
 
     /* Charts */
-    .charts { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-bottom:20px; }
-    .chart-card { background:#fff; padding:8px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; }
-    .chart-card canvas { max-width:180px !important; max-height:180px !important; margin:auto; }
+    .charts{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+      margin-bottom:20px
+    }
+    .chart-card{
+      background:#fff;
+      padding:8px;
+      border-radius:10px;
+      box-shadow:0 2px 6px rgba(0,0,0,.1);
+      text-align:center
+    }
+    .chart-card canvas{
+      max-width:180px !important;
+      max-height:180px !important;
+      margin:auto
+    }
 
     /* Country list */
-    .country-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin:12px 0; }
-    .country-item { display:flex; align-items:center; gap:6px; background:#fff; padding:6px 8px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); font-size:13px; }
-    .country-item .flag { width:18px; height:auto; display:inline-block; }
-
-    /* Table */
-    .table-wrapper { overflow-x:auto; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); margin-bottom:20px; max-height:500px; overflow-y:auto; }
-    table { width:100%; border-collapse:collapse; background:#fff; min-width:600px; }
-    th, td { padding:6px; border:1px solid #ddd; text-align:center; font-size:14px; }
-    th { 
-      background:#f0f0f0; 
-      position: sticky; 
-      top: 0; 
-      z-index: 5; 
-      white-space: nowrap; 
+    .country-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:10px;
+      margin:12px 0
     }
-    .selected-yes { background:#006400 !important; color:white; }
-    .highlight { background: #242422 !important; color:white; }
-    .flag-icon { width:20px; height:auto; display:inline-block; vertical-align:middle; }
+    .country-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:#fff;
+      padding:6px 10px;
+      border-radius:8px;
+      box-shadow:0 1px 3px rgba(0,0,0,.1);
+      font-size:13px;
+      gap:10px;
+      min-width:0
+    }
+    .country-left{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      flex:1;
+      min-width:0
+    }
+    .country-left span:last-child{
+      white-space:normal;
+      overflow-wrap:anywhere;
+      line-height:1.2
+    }
+    .country-item .flag{
+      width:22px;
+      height:22px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 22px;
+      overflow:hidden
+    }
+    .country-item .flag svg,
+    .flag-icon svg{
+      width:100%;
+      height:100%;
+      max-width:100%;
+      max-height:100%;
+      display:block;
+      object-fit:contain
+    }
+    .selected-count{color:green;font-weight:600}
 
-    @media (max-width:600px){
-      h2,h3{font-size:16px;}
-      th,td{font-size:12px;padding:4px;}
-      .chart-card canvas{max-width:140px !important; max-height:140px !important;}
-      .country-item{font-size:12px;}
+    /* Normal participant table: no horizontal scrolling */
+    .table-wrapper{
+      width:100%;
+      border-radius:10px;
+      box-shadow:0 2px 6px rgba(0,0,0,.1);
+      margin-bottom:20px;
+      overflow:hidden;
+      background:#fff
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:#fff;
+      table-layout:fixed
+    }
+    th,td{
+      padding:8px 6px;
+      border:1px solid #ddd;
+      text-align:center;
+      font-size:14px;
+      vertical-align:middle;
+      overflow-wrap:anywhere;
+      word-break:normal
+    }
+    th{
+      background:#f0f0f0;
+      position:sticky;
+      top:0;
+      z-index:5;
+      white-space:normal
+    }
+    th:nth-child(1){width:14%}
+    th:nth-child(2){width:22%}
+    th:nth-child(3){width:31%}
+    th:nth-child(4){width:18%}
+    th:nth-child(5){width:15%}
+
+    td:nth-child(2),td:nth-child(3){overflow-wrap:anywhere}
+    .selected-yes{background:#006400 !important;color:#fff}
+    .highlight{background:#242422 !important;color:#fff}
+    .flag-icon{
+      width:22px;
+      height:22px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      vertical-align:middle;
+      overflow:hidden
     }
 
-    .country-item {
-  display: flex;
-  justify-content: space-between; /* name left, numbers right */
-  align-items: center;
-  background: #fff;
-  padding: 6px 10px;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  font-size: 13px;   /* base font */
-  gap: 10px;
-  flex-wrap: nowrap;
-}
+    /* ================= MAGIC REVEAL OVERLAY ================= */
+    .magical-reveal{
+      position:fixed;
+      inset:0;
+      z-index:99999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      opacity:1;
+      visibility:visible;
+      transition:opacity .8s ease,visibility .8s ease
+    }
+    .magical-reveal.magic-done{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none
+    }
+    .magical-backdrop{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 50% 40%,rgba(7,73,179,.22),transparent 38%),
+        linear-gradient(135deg,rgba(0,20,45,.97),rgba(0,51,102,.97));
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px)
+    }
+    .magical-card{
+      position:relative;
+      width:min(1100px,100%);
+      height:min(760px,calc(100vh - 28px));
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.20);
+      border-radius:22px;
+      background:rgba(255,255,255,.97);
+      box-shadow:0 25px 100px rgba(0,0,0,.45);
+      animation:magicCardIn .8s cubic-bezier(.16,1,.3,1)
+    }
+    .magical-top{
+      flex:0 0 auto;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:20px 24px 14px;
+      background:linear-gradient(135deg,#003366,#0749b3);
+      color:#fff
+    }
+    .magic-kicker{
+      color:#ffd700;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:2px;
+      margin-bottom:3px
+    }
+    .magical-top h2{
+      text-align:left;
+      margin:0;
+      font-size:clamp(19px,3vw,28px)
+    }
+    .magical-top p{margin:5px 0 0;opacity:.82;font-size:13px}
+    .magic-orbit{
+      position:relative;
+      width:56px;
+      height:56px;
+      flex:0 0 56px;
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:50%;
+      animation:orbitSpin 3s linear infinite
+    }
+    .magic-orbit:before,.magic-orbit:after{
+      content:"";
+      position:absolute;
+      inset:7px;
+      border:1px solid rgba(255,215,0,.55);
+      border-radius:50%
+    }
+    .magic-orbit:after{inset:17px;border-color:rgba(255,255,255,.5)}
+    .magic-orbit span{
+      position:absolute;
+      width:7px;height:7px;
+      border-radius:50%;
+      background:#ffd700;
+      top:-3px;left:calc(50% - 3.5px);
+      box-shadow:0 0 12px #ffd700
+    }
+    .magic-orbit span:nth-child(2){top:auto;left:auto;right:-3px;bottom:11px;background:#fff}
+    .magic-orbit span:nth-child(3){top:auto;left:4px;bottom:0;background:#4b9cd3}
 
-.country-left {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex: 1; /* take up available space */
-}
+    .magic-progress{
+      height:4px;
+      flex:0 0 4px;
+      background:#e8edf3
+    }
+    #magicProgressBar{
+      width:0%;
+      height:100%;
+      background:linear-gradient(90deg,#0749b3,#4b9cd3,#ffd700);
+      transition:width .18s linear
+    }
+    .magic-stage{
+      position:relative;
+      flex:1 1 auto;
+      min-height:0;
+      overflow:hidden;
+      background:#f6f8fb;
+      padding:0 12px
+    }
+    .magic-table-head,.magic-row{
+      display:grid;
+      grid-template-columns:minmax(70px,.75fr) minmax(130px,1.5fr) minmax(160px,2fr) minmax(80px,1fr) minmax(75px,.8fr);
+      align-items:center;
+      gap:0;
+    }
+    .magic-table-head{
+      position:sticky;
+      top:0;
+      z-index:4;
+      min-height:38px;
+      background:#eaf0f7;
+      border-bottom:1px solid #d4dde8;
+      color:#003366;
+      font-size:11px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.4px
+    }
+    .magic-table-head span,.magic-row span{
+      padding:7px 8px;
+      min-width:0;
+      overflow-wrap:anywhere
+    }
+    .magic-row{
+      position:relative;
+      min-height:43px;
+      background:#fff;
+      border-bottom:1px solid #e7ebef;
+      opacity:0;
+      transform:translateY(16px) scale(.985);
+      filter:blur(3px);
+      transition:opacity .45s ease,transform .55s cubic-bezier(.16,1,.3,1),filter .55s ease,background .3s ease
+    }
+    .magic-row.revealed{
+      opacity:1;
+      transform:none;
+      filter:none
+    }
+    .magic-row.selected{
+      background:#006400;
+      color:#fff;
+      box-shadow:inset 4px 0 #ffd700
+    }
+    .magic-row.selected:after{
+      content:"✓";
+      position:absolute;
+      right:7px;
+      top:50%;
+      transform:translateY(-50%) scale(0);
+      width:21px;height:21px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      background:#ffd700;
+      color:#003366;
+      font-size:12px;
+      font-weight:900;
+      animation:checkIn .5s .08s cubic-bezier(.16,1,.3,1) forwards
+    }
+    .magic-row .magic-name{font-weight:700}
+    .magic-row .magic-school{color:#374151}
+    .magic-row.selected .magic-school{color:#fff}
+    .magic-country{
+      display:flex;
+      align-items:center;
+      gap:5px
+    }
+    .magic-country svg{
+      width:20px;height:20px;display:block;flex:0 0 20px
+    }
+    .magic-footer{
+      flex:0 0 auto;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 18px;
+      font-size:12px;
+      color:#4b5563;
+      background:#fff;
+      border-top:1px solid #e6e9ed
+    }
+    .magic-scroll-note{color:#0749b3;font-weight:600}
 
-.country-left span:last-child {
-  white-space: normal; /* allow wrapping if needed */
-  line-height: 1.2;
-}
+    @keyframes magicCardIn{from{opacity:0;transform:translateY(25px) scale(.97)}to{opacity:1;transform:none}}
+    @keyframes orbitSpin{to{transform:rotate(360deg)}}
+    @keyframes checkIn{to{transform:translateY(-50%) scale(1)}}
 
-.selected-count {
-  color: green;
-  font-weight: 600;
-}
+    /* Responsive: the public table becomes a readable card list.
+       This eliminates horizontal scrolling entirely. */
+    .sponsor-showcase{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:2px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .sponsor-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    min-width:105px;
+    max-width:145px;
+    padding:8px;
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    transition:transform .2s ease,background .2s ease;
+  }
+  .sponsor-item:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);color:#fff}
+  .sponsor-item img{width:88px;height:42px;object-fit:contain;background:#fff;border-radius:7px;padding:4px}
+  .sponsor-item strong{font-size:10px;text-align:center;line-height:1.25}
+  .sponsor-item small{font-size:9px;color:#ffe88a;text-align:center}
+  @media (max-width:700px){
+      .container{padding:10px}
+      h2{font-size:18px}
+      h3{font-size:16px}
+      th,td{font-size:12px;padding:6px 4px}
+      .country-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+      .country-item{font-size:11px;padding:6px}
+      .country-item .flag{width:20px;height:20px;flex-basis:20px}
+      .flag-icon{width:20px;height:20px}
 
-/*  Responsive font scaling */
-@media (max-width:800px){
-  .country-item { font-size: 12px; }
-}
-@media (max-width:600px){
-  .country-item { font-size: 11px; }
-}
-@media (max-width:400px){
-  .country-item { font-size: 10px; }
-}
+      .magical-card{
+        height:calc(100vh - 16px);
+        border-radius:16px
+      }
+      .magical-top{padding:16px}
+      .magic-orbit{width:44px;height:44px;flex-basis:44px}
+      .magical-top p{font-size:11px}
+      .magic-stage{padding:0 7px}
+      .magic-table-head,.magic-row{
+        grid-template-columns:62px minmax(95px,1.15fr) minmax(105px,1.35fr) 60px 60px;
+        font-size:10px
+      }
+      .magic-table-head span,.magic-row span{padding:6px 4px}
+      .magic-row{min-height:45px}
+      .magic-footer{padding:8px 11px}
+    }
 
- 
+    @media (max-width:520px){
+      /* Public table: readable stacked cards, no horizontal scroll. */
+      .table-wrapper{box-shadow:none;background:transparent;overflow:visible}
+      #student-table,#student-table tbody{display:block;width:100%}
+      #student-table thead{display:none}
+      #student-table tbody tr{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:0;
+        margin-bottom:9px;
+        background:#fff;
+        border:1px solid #e1e5ea;
+        border-radius:10px;
+        overflow:hidden;
+        box-shadow:0 2px 6px rgba(0,0,0,.07)
+      }
+      #student-table td{
+        display:block;
+        width:auto !important;
+        border:0;
+        border-bottom:1px solid #edf0f3;
+        padding:8px 9px;
+        text-align:left;
+        font-size:12px;
+        overflow-wrap:anywhere
+      }
+      #student-table td:nth-child(1)::before{content:"Category";font-weight:700;color:#6b7280;display:block;font-size:9px;text-transform:uppercase}
+      #student-table td:nth-child(2)::before{content:"Name";font-weight:700;color:#6b7280;display:block;font-size:9px;text-transform:uppercase}
+      #student-table td:nth-child(3)::before{content:"School";font-weight:700;color:#6b7280;display:block;font-size:9px;text-transform:uppercase}
+      #student-table td:nth-child(4)::before{content:"Country";font-weight:700;color:#6b7280;display:block;font-size:9px;text-transform:uppercase}
+      #student-table td:nth-child(5)::before{content:"Selected";font-weight:700;color:#6b7280;display:block;font-size:9px;text-transform:uppercase}
+      #student-table td:nth-child(3){grid-column:1/-1}
+      #student-table td:nth-child(5){grid-column:1/-1}
+      #student-table td:last-child{border-bottom:0}
+      #student-table tr.selected-yes td::before{color:rgba(255,255,255,.78)}
+      #student-table tr.selected-yes{background:#006400 !important;color:#fff}
+      #student-table tr.highlight{background:#242422 !important;color:#fff}
+      .charts{grid-template-columns:1fr}
+      .chart-card canvas{max-width:150px !important;max-height:150px !important}
+      .magic-table-head,.magic-row{
+        grid-template-columns:55px minmax(88px,1fr) minmax(90px,1fr) 52px 52px;
+        font-size:9px
+      }
+      .magic-country svg{width:17px;height:17px;flex-basis:17px}
+      .magic-table-head span,.magic-row span{padding:6px 3px}
+      .magic-row{min-height:48px}
+    }
 
+    @media (max-width:370px){
+      .magic-table-head,.magic-row{
+        grid-template-columns:49px minmax(72px,1fr) minmax(78px,1fr) 45px 48px;
+        font-size:8px
+      }
+      .magical-top h2{font-size:17px}
+      .magic-kicker{font-size:9px}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *,*:before,*:after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        scroll-behavior:auto !important;
+        transition-duration:.01ms !important
+      }
+    }
   </style>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<style>
+  /* Requested UX enhancements */
+  .table-wrapper{
+    max-height: min(70vh, 760px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  #student-table thead th{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: #eaf0f7;
+    box-shadow: 0 1px 0 #cbd5e1;
+  }
+  #student-table tbody tr.highlight td{
+    background: #242422 !important;
+    color: #fff !important;
+  }
+
+  .participation-showcase{
+    margin: 18px 0 24px;
+    padding: 18px;
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255,215,0,.18), transparent 32%),
+      linear-gradient(135deg,#001d3d,#0749b3 60%,#003366);
+    color: #fff;
+    box-shadow: 0 12px 30px rgba(0,25,70,.18);
+    overflow: hidden;
+    position: relative;
+  }
+  .participation-heading{
+    text-align:center;
+    margin:0 0 4px;
+    font-size:clamp(18px,3vw,28px);
+    font-weight:800;
+  }
+  .participation-subtitle{
+    text-align:center;
+    margin:0 0 16px;
+    opacity:.85;
+    font-size:13px;
+  }
+  .participation-content{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);
+    gap:18px;
+    align-items:center;
+  }
+  .world-map-wrap{
+    min-height:180px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:14px;
+    background:rgba(255,255,255,.06);
+    overflow:hidden;
+  }
+  #worldMap{width:100%;height:210px;display:block}
+  #worldMap path{
+    fill:rgba(255,255,255,.28);
+    stroke:rgba(255,255,255,.45);
+    stroke-width:.45;
+    transition:fill .35s ease;
+  }
+  #worldMap path:hover{fill:#ffd700}
+  .participation-cards{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+  }
+  .participation-card{
+    min-width:0;
+    padding:14px 8px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:14px;
+    text-align:center;
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(5px);
+    animation:participationFloat 5s ease-in-out infinite;
+  }
+  .participation-card:nth-child(2){animation-delay:.45s}
+  .participation-card:nth-child(3){animation-delay:.9s}
+  .participation-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    color:#ffd700;
+    margin-bottom:5px;
+  }
+  .participation-number{
+    font-size:clamp(22px,3vw,34px);
+    line-height:1.1;
+    font-weight:900;
+    color:#fff;
+    font-variant-numeric:tabular-nums;
+  }
+  .participation-label{
+    margin-top:6px;
+    font-size:11px;
+    line-height:1.35;
+    opacity:.9;
+  }
+  .participation-location{
+    margin-top:12px;
+    text-align:center;
+    font-size:12px;
+    color:#dbeafe;
+  }
+  @keyframes participationFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-5px)}
+  }
+  .sponsor-showcase{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:2px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .sponsor-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    min-width:105px;
+    max-width:145px;
+    padding:8px;
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    transition:transform .2s ease,background .2s ease;
+  }
+  .sponsor-item:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);color:#fff}
+  .sponsor-item img{width:88px;height:42px;object-fit:contain;background:#fff;border-radius:7px;padding:4px}
+  .sponsor-item strong{font-size:10px;text-align:center;line-height:1.25}
+  .sponsor-item small{font-size:9px;color:#ffe88a;text-align:center}
+  @media (max-width:700px){
+    .participation-showcase{padding:13px;margin:12px 0 18px}
+    .participation-content{grid-template-columns:1fr;gap:10px}
+    .world-map-wrap{min-height:125px}
+    #worldMap{height:145px}
+    .participation-cards{gap:6px}
+    .participation-card{padding:11px 4px}
+    .participation-icon{font-size:18px}
+    .participation-label{font-size:10px}
+    .table-wrapper{max-height:65vh}
+  }
+  @media (max-width:380px){
+    .participation-cards{grid-template-columns:1fr}
+    .participation-card{display:grid;grid-template-columns:35px 1fr;align-items:center;text-align:left;column-gap:8px}
+    .participation-icon{grid-row:span 2;margin:0}
+    .participation-number{font-size:25px}
+    .participation-label{margin-top:2px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .participation-card{animation:none}
+  }
+.magic-intro{margin:0 0 14px;display:block}.magic-intro.is-hidden{display:none}
+  .magic-stage.is-hidden{display:none}
+  #worldMap path.participant-country{fill:#ffd700 !important;stroke:#fff3a3;stroke-width:.7}
+</style>
+
+<style>
+
+  body.searching-table #student-table,
+  body.searching-table #student-table tbody{display:table;width:100%}
+  body.searching-table #student-table thead{display:table-header-group}
+  body.searching-table #student-table tbody tr{display:table-row;margin:0;border:0;border-radius:0;box-shadow:none}
+  body.searching-table #student-table td{display:table-cell;width:auto !important;border:1px solid #ddd;padding:8px 6px;text-align:center}
+  body.searching-table .table-wrapper{overflow-x:hidden;overflow-y:auto}
+  body.searching-table #student-table{table-layout:fixed;border-collapse:collapse;display:table !important}
+  body.searching-table #student-table tbody{display:table-row-group !important}
+  body.searching-table #student-table td::before{display:none !important}
+  body.searching-table #student-table th,body.searching-table #student-table td{box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;vertical-align:middle}
+  body.searching-table #student-table th:nth-child(1),body.searching-table #student-table td:nth-child(1){width:13%}
+  body.searching-table #student-table th:nth-child(2),body.searching-table #student-table td:nth-child(2){width:23%}
+  body.searching-table #student-table th:nth-child(3),body.searching-table #student-table td:nth-child(3){width:29%}
+  body.searching-table #student-table th:nth-child(4),body.searching-table #student-table td:nth-child(4){width:20%}
+  body.searching-table #student-table th:nth-child(5),body.searching-table #student-table td:nth-child(5){width:15%}
+
+</style>
 </head>
-<body>
+<body class="magic-lock">
+
+<!-- Magical participant reveal overlay -->
+<div id="magicalReveal" class="magical-reveal" aria-hidden="true">
+  <div class="magical-backdrop"></div>
+  <div class="magical-card" role="dialog" aria-label="Loading IARCO 2025 finalists">
+    <div class="magical-top">
+      <div class="magic-orbit"><span></span><span></span><span></span></div>
+      <div>
+        <div class="magic-kicker">IARCO 2025</div>
+        <h2 style="color: white;">Selected Lists Are Being Revealed</h2>
+        <p id="magicStatus">Preparing the participant list...</p>
+      </div>
+    </div>
+
+    <section id="magicParticipation" class="participation-showcase magic-intro" aria-label="IARCO participation highlights">
+      <h3 class="participation-heading" style="color: white;">🌍 A Global Research Community</h3>
+      <p class="participation-subtitle">Connecting young researchers across borders</p>
+      <div class="participation-content">
+        <div>
+          <div class="world-map-wrap"><svg id="worldMap" role="img" aria-label="Animated world map"></svg></div>
+          <div id="sponsorShowcase" class="sponsor-showcase" aria-label="IARCO sponsors"></div>
+        </div>
+        <div>
+          <div class="participation-cards">
+            <div class="participation-card"><div class="participation-icon"><i class="fas fa-users"></i></div><div class="participation-number" data-target="500">0</div><div class="participation-label">Total Participants</div></div>
+            <div class="participation-card"><div class="participation-icon"><i class="fas fa-school"></i></div><div class="participation-number" data-target="400">0</div><div class="participation-label">Participating Institutions</div></div>
+            <div class="participation-card"><div class="participation-icon"><i class="fas fa-location-dot"></i></div><div class="participation-number" data-target="60">0</div><div class="participation-label">Participating Countries</div></div>
+          </div>
+          <div class="participation-location"><i class="fas fa-globe-asia"></i> International participation from around the world</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="magic-progress">
+      <div id="magicProgressBar"></div>
+    </div>
+
+    <div class="magic-stage" id="magicStage">
+      <div class="magic-table-head">
+        <span>Category</span><span>Name</span><span>School</span><span>Country</span><span>Selected</span>
+      </div>
+      <div id="magicRows" class="magic-rows"></div>
+    </div>
+
+    <div class="magic-footer">
+      <span id="magicCounter">0 participants</span>
+      <span class="magic-scroll-note">Preparing the full list ↓</span>
+    </div>
+  </div>
+</div>
+
 <!-- ================= NAVBAR PLACEHOLDER ================= -->
     <div id="navbar-root"></div>
 <!-- ====================================================== -->
@@ -173,11 +811,9 @@
   <div class="container">
     <br >
     <h2>📊 IARCO 2025 Student Statistics</h2>
-      <h5>Powered by <a href="https://domain.me">domain.ME</a></h5>
+      <h5>Sponsored by <a href="https://SaveMyExams.com">SaveMyExams</a> & <a href="https://domain.me">domain.ME</a></h5>
        <hr>
     <div id="stats">Loading statistics...</div>
-
-   
 
     <!-- Charts -->
     <div class="charts">
@@ -200,7 +836,7 @@
     <div id="countryList" class="country-list"></div>
 
     <!-- Student Table -->
-    <h3>📋 Participant List</h3>
+    <h3>📋 Research Proposal Submission List</h3>
       <center>
       <p style="text-align: center; font-size: 8px;">*Sorted by Name in Alphabetical Order.</p>
           </center>
@@ -213,7 +849,6 @@
       <table id="student-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Category</th>
             <th>Name</th>
             <th>School</th>
@@ -225,6 +860,8 @@
       </table>
     </div>
   </div>
+</br>
+<center> <p>Built with ❤️ by <a href="https://iarco.org/sanaul-haque">Sanaul Haque</a></p> </center>
 <!-- Footer Mount Point -->
     <div id="site-footer"></div>
 <!-- Footer Mount End -->
@@ -238,25 +875,195 @@
             crossorigin="anonymous"></script>
             <script src="https://iarco.org/navbar/navbar.js"></script>
 <script src="https://iarco.org/navbar/footer.js"></script>
+
   <script>
     let studentData = [];
     let flagData = {};
     let charts = {};
+    let revealFinished = false;
+    let publicParticipationData = [];
+    let sponsorData = [];
 
-    // Load data
+
+    /* Animated participation showcase */
+    function animateParticipationNumbers(){
+      document.querySelectorAll(".participation-number[data-target]").forEach(el=>{
+        const target = Number(el.dataset.target) || 0;
+        const duration = 1500;
+        const start = performance.now();
+        function tick(now){
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(target * eased).toLocaleString();
+          if(progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target.toLocaleString();
+        }
+        requestAnimationFrame(tick);
+      });
+    }
+
+    async function renderWorldMap(participantCountries = []){
+      const svg = d3.select("#worldMap");
+      if(svg.empty()) return;
+      try{
+        const geo = await fetch("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then(res=>{
+          if(!res.ok) throw new Error("World map unavailable");
+          return res.json();
+        });
+        const node=document.getElementById("worldMap");
+        const width=Math.max(node.clientWidth || 500,260), height=210;
+        svg.attr("viewBox",`0 0 ${width} ${height}`);
+        const projection=d3.geoNaturalEarth1().fitSize([width-16,height-16],geo);
+        const path=d3.geoPath().projection(projection);
+        const normalize=value=>String(value||"").toLowerCase().replace(/[^a-z0-9]/g,"");
+        const wanted=new Set(participantCountries.map(normalize));
+        svg.selectAll("path").remove();
+        svg.selectAll("path").data(geo.features).join("path")
+          .attr("d",path).attr("opacity",0)
+          .attr("class",d=>{
+            const props=d.properties||{};
+            const names=[props.name,props.NAME,props.admin,props.ADMIN,props.name_long,props.sovereignt].map(normalize);
+            return names.some(n=>wanted.has(n)) ? "participant-country" : "";
+          })
+          .transition().duration(650).delay((d,i)=>Math.min(i*5,450)).attr("opacity",1);
+      }catch(error){
+        console.warn("World map could not be loaded:",error);
+        svg.html('<text x="50%" y="50%" text-anchor="middle" fill="#dbeafe" font-size="12">🌍 Global participation</text>');
+      }
+    }
+
+    function normalizeKey(value){
+      return String(value || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+    }
+
+    function getCountryValues(list){
+      return [...new Set((Array.isArray(list) ? list : []).map(item =>
+        typeof item === "string" ? item : (item.country || item.Country || "")
+      ).filter(Boolean))];
+    }
+
+    function getInstitutionValue(item){
+      return item.institution || item.school || item.Institution || item.School || item.institution_name || "";
+    }
+
+    function getParticipantCountry(item){
+      return item.country || item.Country || item.nationality || item.Nationality || "";
+    }
+
+    function getPublicParticipationStats(list){
+      const rows = Array.isArray(list) ? list : [];
+      const countries = getCountryValues(rows.map(getParticipantCountry));
+      const institutions = new Set(rows.map(getInstitutionValue).map(v => String(v).trim()).filter(Boolean));
+      return {
+        total: rows.length,
+        institutions: institutions.size,
+        countries: countries.length,
+        countryNames: countries
+      };
+    }
+
+    function renderSponsors(list){
+      const container = document.getElementById("sponsorShowcase");
+      if(!container) return;
+      container.innerHTML = "";
+      (Array.isArray(list) ? list : []).forEach(partner => {
+        if(!partner || !partner.website || !partner.logo) return;
+        const link = document.createElement("a");
+        link.className = "sponsor-item";
+        link.href = partner.website;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.title = partner.description || partner.name || "Sponsor";
+        link.innerHTML = `
+          <img src="${escapeHtml(partner.logo)}" alt="${escapeHtml(partner.name || "Sponsor")} logo" loading="lazy">
+          <strong>${escapeHtml(partner.name || "Sponsor")}</strong>
+          <small>${escapeHtml(partner.type || "Partner")}</small>
+        `;
+        container.appendChild(link);
+      });
+      if(!container.children.length) container.remove();
+    }
+
+    // Load data first. The public page remains untouched while the
+    // transparent magical loading layer performs its reveal.
     Promise.all([
-      fetch("data/participation_2025.json").then(res => res.json()),
-      fetch("data/flag.json").then(res => res.json())
-    ]).then(([students, flags]) => {
-      studentData = students;
-      flagData = flags;
-      renderTable();
+      fetch("data/participation_2025.json").then(res => {
+        if (!res.ok) throw new Error("Could not load participation_2025.json");
+        return res.json();
+      }),
+      fetch("data/flagss.json").then(res => {
+        if (!res.ok) throw new Error("Could not load flagss.json");
+        return res.json();
+      }),
+      fetch("https://cert.iarco.org/participant.json").then(res => {
+        if (!res.ok) throw new Error("Could not load public users.json");
+        return res.json();
+      }),
+      fetch("data/partners.json").then(res => {
+        if (!res.ok) throw new Error("Could not load partners.json");
+        return res.json();
+      })
+    ]).then(([students, flags, users, partners]) => {
+      studentData = Array.isArray(students) ? students : [];
+      publicParticipationData = Array.isArray(users) ? users : (users && Array.isArray(users.users) ? users.users : (users && typeof users === "object" ? Object.values(users).filter(item => item && typeof item === "object") : []));
+      const sponsorRoot = partners && partners["2025"] ? partners["2025"] : partners;
+      sponsorData = sponsorRoot && Array.isArray(sponsorRoot.sponsor) ? sponsorRoot.sponsor : [];
+      renderSponsors(sponsorData);
+
+      flagData = {};
+      if (Array.isArray(flags)) {
+        flags.forEach(item => {
+          if (item && item.country) flagData[item.country] = item.svg || "";
+        });
+      } else if (flags && typeof flags === "object") {
+        Object.keys(flags).forEach(key => {
+          const item = flags[key];
+          if (typeof item === "string") {
+            flagData[key] = item;
+          } else if (item && typeof item === "object") {
+            flagData[item.country || key] = item.svg || "";
+          }
+        });
+      }
+
+      // Sort a copy so the original JSON array is not mutated.
+      studentData = [...studentData].sort((a,b) =>
+        String(a.name || "").localeCompare(String(b.name || ""))
+      );
+
       renderStats();
       renderCharts();
       renderCountryList();
+      renderTable();
+      createParticipantStructuredData(studentData);
+      const publicStats = getPublicParticipationStats(publicParticipationData);
+      runMagicalReveal(studentData, publicStats).then(() => {
+        revealFinished = true;
+        document.getElementById("magicalReveal").classList.add("magic-done");
+        document.body.classList.remove("magic-lock");
+        setTimeout(() => {
+          document.getElementById("magicalReveal").remove();
+          // Smoothly land the visitor on the actual participant section.
+          document.getElementById("student-table")
+            ?.closest(".table-wrapper")
+            ?.scrollIntoView({behavior:"smooth", block:"start"});
+        }, 850);
+      });
+    }).catch(error => {
+      console.error(error);
+      document.getElementById("stats").textContent =
+        "Unable to load participant statistics.";
+      const overlay = document.getElementById("magicalReveal");
+      if (overlay) {
+        document.getElementById("magicStatus").textContent =
+          "The participant list could not be loaded.";
+        setTimeout(() => {
+          overlay.classList.add("magic-done");
+          document.body.classList.remove("magic-lock");
+        }, 1200);
+      }
     });
 
-    // Render statistics
     function renderStats() {
       const total = studentData.length;
       const juniorYes = studentData.filter(s=>s.category==='Junior'&&s.selected==='Yes').length;
@@ -266,122 +1073,326 @@
       const schoolCount = new Set(studentData.map(s=>s.school)).size;
       const countryCount = new Set(studentData.map(s=>s.country)).size;
 
-      document.getElementById("stats").innerHTML = 
-        `Total Participants: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institutions: ${schoolCount} | Participating Countries: ${countryCount}`;
+      document.getElementById("stats").innerHTML =
+        `Total RP Submission: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Institutions: ${schoolCount} | Countries: ${countryCount}`;
     }
 
-    // Render student table
     function renderTable() {
       const tableBody = document.querySelector("#student-table tbody");
       tableBody.innerHTML = "";
-      const sorted = studentData.sort((a,b)=>a.name.localeCompare(b.name));
 
-      sorted.forEach(student => {
+      studentData.forEach(student => {
         const row = document.createElement("tr");
+
+        const flagSvg = flagData[student.country] || "";
+        const countryContent = flagSvg
+          ? `<span class="flag-icon" title="${escapeHtml(student.country || "")}" aria-label="${escapeHtml(student.country || "")}">${flagSvg}</span>`
+          : escapeHtml(student.country || "");
+
         row.innerHTML = `
-          <td>${student.id}</td>
-          <td>${student.category}</td>
-          <td>${student.name}</td>
-          <td>${student.school}</td>
-          <td>${flagData[student.country]? `<span class="flag-icon" title="${student.country}">${flagData[student.country]}</span>`: student.country}</td>
-          <td>${student.selected}</td>
+          <td>${escapeHtml(student.category || "")}</td>
+          <td>${escapeHtml(student.name || "")}</td>
+          <td>${escapeHtml(student.school || "")}</td>
+          <td>${countryContent}</td>
+          <td>${escapeHtml(student.selected || "")}</td>
         `;
-        if(student.selected==="Yes") row.classList.add("selected-yes");
+
+        if (student.selected === "Yes") row.classList.add("selected-yes");
         tableBody.appendChild(row);
       });
     }
 
-    // Render charts
     function renderCharts() {
-      for(const key in charts){ charts[key].destroy(); }
+      for(const key in charts){
+        if (charts[key]) charts[key].destroy();
+      }
 
       const juniors = studentData.filter(s=>s.category==='Junior');
       const juniorYes = juniors.filter(s=>s.selected==='Yes').length;
       const juniorNo = juniors.filter(s=>s.selected==='No').length;
+
       charts.juniorChart = new Chart(document.getElementById("juniorChart"),{
         type:"doughnut",
-        data:{ labels:["Selected","Not Selected"], datasets:[{ data:[juniorYes,juniorNo], backgroundColor:["#006400","#FF5252"] }] }
+        data:{
+          labels:["Selected","Not Selected"],
+          datasets:[{data:[juniorYes,juniorNo],backgroundColor:["#006400","#FF5252"]}]
+        }
       });
 
       const seniors = studentData.filter(s=>s.category==='Senior');
       const seniorYes = seniors.filter(s=>s.selected==='Yes').length;
       const seniorNo = seniors.filter(s=>s.selected==='No').length;
+
       charts.seniorChart = new Chart(document.getElementById("seniorChart"),{
         type:"doughnut",
-        data:{ labels:["Selected","Not Selected"], datasets:[{ data:[seniorYes, seniorNo], backgroundColor:["#006400","#FF5252"] }] }
+        data:{
+          labels:["Selected","Not Selected"],
+          datasets:[{data:[seniorYes,seniorNo],backgroundColor:["#006400","#FF5252"]}]
+        }
       });
 
       const countryCounts = {};
-      studentData.forEach(s=>countryCounts[s.country]=(countryCounts[s.country]||0)+1);
-      const countryLabels = Object.keys(countryCounts);
-      const countryValues = Object.values(countryCounts);
+      studentData.forEach(s=>{
+        const c = s.country || "Unknown";
+        countryCounts[c]=(countryCounts[c]||0)+1;
+      });
 
       charts.countryChart = new Chart(document.getElementById("countryChart"),{
         type:"pie",
-        data:{ labels:countryLabels, datasets:[{ data:countryValues, backgroundColor:["#2196F3","#FF9800","#9C27B0","#009688","#FFEB3B"] }] },
-        options:{ plugins:{ legend:{display:false}, tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw}`}} } }
+        data:{
+          labels:Object.keys(countryCounts),
+          datasets:[{
+            data:Object.values(countryCounts),
+            backgroundColor:["#2196F3","#FF9800","#9C27B0","#009688","#FFEB3B"]
+          }]
+        },
+        options:{
+          plugins:{
+            legend:{display:false},
+            tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.raw}`}}
+          }
+        }
       });
     }
 
-     //Country List Rendering
-      function renderCountryList() {
-  const countryCounts = {};
-  const selectedCounts = {};
+    function renderCountryList() {
+      const countryCounts = {};
+      const selectedCounts = {};
 
-  studentData.forEach(s=>{
-    countryCounts[s.country] = (countryCounts[s.country]||0)+1;
-    if(s.selected==="Yes"){
-      selectedCounts[s.country] = (selectedCounts[s.country]||0)+1;
+      studentData.forEach(s=>{
+        const c = s.country || "Unknown";
+        countryCounts[c]=(countryCounts[c]||0)+1;
+        if(s.selected==="Yes") selectedCounts[c]=(selectedCounts[c]||0)+1;
+      });
+
+      const countries = Object.keys(countryCounts).sort();
+      const container = document.getElementById("countryList");
+      container.innerHTML = "";
+
+      countries.forEach(country=>{
+        const total = countryCounts[country];
+        const selected = selectedCounts[country] || 0;
+        const item = document.createElement("div");
+        item.classList.add("country-item");
+
+        const flagSvg = flagData[country] || "";
+        const flagMarkup = flagSvg
+          ? `<span class="flag" title="${escapeHtml(country)}" aria-label="${escapeHtml(country)}">${flagSvg}</span>`
+          : "";
+
+        item.innerHTML = `
+          <div class="country-left">
+            ${flagMarkup}
+            <span>${escapeHtml(country)}</span>
+          </div>
+          <div>(${total}/<span class="selected-count">${selected}</span>)</div>
+        `;
+        container.appendChild(item);
+      });
     }
-  });
 
-  const countries = Object.keys(countryCounts).sort();
-  const container = document.getElementById("countryList");
-  container.innerHTML = "";
+    /*
+      The animation is isolated entirely inside the fixed overlay.
+      It does NOT animate the real public table, so there is no layout
+      shifting, horizontal scrolling, or interaction glitch.
+    */
+    async function runMagicalReveal(list, participantCountries = []) {
+      const overlay = document.getElementById("magicalReveal");
+      const stage = document.getElementById("magicStage");
+      const rowsContainer = document.getElementById("magicRows");
+      const status = document.getElementById("magicStatus");
+      const counter = document.getElementById("magicCounter");
+      const progress = document.getElementById("magicProgressBar");
 
-  countries.forEach(country=>{
-    const total = countryCounts[country];
-    const selected = selectedCounts[country] || 0;
+      if (!overlay || !stage || !rowsContainer) return;
 
-    const item = document.createElement("div");
-    item.classList.add("country-item");
-    item.innerHTML = `
-      <div class="country-left">
-        <span class="flag">${flagData[country]||""}</span>
-        <span>${country}</span>
-      </div>
-      <div>(${total}/<span class="selected-count">${selected}</span>)</div>
-    `;
-    container.appendChild(item);
-  });
-}
+      document.body.classList.add("magic-lock");
+      const intro=document.getElementById("magicParticipation");
+      intro?.classList.remove("is-hidden");
+      stage?.classList.add("is-hidden");
+      status.textContent="Mapping the countries represented by our participants...";
+      await renderWorldMap(participantCountries.countryNames || []);
+      const cards = document.querySelectorAll(".participation-number[data-target]");
+      const publicStats = participantCountries || {};
+      const targets = [publicStats.total || 0, publicStats.institutions || 0, publicStats.countries || 0];
+      cards.forEach((card, index) => { card.dataset.target = String(targets[index] || 0); card.textContent = "0"; });
+      await wait(950);
+      status.textContent="Counting the global research community...";
+      animateParticipationNumbers();
+      await wait(1750);
+      intro?.classList.add("is-hidden");
+      stage?.classList.remove("is-hidden");
+      status.textContent="Preparing the finalist leaderboard...";
+      rowsContainer.innerHTML = "";
 
+      // Create all rows before starting the animation.
+      list.forEach((student, index) => {
+        const row = document.createElement("div");
+        row.className = "magic-row";
 
+        const flagSvg = flagData[student.country] || "";
+        const country = flagSvg
+          ? `<span class="magic-country">${flagSvg}<span>${escapeHtml(student.country || "")}</span></span>`
+          : escapeHtml(student.country || "");
+
+        row.innerHTML = `
+          <span>${escapeHtml(student.category || "")}</span>
+          <span class="magic-name">${escapeHtml(student.name || "")}</span>
+          <span class="magic-school">${escapeHtml(student.school || "")}</span>
+          <span>${country}</span>
+          <span>${escapeHtml(student.selected || "")}</span>
+        `;
+
+        rowsContainer.appendChild(row);
+      });
+
+      const rows = [...rowsContainer.children];
+
+      if (!rows.length) {
+        status.textContent = "No participants found.";
+        counter.textContent = "0 participants";
+        await wait(900);
+        return;
+      }
+
+      // Faster on very large lists, slower on smaller lists.
+      const delay = list.length > 150 ? 24 : list.length > 80 ? 38 : 58;
+      const rowRevealTime = 110;
+
+      for (let i=0; i<rows.length; i++) {
+        const row = rows[i];
+        row.classList.add("revealed");
+
+        if (list[i].selected === "Yes") {
+          await wait(35);
+          row.classList.add("selected");
+        }
+
+        const pct = Math.round(((i + 1) / rows.length) * 100);
+        progress.style.width = pct + "%";
+        counter.textContent = `${i + 1} of ${rows.length} participants`;
+        status.textContent =
+          list[i].selected === "Yes"
+            ? `✨ ${list[i].name || "Participant"} has been selected`
+            : `Revealing ${list[i].name || "participant"}...`;
+
+        // Keep the newest generated participant visible.
+        row.scrollIntoView({behavior:"smooth",block:"nearest"});
+
+        await wait(delay);
+      }
+
+      status.textContent = `✨ All ${rows.length} participants revealed`;
+      progress.style.width = "100%";
+      counter.textContent = `${rows.length} participants`;
+
+      // Hold the completed magical state briefly.
+      await wait(1100);
+
+      // Automatically scroll the animation list all the way down once.
+      stage.scrollTo({top:stage.scrollHeight,behavior:"smooth"});
+      await wait(800);
+    }
+
+    function wait(ms){
+      return new Promise(resolve=>setTimeout(resolve,ms));
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+    }
+
+    /*
+      SEO:
+      Create Schema.org ItemList + Person entries from the same official
+      participant JSON. This makes the relationship between the page,
+      participant names, schools, categories and IARCO explicit to
+      search engines that execute the page's data-loading script.
+    */
+    function createParticipantStructuredData(list) {
+      const existing = document.getElementById("participantStructuredData");
+      if (existing) existing.remove();
+
+      const itemList = {
+        "@context":"https://schema.org",
+        "@type":"ItemList",
+        "name":"IARCO 2025 Selected Lists",
+        "description":"Official participant and selected list for the International Academic Research Competition 2025 pitch round.",
+        "url":"https://iarco.org/2025-finalists",
+        "numberOfItems":list.length,
+        "itemListElement":list.map((student,index)=>({
+          "@type":"ListItem",
+          "position":index+1,
+          "name":student.name || "",
+          "item":{
+            "@type":"Person",
+            "name":student.name || "",
+            "affiliation":student.school ? {
+              "@type":"EducationalOrganization",
+              "name":student.school
+            } : undefined,
+            "memberOf":{
+              "@type":"Organization",
+              "name":"International Academic Research Competition",
+              "url":"https://iarco.org/"
+            }
+          }
+        }))
+      };
+
+      const script = document.createElement("script");
+      script.id = "participantStructuredData";
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(itemList);
+      document.head.appendChild(script);
+    }
 
     // Search
     const searchBox = document.getElementById("searchBox");
     const searchResult = document.getElementById("searchResult");
 
     searchBox.addEventListener("input",()=>{
-      const query = searchBox.value.toLowerCase();
+      const query = searchBox.value.toLowerCase().trim();
       const rows = document.querySelectorAll("#student-table tbody tr");
       rows.forEach(row=>row.classList.remove("highlight"));
 
-      if(query===""){ searchResult.textContent=""; return; }
+      if(query===""){
+        document.body.classList.remove("searching-table");
+        searchResult.textContent="";
+        return;
+      }
 
-      let foundCount = 0;
-      let results = [];
+      document.body.classList.add("searching-table");
+      let foundCount=0;
+      const results=[];
+
       rows.forEach(row=>{
-        const name = row.cells[2].textContent.toLowerCase();
-        if(name.includes(query)){
+        const name = row.cells[1].textContent.toLowerCase();
+        const school = row.cells[2].textContent.toLowerCase();
+
+        if(name.includes(query) || school.includes(query)){
           row.classList.add("highlight");
-          const selected = row.cells[5].textContent;
-          results.push(`${row.cells[2].textContent} is Selected: ${selected}`);
+          const selected = row.cells[4].textContent;
+          results.push(`${row.cells[1].textContent} is Selected: ${selected}`);
           foundCount++;
         }
       });
-      searchResult.textContent = foundCount>0 ? results.join(" | ") : "No student found.";
+
+      searchResult.textContent =
+        foundCount>0 ? results.join(" | ") : "No student found.";
+
+      if(foundCount>0){
+        const firstMatch = [...rows].find(row=>row.classList.contains("highlight"));
+        firstMatch?.scrollIntoView({behavior:"smooth",block:"center"});
+      }
     });
+
   </script>
+
 </body>
 </html>
