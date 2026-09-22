@@ -96,7 +96,24 @@
     /* Country list */
     .country-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin:12px 0; }
     .country-item { display:flex; align-items:center; gap:6px; background:#fff; padding:6px 8px; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.1); font-size:13px; }
-    .country-item .flag { width:18px; height:auto; display:inline-block; }
+    .country-item .flag {
+      width:22px;
+      height:22px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex:0 0 22px;
+      overflow:hidden;
+    }
+    .country-item .flag svg,
+    .flag-icon svg {
+      width:100%;
+      height:100%;
+      max-width:100%;
+      max-height:100%;
+      display:block;
+      object-fit:contain;
+    }
 
     /* Table */
     .table-wrapper { overflow-x:auto; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); margin-bottom:20px; max-height:500px; overflow-y:auto; }
@@ -111,13 +128,55 @@
     }
     .selected-yes { background:#006400 !important; color:white; }
     .highlight { background: #242422 !important; color:white; }
-    .flag-icon { width:20px; height:auto; display:inline-block; vertical-align:middle; }
+    .flag-icon {
+      width:22px;
+      height:22px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      vertical-align:middle;
+      overflow:hidden;
+      flex:0 0 22px;
+    }
+
+    /* Magical participant-table generation */
+    #student-table tbody tr {
+      opacity:0;
+      transform:translateY(8px) scale(.985);
+      transition:
+        opacity .45s ease,
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        background-color .35s ease;
+    }
+
+    #student-table tbody tr.table-row-visible {
+      opacity:1;
+      transform:translateY(0) scale(1);
+    }
+
+    #student-table tbody tr.table-row-selected {
+      animation:selectedReveal .7s ease both;
+    }
+
+    @keyframes selectedReveal {
+      0%   { background:#fff; color:#222; }
+      45%  { background:#c8f7cf; color:#123; }
+      100% { background:#006400; color:#fff; }
+    }
+
+    /* Keep search highlighting above the selection animation */
+    #student-table tbody tr.highlight {
+      background:#242422 !important;
+      color:white !important;
+    }
 
     @media (max-width:600px){
       h2,h3{font-size:16px;}
       th,td{font-size:12px;padding:4px;}
       .chart-card canvas{max-width:140px !important; max-height:140px !important;}
       .country-item{font-size:12px;}
+      .country-item .flag{width:20px;height:20px;flex-basis:20px;}
+      .flag-icon{width:20px;height:20px;flex-basis:20px;}
     }
 
     .country-item {
@@ -213,7 +272,6 @@
       <table id="student-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Category</th>
             <th>Name</th>
             <th>School</th>
@@ -243,17 +301,55 @@
     let flagData = {};
     let charts = {};
 
+    // Animation timing for the participant table.
+    // Increase this value for a slower "magical" reveal.
+    const TABLE_ROW_DELAY = 55;
+
     // Load data
     Promise.all([
-      fetch("data/iarco-participants-selection.json").then(res => res.json()),
-      fetch("data/flag.json").then(res => res.json())
+      fetch("data/iarco-participants-selection.json").then(res => {
+        if (!res.ok) throw new Error("Could not load participation_2025.json");
+        return res.json();
+      }),
+      fetch("data/flagss.json").then(res => {
+        if (!res.ok) throw new Error("Could not load flagss.json");
+        return res.json();
+      })
     ]).then(([students, flags]) => {
-      studentData = students;
-      flagData = flags;
-      renderTable();
+      studentData = Array.isArray(students) ? students : [];
+
+      // New flagss.json structure:
+      // [
+      //   { "country": "Ad", "svg": "<svg ...></svg>" },
+      //   ...
+      // ]
+      flagData = {};
+      if (Array.isArray(flags)) {
+        flags.forEach(item => {
+          if (item && item.country) {
+            flagData[item.country] = item.svg || "";
+          }
+        });
+      } else if (flags && typeof flags === "object") {
+        // Safe fallback in case the JSON is supplied as an object.
+        Object.keys(flags).forEach(key => {
+          const item = flags[key];
+          if (typeof item === "string") {
+            flagData[key] = item;
+          } else if (item && typeof item === "object") {
+            flagData[item.country || key] = item.svg || "";
+          }
+        });
+      }
+
       renderStats();
       renderCharts();
       renderCountryList();
+      renderTable();
+    }).catch(error => {
+      console.error(error);
+      document.getElementById("stats").textContent =
+        "Unable to load participant statistics.";
     });
 
     // Render statistics
@@ -266,29 +362,61 @@
       const schoolCount = new Set(studentData.map(s=>s.school)).size;
       const countryCount = new Set(studentData.map(s=>s.country)).size;
 
-      document.getElementById("stats").innerHTML = 
-        `Total Participants: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institutions: ${schoolCount} | Participating Countries: ${countryCount}`;
+      document.getElementById("stats").innerHTML =
+        `Research Proposal Submission: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institutions: ${schoolCount} | Participating Countries: ${countryCount}`;
     }
 
     // Render student table
+    // ID has intentionally been removed from the public table.
     function renderTable() {
       const tableBody = document.querySelector("#student-table tbody");
       tableBody.innerHTML = "";
-      const sorted = studentData.sort((a,b)=>a.name.localeCompare(b.name));
 
-      sorted.forEach(student => {
+      const sorted = [...studentData].sort((a,b)=>
+        String(a.name || "").localeCompare(String(b.name || ""))
+      );
+
+      sorted.forEach((student, index) => {
         const row = document.createElement("tr");
+
+        const flagSvg = flagData[student.country] || "";
+        const countryContent = flagSvg
+          ? `<span class="flag-icon" title="${escapeHtml(student.country || "")}" aria-label="${escapeHtml(student.country || "")}">${flagSvg}</span>`
+          : escapeHtml(student.country || "");
+
         row.innerHTML = `
-          <td>${student.id}</td>
-          <td>${student.category}</td>
-          <td>${student.name}</td>
-          <td>${student.school}</td>
-          <td>${flagData[student.country]? `<span class="flag-icon" title="${student.country}">${flagData[student.country]}</span>`: student.country}</td>
-          <td>${student.selected}</td>
+          <td>${escapeHtml(student.category || "")}</td>
+          <td>${escapeHtml(student.name || "")}</td>
+          <td>${escapeHtml(student.school || "")}</td>
+          <td>${countryContent}</td>
+          <td>${escapeHtml(student.selected || "")}</td>
         `;
-        if(student.selected==="Yes") row.classList.add("selected-yes");
+
         tableBody.appendChild(row);
+
+        // Reveal each row one-by-one. Selected rows receive an additional
+        // green "selection" reveal after they become visible.
+        setTimeout(() => {
+          row.classList.add("table-row-visible");
+
+          if (student.selected === "Yes") {
+            setTimeout(() => {
+              row.classList.add("selected-yes");
+              row.classList.add("table-row-selected");
+            }, 180);
+          }
+        }, index * TABLE_ROW_DELAY);
       });
+    }
+
+    // Small HTML escape helper for participant text.
+    function escapeHtml(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
 
     // Render charts
@@ -308,7 +436,7 @@
       const seniorNo = seniors.filter(s=>s.selected==='No').length;
       charts.seniorChart = new Chart(document.getElementById("seniorChart"),{
         type:"doughnut",
-        data:{ labels:["Selected","Not Selected"], datasets:[{ data:[seniorYes, seniorNo], backgroundColor:["#006400","#FF5252"] }] }
+        data:{ labels:["Selected","Not Selected"], datasets:[{ data:[seniorYes,seniorNo], backgroundColor:["#006400","#FF5252"] }] }
       });
 
       const countryCounts = {};
@@ -323,40 +451,44 @@
       });
     }
 
-     //Country List Rendering
-      function renderCountryList() {
-  const countryCounts = {};
-  const selectedCounts = {};
+    // Country List Rendering
+    function renderCountryList() {
+      const countryCounts = {};
+      const selectedCounts = {};
 
-  studentData.forEach(s=>{
-    countryCounts[s.country] = (countryCounts[s.country]||0)+1;
-    if(s.selected==="Yes"){
-      selectedCounts[s.country] = (selectedCounts[s.country]||0)+1;
+      studentData.forEach(s=>{
+        countryCounts[s.country] = (countryCounts[s.country]||0)+1;
+        if(s.selected==="Yes"){
+          selectedCounts[s.country] = (selectedCounts[s.country]||0)+1;
+        }
+      });
+
+      const countries = Object.keys(countryCounts).sort();
+      const container = document.getElementById("countryList");
+      container.innerHTML = "";
+
+      countries.forEach(country=>{
+        const total = countryCounts[country];
+        const selected = selectedCounts[country] || 0;
+
+        const item = document.createElement("div");
+        item.classList.add("country-item");
+
+        const flagSvg = flagData[country] || "";
+        const flagMarkup = flagSvg
+          ? `<span class="flag" title="${escapeHtml(country)}" aria-label="${escapeHtml(country)}">${flagSvg}</span>`
+          : "";
+
+        item.innerHTML = `
+          <div class="country-left">
+            ${flagMarkup}
+            <span>${escapeHtml(country)}</span>
+          </div>
+          <div>(${total}/<span class="selected-count">${selected}</span>)</div>
+        `;
+        container.appendChild(item);
+      });
     }
-  });
-
-  const countries = Object.keys(countryCounts).sort();
-  const container = document.getElementById("countryList");
-  container.innerHTML = "";
-
-  countries.forEach(country=>{
-    const total = countryCounts[country];
-    const selected = selectedCounts[country] || 0;
-
-    const item = document.createElement("div");
-    item.classList.add("country-item");
-    item.innerHTML = `
-      <div class="country-left">
-        <span class="flag">${flagData[country]||""}</span>
-        <span>${country}</span>
-      </div>
-      <div>(${total}/<span class="selected-count">${selected}</span>)</div>
-    `;
-    container.appendChild(item);
-  });
-}
-
-
 
     // Search
     const searchBox = document.getElementById("searchBox");
@@ -372,11 +504,12 @@
       let foundCount = 0;
       let results = [];
       rows.forEach(row=>{
-        const name = row.cells[2].textContent.toLowerCase();
+        // ID was removed, so Name is now cell 1 and Selected is cell 4.
+        const name = row.cells[1].textContent.toLowerCase();
         if(name.includes(query)){
           row.classList.add("highlight");
-          const selected = row.cells[5].textContent;
-          results.push(`${row.cells[2].textContent} is Selected: ${selected}`);
+          const selected = row.cells[4].textContent;
+          results.push(`${row.cells[1].textContent} is Selected: ${selected}`);
           foundCount++;
         }
       });
