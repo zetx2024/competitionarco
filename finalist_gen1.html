@@ -18,7 +18,7 @@
         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>2025 Finalists | International Academic Research Competition</title>
+    <title>2026 Finalists | International Academic Research Competition</title>
     <link rel="icon" href="assets/logo.png"/>
     <link rel="canonical" href="https://iarco.org"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -38,18 +38,18 @@
     <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="revised" content="2025-10-04T19:01:57.028Z" />
+    <meta name="revised" content="2026-10-04T19:01:57.028Z" />
     <meta name="theme-color" content="#0749b3">
     <meta name="keywords" content="Global, USA, United State of America, Competiton, IARCO, International, Academic, International Academic Research Competition, Bangladesh, Summer, SRP, WRP,YRJ, yrj, Youth Research Journal, Education, Lumiere Education, Spring, Research Program, Summer Activities, Winter Research, Winter Program, Winter Activities, undergraduate, research, journal, electronic, online, multidisciplinary, open access, articles, essays, Houston, Texas, Journal of Student Research, jofsr, Jofsr, JofSR, student research journal, undergraduate rsesearch journal, student research, high school, hs, high school publication, high school research, school research, high school edition, hs edition, hs portal, high school portal, high school edition research, machine learning, computational biology, machine, computational, biology."/>
     <meta name="description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
-    <meta name="subject" content="2025 Finalists | International Academic Research Competition">
+    <meta name="subject" content="2026 Finalists | International Academic Research Competition">
     <meta name="copyright"content="Md Sanaul Haque Shanto">
     <meta name="language" content="ES">
     <meta name="robots" content="index,follow" />
-    <meta name="revised" content="2025-10-04T19:13:15.028Z" />
-    <meta name="abstract" content="2025 Finalists | International Academic Research Competition">
-    <meta name="topic" content="2025 Finalists | International Academic Research Competition">
-    <meta name="summary" content="2025 Finalists | International Academic Research Competition">
+    <meta name="revised" content="2026-10-04T19:13:15.028Z" />
+    <meta name="abstract" content="2026 Finalists | International Academic Research Competition">
+    <meta name="topic" content="2026 Finalists | International Academic Research Competition">
+    <meta name="summary" content="2026 Finalists | International Academic Research Competition">
     <meta name="Classification" content="Educational">
     <meta name="author" content="Md Sanaul Haque Shanto, hello@iarco.org">
     <meta name="designer" content="Md Sanaul Haque Shanto">
@@ -63,18 +63,18 @@
     <meta name="coverage" content="Worldwide">
     <meta name="distribution" content="Global">
     <meta name="rating" content="General">
-    <meta name="og:title" content="2025 Finalists | International Academic Research Competition"/>
+    <meta name="og:title" content="2026 Finalists | International Academic Research Competition"/>
     <meta name="og:type" content="Educational"/>
     <meta name="og:url" content="https://iarco.org/"/>
     <meta name="og:image" content="https://hello@iarco.org">
-    <meta name="og:site_name" content="2025 Finalists | International Academic Research Competition"/>
+    <meta name="og:site_name" content="2026 Finalists | International Academic Research Competition"/>
     <meta name="og:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
     <meta name="fb:page_id" content="405729912624141" />
     <meta name="og:email" content="hello@iarco.org"/>
     <meta name="og:phone_number" content="+8801766009306"/>
     <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Research Competition","url":"https://iarco.org"}</script>
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="2025 Finalists | International Academic Research Competition"/>
+    <meta name="twitter:title" content="2026 Finalists | International Academic Research Competition"/>
     <meta name="twitter:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc..">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -142,26 +142,87 @@
     /* Magical participant-table generation */
     #student-table tbody tr {
       opacity:0;
-      transform:translateY(8px) scale(.985);
+      transform:translateY(18px) scale(.96);
+      filter:blur(4px);
+      position:relative;
       transition:
-        opacity .45s ease,
-        transform .45s cubic-bezier(.2,.8,.2,1),
+        opacity .55s ease,
+        transform .65s cubic-bezier(.2,.85,.2,1),
+        filter .55s ease,
         background-color .35s ease;
     }
 
     #student-table tbody tr.table-row-visible {
       opacity:1;
       transform:translateY(0) scale(1);
+      filter:blur(0);
+    }
+
+    /* A travelling light sweeps across each newly generated row. */
+    #student-table tbody tr.table-row-visible::after {
+      content:"";
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:-35%;
+      width:22%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.8),transparent);
+      transform:skewX(-18deg);
+      pointer-events:none;
+      animation:rowLightSweep .65s ease-out forwards;
     }
 
     #student-table tbody tr.table-row-selected {
-      animation:selectedReveal .7s ease both;
+      animation:selectedReveal 1.15s cubic-bezier(.22,.8,.2,1) both;
+      box-shadow:inset 0 0 0 2px rgba(126,255,147,.95), 0 0 18px rgba(0,100,0,.42);
+      position:relative;
+      z-index:2;
+    }
+
+    #student-table tbody tr.table-row-selected::before {
+      content:"✓";
+      position:absolute;
+      left:8px;
+      top:50%;
+      width:24px;
+      height:24px;
+      line-height:24px;
+      text-align:center;
+      border-radius:50%;
+      background:#fff;
+      color:#006400;
+      font-weight:900;
+      opacity:0;
+      transform:translateY(-50%) scale(.2);
+      box-shadow:0 0 0 0 rgba(255,255,255,.8);
+      pointer-events:none;
+      animation:selectedCheck .75s .18s cubic-bezier(.2,1.4,.4,1) forwards;
+    }
+
+    @keyframes rowLightSweep {
+      0% { left:-35%; opacity:0; }
+      20% { opacity:1; }
+      100% { left:125%; opacity:0; }
     }
 
     @keyframes selectedReveal {
-      0%   { background:#fff; color:#222; }
-      45%  { background:#c8f7cf; color:#123; }
-      100% { background:#006400; color:#fff; }
+      0% { background:#fff; color:#222; transform:translateY(0) scale(1); }
+      18% { background:#d9ffe0; color:#123; transform:translateY(0) scale(1.012); }
+      42% { background:#72df86; color:#073b12; transform:translateY(0) scale(1.018); }
+      68% { background:#bff7c8; color:#123; transform:translateY(0) scale(1.006); }
+      100% { background:#006400; color:#fff; transform:translateY(0) scale(1); }
+    }
+
+    @keyframes selectedCheck {
+      0% { opacity:0; transform:translateY(-50%) scale(.2); box-shadow:0 0 0 0 rgba(255,255,255,.8); }
+      55% { opacity:1; transform:translateY(-50%) scale(1.2); box-shadow:0 0 0 8px rgba(255,255,255,0); }
+      100% { opacity:1; transform:translateY(-50%) scale(1); box-shadow:0 0 0 0 rgba(255,255,255,0); }
+    }
+
+    /* Keep selected rows visually calm after the reveal. */
+    #student-table tbody tr.selected-yes {
+      background:#006400 !important;
+      color:#fff;
     }
 
     /* Keep search highlighting above the selection animation */
@@ -231,8 +292,8 @@
     
   <div class="container">
     <br >
-    <h2>📊 IARCO 2025 Student Statistics</h2>
-      <h5>Powered by <a href="https://domain.me">domain.ME</a></h5>
+    <h2>📊 IARCO 2026 Submission Statistics</h2>
+      <h5>Sponsored by <a href="https://SaveMyExams.com">SaveMyExams</a> & <a href="https://domain.me">domain.ME</a></h5>
        <hr>
     <div id="stats">Loading statistics...</div>
 
@@ -303,12 +364,12 @@
 
     // Animation timing for the participant table.
     // Increase this value for a slower "magical" reveal.
-    const TABLE_ROW_DELAY = 55;
+    const TABLE_ROW_DELAY = 115;
 
     // Load data
     Promise.all([
       fetch("data/iarco-participants-selection.json").then(res => {
-        if (!res.ok) throw new Error("Could not load participation_2025.json");
+        if (!res.ok) throw new Error("Could not load participation_2026.json");
         return res.json();
       }),
       fetch("data/flagss.json").then(res => {
@@ -363,7 +424,7 @@
       const countryCount = new Set(studentData.map(s=>s.country)).size;
 
       document.getElementById("stats").innerHTML =
-        `Research Proposal Submission: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institutions: ${schoolCount} | Participating Countries: ${countryCount}`;
+        `Research Priposal Submission: ${total} | Junior Selected: ${juniorYes}, Not Selected: ${juniorNo} | Senior Selected: ${seniorYes}, Not Selected: ${seniorNo} | Participating Institutions: ${schoolCount} | Participating Countries: ${countryCount}`;
     }
 
     // Render student table
@@ -394,16 +455,17 @@
 
         tableBody.appendChild(row);
 
-        // Reveal each row one-by-one. Selected rows receive an additional
-        // green "selection" reveal after they become visible.
+        // Reveal each row one-by-one. A selected participant gets a
+        // second-stage green selection animation, making the table feel
+        // like it is being generated and selected live.
         setTimeout(() => {
           row.classList.add("table-row-visible");
 
           if (student.selected === "Yes") {
             setTimeout(() => {
-              row.classList.add("selected-yes");
               row.classList.add("table-row-selected");
-            }, 180);
+              setTimeout(() => row.classList.add("selected-yes"), 1050);
+            }, 430);
           }
         }, index * TABLE_ROW_DELAY);
       });
