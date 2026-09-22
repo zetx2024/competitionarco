@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IARCO Participant Data Merger</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;padding:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f4f7fb,#eaf1f8);color:#172033;min-height:100vh}
+.container{width:min(1100px,94%);margin:40px auto 70px}
+.header{text-align:center;margin-bottom:30px}
+.logo{display:inline-flex;width:70px;height:70px;align-items:center;justify-content:center;border-radius:18px;background:#003366;color:#ffd700;font-weight:900;font-size:20px;margin-bottom:18px;box-shadow:0 12px 30px rgba(0,51,102,.18)}
+.header h1{margin:0;font-size:34px;font-weight:800;color:#003366}
+.header p{max-width:700px;margin:12px auto 0;line-height:1.7;color:#667085}
+.card{background:#fff;border:1px solid #e5eaf0;border-radius:18px;padding:28px;margin-bottom:22px;box-shadow:0 10px 35px rgba(16,24,40,.07)}
+.file-section{margin-bottom:24px}
+.file-section label{display:block;font-size:15px;font-weight:700;color:#003366;margin-bottom:9px}
+input[type=file]{width:100%;padding:13px;border:1px solid #ccd5df;border-radius:10px;background:#f9fafb;cursor:pointer}
+.status{margin-top:8px;font-size:13px;color:#667085}
+.options{padding:16px;background:#f6f9fc;border-radius:10px;margin-bottom:22px}
+.checkbox-row{display:flex;gap:10px;align-items:center;cursor:pointer;font-size:14px;color:#344054}
+.checkbox-row input{width:17px;height:17px}
+button{border:none;border-radius:10px;padding:13px 20px;font-size:14px;font-weight:700;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,opacity .15s ease}
+button:hover{transform:translateY(-1px)}
+button:disabled{cursor:not-allowed;opacity:.45;transform:none}
+.generate-btn{width:100%;background:#003366;color:#fff;font-size:16px;padding:15px}
+.generate-btn:hover:not(:disabled){box-shadow:0 8px 20px rgba(0,51,102,.22)}
+.download-btn{background:#003366;color:#fff;margin-right:8px}
+.preview-btn{background:#eef4f9;color:#003366}
+.statistics{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:20px 0}
+.stat{padding:18px 12px;background:#f7f9fc;border-radius:12px;text-align:center}
+.stat span{display:block;font-size:26px;font-weight:800;color:#003366}
+.stat small{display:block;margin-top:5px;font-size:12px;color:#667085}
+.message{padding:14px;margin-bottom:18px;background:#f5f9ff;border-left:4px solid #4b9cd3;border-radius:8px;font-size:14px;line-height:1.6}
+.preview-card pre{max-height:600px;overflow:auto;padding:20px;background:#101828;color:#e6edf3;border-radius:10px;font-size:12px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.info h2{margin-top:0;color:#003366}
+.info li{margin-bottom:9px;line-height:1.6;color:#475467}
+code{padding:2px 5px;border-radius:4px;background:#eef2f6;color:#003366}
+.hidden{display:none}
+@media(max-width:800px){.statistics{grid-template-columns:repeat(2,1fr)}.header h1{font-size:27px}}
+@media(max-width:500px){.container{width:92%;margin-top:25px}.card{padding:20px}.statistics{grid-template-columns:1fr 1fr}.download-btn,.preview-btn{width:100%;margin:0 0 10px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<div class="logo">IARCO</div>
+<h1>Participant Data Merger</h1>
+<p>Merge participants.json with your XLSX submission data and generate one combined JSON file.</p>
+</div>
+
+<div class="card">
+<div class="file-section">
+<label for="participantsFile">Participants JSON</label>
+<input type="file" id="participantsFile" accept=".json,application/json">
+<div id="participantsStatus" class="status">No participants.json selected.</div>
+</div>
+
+<div class="file-section">
+<label for="xlsxFile">Submission / Selected Participants XLSX</label>
+<input type="file" id="xlsxFile" accept=".xlsx,.xls">
+<div id="xlsxStatus" class="status">No XLSX file selected.</div>
+</div>
+
+<div class="options">
+<label class="checkbox-row">
+<input type="checkbox" id="includeUnmatchedXlsx" checked>
+<span>Include XLSX records that do not match participants.json</span>
+</label>
+</div>
+
+<button id="generateBtn" class="generate-btn" disabled>Generate Combined JSON</button>
+</div>
+
+<div id="resultCard" class="card hidden">
+<h2>Generation Result</h2>
+<div class="statistics">
+<div class="stat"><span id="totalParticipants">0</span><small>Participants</small></div>
+<div class="stat"><span id="matchedRecords">0</span><small>Matched XLSX</small></div>
+<div class="stat"><span id="unmatchedParticipants">0</span><small>No XLSX Data</small></div>
+<div class="stat"><span id="unmatchedXlsx">0</span><small>New XLSX Records</small></div>
+<div class="stat"><span id="totalOutput">0</span><small>Total Output</small></div>
+</div>
+<div id="message" class="message"></div>
+<button id="downloadBtn" class="download-btn">Download Combined JSON</button>
+<button id="previewBtn" class="preview-btn">Preview JSON</button>
+</div>
+
+<div id="previewCard" class="card hidden">
+<h2>JSON Preview</h2>
+<pre id="jsonPreview"></pre>
+</div>
+
+<div class="info card">
+<h2>Matching Rules</h2>
+<ul>
+<li>Leading and trailing spaces are ignored.</li>
+<li>Repeated spaces are normalised.</li>
+<li>Matching is case-insensitive.</li>
+<li>Unicode and accented characters are preserved and supported.</li>
+<li>The primary match uses Name + Category + Country + School.</li>
+<li>If that does not uniquely match, Name + Category + Country is attempted.</li>
+<li>Existing participant IDs are preserved.</li>
+<li>Participants without XLSX data receive <code>"selected": "NO DATA"</code>.</li>
+<li>XLSX-only records are retained with <code>"participant_id": "NO DATA"</code>.</li>
+<li>No participant data is uploaded to a server.</li>
+</ul>
+</div>
+</div>
+
+<script>
+"use strict";
+
+let participantsData=null;
+let xlsxData=null;
+let generatedData=null;
+
+const participantsFile=document.getElementById("participantsFile");
+const xlsxFile=document.getElementById("xlsxFile");
+const participantsStatus=document.getElementById("participantsStatus");
+const xlsxStatus=document.getElementById("xlsxStatus");
+const generateBtn=document.getElementById("generateBtn");
+const resultCard=document.getElementById("resultCard");
+const previewCard=document.getElementById("previewCard");
+const jsonPreview=document.getElementById("jsonPreview");
+const downloadBtn=document.getElementById("downloadBtn");
+const previewBtn=document.getElementById("previewBtn");
+const message=document.getElementById("message");
+const includeUnmatchedXlsx=document.getElementById("includeUnmatchedXlsx");
+
+function normaliseText(value){
+    if(value===null||value===undefined)return "";
+    let text=String(value).replace(/^\uFEFF/,"");
+    if(text.normalize)text=text.normalize("NFC");
+    text=text.replace(/\s+/gu," ").trim();
+    return text.toLocaleLowerCase();
+}
+
+function cleanOutputValue(value){
+    if(value===null||value===undefined)return "NO DATA";
+    const text=String(value).replace(/^\uFEFF/,"").replace(/\s+/gu," ").trim();
+    return text===""?"NO DATA":text;
+}
+
+function normaliseSelected(value){
+    const text=normaliseText(value);
+    if(text==="yes"||text==="y"||text==="true")return "Yes";
+    if(text==="no"||text==="n"||text==="false")return "No";
+    return text?cleanOutputValue(value):"NO DATA";
+}
+
+function readTextFile(file){
+    return new Promise((resolve,reject)=>{
+        const reader=new FileReader();
+        reader.onload=()=>resolve(reader.result);
+        reader.onerror=()=>reject(new Error("Could not read the file."));
+        reader.readAsText(file,"UTF-8");
+    });
+}
+
+function readArrayBuffer(file){
+    return new Promise((resolve,reject)=>{
+        const reader=new FileReader();
+        reader.onload=()=>resolve(reader.result);
+        reader.onerror=()=>reject(new Error("Could not read the XLSX file."));
+        reader.readAsArrayBuffer(file);
+    });
+}
+
+function getColumnValue(row,possibleNames){
+    for(const name of possibleNames){
+        if(Object.prototype.hasOwnProperty.call(row,name))return row[name];
+    }
+    for(const key of Object.keys(row)){
+        for(const possibleName of possibleNames){
+            if(normaliseText(key)===normaliseText(possibleName))return row[key];
+        }
+    }
+    return "";
+}
+
+function normaliseXlsxRows(rows){
+    return rows.map((row,index)=>({
+        _xlsxRow:index+2,
+        category:cleanOutputValue(getColumnValue(row,["Category","category"])),
+        country:cleanOutputValue(getColumnValue(row,["Country","country"])),
+        name:cleanOutputValue(getColumnValue(row,["Name","name"])),
+        school:cleanOutputValue(getColumnValue(row,["School","school","Institution","Institution Name"])),
+        selected:normaliseSelected(getColumnValue(row,["Selected","selected"]))
+    }));
+}
+
+participantsFile.addEventListener("change",async function(){
+    const file=this.files[0];
+    participantsData=null;
+    if(!file){
+        participantsStatus.textContent="No participants.json selected.";
+        updateButton(); return;
+    }
+    try{
+        const parsed=JSON.parse(await readTextFile(file));
+        if(!Array.isArray(parsed))throw new Error("participants.json must contain an array.");
+        participantsData=parsed;
+        participantsStatus.textContent=`Loaded ${parsed.length.toLocaleString()} participant records.`;
+        participantsStatus.style.color="#067647";
+    }catch(error){
+        participantsStatus.textContent="Error: "+error.message;
+        participantsStatus.style.color="#b42318";
+    }
+    updateButton();
+});
+
+xlsxFile.addEventListener("change",async function(){
+    const file=this.files[0];
+    xlsxData=null;
+    if(!file){
+        xlsxStatus.textContent="No XLSX file selected.";
+        updateButton(); return;
+    }
+    try{
+        const buffer=await readArrayBuffer(file);
+        const workbook=XLSX.read(buffer,{type:"array",cellDates:false,cellNF:false,cellText:true});
+        if(!workbook.SheetNames.length)throw new Error("The XLSX file contains no worksheets.");
+        const sheetName=workbook.SheetNames[0];
+        const rows=XLSX.utils.sheet_to_json(workbook.Sheets[sheetName],{defval:"",raw:false});
+        xlsxData=normaliseXlsxRows(rows);
+        xlsxStatus.textContent=`Loaded ${xlsxData.length.toLocaleString()} XLSX records from "${sheetName}".`;
+        xlsxStatus.style.color="#067647";
+    }catch(error){
+        xlsxStatus.textContent="Error: "+error.message;
+        xlsxStatus.style.color="#b42318";
+    }
+    updateButton();
+});
+
+function updateButton(){
+    generateBtn.disabled=!Array.isArray(participantsData)||!Array.isArray(xlsxData);
+}
+
+function createFullKey(name,category,country,school){
+    return [normaliseText(name),normaliseText(category),normaliseText(country),normaliseText(school)].join("|||");
+}
+
+function createBasicKey(name,category,country){
+    return [normaliseText(name),normaliseText(category),normaliseText(country)].join("|||");
+}
+
+function cloneObject(object){
+    if(typeof structuredClone==="function")return structuredClone(object);
+    return JSON.parse(JSON.stringify(object));
+}
+
+generateBtn.addEventListener("click",generateCombinedData);
+
+function generateCombinedData(){
+    if(!Array.isArray(participantsData)||!Array.isArray(xlsxData))return;
+
+    const participants=participantsData.map(cloneObject);
+    const fullIndex=new Map();
+    const basicIndex=new Map();
+
+    participants.forEach((participant,index)=>{
+        const name=participant.name||"";
+        const category=participant.category||"";
+        const country=participant.country||"";
+        const school=participant.school||participant.institution||"";
+
+        if(name&&category&&country){
+            const fullKey=createFullKey(name,category,country,school);
+            const basicKey=createBasicKey(name,category,country);
+
+            if(!fullIndex.has(fullKey))fullIndex.set(fullKey,[]);
+            fullIndex.get(fullKey).push(index);
+
+            if(!basicIndex.has(basicKey))basicIndex.set(basicKey,[]);
+            basicIndex.get(basicKey).push(index);
+        }
+    });
+
+    const matchedParticipantIndexes=new Set();
+    const matchedXlsxIndexes=new Set();
+    let matchedCount=0;
+
+    xlsxData.forEach((record,xlsxIndex)=>{
+        const fullKey=createFullKey(record.name,record.category,record.country,record.school);
+        const basicKey=createBasicKey(record.name,record.category,record.country);
+
+        let candidates=fullIndex.get(fullKey)||[];
+        if(candidates.length===0)candidates=basicIndex.get(basicKey)||[];
+
+        if(candidates.length===1){
+            const participantIndex=candidates[0];
+            const participant=participants[participantIndex];
+
+            participant.selected=record.selected;
+            participant.submission={
+                selected:record.selected,
+                category:record.category,
+                country:record.country,
+                name:record.name,
+                school:record.school
+            };
+
+            matchedParticipantIndexes.add(participantIndex);
+            matchedXlsxIndexes.add(xlsxIndex);
+            matchedCount++;
+        }
+    });
+
+    participants.forEach((participant,index)=>{
+        if(!matchedParticipantIndexes.has(index)){
+            participant.selected="NO DATA";
+            participant.submission={
+                selected:"NO DATA",
+                category:"NO DATA",
+                country:"NO DATA",
+                name:"NO DATA",
+                school:"NO DATA"
+            };
+        }
+    });
+
+    const unmatchedXlsx=xlsxData.filter((_,index)=>!matchedXlsxIndexes.has(index));
+
+    if(includeUnmatchedXlsx.checked){
+        unmatchedXlsx.forEach(record=>{
+            participants.push({
+                name:record.name,
+                institution:record.school,
+                school:record.school,
+                country:record.country,
+                category:record.category,
+                participant_id:"NO DATA",
+                program:"NO DATA",
+                batch:"NO DATA",
+                image:"NO DATA",
+                role:record.category,
+                date:"NO DATA",
+                years:"NO DATA",
+                languages:[],
+                email_hash:"NO DATA",
+                password_hash:"NO DATA",
+                selected:record.selected,
+                submission:{
+                    selected:record.selected,
+                    category:record.category,
+                    country:record.country,
+                    name:record.name,
+                    school:record.school
+                },
+                source:"XLSX_ONLY"
+            });
+        });
+    }
+
+    generatedData=participants;
+
+    document.getElementById("totalParticipants").textContent=participantsData.length.toLocaleString();
+    document.getElementById("matchedRecords").textContent=matchedCount.toLocaleString();
+    document.getElementById("unmatchedParticipants").textContent=(participantsData.length-matchedCount).toLocaleString();
+    document.getElementById("unmatchedXlsx").textContent=unmatchedXlsx.length.toLocaleString();
+    document.getElementById("totalOutput").textContent=participants.length.toLocaleString();
+
+    message.innerHTML=`
+        Successfully generated the combined dataset.<br><br>
+        <strong>${matchedCount.toLocaleString()}</strong> XLSX records matched an existing participant.<br>
+        <strong>${(participantsData.length-matchedCount).toLocaleString()}</strong> participants had no matching XLSX record.<br>
+        <strong>${unmatchedXlsx.length.toLocaleString()}</strong> XLSX records did not exist in participants.json.
+    `;
+
+    resultCard.classList.remove("hidden");
+    previewCard.classList.add("hidden");
+    resultCard.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+previewBtn.addEventListener("click",function(){
+    if(!generatedData)return;
+    jsonPreview.textContent=JSON.stringify(generatedData,null,2);
+    previewCard.classList.remove("hidden");
+    previewCard.scrollIntoView({behavior:"smooth",block:"start"});
+});
+
+downloadBtn.addEventListener("click",function(){
+    if(!generatedData)return;
+    const json=JSON.stringify(generatedData,null,2);
+    const blob=new Blob([json],{type:"application/json;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const anchor=document.createElement("a");
+    anchor.href=url;
+    anchor.download="iarco-combined-participants.json";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
