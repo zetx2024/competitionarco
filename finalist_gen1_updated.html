@@ -437,7 +437,36 @@
 
     /* Responsive: the public table becomes a readable card list.
        This eliminates horizontal scrolling entirely. */
-    @media (max-width:700px){
+    .sponsor-showcase{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:2px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .sponsor-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    min-width:105px;
+    max-width:145px;
+    padding:8px;
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    transition:transform .2s ease,background .2s ease;
+  }
+  .sponsor-item:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);color:#fff}
+  .sponsor-item img{width:88px;height:42px;object-fit:contain;background:#fff;border-radius:7px;padding:4px}
+  .sponsor-item strong{font-size:10px;text-align:center;line-height:1.25}
+  .sponsor-item small{font-size:9px;color:#ffe88a;text-align:center}
+  @media (max-width:700px){
       .container{padding:10px}
       h2{font-size:18px}
       h3{font-size:16px}
@@ -648,6 +677,35 @@
     0%,100%{transform:translateY(0)}
     50%{transform:translateY(-5px)}
   }
+  .sponsor-showcase{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+    margin-top:2px;
+    padding-top:12px;
+    border-top:1px solid rgba(255,255,255,.18);
+  }
+  .sponsor-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    min-width:105px;
+    max-width:145px;
+    padding:8px;
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    transition:transform .2s ease,background .2s ease;
+  }
+  .sponsor-item:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);color:#fff}
+  .sponsor-item img{width:88px;height:42px;object-fit:contain;background:#fff;border-radius:7px;padding:4px}
+  .sponsor-item strong{font-size:10px;text-align:center;line-height:1.25}
+  .sponsor-item small{font-size:9px;color:#ffe88a;text-align:center}
   @media (max-width:700px){
     .participation-showcase{padding:13px;margin:12px 0 18px}
     .participation-content{grid-template-columns:1fr;gap:10px}
@@ -713,7 +771,10 @@
       <h3 class="participation-heading">🌍 A Global Research Community</h3>
       <p class="participation-subtitle">Connecting young researchers across borders</p>
       <div class="participation-content">
-        <div class="world-map-wrap"><svg id="worldMap" role="img" aria-label="Animated world map"></svg></div>
+        <div>
+          <div class="world-map-wrap"><svg id="worldMap" role="img" aria-label="Animated world map"></svg></div>
+          <div id="sponsorShowcase" class="sponsor-showcase" aria-label="IARCO sponsors"></div>
+        </div>
         <div>
           <div class="participation-cards">
             <div class="participation-card"><div class="participation-icon"><i class="fas fa-users"></i></div><div class="participation-number" data-target="490">0</div><div class="participation-label">Total Participants</div></div>
@@ -818,6 +879,8 @@
     let flagData = {};
     let charts = {};
     let revealFinished = false;
+    let publicParticipationData = [];
+    let sponsorData = [];
 
 
     /* Animated participation showcase */
@@ -867,6 +930,58 @@
       }
     }
 
+    function normalizeKey(value){
+      return String(value || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+    }
+
+    function getCountryValues(list){
+      return [...new Set((Array.isArray(list) ? list : []).map(item =>
+        typeof item === "string" ? item : (item.country || item.Country || "")
+      ).filter(Boolean))];
+    }
+
+    function getInstitutionValue(item){
+      return item.institution || item.school || item.Institution || item.School || item.institution_name || "";
+    }
+
+    function getParticipantCountry(item){
+      return item.country || item.Country || item.nationality || item.Nationality || "";
+    }
+
+    function getPublicParticipationStats(list){
+      const rows = Array.isArray(list) ? list : [];
+      const countries = getCountryValues(rows.map(getParticipantCountry));
+      const institutions = new Set(rows.map(getInstitutionValue).map(v => String(v).trim()).filter(Boolean));
+      return {
+        total: rows.length,
+        institutions: institutions.size,
+        countries: countries.length,
+        countryNames: countries
+      };
+    }
+
+    function renderSponsors(list){
+      const container = document.getElementById("sponsorShowcase");
+      if(!container) return;
+      container.innerHTML = "";
+      (Array.isArray(list) ? list : []).forEach(partner => {
+        if(!partner || !partner.website || !partner.logo) return;
+        const link = document.createElement("a");
+        link.className = "sponsor-item";
+        link.href = partner.website;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.title = partner.description || partner.name || "Sponsor";
+        link.innerHTML = `
+          <img src="${escapeHtml(partner.logo)}" alt="${escapeHtml(partner.name || "Sponsor")} logo" loading="lazy">
+          <strong>${escapeHtml(partner.name || "Sponsor")}</strong>
+          <small>${escapeHtml(partner.type || "Partner")}</small>
+        `;
+        container.appendChild(link);
+      });
+      if(!container.children.length) container.remove();
+    }
+
     // Load data first. The public page remains untouched while the
     // transparent magical loading layer performs its reveal.
     Promise.all([
@@ -877,9 +992,21 @@
       fetch("data/flagss.json").then(res => {
         if (!res.ok) throw new Error("Could not load flagss.json");
         return res.json();
+      }),
+      fetch("https://portal.iarco.org/data/users.json").then(res => {
+        if (!res.ok) throw new Error("Could not load public users.json");
+        return res.json();
+      }),
+      fetch("data/partners.json").then(res => {
+        if (!res.ok) throw new Error("Could not load partners.json");
+        return res.json();
       })
-    ]).then(([students, flags]) => {
+    ]).then(([students, flags, users, partners]) => {
       studentData = Array.isArray(students) ? students : [];
+      publicParticipationData = Array.isArray(users) ? users : (users && Array.isArray(users.users) ? users.users : (users && typeof users === "object" ? Object.values(users).filter(item => item && typeof item === "object") : []));
+      const sponsorRoot = partners && partners["2026"] ? partners["2026"] : partners;
+      sponsorData = sponsorRoot && Array.isArray(sponsorRoot.sponsor) ? sponsorRoot.sponsor : [];
+      renderSponsors(sponsorData);
 
       flagData = {};
       if (Array.isArray(flags)) {
@@ -907,8 +1034,8 @@
       renderCountryList();
       renderTable();
       createParticipantStructuredData(studentData);
-      const participantCountries = [...new Set(studentData.map(s => s.country).filter(Boolean))];
-      runMagicalReveal(studentData, participantCountries).then(() => {
+      const publicStats = getPublicParticipationStats(publicParticipationData);
+      runMagicalReveal(studentData, publicStats).then(() => {
         revealFinished = true;
         document.getElementById("magicalReveal").classList.add("magic-done");
         document.body.classList.remove("magic-lock");
@@ -1082,7 +1209,11 @@
       intro?.classList.remove("is-hidden");
       stage?.classList.add("is-hidden");
       status.textContent="Mapping the countries represented by our participants...";
-      await renderWorldMap(participantCountries);
+      await renderWorldMap(participantCountries.countryNames || []);
+      const cards = document.querySelectorAll(".participation-number[data-target]");
+      const publicStats = participantCountries || {};
+      const targets = [publicStats.total || 0, publicStats.institutions || 0, publicStats.countries || 0];
+      cards.forEach((card, index) => { card.dataset.target = String(targets[index] || 0); card.textContent = "0"; });
       await wait(950);
       status.textContent="Counting the global research community...";
       animateParticipationNumbers();
