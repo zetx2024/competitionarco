@@ -995,7 +995,7 @@
         if (!res.ok) throw new Error("Could not load flagss.json");
         return res.json();
       }),
-      fetch("https://cert.iarco.org/participant.json").then(res => {
+      fetch("https://cert.iarco.org/data/student.json").then(res => {
         if (!res.ok) throw new Error("Could not load public users.json");
         return res.json();
       }),
