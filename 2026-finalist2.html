@@ -62,35 +62,21 @@
     <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="revised" content="2026-09-24T19:01:57.028Z" />
     <meta name="theme-color" content="#0749b3">
     <meta name="keywords" content="IARCO 2026 finalists, International Academic Research Competition 2026, IARCO finalists, IARCO participants, student research competition, research competition finalists, high school research, undergraduate research, student names, finalist schools, international research competition"/>
     <meta name="description" content="View the official IARCO 2026 finalist participant list, including student names, schools, categories, countries, and selection status from the International Academic Research Competition."/>
-    <meta name="subject" content="2026 Finalists | International Academic Research Competition">
-    <meta name="copyright" content="Md Sanaul Haque Shanto">
-    <meta name="language" content="ES">
-    <meta name="robots" content="index,follow" />
     <meta name="author" content="Md Sanaul Haque Shanto, hello@iarco.org">
     <meta name="designer" content="Md Sanaul Haque Shanto">
-    <meta name="reply-to" content="hello@iarco.org">
     <meta name="owner" content="Md Sanaul Haque Shanto">
-    <meta name="url" content="https://iarco.org/">
-    <meta name="identifier-URL" content="https://iarco.org/">
-    <meta name="coverage" content="Worldwide">
-    <meta name="distribution" content="Global">
-    <meta name="rating" content="General">
     <meta property="og:title" content="2026 Finalists | International Academic Research Competition"/>
     <meta property="og:type" content="Educational"/>
     <meta property="og:url" content="https://iarco.org/"/>
     <meta property="og:site_name" content="2026 Finalists | International Academic Research Competition"/>
     <meta property="og:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
-    <meta property="fb:page_id" content="405729912624141" />
-    <meta property="og:email" content="hello@iarco.org"/>
-    <meta property="og:phone_number" content="+8801766009306"/>
-    <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Research Competition","url":"https://iarco.org"}</script>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="2026 Finalists | International Academic Research Competition"/>
-    <meta name="twitter:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc..">
+    <meta name="twitter:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice.">
+    <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Research Competition","url":"https://iarco.org"}</script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
@@ -102,17 +88,19 @@
       --page-bg:#f9fafb;
     }
 
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     body.magic-lock{overflow:hidden}
     html{scroll-behavior:smooth}
     body{
-      font-family:Arial,sans-serif;
+      font-family:Arial,Helvetica,sans-serif;
       background:var(--page-bg);
       margin:0;
       padding:0;
       color:#222;
       overflow-x:hidden;
+      -webkit-text-size-adjust:100%;
     }
+    img{max-width:100%;height:auto}
     .container{max-width:1100px;margin:auto;padding:12px}
     h2,h3{text-align:center;margin-bottom:6px}
     #stats{text-align:center;margin-bottom:12px;font-size:14px;color:#333;line-height:1.7;padding:0 8px}
@@ -127,6 +115,8 @@
       border:1px solid #ccc;
       font-size:14px;
       outline:none;
+      -webkit-appearance:none;
+      appearance:none;
     }
     #searchBox:focus{border-color:#0749b3;box-shadow:0 0 0 3px rgba(7,73,179,.10)}
     #searchResult{text-align:center;font-size:13px;margin-bottom:12px;color:#333;min-height:18px}
@@ -211,7 +201,7 @@
       vertical-align:middle;overflow:hidden
     }
 
-    /* ================= MAGIC REVEAL OVERLAY (lightweight) ================= */
+    /* ================= MAGIC REVEAL OVERLAY ================= */
     .magical-reveal{
       position:fixed;
       top:0;right:0;bottom:0;left:0;
@@ -222,7 +212,8 @@
       padding:14px;
       opacity:1;
       visibility:visible;
-      transition:opacity .4s ease,visibility .4s ease
+      transition:opacity .4s ease,visibility .4s ease;
+      -webkit-transition:opacity .4s ease,visibility .4s ease;
     }
     .magical-reveal.magic-done{
       opacity:0;visibility:hidden;pointer-events:none
@@ -236,6 +227,7 @@
       position:relative;
       width:min(1100px,100%);
       height:min(780px,calc(100vh - 28px));
+      height:min(780px,calc(100dvh - 28px));
       display:flex;
       flex-direction:column;
       overflow:hidden;
@@ -281,7 +273,8 @@
     #magicProgressBar{
       width:0%;height:100%;
       background:linear-gradient(90deg,#0749b3,#4b9cd3,#ffd700);
-      transition:width .25s linear
+      transition:width .25s linear;
+      -webkit-transition:width .25s linear;
     }
 
     /* Scenes */
@@ -296,8 +289,14 @@
       padding:14px
     }
     .magic-scene.is-active{display:block}
-    #sceneList.is-active{display:flex;flex-direction:column;overflow:hidden;padding:0}
+    #sceneList.is-active{
+      display:flex;flex-direction:column;overflow:hidden;padding:0
+    }
 
+    /* Scene 1 — combined intro: stack the two showcases vertically */
+    .intro-stack{display:flex;flex-direction:column;gap:16px}
+
+    /* Scene 2 — list */
     .magic-stage{
       position:relative;flex:1 1 auto;min-height:0;
       overflow-y:auto;overflow-x:hidden;
@@ -323,17 +322,26 @@
     .magic-row{
       position:relative;min-height:42px;background:#fff;
       border-bottom:1px solid #e7ebef;
-      opacity:0;transform:translate3d(0,10px,0);
-      transition:opacity .22s ease,transform .28s ease,background .2s ease
+      opacity:0;
+      -webkit-transform:translate3d(0,10px,0);
+      transform:translate3d(0,10px,0);
+      -webkit-transition:opacity .25s ease,transform .3s ease,background .2s ease;
+      transition:opacity .25s ease,transform .3s ease,background .2s ease;
     }
-    .magic-row.revealed{opacity:1;transform:translate3d(0,0,0)}
+    .magic-row.revealed{
+      opacity:1;
+      -webkit-transform:translate3d(0,0,0);
+      transform:translate3d(0,0,0);
+    }
     .magic-row.selected{
       background:#006400;color:#fff;
       box-shadow:inset 4px 0 #ffd700
     }
     .magic-row.selected:after{
       content:"✓";position:absolute;right:7px;top:50%;
-      transform:translateY(-50%);width:20px;height:20px;
+      -webkit-transform:translateY(-50%);
+      transform:translateY(-50%);
+      width:20px;height:20px;
       display:flex;align-items:center;justify-content:center;
       border-radius:50%;background:#ffd700;color:#003366;
       font-size:12px;font-weight:900
@@ -505,11 +513,16 @@
       .chart-canvas{height:170px}
 
       .magical-reveal{padding:8px}
-      .magical-card{height:calc(100vh - 16px);border-radius:16px}
+      .magical-card{
+        height:calc(100vh - 16px);
+        height:calc(100dvh - 16px);
+        border-radius:16px
+      }
       .magical-top{padding:12px 14px 10px}
       .magic-orbit{width:40px;height:40px;flex-basis:40px;margin-right:12px}
       .magical-top p{font-size:11px}
       .magic-scene{padding:10px}
+      .intro-stack{gap:12px}
       .magic-stage{padding:0 7px}
       .magic-table-head,.magic-row{
         grid-template-columns:62px minmax(95px,1.15fr) minmax(105px,1.35fr) 60px 60px;
@@ -597,6 +610,16 @@
       .team-position,.team-institution{font-size:9px}
     }
 
+    /* Very short landscape screens (mobile landscape etc.) */
+    @media (max-height:480px) and (orientation:landscape){
+      .magical-card{height:calc(100vh - 12px);height:calc(100dvh - 12px)}
+      .magical-top{padding:8px 12px 6px}
+      .magic-orbit{width:34px;height:34px;flex-basis:34px;margin-right:10px}
+      .magical-top h2{font-size:15px}
+      .magical-top p{font-size:10px}
+      .magic-scene{padding:8px}
+    }
+
     @media (prefers-reduced-motion:reduce){
       *,*:before,*:after{
         animation-duration:.01ms !important;
@@ -647,10 +670,9 @@
 <body class="magic-lock">
 
 <!-- ============================================================
-     MAGICAL REVEAL OVERLAY  (3 ordered scenes)
-     1) Judges & Host Speakers
-     2) World map + animated counters + sponsors
-     3) Magical participant reveal list
+     MAGICAL REVEAL OVERLAY  (2 ordered scenes)
+     Scene 1 : Judges & Host Speakers + World map + Counters + Sponsors (one page)
+     Scene 2 : Magical participant reveal list
      ============================================================ -->
 <div id="magicalReveal" class="magical-reveal" aria-hidden="true">
   <div class="magical-backdrop"></div>
@@ -671,38 +693,41 @@
 
     <div class="magic-body">
 
-      <!-- SCENE 1 : JUDGES & HOST SPEAKERS -->
-      <section id="sceneTeam" class="magic-scene" aria-label="IARCO 2026 judges and host speakers">
-        <div id="teamShowcase" class="team-showcase is-empty">
-          <h3 class="team-heading">IARCO 2026 Judges &amp; Host Speakers</h3>
-          <p class="team-subtitle">Meet the judges and host speakers contributing to the IARCO 2026 programme.</p>
-          <div id="teamGroups" class="team-groups"></div>
-        </div>
-      </section>
+      <!-- SCENE 1 : TEAM + WORLD MAP + COUNTERS + SPONSORS (single page) -->
+      <section id="sceneIntro" class="magic-scene" aria-label="IARCO 2026 overview">
+        <div class="intro-stack">
 
-      <!-- SCENE 2 : WORLD MAP + COUNTERS -->
-      <section id="sceneWorld" class="magic-scene" aria-label="IARCO participation highlights">
-        <div id="magicParticipation" class="participation-showcase">
-          <h3 class="participation-heading">🌍 A Global Research Community</h3>
-          <p class="participation-subtitle">Connecting young researchers across borders</p>
-          <div class="participation-content">
-            <div>
-              <div class="world-map-wrap"><svg id="worldMap" role="img" aria-label="Animated world map"></svg></div>
-              <div id="sponsorShowcase" class="sponsor-showcase" aria-label="IARCO sponsors"></div>
-            </div>
-            <div>
-              <div class="participation-cards">
-                <div class="participation-card"><div class="participation-icon"><i class="fas fa-users"></i></div><div class="participation-number" data-target="0">0</div><div class="participation-label">Total Participants</div></div>
-                <div class="participation-card"><div class="participation-icon"><i class="fas fa-school"></i></div><div class="participation-number" data-target="0">0</div><div class="participation-label">Participating Institutions</div></div>
-                <div class="participation-card"><div class="participation-icon"><i class="fas fa-location-dot"></i></div><div class="participation-number" data-target="0">0</div><div class="participation-label">Participating Countries</div></div>
+          <!-- Judges & Host Speakers -->
+          <div id="teamShowcase" class="team-showcase is-empty">
+            <h3 class="team-heading">IARCO 2026 Judges &amp; Host Speakers</h3>
+            <p class="team-subtitle">Meet the judges and host speakers contributing to the IARCO 2026 programme.</p>
+            <div id="teamGroups" class="team-groups"></div>
+          </div>
+
+          <!-- World map + counters + sponsors -->
+          <div id="magicParticipation" class="participation-showcase">
+            <h3 class="participation-heading">🌍 A Global Research Community</h3>
+            <p class="participation-subtitle">Connecting young researchers across borders</p>
+            <div class="participation-content">
+              <div>
+                <div class="world-map-wrap"><svg id="worldMap" role="img" aria-label="Animated world map"></svg></div>
+                <div id="sponsorShowcase" class="sponsor-showcase" aria-label="IARCO sponsors"></div>
               </div>
-              <div class="participation-location"><i class="fas fa-globe-asia"></i> International participation from around the world</div>
+              <div>
+                <div class="participation-cards">
+                  <div class="participation-card"><div class="participation-icon"><i class="fas fa-users"></i></div><div class="participation-number" data-target="0">0</div><div class="participation-label">Total Participants</div></div>
+                  <div class="participation-card"><div class="participation-icon"><i class="fas fa-school"></i></div><div class="participation-number" data-target="0">0</div><div class="participation-label">Participating Institutions</div></div>
+                  <div class="participation-card"><div class="participation-icon"><i class="fas fa-location-dot"></i></div><div class="participation-number" data-target="0">0</div><div class="participation-label">Participating Countries</div></div>
+                </div>
+                <div class="participation-location"><i class="fas fa-globe-asia"></i> International participation from around the world</div>
+              </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      <!-- SCENE 3 : MAGICAL REVEAL LIST -->
+      <!-- SCENE 2 : MAGICAL REVEAL LIST -->
       <section id="sceneList" class="magic-scene" aria-label="IARCO 2026 finalist list">
         <div class="magic-stage" id="magicStage">
           <div class="magic-table-head">
@@ -788,20 +813,19 @@
   <script>
     /* ============================================================
        IARCO 2026 FINALISTS PAGE SCRIPT
-       - Lightweight, Safari/Chrome/old-device friendly
-       - Uses ES5-compatible constructs where matters
-       - Fast data prefetch already started in <head>
+       - Lightweight, Safari/Chrome/old-device friendly (ES5 style)
+       - Fast JSON prefetch already started in <head>
        ============================================================ */
 
-    // ---------- Reveal timings (short, engaging) ----------
+    // ---------- Reveal timings (readable, not boring) ----------
     var REVEAL_TIMINGS = {
-      team: 2400,             // pause on judges & host speakers
-      worldIntro: 250,        // small settle before counters
-      world: 2800,            // pause on map + counters
-      revealMinDuration: 1800,// min time to reveal whole list
-      revealMaxDuration: 4500,// max time to reveal whole list
-      revealPerRow: 8,        // ms per row (target), used for duration calc
-      outro: 550              // hold finished list before closing
+      introTeam: 4200,        // pause to read judges & host names
+      introScroll: 900,       // gentle auto-scroll to map (mobile)
+      introWorldIntro: 250,   // small settle before counters start
+      introWorld: 4800,       // pause to read counters + map + sponsors
+      revealPerRow: 70,       // base per-row delay (readable speed)
+      revealPerRowSelected: 130, // selected rows get a longer hold
+      outro: 1200             // hold finished list before closing
     };
 
     // ---------- State ----------
@@ -915,7 +939,9 @@
           '<small>' + escapeHtml(partner.type || "Partner") + '</small>';
         container.appendChild(link);
       });
-      if (!container.children.length) container.parentNode && container.parentNode.removeChild(container);
+      if (!container.children.length) {
+        container.style.display = "none";
+      }
     }
 
     // ---------- Team members ----------
@@ -1010,11 +1036,8 @@
         renderedGroupCount++;
       });
 
-      if (renderedGroupCount === 0) {
-        showcase.classList.add("is-empty");
-      } else {
-        showcase.classList.remove("is-empty");
-      }
+      if (renderedGroupCount === 0) showcase.classList.add("is-empty");
+      else showcase.classList.remove("is-empty");
     }
 
     // ---------- Data load (uses prefetched promises from <head>) ----------
@@ -1087,7 +1110,10 @@
           if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
           var wrapper = document.getElementById("student-table");
           wrapper = wrapper ? wrapper.closest(".table-wrapper") : null;
-          if (wrapper) smoothScrollTo(window, wrapper.getBoundingClientRect().top + window.pageYOffset);
+          if (wrapper) {
+            var top = wrapper.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+            smoothScrollTo(window, top);
+          }
         }, 500);
       });
     }).catch(function(error){
@@ -1283,7 +1309,7 @@
       var els = document.querySelectorAll(".participation-number[data-target]");
       Array.prototype.forEach.call(els, function(el){
         var target = Number(el.getAttribute("data-target")) || 0;
-        var duration = 1600;
+        var duration = 1700;
         var start = (window.performance && performance.now) ? performance.now() : Date.now();
         function tick(){
           var now = (window.performance && performance.now) ? performance.now() : Date.now();
@@ -1300,9 +1326,8 @@
 
     /* ============================================================
        MAGICAL REVEAL SEQUENCE
-       1) Judges & Host Speakers
-       2) World map + counters + sponsors
-       3) Fast participant reveal
+       Scene 1 : Team + World map + Counters + Sponsors (single page)
+       Scene 2 : Fast, readable participant reveal
        ============================================================ */
     function runMagicalReveal(list, participationStats) {
       return new Promise(function(resolveOuter){
@@ -1317,8 +1342,7 @@
         var rowsContainer = document.getElementById("magicRows");
 
         var scenes = {
-          team:  document.getElementById("sceneTeam"),
-          world: document.getElementById("sceneWorld"),
+          intro: document.getElementById("sceneIntro"),
           list:  document.getElementById("sceneList")
         };
 
@@ -1334,15 +1358,34 @@
 
         document.body.classList.add("magic-lock");
 
-        function afterTeam(){
-          // SCENE 2 : WORLD MAP + COUNTERS
-          showScene("world");
-          progress.style.width = "20%";
-          status.textContent = "Mapping the countries represented by our participants…";
-          note.textContent = "Global participation";
-          counter.textContent = "Global community";
+        /* ---------- SCENE 1: team + world (single page) ---------- */
+        showScene("intro");
+        progress.style.width = "6%";
+        note.textContent = "Judges & Host Speakers";
+        counter.textContent = "IARCO 2026";
 
-          var t0 = Date.now();
+        var teamCards = document.querySelectorAll("#teamGroups .team-card");
+        if (teamCards.length > 0) {
+          status.textContent = "Meet the IARCO 2026 judges and host speakers…";
+          counter.textContent = teamCards.length + " people";
+        } else {
+          status.textContent = "Welcome to IARCO 2026…";
+        }
+
+        // Gentle auto-scroll to the map section for tall screens (mobile)
+        setTimeout(function(){
+          var intro = scenes.intro;
+          var participation = document.getElementById("magicParticipation");
+          if (intro && participation && intro.scrollHeight > intro.clientHeight + 40) {
+            smoothScrollTo(intro, participation.offsetTop - 10);
+          }
+        }, REVEAL_TIMINGS.introTeam - REVEAL_TIMINGS.introScroll);
+
+        // After the team pause, start the map + counters
+        setTimeout(function(){
+          progress.style.width = "22%";
+          status.textContent = "Mapping the countries represented by our participants…";
+
           renderWorldMap(participationStats.countryNames || []).then(function(){
             var cards = document.querySelectorAll(".participation-number[data-target]");
             var targets = [
@@ -1360,16 +1403,14 @@
               animateParticipationNumbers();
               progress.style.width = "32%";
 
-              // Total pause on the world scene, measured from its start
-              var elapsed = Date.now() - t0;
-              var remaining = Math.max(0, REVEAL_TIMINGS.world - elapsed);
-              setTimeout(afterWorld, remaining);
-            }, REVEAL_TIMINGS.worldIntro);
+              // After the world pause, move to the reveal list
+              setTimeout(afterIntro, REVEAL_TIMINGS.introWorld);
+            }, REVEAL_TIMINGS.introWorldIntro);
           });
-        }
+        }, REVEAL_TIMINGS.introTeam);
 
-        function afterWorld(){
-          // SCENE 3 : FAST PARTICIPANT REVEAL
+        /* ---------- SCENE 2: fast, readable participant reveal ---------- */
+        function afterIntro(){
           showScene("list");
           progress.style.width = "36%";
           status.textContent = "Preparing the finalist list…";
@@ -1380,8 +1421,9 @@
           var rowHtml = [];
           list.forEach(function(student){
             var flagCell = flagImgMarkup(student.country, "", 20);
-            var countryInner = flagCell ? '<span class="magic-country">' + flagCell + '<span>' + escapeHtml(student.country) + '</span></span>'
-                                        : escapeHtml(student.country);
+            var countryInner = flagCell
+              ? '<span class="magic-country">' + flagCell + '<span>' + escapeHtml(student.country) + '</span></span>'
+              : escapeHtml(student.country);
             rowHtml.push(
               '<div class="magic-row">' +
                 '<span>' + escapeHtml(student.category) + '</span>' +
@@ -1405,100 +1447,59 @@
             return;
           }
 
-          // Cache row offsets once, after the DOM has settled.
+          // Force layout once before we start animating
           void stage.offsetHeight;
 
-          var totalRows = total;
-          var duration = Math.max(
-            REVEAL_TIMINGS.revealMinDuration,
-            Math.min(REVEAL_TIMINGS.revealMaxDuration, totalRows * REVEAL_TIMINGS.revealPerRow)
-          );
-          var startTime = Date.now();
-          var lastRevealed = 0;
-          var lastScrollIndex = 0;
+          var i = 0;
+          var lastScrollIdx = 0;
 
-          function frame(){
-            var now = Date.now();
-            var progressRatio = Math.min((now - startTime) / duration, 1);
-            var targetIndex = Math.floor(progressRatio * totalRows);
-
-            // Reveal all rows up to targetIndex
-            while (lastRevealed < targetIndex) {
-              var i = lastRevealed;
-              var row = rows[i];
-              if (row) {
-                row.classList.add("revealed");
-                if (list[i].selected === "Yes") row.classList.add("selected");
-              }
-              lastRevealed++;
-            }
-
-            // Progress bar and counter
-            var pct = 36 + Math.round((lastRevealed / totalRows) * 64);
-            progress.style.width = pct + "%";
-            counter.textContent = lastRevealed + " of " + totalRows + " participants";
-
-            // Update status occasionally (not every frame)
-            if (lastRevealed > 0 && lastRevealed !== targetIndex + 1) {
-              var lastIdx = Math.max(0, lastRevealed - 1);
-              var s = list[lastIdx];
-              if (s) {
-                status.textContent = s.selected === "Yes"
-                  ? "✨ " + (s.name || "Participant") + " — selected"
-                  : "Revealing " + (s.name || "participant") + "…";
-              }
-            }
-
-            // Auto-scroll gently (checked every ~8 rows)
-            if (lastRevealed - lastScrollIndex >= 8 || lastRevealed === totalRows) {
-              lastScrollIndex = lastRevealed;
-              var checkIdx = Math.min(lastRevealed - 1, totalRows - 1);
-              var checkRow = rows[checkIdx];
-              if (checkRow) {
-                var bottom = checkRow.offsetTop + checkRow.offsetHeight;
-                if (bottom > stage.scrollTop + stage.clientHeight - 20) {
-                  stage.scrollTop = bottom - stage.clientHeight + 20;
-                }
-              }
-            }
-
-            if (progressRatio < 1) {
-              requestAnimationFrame(frame);
-            } else {
-              // Finish: ensure every row is revealed
-              while (lastRevealed < totalRows) {
-                var r = rows[lastRevealed];
-                if (r) {
-                  r.classList.add("revealed");
-                  if (list[lastRevealed].selected === "Yes") r.classList.add("selected");
-                }
-                lastRevealed++;
-              }
-              status.textContent = "✨ All " + totalRows + " participants revealed";
+          function revealNext(){
+            if (i >= total) {
+              status.textContent = "✨ All " + total + " participants revealed";
               progress.style.width = "100%";
-              counter.textContent = totalRows + " participants";
+              counter.textContent = total + " participants";
               note.textContent = "Reveal complete";
-
               smoothScrollTo(stage, stage.scrollHeight);
-
               setTimeout(resolveOuter, REVEAL_TIMINGS.outro);
+              return;
             }
+
+            var row = rows[i];
+            var student = list[i];
+            var isSelected = student.selected === "Yes";
+
+            row.classList.add("revealed");
+            if (isSelected) row.classList.add("selected");
+
+            // Update progress + counter
+            var pct = 36 + Math.round(((i + 1) / total) * 64);
+            progress.style.width = pct + "%";
+            counter.textContent = (i + 1) + " of " + total + " participants";
+
+            // Update status (a bit less frequently to reduce layout thrash)
+            if (isSelected) {
+              status.textContent = "✨ " + (student.name || "Participant") + " — selected";
+            } else if ((i % 4) === 0) {
+              status.textContent = "Revealing " + (student.name || "participant") + "…";
+            }
+
+            // Gentle auto-scroll — only when the newest row would drop below view
+            var rowBottom = row.offsetTop + row.offsetHeight;
+            if (rowBottom > stage.scrollTop + stage.clientHeight - 20) {
+              stage.scrollTop = rowBottom - stage.clientHeight + 20;
+              lastScrollIdx = i;
+            }
+
+            i++;
+
+            var delay = isSelected
+              ? REVEAL_TIMINGS.revealPerRowSelected
+              : REVEAL_TIMINGS.revealPerRow;
+
+            setTimeout(revealNext, delay);
           }
 
-          requestAnimationFrame(frame);
-        }
-
-        // ---------- START: SCENE 1 (Judges & Host Speakers) ----------
-        var teamCards = document.querySelectorAll("#teamGroups .team-card");
-        if (teamCards.length > 0) {
-          showScene("team");
-          progress.style.width = "6%";
-          status.textContent = "Meet the IARCO 2026 judges and host speakers…";
-          note.textContent = "Judges & Host Speakers";
-          counter.textContent = teamCards.length + " people";
-          setTimeout(afterTeam, REVEAL_TIMINGS.team);
-        } else {
-          afterTeam();
+          revealNext();
         }
       });
     }
