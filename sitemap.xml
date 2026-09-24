@@ -4,13 +4,13 @@
 
     <url>
       <loc>https://iarco.org</loc>
-      <lastmod>2026-07-28T01:30:57+06:00</lastmod>
+      <lastmod>2026-09-24T00:00:57+06:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.00</priority>
     </url>
     <url>
-      <loc>https://regi.iarco.org</loc>
-      <lastmod>2026-07-28T02:00:57+06:00</lastmod>
+      <loc>https://iarco.org/2026-finalists</loc>
+      <lastmod>2026-09-24T00:00:57+06:00</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.00</priority>
     </url>
