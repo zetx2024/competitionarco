@@ -727,6 +727,152 @@
   @media (prefers-reduced-motion:reduce){
     .participation-card{animation:none}
   }
+
+  /* ================= IARCO 2026 TEAM SHOWCASE ================= */
+  .team-showcase{
+    margin:18px 0 24px;
+    padding:20px;
+    border-radius:18px;
+    background:
+      radial-gradient(circle at 85% 15%,rgba(255,215,0,.14),transparent 30%),
+      linear-gradient(135deg,#001d3d,#0749b3 62%,#003366);
+    color:#fff;
+    box-shadow:0 12px 30px rgba(0,25,70,.18);
+    overflow:hidden;
+  }
+  .team-showcase.is-empty{display:none}
+  .team-heading{
+    text-align:center;
+    margin:0 0 5px;
+    color:#fff;
+    font-size:clamp(19px,3vw,28px);
+    font-weight:800;
+  }
+  .team-subtitle{
+    margin:0 auto 18px;
+    text-align:center;
+    color:#dbeafe;
+    font-size:13px;
+    line-height:1.5;
+    max-width:760px;
+  }
+  .team-groups{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+  }
+  .team-group{
+    min-width:0;
+    padding:15px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:16px;
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(6px);
+  }
+  .team-group-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0 0 12px;
+    color:#ffd700;
+    font-size:15px;
+    font-weight:800;
+  }
+  .team-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+    gap:11px;
+  }
+  .team-card{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:12px 9px;
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:14px;
+    background:rgba(255,255,255,.08);
+    transition:transform .2s ease,background .2s ease,box-shadow .2s ease;
+  }
+  .team-card:hover{
+    transform:translateY(-3px);
+    background:rgba(255,255,255,.13);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+  }
+  .team-photo{
+    width:86px;
+    height:86px;
+    flex:0 0 86px;
+    border-radius:50%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+    background:#fff;
+    border:3px solid rgba(255,215,0,.72);
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+  }
+  .team-name{
+    width:100%;
+    margin-top:9px;
+    color:#fff;
+    font-size:13px;
+    line-height:1.3;
+    font-weight:800;
+    overflow-wrap:anywhere;
+  }
+  .team-position{
+    width:100%;
+    margin-top:4px;
+    color:#ffe88a;
+    font-size:10px;
+    line-height:1.35;
+    font-weight:700;
+    overflow-wrap:anywhere;
+  }
+  .team-institution{
+    width:100%;
+    margin-top:5px;
+    color:#dbeafe;
+    font-size:10px;
+    line-height:1.4;
+    overflow-wrap:anywhere;
+  }
+  .team-country{
+    margin-top:7px;
+    padding:3px 7px;
+    border-radius:999px;
+    background:rgba(255,255,255,.12);
+    color:#fff;
+    font-size:9px;
+    line-height:1.2;
+  }
+  .team-bio{
+    width:100%;
+    margin:8px 0 0;
+    padding-top:7px;
+    border-top:1px solid rgba(255,255,255,.12);
+    color:#dbeafe;
+    font-size:9px;
+    line-height:1.45;
+    overflow-wrap:anywhere;
+  }
+  @media (max-width:700px){
+    .team-showcase{padding:14px;margin:12px 0 18px}
+    .team-groups{grid-template-columns:1fr;gap:12px}
+    .team-group{padding:12px}
+    .team-grid{grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px}
+    .team-card{padding:10px 7px}
+    .team-photo{width:74px;height:74px;flex-basis:74px}
+  }
+  @media (max-width:380px){
+    .team-showcase{padding:11px}
+    .team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .team-card{padding:9px 6px}
+    .team-photo{width:66px;height:66px;flex-basis:66px}
+    .team-name{font-size:11px}
+    .team-position,.team-institution{font-size:9px}
+  }
 .magic-intro{margin:0 0 14px;display:block}.magic-intro.is-hidden{display:none}
   .magic-stage.is-hidden{display:none}
   #worldMap path.participant-country{fill:#ffd700 !important;stroke:#fff3a3;stroke-width:.7}
@@ -784,6 +930,13 @@
           <div class="participation-location"><i class="fas fa-globe-asia"></i> International participation from around the world</div>
         </div>
       </div>
+    </section>
+
+    <!-- 2026 Judges & Host Speakers -->
+    <section id="teamShowcase" class="team-showcase is-empty" aria-label="IARCO 2026 judges and host speakers">
+      <h3 class="team-heading">IARCO 2026 Judges &amp; Host Speakers</h3>
+      <p class="team-subtitle">Meet the judges and host speakers contributing to the IARCO 2026 programme.</p>
+      <div id="teamGroups" class="team-groups"></div>
     </section>
 
     <div class="magic-progress">
@@ -883,6 +1036,7 @@
     let revealFinished = false;
     let publicParticipationData = [];
     let sponsorData = [];
+    let teamMemberData = {};
 
 
     /* Animated participation showcase */
@@ -984,6 +1138,119 @@
       if(!container.children.length) container.remove();
     }
 
+
+    function normalizeTeamGroups(root){
+      const source = root && typeof root === "object" ? root : {};
+      const yearRoot = source["2026"] && typeof source["2026"] === "object"
+        ? source["2026"]
+        : source;
+
+      return {
+        judges: Array.isArray(yearRoot.judges) ? yearRoot.judges : [],
+        hostSpeakers: Array.isArray(yearRoot.hostSpeakers) ? yearRoot.hostSpeakers : []
+      };
+    }
+
+    function renderTeamMembers(root){
+      const showcase = document.getElementById("teamShowcase");
+      const groupsContainer = document.getElementById("teamGroups");
+      if(!showcase || !groupsContainer) return;
+
+      const groups = normalizeTeamGroups(root);
+      const definitions = [
+        {
+          key:"judges",
+          title:"Judges",
+          icon:"fa-gavel",
+          emptyLabel:""
+        },
+        {
+          key:"hostSpeakers",
+          title:"Host Speakers",
+          icon:"fa-microphone",
+          emptyLabel:""
+        }
+      ];
+
+      groupsContainer.innerHTML = "";
+      let renderedGroupCount = 0;
+
+      definitions.forEach(def => {
+        const members = groups[def.key].filter(Boolean);
+        if(!members.length) return;
+
+        const section = document.createElement("div");
+        section.className = "team-group";
+
+        const title = document.createElement("h4");
+        title.className = "team-group-title";
+        title.innerHTML = `<i class="fas ${def.icon}" aria-hidden="true"></i>${def.title}`;
+        section.appendChild(title);
+
+        const grid = document.createElement("div");
+        grid.className = "team-grid";
+
+        members.forEach(member => {
+          const card = document.createElement("article");
+          card.className = "team-card";
+
+          const image = member.image ? document.createElement("img") : null;
+          if(image){
+            image.className = "team-photo";
+            image.src = member.image;
+            image.alt = `${member.name || "Team member"} photo`;
+            image.loading = "lazy";
+            image.decoding = "async";
+            image.onerror = () => {
+              image.style.display = "none";
+            };
+            card.appendChild(image);
+          }
+
+          const name = document.createElement("div");
+          name.className = "team-name";
+          name.textContent = member.name || "";
+          card.appendChild(name);
+
+          if(member.position){
+            const position = document.createElement("div");
+            position.className = "team-position";
+            position.textContent = member.position;
+            card.appendChild(position);
+          }
+
+          if(member.institution){
+            const institution = document.createElement("div");
+            institution.className = "team-institution";
+            institution.textContent = member.institution;
+            card.appendChild(institution);
+          }
+
+          if(member.country){
+            const country = document.createElement("div");
+            country.className = "team-country";
+            country.textContent = member.country;
+            card.appendChild(country);
+          }
+
+          if(member.bio){
+            const bio = document.createElement("p");
+            bio.className = "team-bio";
+            bio.textContent = member.bio;
+            card.appendChild(bio);
+          }
+
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        groupsContainer.appendChild(section);
+        renderedGroupCount++;
+      });
+
+      showcase.classList.toggle("is-empty", renderedGroupCount === 0);
+    }
+
     // Load data first. The public page remains untouched while the
     // transparent magical loading layer performs its reveal.
     Promise.all([
@@ -1002,13 +1269,20 @@
       fetch("data/partners.json").then(res => {
         if (!res.ok) throw new Error("Could not load partners.json");
         return res.json();
+      }),
+      fetch("data/team-members.json").then(res => {
+        if (!res.ok) throw new Error("Could not load team-members.json");
+        return res.json();
       })
-    ]).then(([students, flags, users, partners]) => {
+    ]).then(([students, flags, users, partners, teamMembers]) => {
       studentData = Array.isArray(students) ? students : [];
       publicParticipationData = Array.isArray(users) ? users : (users && Array.isArray(users.users) ? users.users : (users && typeof users === "object" ? Object.values(users).filter(item => item && typeof item === "object") : []));
       const sponsorRoot = partners && partners["2026"] ? partners["2026"] : partners;
       sponsorData = sponsorRoot && Array.isArray(sponsorRoot.sponsor) ? sponsorRoot.sponsor : [];
       renderSponsors(sponsorData);
+
+      teamMemberData = teamMembers && typeof teamMembers === "object" ? teamMembers : {};
+      renderTeamMembers(teamMemberData);
 
       flagData = {};
       if (Array.isArray(flags)) {
@@ -1217,6 +1491,7 @@
       const targets = [publicStats.total || 0, publicStats.institutions || 0, publicStats.countries || 0];
       cards.forEach((card, index) => { card.dataset.target = String(targets[index] || 0); card.textContent = "0"; });
       await wait(950);
+      renderTeamMembers(teamMemberData);
       status.textContent="Counting the global research community...";
       animateParticipationNumbers();
       await wait(1750);
@@ -1257,8 +1532,6 @@
 
       // Faster on very large lists, slower on smaller lists.
       const delay = list.length > 150 ? 24 : list.length > 80 ? 38 : 58;
-      const rowRevealTime = 110;
-
       for (let i=0; i<rows.length; i++) {
         const row = rows[i];
         row.classList.add("revealed");
