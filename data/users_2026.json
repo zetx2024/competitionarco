@@ -10394,5 +10394,25 @@
     ],
     "email_hash": "88f69d839667caa46263331f0f7f8e034cbcc413f7f723528f7e0d3a0b63fea74507f9400c3ecf0aaeb65b77f7b50ffa9973a7c3f38bdb24af42c61d6851a6d6",
     "password_hash": "baf9719ea032ddab5f37ee170e5d31254c0e4c00cc267800328084850f96452447c24468a321a8acd80741c7b06e885104ce212b5b55304588036ad9a850afe8"
+  },
+  {
+    "name": "Mashiat Mazin Zahid",
+    "institution": "Bangladesh International School & College",
+    "school": "Bangladesh International School and College",
+    "country": "Israel",
+    "category": "Junior",
+    "participant_id": "2026-J-493",
+    "program": "IARCO",
+    "batch": "3rd",
+    "image": "https://iarco.org/fevicon/android-chrome-192x192.png",
+    "role": "Junior",
+    "date": "2026-09-01",
+    "years": "2026",
+    "languages": [
+      "intro",
+      "eng"
+    ],
+    "email_hash": "88f69d839667caa46263331f0f7f8e034cbcc413f7f723528f7e0d3a0b63fea74507f9400c3ecf0aaeb65b77f7b50ffa9973a7c3f38bdb24af42c61d6851a6d6",
+    "password_hash": "baf9719ea032ddab5f37ee170e5d31254c0e4c00cc267800328084850f96452447c24468a321a8acd80741c7b06e885104ce212b5b55304588036ad9a850afe8"
   }
 ]
