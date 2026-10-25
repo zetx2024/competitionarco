@@ -2560,8 +2560,8 @@
     "research_paper": {
       "research_problem": 16,
       "existing_literature": 8,
-      "research_question": 21,
-      "methodology": 20,
+      "research_question": 19,
+      "methodology": 18,
       "research_topic": 12,
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 6,
@@ -2635,7 +2635,7 @@
       "plagiarism_check_percentile": 20,
       "presentation": {
         "persuasiveness": 15,
-        "video_quality": 12,
+        "video_quality": 14,
         "research_problem": 16,
         "research_question": 16,
         "methodology": 18
@@ -5008,9 +5008,9 @@
     "research_paper": {
       "research_problem": 16,
       "existing_literature": 8,
-      "research_question": 19,
+      "research_question": 20,
       "methodology": 20,
-      "research_topic": 12,
+      "research_topic": 13,
       "quality_of_writing": 3,
       "plagiarism_check_percentile": 23,
       "presentation": {
@@ -5552,7 +5552,7 @@
     "research_paper": {
       "research_problem": 14,
       "existing_literature": 7,
-      "research_question": 20,
+      "research_question": 19,
       "methodology": 19,
       "research_topic": 12,
       "quality_of_writing": 4,
@@ -5858,8 +5858,8 @@
     "research_paper": {
       "research_problem": 14,
       "existing_literature": 8,
-      "research_question": 19,
-      "methodology": 18,
+      "research_question": 18,
+      "methodology": 17,
       "research_topic": 10,
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 19,
