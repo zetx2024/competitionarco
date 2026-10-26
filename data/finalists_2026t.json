@@ -50,11 +50,11 @@
       "quality_of_writing": 4,
       "plagiarism_check_percentile": 15,
       "presentation": {
-        "persuasiveness": 15,
-        "video_quality": 13,
+        "persuasiveness": 16,
+        "video_quality": 14,
         "research_problem": 17,
         "research_question": 17,
-        "methodology": 20
+        "methodology": 18
       }
     },
     "plagiarismPenalty": 0,
