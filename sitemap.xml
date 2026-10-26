@@ -9,6 +9,12 @@
       <priority>1.00</priority>
     </url>
     <url>
+      <loc>https://iarco.org/2026-winners</loc>
+      <lastmod>2026-10-26T21:30:57+00:00</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>1.00</priority>
+    </url>
+    <url>
       <loc>https://iarco.org/2026-finalists</loc>
       <lastmod>2026-09-24T00:00:57+06:00</lastmod>
       <changefreq>weekly</changefreq>
