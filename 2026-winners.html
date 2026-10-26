@@ -35,7 +35,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="fevicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="fevicon/favicon-16x16.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="revised" content="2026-11-8T02:01:57.028Z" />
+    <meta name="revised" content="2026-10-268T02:01:57.028Z" />
     <meta name="theme-color" content="#0749b3">
     <meta name="keywords" content="Global, USA, United State of America, Competiton, IARCO, International, Academic, International Academic Research Competition, Bangladesh, Summer, SRP, WRP,YRJ, yrj, Youth Research Journal, Education, Lumiere Education, Spring, Research Program, Summer Activities, Winter Research, Winter Program, Winter Activities, undergraduate, research, journal, electronic, online, multidisciplinary, open access, articles, essays, Houston, Texas, Journal of Student Research, jofsr, Jofsr, JofSR, student research journal, undergraduate rsesearch journal, student research, high school, hs, high school publication, high school research, school research, high school edition, hs edition, hs portal, high school portal, high school edition research, machine learning, computational biology, machine, computational, biology."/>
     <meta name="description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
@@ -68,7 +68,7 @@
     <meta name="og:description" content="IARCO is an online research competition for high school & university students where you can explore any research topic of your choice: STEM, Humanities, Economics, etc.."/>
     <meta name="fb:page_id" content="405729912624141" />
     <meta name="og:email" content="hello@iarco.org"/>
-    <meta name="og:phone_number" content="+8801766009306"/>
+    <meta name="og:phone_number" content=""/>
 
     <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"Research Competition","url":"https://iarco.org"}</script>
 
@@ -578,7 +578,58 @@
     <br>
     <center>
         <div class="container">
-<p>Sooooooooon!!!</p>
+            <h2>IARCO 2026 Result</h2>
+            <h6>Sponsored by <a href="https://savemyexams.com">SaveMyExams</a> & <a href="https://domain.me">domain.me .</a></h6>
+            </hr>
+            <p style="font-size: 9px;"><strong><a href="judging">[Judging Rubrics]</a></strong></p>
+            <br>
+
+            <div class="toggle-buttons">
+                <button id="juniorButton" class="active">Junior</button>
+                <button id="seniorButton">Senior</button>
+            </div>
+
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Country</th>
+                        <th>Score</th>
+                        <th>Research Proposal</th>
+                        <th>Video Pitch</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be populated via JavaScript -->
+                </tbody>
+            </table>
+
+            <div class="share-container">
+                <button class="share-button" id="shareButton">Share Rank</button>
+            </div>
+        </div>
+    </center>
+
+    <!-- Score Details Modal -->
+    <div class="modal fade" id="scoreModal" tabindex="-1" aria-labelledby="scoreModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scoreModalLabel">Student Score Details</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="student-details">
+                    <!-- Student details will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+  <div class="developer-info">
+            <p>Built with ❤️ by <a href="https://iarco.org/sanaul-haque">Sanaul Haque</a>.</p>
+            <p style="font-size: 0.8rem;">Any Error, Suggestions, Design, Mail me at <a href="mailto:shanto@eptonline.org">shanto@eptonline.org</a></p>
         </div>
 
   
@@ -621,7 +672,7 @@
 
         // Function to fetch the student data and country flags
         async function fetchStudentData() {
-            const response = await fetch('data/test2026.json');
+            const response = await fetch('data/finalists_2026t.json');
             const data = await response.json();
             return data;
         }
@@ -990,7 +1041,7 @@
                     </div>
                     <div class="comment-box">
                         <h4><i class="fas fa-file-signature"></i> Research Paper Comments</h4>
-                        <p>${presentation_comment}</p>
+                        <p>${proposal_comment}</p>
                     </div>
                     <div class="comment-box">
                         <h4><i class="fas fa-video"></i> Presentation Comments</h4>
