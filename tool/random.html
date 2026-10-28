@@ -61,10 +61,10 @@
         }
     </style>
 </head>
-<body class="min-h-screen font-sans antialiased flex flex-col justify-between">
+<body class="min-h-screen font-sans antialiased flex flex-col justify-center">
 
     <!-- Header -->
-    <header class="bg-[#1c2541] border-b border-[#d4af37]/30 py-4 px-6 shadow-xl">
+    <header class="bg-[#1c2541] border-b border-[#d4af37]/30 py-4 px-6 shadow-xl mb-6">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <h1 class="text-2xl font-extrabold tracking-wide text-[#ffd700] drop-shadow-md">
                 👑 IARCO random selector
@@ -85,7 +85,7 @@
     </header>
 
     <!-- Main Workspace -->
-    <main class="max-w-6xl mx-auto w-full px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-auto">
+    <main class="max-w-6xl mx-auto w-full px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         <!-- Wheel Section (Left) -->
         <div class="lg:col-span-6 flex flex-col items-center bg-[#1c2541]/90 border border-[#d4af37]/40 p-6 rounded-3xl shadow-2xl backdrop-blur-sm">
@@ -121,7 +121,7 @@
             <!-- Winner Highlight Card -->
             <div id="winner-card" class="bg-gradient-to-br from-[#1c2541] to-[#0b132b] border-2 border-[#ffd700] p-6 rounded-3xl shadow-2xl hidden relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#ffd700]/10 rounded-full blur-2xl pointer-events-none"></div>
-                <div class="text-xs uppercase tracking-widest text-[#ffd700] font-bold mb-1">🎉 Selected Winner</div>
+                <div class="text-xs uppercase tracking-widest text-[#ffd700] font-bold mb-1">🎁 Random Participants selections for Prize</div>
                 <h2 id="winner-name" class="text-2xl font-extrabold text-white mb-3"></h2>
                 
                 <div class="grid grid-cols-2 gap-3 text-sm text-[#f3e5ab] mb-5 bg-[#0b132b]/60 p-4 rounded-xl border border-[#d4af37]/20">
@@ -369,14 +369,14 @@
             }
         }
 
-        // --- Instagram Post Image Generator (1080x1080px) ---
+        // --- Instagram Post Image Generator (1080x1080px) with Category & Timestamp ---
         function generateInstagramPost() {
             const igCanvas = document.createElement('canvas');
             igCanvas.width = 1080;
             igCanvas.height = 1080;
             const ctx = igCanvas.getContext('2d');
 
-            // 1. Background gradient (Royal Blue)
+            // Background gradient (Royal Blue)
             const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1080);
             bgGrad.addColorStop(0, '#0b132b');
             bgGrad.addColorStop(1, '#1c2541');
@@ -393,30 +393,34 @@
             ctx.lineWidth = 2;
             ctx.strokeRect(50, 50, 980, 980);
 
-            // Header Title: IARCO 2026
+            // Title
             ctx.fillStyle = '#ffd700';
-            ctx.font = 'bold 52px sans-serif';
+            ctx.font = 'bold 44px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('👑 IARCO 2026 Finalist Selection', 540, 125);
+            ctx.fillText('👑 Random Participants Selections for Prize', 540, 105);
 
-            // Math Description Subtitle
+            // Category & Timestamp Display
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            const generationTimestamp = new Date().toLocaleString();
             ctx.fillStyle = '#f3e5ab';
             ctx.font = '20px sans-serif';
-            ctx.fillText('Selected via Discrete Uniform Distribution & Modular Angular Quantization', 540, 170);
+            ctx.fillText(`Category: ${selectedCategory}  |  Generated: ${generationTimestamp}`, 540, 145);
 
-            // Data source: history queue or placeholder
-            const itemsToDisplay = history.length > 0 ? history.slice(0, 9) : [
+            // Math Description Subtitle
+            ctx.fillStyle = 'rgba(243, 229, 171, 0.75)';
+            ctx.font = '16px sans-serif';
+            ctx.fillText('Selection via Discrete Uniform Distribution & Angular Quantization', 540, 178);
+
+            // Data source: history queue or fallback preview items
+            const itemsToDisplay = history.length > 0 ? history.slice(0, 8) : [
                 { name: "Daisy Chen", school: "Chinese International School", country: "China" },
                 { name: "Michael Wang", school: "Nikola Tesla STEM High School", country: "United States" }
             ];
 
-            // Table layout specs
             const startY = 220;
             const tableWidth = 940;
             const startX = 70;
-            
-            // Dynamic row height fitting up to 9 items comfortably
-            const availableHeight = 720;
+            const availableHeight = 700;
             const rowHeight = Math.min(70, Math.floor(availableHeight / (itemsToDisplay.length + 1)));
 
             // Table Header Bar
@@ -424,13 +428,13 @@
             ctx.fillRect(startX, startY, tableWidth, rowHeight);
 
             ctx.fillStyle = '#0b132b';
-            ctx.font = 'bold 22px sans-serif';
+            ctx.font = 'bold 20px sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('Participant Name', startX + 30, startY + (rowHeight / 2) + 8);
-            ctx.fillText('Institution / School', startX + 380, startY + (rowHeight / 2) + 8);
-            ctx.fillText('Country', startX + 760, startY + (rowHeight / 2) + 8);
+            ctx.fillText('Participant Name', startX + 30, startY + (rowHeight / 2) + 7);
+            ctx.fillText('Institution / School', startX + 380, startY + (rowHeight / 2) + 7);
+            ctx.fillText('Country', startX + 760, startY + (rowHeight / 2) + 7);
 
-            // Render Table Rows
+            // Render Table Rows with Auto-sizing Text Truncation
             let currentY = startY + rowHeight;
             itemsToDisplay.forEach((item, index) => {
                 ctx.fillStyle = index % 2 === 0 ? 'rgba(28, 37, 65, 0.85)' : 'rgba(11, 19, 43, 0.85)';
@@ -442,31 +446,30 @@
 
                 const schoolName = item.school || item.institution || 'N/A';
                 
-                // Responsive auto-sizing font for long text
                 ctx.fillStyle = '#ffffff';
-                ctx.font = '20px sans-serif';
-                ctx.fillText(truncateText(ctx, item.name, 330), startX + 30, currentY + (rowHeight / 2) + 7);
+                ctx.font = '19px sans-serif';
+                ctx.fillText(truncateText(ctx, item.name, 330), startX + 30, currentY + (rowHeight / 2) + 6);
                 
                 ctx.fillStyle = '#f3e5ab';
-                ctx.font = '18px sans-serif';
-                ctx.fillText(truncateText(ctx, schoolName, 360), startX + 380, currentY + (rowHeight / 2) + 7);
+                ctx.font = '17px sans-serif';
+                ctx.fillText(truncateText(ctx, schoolName, 360), startX + 380, currentY + (rowHeight / 2) + 6);
                 
                 ctx.fillStyle = '#ffd700';
-                ctx.font = '18px sans-serif';
-                ctx.fillText(truncateText(ctx, item.country, 150), startX + 760, currentY + (rowHeight / 2) + 7);
+                ctx.font = '17px sans-serif';
+                ctx.fillText(truncateText(ctx, item.country, 150), startX + 760, currentY + (rowHeight / 2) + 6);
 
                 currentY += rowHeight;
             });
 
-            // Footer Watermark on Image
+            // Watermark
             ctx.fillStyle = 'rgba(243, 229, 171, 0.7)';
             ctx.font = 'italic 16px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('International Academic Research Competition • iarco.org', 540, 1025);
+            ctx.fillText('International Academic Research Competition • iarco.org', 540, 1030);
 
             // Trigger Image Download
             const link = document.createElement('a');
-            link.download = 'IARCO_2026_Selected_Finalists_IG.png';
+            link.download = `IARCO_Prize_Selections_${selectedCategory}_${Date.now()}.png`;
             link.href = igCanvas.toDataURL('image/png');
             link.click();
         }
