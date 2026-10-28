@@ -48,7 +48,7 @@
             filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
         }
 
-        /* Custom Scrollbar for history */
+        /* Custom Scrollbar */
         #history-list::-webkit-scrollbar {
             width: 6px;
         }
@@ -85,7 +85,7 @@
     </header>
 
     <!-- Main Workspace -->
-    <main class="max-w-6xl mx-auto w-full px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <main class="max-w-6xl mx-auto w-full px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start my-auto">
         
         <!-- Wheel Section (Left) -->
         <div class="lg:col-span-6 flex flex-col items-center bg-[#1c2541]/90 border border-[#d4af37]/40 p-6 rounded-3xl shadow-2xl backdrop-blur-sm">
@@ -136,13 +136,20 @@
                 </button>
             </div>
 
-            <!-- History Queue -->
-            <div class="bg-[#1c2541]/90 border border-[#d4af37]/40 p-6 rounded-3xl shadow-2xl flex flex-col max-h-[430px]">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="font-bold text-lg text-[#ffd700]">Selection History</h3>
-                    <span id="history-count" class="text-xs bg-[#0b132b] text-[#f3e5ab] border border-[#d4af37]/40 px-3 py-1 rounded-full font-semibold">
-                        0 Selected
-                    </span>
+            <!-- History Queue & IG Generator -->
+            <div class="bg-[#1c2541]/90 border border-[#d4af37]/40 p-6 rounded-3xl shadow-2xl flex flex-col max-h-[460px]">
+                <div class="flex justify-between items-center mb-4 gap-2 flex-wrap">
+                    <div>
+                        <h3 class="font-bold text-lg text-[#ffd700]">Selection History</h3>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="generateInstagramPost()" class="bg-gradient-to-r from-[#aa7c11] to-[#d4af37] hover:brightness-110 text-[#0b132b] text-xs font-bold px-3.5 py-2 rounded-xl shadow transition-all flex items-center gap-1.5">
+                            📥 IG Post (1080x1080)
+                        </button>
+                        <span id="history-count" class="text-xs bg-[#0b132b] text-[#f3e5ab] border border-[#d4af37]/40 px-3 py-1.5 rounded-full font-semibold">
+                            0 Selected
+                        </span>
+                    </div>
                 </div>
                 <div id="history-list" class="overflow-y-auto space-y-3 pr-2 flex-1">
                     <p class="text-slate-400 text-sm text-center py-8">No participants selected yet. Spin the wheel to begin!</p>
@@ -151,11 +158,6 @@
 
         </div>
     </main>
-
-    <!-- Footer -->
-    <footer class="text-center py-5 text-xs text-slate-400 border-t border-[#d4af37]/20 mt-8">
-        IARCO random selector • Powered by JavaScript & Tailwind CSS
-    </footer>
 
     <!-- Logic Script -->
     <script>
@@ -172,20 +174,17 @@
         const canvas = document.getElementById('wheelCanvas');
         const ctx = canvas.getContext('2d');
 
-        // Alternating Gold & Deep Blue Palette for Slices
         const themeColors = [
             '#1c2541', '#aa7c11', '#0b132b', '#d4af37', 
             '#3a506b', '#b8860b', '#1E293B', '#e6c200'
         ];
 
-        // Fetch & Clean Data
         async function loadParticipants() {
             try {
                 const response = await fetch(JSON_URL);
                 if (!response.ok) throw new Error('Network response failed');
                 const rawData = await response.json();
                 
-                // Exclude the highest scaled score participant(s)
                 if (rawData.length > 0) {
                     const maxScore = Math.max(...rawData.map(p => p.scaledFinalScore || 0));
                     allRawParticipants = rawData.filter(p => (p.scaledFinalScore || 0) < maxScore);
@@ -199,13 +198,11 @@
                 console.error("Error fetching finalists:", error);
                 document.getElementById('status-badge').textContent = "Failed to load JSON (Using fallback dataset)";
                 
-                // Fallback mock dataset for testing
                 allRawParticipants = [
                     { student_id: "2026-j-1Tako", name: "Daisy Chen", school: "Chinese International School", category: "Junior", country: "China", scaledFinalScore: 168 },
                     { student_id: "2026-j-c6Pdk", name: "Michael Wang", school: "Nikola Tesla STEM High School", category: "Junior", country: "United States", scaledFinalScore: 162 },
                     { student_id: "2026-s-99A12", name: "Alex Rivera", school: "Stanford High", category: "Senior", country: "United States", scaledFinalScore: 155 }
                 ];
-                // Exclude top scorer in fallback
                 const maxScore = Math.max(...allRawParticipants.map(p => p.scaledFinalScore || 0));
                 allRawParticipants = allRawParticipants.filter(p => (p.scaledFinalScore || 0) < maxScore);
 
@@ -214,7 +211,6 @@
             }
         }
 
-        // Filter by Category Dropdown
         function filterCategory() {
             const selectedCategory = document.getElementById('categoryFilter').value;
             
@@ -228,7 +224,6 @@
             drawWheel();
         }
 
-        // Canvas Rendering
         function drawWheel() {
             const numSegments = filteredParticipants.length;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -247,7 +242,6 @@
             filteredParticipants.forEach((p, i) => {
                 const angle = i * arcSize;
                 
-                // Draw slice
                 ctx.beginPath();
                 ctx.fillStyle = themeColors[i % themeColors.length];
                 ctx.moveTo(radius, radius);
@@ -255,18 +249,15 @@
                 ctx.lineTo(radius, radius);
                 ctx.fill();
                 
-                // Draw border
                 ctx.lineWidth = 1;
                 ctx.strokeStyle = '#d4af37';
                 ctx.stroke();
 
-                // Draw Text
                 ctx.save();
                 ctx.translate(radius, radius);
                 ctx.rotate(angle + arcSize / 2);
                 ctx.textAlign = "right";
                 
-                // Adjust text colors dynamically based on segment background
                 const currentBg = themeColors[i % themeColors.length];
                 ctx.fillStyle = (currentBg === '#d4af37' || currentBg === '#e6c200' || currentBg === '#b8860b') ? '#0b132b' : '#ffffff';
                 ctx.font = "bold 11px sans-serif";
@@ -277,7 +268,6 @@
             });
         }
 
-        // Spin Action
         function spinWheel() {
             if (isSpinning || filteredParticipants.length === 0) return;
             isSpinning = true;
@@ -297,7 +287,6 @@
             }, 4000);
         }
 
-        // Calculate Winner
         function determineWinner(angle) {
             const normalizedAngle = (360 - (angle % 360)) % 360;
             const arcSize = 360 / filteredParticipants.length;
@@ -316,7 +305,6 @@
             }
         }
 
-        // Winner Card Display
         function displayWinner(p) {
             document.getElementById('winner-card').classList.remove('hidden');
             document.getElementById('winner-name').textContent = p.name;
@@ -326,7 +314,6 @@
             document.getElementById('winner-id').textContent = p.student_id || 'N/A';
         }
 
-        // Copy Tab-Separated Data for MS Excel
         function copyCurrentWinner() {
             if (!lastWinner) return;
             const schoolName = lastWinner.school || lastWinner.institution || '';
@@ -346,7 +333,6 @@
             });
         }
 
-        // Render History List
         function renderHistory() {
             const listEl = document.getElementById('history-list');
             const countEl = document.getElementById('history-count');
@@ -374,7 +360,6 @@
             }).join('');
         }
 
-        // Clear Storage
         function resetData() {
             if (confirm("Clear selection history?")) {
                 history = [];
@@ -382,6 +367,116 @@
                 document.getElementById('winner-card').classList.add('hidden');
                 renderHistory();
             }
+        }
+
+        // --- Instagram Post Image Generator (1080x1080px) ---
+        function generateInstagramPost() {
+            const igCanvas = document.createElement('canvas');
+            igCanvas.width = 1080;
+            igCanvas.height = 1080;
+            const ctx = igCanvas.getContext('2d');
+
+            // 1. Background gradient (Royal Blue)
+            const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1080);
+            bgGrad.addColorStop(0, '#0b132b');
+            bgGrad.addColorStop(1, '#1c2541');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 1080, 1080);
+
+            // Gold Outer Border
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 14;
+            ctx.strokeRect(30, 30, 1020, 1020);
+
+            // Inner Accent Border
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(50, 50, 980, 980);
+
+            // Header Title: IARCO 2026
+            ctx.fillStyle = '#ffd700';
+            ctx.font = 'bold 52px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('👑 IARCO 2026 Finalist Selection', 540, 125);
+
+            // Math Description Subtitle
+            ctx.fillStyle = '#f3e5ab';
+            ctx.font = '20px sans-serif';
+            ctx.fillText('Selected via Discrete Uniform Distribution & Modular Angular Quantization', 540, 170);
+
+            // Data source: history queue or placeholder
+            const itemsToDisplay = history.length > 0 ? history.slice(0, 9) : [
+                { name: "Daisy Chen", school: "Chinese International School", country: "China" },
+                { name: "Michael Wang", school: "Nikola Tesla STEM High School", country: "United States" }
+            ];
+
+            // Table layout specs
+            const startY = 220;
+            const tableWidth = 940;
+            const startX = 70;
+            
+            // Dynamic row height fitting up to 9 items comfortably
+            const availableHeight = 720;
+            const rowHeight = Math.min(70, Math.floor(availableHeight / (itemsToDisplay.length + 1)));
+
+            // Table Header Bar
+            ctx.fillStyle = '#aa7c11';
+            ctx.fillRect(startX, startY, tableWidth, rowHeight);
+
+            ctx.fillStyle = '#0b132b';
+            ctx.font = 'bold 22px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Participant Name', startX + 30, startY + (rowHeight / 2) + 8);
+            ctx.fillText('Institution / School', startX + 380, startY + (rowHeight / 2) + 8);
+            ctx.fillText('Country', startX + 760, startY + (rowHeight / 2) + 8);
+
+            // Render Table Rows
+            let currentY = startY + rowHeight;
+            itemsToDisplay.forEach((item, index) => {
+                ctx.fillStyle = index % 2 === 0 ? 'rgba(28, 37, 65, 0.85)' : 'rgba(11, 19, 43, 0.85)';
+                ctx.fillRect(startX, currentY, tableWidth, rowHeight);
+
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(startX, currentY, tableWidth, rowHeight);
+
+                const schoolName = item.school || item.institution || 'N/A';
+                
+                // Responsive auto-sizing font for long text
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '20px sans-serif';
+                ctx.fillText(truncateText(ctx, item.name, 330), startX + 30, currentY + (rowHeight / 2) + 7);
+                
+                ctx.fillStyle = '#f3e5ab';
+                ctx.font = '18px sans-serif';
+                ctx.fillText(truncateText(ctx, schoolName, 360), startX + 380, currentY + (rowHeight / 2) + 7);
+                
+                ctx.fillStyle = '#ffd700';
+                ctx.font = '18px sans-serif';
+                ctx.fillText(truncateText(ctx, item.country, 150), startX + 760, currentY + (rowHeight / 2) + 7);
+
+                currentY += rowHeight;
+            });
+
+            // Footer Watermark on Image
+            ctx.fillStyle = 'rgba(243, 229, 171, 0.7)';
+            ctx.font = 'italic 16px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('International Academic Research Competition • iarco.org', 540, 1025);
+
+            // Trigger Image Download
+            const link = document.createElement('a');
+            link.download = 'IARCO_2026_Selected_Finalists_IG.png';
+            link.href = igCanvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function truncateText(ctx, text, maxWidth) {
+            if (ctx.measureText(text).width <= maxWidth) return text;
+            while (text.length > 0 && ctx.measureText(text + '...').width > maxWidth) {
+                text = text.slice(0, -1);
+            }
+            return text + '...';
         }
 
         window.onload = loadParticipants;
