@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IARCO random selector</title>
+    <title>IARCO 2026 - Random Prize Selection</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -67,7 +67,7 @@
     <header class="bg-[#1c2541] border-b border-[#d4af37]/30 py-4 px-6 shadow-xl mb-6">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
             <h1 class="text-2xl font-extrabold tracking-wide text-[#ffd700] drop-shadow-md">
-                👑 IARCO random selector
+                👑 IARCO 2026 - Random Prize Selection
             </h1>
             
             <!-- Category Filter Controls -->
@@ -75,7 +75,7 @@
                 <label for="categoryFilter" class="text-xs font-semibold text-[#f3e5ab] uppercase tracking-wider">
                     Category:
                 </label>
-                <select id="categoryFilter" onchange="filterCategory()" class="bg-[#0b132b] text-[#ffd700] border border-[#d4af37] px-4 py-2 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#ffd700] shadow-inner cursor-pointer">
+                <select id="categoryFilter" onchange="updateActivePool()" class="bg-[#0b132b] text-[#ffd700] border border-[#d4af37] px-4 py-2 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#ffd700] shadow-inner cursor-pointer">
                     <option value="ALL">All Categories</option>
                     <option value="Junior">Junior Category</option>
                     <option value="Senior">Senior Category</option>
@@ -121,8 +121,8 @@
             <!-- Winner Highlight Card -->
             <div id="winner-card" class="bg-gradient-to-br from-[#1c2541] to-[#0b132b] border-2 border-[#ffd700] p-6 rounded-3xl shadow-2xl hidden relative overflow-hidden">
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#ffd700]/10 rounded-full blur-2xl pointer-events-none"></div>
-                <div class="text-xs uppercase tracking-widest text-[#ffd700] font-bold mb-1">🎁 Random Participants selections for Prize</div>
-                <h2 id="winner-name" class="text-2xl font-extrabold text-white mb-3"></h2>
+                <div class="text-xs uppercase tracking-widest text-[#ffd700] font-bold mb-1">🎁 IARCO 2026 - Random Prize Selection</div>
+                <h2 id="winner-name" class="text-2xl font-extrabold text-white mb-2"></h2>
                 
                 <div class="grid grid-cols-2 gap-3 text-sm text-[#f3e5ab] mb-5 bg-[#0b132b]/60 p-4 rounded-xl border border-[#d4af37]/20">
                     <div><span class="text-slate-400">Institution:</span> <br><span id="winner-school" class="font-semibold text-white"></span></div>
@@ -186,47 +186,47 @@
             try {
                 const response = await fetch(JSON_URL);
                 if (!response.ok) throw new Error('Network response failed');
-                const rawData = await response.json();
+                allRawParticipants = await response.json();
                 
-                if (rawData.length > 0) {
-                    const sorted = [...rawData].sort((a, b) => (b.scaledFinalScore || 0) - (a.scaledFinalScore || 0));
-                    allRawParticipants = sorted.slice(20);
-                } else {
-                    allRawParticipants = rawData;
-                }
-
-                filterCategory();
+                updateActivePool();
                 renderHistory();
             } catch (error) {
                 console.error("Error fetching finalists:", error);
                 document.getElementById('status-badge').textContent = "Failed to load JSON (Using fallback dataset)";
                 
-                const fallbackData = [
+                allRawParticipants = [
                     { student_id: "2026-j-1Tako", name: "Daisy Chen", school: "Chinese International School", category: "Junior", country: "China", scaledFinalScore: 168 },
                     { student_id: "2026-j-c6Pdk", name: "Michael Wang", school: "Nikola Tesla STEM High School", category: "Junior", country: "United States", scaledFinalScore: 162 },
                     { student_id: "2026-s-99A12", name: "Alex Rivera", school: "Stanford High", category: "Senior", country: "United States", scaledFinalScore: 155 }
                 ];
-                const sorted = [...fallbackData].sort((a, b) => (b.scaledFinalScore || 0) - (a.scaledFinalScore || 0));
-                allRawParticipants = sorted.slice(20);
 
-                filterCategory();
+                updateActivePool();
                 renderHistory();
             }
         }
 
-        function filterCategory() {
+        // Filter by category, exclude top 20 scorers in that category, and exclude already selected winners
+        function updateActivePool() {
             const selectedCategory = document.getElementById('categoryFilter').value;
             
-            if (selectedCategory === 'ALL') {
-                filteredParticipants = [...allRawParticipants];
-            } else {
-                filteredParticipants = allRawParticipants.filter(p => p.category === selectedCategory);
-            }
+            // 1. Filter by category
+            let pool = selectedCategory === 'ALL' 
+                ? [...allRawParticipants] 
+                : allRawParticipants.filter(p => p.category === selectedCategory);
+            
+            // 2. Sort by scaledFinalScore descending and exclude top 20 scorers in this category
+            pool.sort((a, b) => (b.scaledFinalScore || 0) - (a.scaledFinalScore || 0));
+            pool = pool.slice(20);
 
-            document.getElementById('status-badge').textContent = `${filteredParticipants.length} Eligible Finalists (Top 20 Scorers Excluded)`;
+            // 3. Exclude already selected participants (in history)
+            const selectedIds = new Set(history.map(h => h.student_id));
+            filteredParticipants = pool.filter(p => !selectedIds.has(p.student_id));
+
+            document.getElementById('status-badge').textContent = `${filteredParticipants.length} Eligible Finalists in Wheel (Top 20 Excluded)`;
             drawWheel();
         }
 
+        // Draw names clearly onto the wheel slices
         function drawWheel() {
             const numSegments = filteredParticipants.length;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -235,7 +235,7 @@
                 ctx.fillStyle = "#ffffff";
                 ctx.font = "bold 14px sans-serif";
                 ctx.textAlign = "center";
-                ctx.fillText("No participants found", canvas.width / 2, canvas.height / 2);
+                ctx.fillText("No eligible participants left", canvas.width / 2, canvas.height / 2);
                 return;
             }
 
@@ -265,8 +265,8 @@
                 ctx.fillStyle = (currentBg === '#d4af37' || currentBg === '#e6c200' || currentBg === '#b8860b') ? '#0b132b' : '#ffffff';
                 ctx.font = "bold 11px sans-serif";
                 
-                let displayName = p.name.length > 15 ? p.name.substring(0, 13) + '...' : p.name;
-                ctx.fillText(displayName, radius - 18, 4);
+                let displayName = p.name.length > 16 ? p.name.substring(0, 14) + '...' : p.name;
+                ctx.fillText(displayName, radius - 20, 4);
                 ctx.restore();
             });
         }
@@ -304,6 +304,9 @@
                 localStorage.setItem('iarco_selector_history', JSON.stringify(history));
 
                 displayWinner(lastWinner);
+                
+                // Remove winner from active spinner wheel pool & redraw
+                updateActivePool();
                 renderHistory();
             }
         }
@@ -368,6 +371,7 @@
                 history = [];
                 localStorage.removeItem('iarco_selector_history');
                 document.getElementById('winner-card').classList.add('hidden');
+                updateActivePool();
                 renderHistory();
             }
         }
@@ -415,7 +419,7 @@
             ctx.fillStyle = '#ffd700';
             ctx.font = 'bold 44px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('🎁 Random Participants Selections for Prize', 540, 105);
+            ctx.fillText('🎁 IARCO 2026 - Random Prize Selection', 540, 105);
 
             const selectedCategory = document.getElementById('categoryFilter').value;
             const generationTimestamp = new Date().toLocaleString();
@@ -477,7 +481,7 @@
             ctx.fillText('International Academic Research Competition • iarco.org', 540, 1030);
 
             const link = document.createElement('a');
-            link.download = `IARCO_Prize_Selections_${selectedCategory}_${Date.now()}.png`;
+            link.download = `IARCO_2026_Prize_Selections_${selectedCategory}_${Date.now()}.png`;
             link.href = igCanvas.toDataURL('image/png');
             link.click();
         }
@@ -526,7 +530,7 @@
                 const a = document.createElement('a');
                 a.href = url;
                 const selectedCategory = document.getElementById('categoryFilter').value;
-                a.download = `IARCO_Prize_Reel_${selectedCategory}_${Date.now()}.webm`;
+                a.download = `IARCO_2026_Prize_Reel_${selectedCategory}_${Date.now()}.webm`;
                 a.click();
                 reelBtn.textContent = originalText;
                 reelBtn.disabled = false;
@@ -535,20 +539,18 @@
             mediaRecorder.start();
 
             let frame = 0;
-            const totalFrames = 180; // ~6 seconds animation at 30fps
+            const totalFrames = 180;
             const itemsToShow = history.slice(0, 10);
             const selectedCategory = document.getElementById('categoryFilter').value;
             const timestamp = new Date().toLocaleTimeString();
 
             function drawReelFrame() {
-                // Background
                 const bgGrad = rCtx.createLinearGradient(0, 0, 1080, 1920);
                 bgGrad.addColorStop(0, '#0b132b');
                 bgGrad.addColorStop(1, '#1c2541');
                 rCtx.fillStyle = bgGrad;
                 rCtx.fillRect(0, 0, 1080, 1920);
 
-                // Borders
                 rCtx.strokeStyle = '#d4af37';
                 rCtx.lineWidth = 16;
                 rCtx.strokeRect(40, 40, 1000, 1840);
@@ -556,17 +558,15 @@
                 rCtx.lineWidth = 3;
                 rCtx.strokeRect(60, 60, 960, 1800);
 
-                // Header Title
                 rCtx.fillStyle = '#ffd700';
-                rCtx.font = 'bold 50px sans-serif';
+                rCtx.font = 'bold 46px sans-serif';
                 rCtx.textAlign = 'center';
-                rCtx.fillText('🎁 IARCO PRIZE SELECTIONS', 540, 150);
+                rCtx.fillText('🎁 IARCO 2026 - RANDOM PRIZE SELECTION', 540, 150);
 
                 rCtx.fillStyle = '#f3e5ab';
                 rCtx.font = '24px sans-serif';
                 rCtx.fillText(`Category: ${selectedCategory}  •  ${timestamp}`, 540, 210);
 
-                // Animated Spinning Wheel Graphic on Reel
                 const wheelAngle = (frame * 0.18) % (Math.PI * 2);
                 rCtx.save();
                 rCtx.translate(540, 400);
@@ -588,7 +588,6 @@
                 }
                 rCtx.restore();
 
-                // Top Pointer
                 rCtx.beginPath();
                 rCtx.moveTo(540, 270);
                 rCtx.lineTo(525, 240);
@@ -596,7 +595,6 @@
                 rCtx.fillStyle = '#ffd700';
                 rCtx.fill();
 
-                // Table Layout in Reel
                 const startY = 600;
                 const tableWidth = 920;
                 const startX = 80;
@@ -612,7 +610,6 @@
                 rCtx.fillText('Institution / School', startX + 360, startY + 45);
                 rCtx.fillText('Country', startX + 720, startY + 45);
 
-                // Progressive reveal of items matching the designed table
                 const visibleCount = Math.min(itemsToShow.length, Math.floor((frame / totalFrames) * itemsToShow.length * 1.6) + 1);
 
                 let curY = startY + rowH;
@@ -641,7 +638,6 @@
                     curY += rowH;
                 }
 
-                // Watermark
                 rCtx.fillStyle = 'rgba(243, 229, 171, 0.8)';
                 rCtx.font = 'italic 20px sans-serif';
                 rCtx.textAlign = 'center';
