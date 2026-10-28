@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IARCO 2026 Finalist Random Wheeler</title>
+    <!-- Tailwind CSS for modern UI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .wheel-container {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            margin: 0 auto;
+        }
+        canvas {
+            transition: transform 4s cubic-bezier(0.15, 0.9, 0.2, 1);
+        }
+        /* Triangle Pointer at the Top */
+        .wheel-pointer {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 25px solid #ef4444;
+            z-index: 20;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans antialiased flex flex-col justify-between">
+
+    <!-- Header -->
+    <header class="bg-slate-800 border-b border-slate-700 py-4 px-6 shadow-md">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <h1 class="text-xl font-bold tracking-wide text-indigo-400">🎯 IARCO 2026 Finalist Wheeler</h1>
+            <div id="status-badge" class="text-xs bg-slate-700 px-3 py-1 rounded-full text-slate-300">
+                Loading participants...
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto w-full px-4 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Wheel & Controls -->
+        <div class="lg:col-span-6 flex flex-col items-center bg-slate-800/60 p-6 rounded-2xl border border-slate-700/80 shadow-xl">
+            <div class="wheel-container mb-6">
+                <div class="wheel-pointer"></div>
+                <canvas id="wheelCanvas" width="380" height="380" class="cursor-pointer rounded-full shadow-2xl border-4 border-indigo-500/40"></canvas>
+                <!-- Center Spin Hub Button -->
+                <button onclick="spinWheel()" id="spinBtn" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-tr from-indigo-600 to-violet-500 hover:from-indigo-500 hover:to-violet-400 text-white font-extrabold rounded-full shadow-lg border-4 border-white/20 flex items-center justify-center text-sm tracking-wider uppercase transition-transform active:scale-95 z-10">
+                    SPIN
+                </button>
+            </div>
+
+            <div class="flex gap-4 w-full justify-center">
+                <button onclick="spinWheel()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transition-all">
+                    Spin Wheel 🎲
+                </button>
+                <button onclick="resetData()" class="bg-slate-700 hover:bg-slate-600 text-slate-300 font-medium py-3 px-4 rounded-xl transition-all text-sm">
+                    Reset History
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Column: Selected Winner & History Slider / List -->
+        <div class="lg:col-span-6 flex flex-col gap-6">
+            
+            <!-- Winner Highlight Card -->
+            <div id="winner-card" class="bg-gradient-to-br from-indigo-900/60 to-slate-800 border border-indigo-500/30 p-6 rounded-2xl shadow-xl hidden">
+                <div class="text-xs uppercase tracking-wider text-indigo-400 font-semibold mb-1">🎉 Selected Finalist</div>
+                <h2 id="winner-name" class="text-2xl font-bold text-white mb-2"></h2>
+                <div class="grid grid-cols-2 gap-2 text-sm text-slate-300 mb-4">
+                    <div><span class="text-slate-400">Institution:</span> <span id="winner-school" class="font-medium"></span></div>
+                    <div><span class="text-slate-400">Country:</span> <span id="winner-country" class="font-medium"></span></div>
+                    <div><span class="text-slate-400">Category:</span> <span id="winner-category" class="font-medium"></span></div>
+                    <div><span class="text-slate-400">ID:</span> <span id="winner-id" class="font-medium"></span></div>
+                </div>
+                <button onclick="copyCurrentWinner()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-2.5 px-4 rounded-xl shadow transition-all flex items-center justify-center gap-2">
+                    📋 Copy for Excel (Name, Institution, Country, Category)
+                </button>
+            </div>
+
+            <!-- History List -->
+            <div class="bg-slate-800/60 border border-slate-700/80 p-6 rounded-2xl shadow-xl flex flex-col max-h-[420px]">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-bold text-lg text-slate-200">History & Selected Queue</h3>
+                    <span id="history-count" class="text-xs bg-indigo-500/20 text-indigo-300 px-2.5 py-1 rounded-full font-semibold">0 Selected</span>
+                </div>
+                <div id="history-list" class="overflow-y-auto space-y-3 pr-2 flex-1">
+                    <p class="text-slate-400 text-sm text-center py-8">No participants selected yet. Spin the wheel to begin!</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-xs text-slate-500 border-t border-slate-800 mt-12">
+        IARCO 2026 • Interactive Finalist Selection Tool
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        const JSON_URL = "https://iarco.org/data/finalists_2026.json";
+        let participants = [];
+        let history = JSON.parse(localStorage.getItem('iarco_wheel_history')) || [];
+        let currentAngle = 0;
+        let isSpinning = false;
+        let lastWinner = null;
+
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas.getContext('2d');
+        const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#3b82f6', '#10b981', '#f59e0b', '#64748b'];
+
+        // Load JSON data on startup
+        async function loadParticipants() {
+            try {
+                const response = await fetch(JSON_URL);
+                if (!response.ok) throw new Error('Network response was not ok');
+                participants = await response.json();
+                
+                document.getElementById('status-badge').textContent = `${participants.length} Finalists Loaded`;
+                drawWheel();
+                renderHistory();
+            } catch (error) {
+                console.error("Error fetching finalists:", error);
+                document.getElementById('status-badge').textContent = "Failed to load JSON (Check CORS/Network)";
+                // Fallback mock item so wheel still functions if offline
+                participants = [
+                    { student_id: "DEMO-1", name: "Daisy Chen", school: "Chinese International School", country: "China", category: "Junior" },
+                    { student_id: "DEMO-2", name: "Michael Wang", school: "Nikola Tesla STEM High School", country: "United States", category: "Junior" }
+                ];
+                drawWheel();
+            }
+        }
+
+        // Draw Canvas Wheel
+        function drawWheel() {
+            const numSegments = participants.length;
+            if (numSegments === 0) return;
+            const arcSize = (2 * Math.PI) / numSegments;
+            const radius = canvas.width / 2;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            participants.forEach((p, i) => {
+                const angle = i * arcSize;
+                ctx.beginPath();
+                ctx.fillStyle = colors[i % colors.length];
+                ctx.moveTo(radius, radius);
+                ctx.arc(radius, radius, radius - 5, angle, angle + arcSize);
+                ctx.lineTo(radius, radius);
+                ctx.fill();
+                ctx.stroke();
+
+                // Draw Text
+                ctx.save();
+                ctx.translate(radius, radius);
+                ctx.rotate(angle + arcSize / 2);
+                ctx.textAlign = "right";
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold 11px sans-serif";
+                
+                // Truncate long names for wheel readability
+                let displayName = p.name.length > 14 ? p.name.substring(0, 12) + '...' : p.name;
+                ctx.fillText(displayName, radius - 20, 4);
+                ctx.restore();
+            });
+        }
+
+        // Spin Logic
+        function spinWheel() {
+            if (isSpinning || participants.length === 0) return;
+            isSpinning = true;
+
+            const minSpins = 5;
+            const maxSpins = 8;
+            const spins = Math.floor(Math.random() * (maxSpins - minSpins + 1)) + minSpins;
+            const randomDegree = Math.floor(Math.random() * 360);
+            const totalDegrees = (spins * 360) + randomDegree;
+
+            currentAngle += totalDegrees;
+            canvas.style.transform = `rotate(${currentAngle}deg)`;
+
+            setTimeout(() => {
+                isSpinning = false;
+                determineWinner(currentAngle);
+            }, 4000); // Matches CSS transition duration
+        }
+
+        // Determine Winner based on final rotation angle
+        function determineWinner(angle) {
+            const normalizedAngle = (360 - (angle % 360)) % 360;
+            const arcSize = 360 / participants.length;
+            const winningIndex = Math.floor(normalizedAngle / arcSize);
+            
+            lastWinner = participants[winningIndex];
+            if (lastWinner) {
+                // Add to history
+                history.unshift({
+                    ...lastWinner,
+                    timestamp: new Date().toLocaleTimeString()
+                });
+                localStorage.setItem('iarco_wheel_history', JSON.stringify(history));
+
+                displayWinner(lastWinner);
+                renderHistory();
+            }
+        }
+
+        // Show Winner Card
+        function displayWinner(p) {
+            document.getElementById('winner-card').classList.remove('hidden');
+            document.getElementById('winner-name').textContent = p.name;
+            document.getElementById('winner-school').textContent = p.school || p.institution || 'N/A';
+            document.getElementById('winner-country').textContent = p.country || 'N/A';
+            document.getElementById('winner-category').textContent = p.category || 'N/A';
+            document.getElementById('winner-id').textContent = p.student_id || 'N/A';
+        }
+
+        // Copy single winner formatted for Excel (Name, Institution, Country, Category) tab-separated
+        function copyCurrentWinner() {
+            if (!lastWinner) return;
+            const schoolName = lastWinner.school || lastWinner.institution || '';
+            const textToCopy = `${lastWinner.name}\t${schoolName}\t${lastWinner.country}\t${lastWinner.category}`;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Copied to clipboard! You can now paste directly into MS Excel (Ctrl+V).");
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // Copy history item
+        function copyHistoryItem(name, school, country, category) {
+            const textToCopy = `${name}\t${school}\t${country}\t${category}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert(`Copied ${name} to clipboard for Excel!`);
+            });
+        }
+
+        // Render History List
+        function renderHistory() {
+            const listEl = document.getElementById('history-list');
+            const countEl = document.getElementById('history-count');
+            countEl.textContent = `${history.length} Selected`;
+
+            if (history.length === 0) {
+                listEl.innerHTML = `<p class="text-slate-400 text-sm text-center py-8">No participants selected yet. Spin the wheel to begin!</p>`;
+                return;
+            }
+
+            listEl.innerHTML = history.map((item, idx) => {
+                const school = item.school || item.institution || 'N/A';
+                return `
+                    <div class="bg-slate-700/50 hover:bg-slate-700 border border-slate-600/60 p-3 rounded-xl flex items-center justify-between gap-3 transition-all">
+                        <div class="overflow-hidden">
+                            <div class="font-bold text-slate-100 text-sm truncate">${item.name} <span class="text-xs font-normal text-indigo-300">(${item.category})</span></div>
+                            <div class="text-xs text-slate-400 truncate">${school} • ${item.country}</div>
+                        </div>
+                        <button onclick="copyHistoryItem('${item.name.replace(/'/g, "\\'")}', '${school.replace(/'/g, "\\'")}', '${item.country}', '${item.category}')" 
+                            class="bg-indigo-600/80 hover:bg-indigo-600 text-white text-xs px-3 py-1.5 rounded-lg font-medium whitespace-nowrap shadow">
+                            📋 Copy
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Reset History
+        function resetData() {
+            if (confirm("Are you sure you want to clear the selection history?")) {
+                history = [];
+                localStorage.removeItem('iarco_wheel_history');
+                document.getElementById('winner-card').classList.add('hidden');
+                renderHistory();
+            }
+        }
+
+        // Initialize on load
+        window.onload = loadParticipants;
+    </script>
+</body>
+</html>
