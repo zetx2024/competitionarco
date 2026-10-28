@@ -91,7 +91,7 @@
         <div class="lg:col-span-6 flex flex-col items-center bg-[#1c2541]/90 border border-[#d4af37]/40 p-6 rounded-3xl shadow-2xl backdrop-blur-sm">
             
             <!-- Status Pill -->
-            <div id="status-badge" class="mb-5 text-xs font-semibold bg-[#0b132b] text-[#f3e5ab] border border-[#d4af37]/40 px-4 py-1.5 rounded-full shadow-sm">
+            <div id="status-badge" class="mb-5 text-xs font-semibold bg-[#0b132b] text-[#f3e5ab] border border-[#d4af37]/40 px-4 py-1.5 rounded-full shadow-sm text-center">
                 Loading Data...
             </div>
 
@@ -186,8 +186,9 @@
                 const rawData = await response.json();
                 
                 if (rawData.length > 0) {
-                    const maxScore = Math.max(...rawData.map(p => p.scaledFinalScore || 0));
-                    allRawParticipants = rawData.filter(p => (p.scaledFinalScore || 0) < maxScore);
+                    // Sort descending by scaledFinalScore, then exclude top 20 scorers
+                    const sorted = [...rawData].sort((a, b) => (b.scaledFinalScore || 0) - (a.scaledFinalScore || 0));
+                    allRawParticipants = sorted.slice(20);
                 } else {
                     allRawParticipants = rawData;
                 }
@@ -198,13 +199,13 @@
                 console.error("Error fetching finalists:", error);
                 document.getElementById('status-badge').textContent = "Failed to load JSON (Using fallback dataset)";
                 
-                allRawParticipants = [
+                const fallbackData = [
                     { student_id: "2026-j-1Tako", name: "Daisy Chen", school: "Chinese International School", category: "Junior", country: "China", scaledFinalScore: 168 },
                     { student_id: "2026-j-c6Pdk", name: "Michael Wang", school: "Nikola Tesla STEM High School", category: "Junior", country: "United States", scaledFinalScore: 162 },
                     { student_id: "2026-s-99A12", name: "Alex Rivera", school: "Stanford High", category: "Senior", country: "United States", scaledFinalScore: 155 }
                 ];
-                const maxScore = Math.max(...allRawParticipants.map(p => p.scaledFinalScore || 0));
-                allRawParticipants = allRawParticipants.filter(p => (p.scaledFinalScore || 0) < maxScore);
+                const sorted = [...fallbackData].sort((a, b) => (b.scaledFinalScore || 0) - (a.scaledFinalScore || 0));
+                allRawParticipants = sorted.slice(20); // Fallback test
 
                 filterCategory();
                 renderHistory();
@@ -220,7 +221,7 @@
                 filteredParticipants = allRawParticipants.filter(p => p.category === selectedCategory);
             }
 
-            document.getElementById('status-badge').textContent = `${filteredParticipants.length} Finalists Eligible (Excluded Top Scorer)`;
+            document.getElementById('status-badge').textContent = `${filteredParticipants.length} Eligible Finalists (Top 20 Scorers Excluded)`;
             drawWheel();
         }
 
@@ -369,7 +370,26 @@
             }
         }
 
-        // --- Instagram Post Image Generator (1080x1080px) with Category & Timestamp ---
+        // --- Helper for Responsive Fitted Text in Canvas ---
+        function drawFittedText(ctx, text, x, y, maxWidth, maxFontSize, color) {
+            let fontSize = maxFontSize;
+            ctx.fillStyle = color;
+            ctx.font = `bold ${fontSize}px sans-serif`;
+            
+            while (ctx.measureText(text).width > maxWidth && fontSize > 11) {
+                fontSize -= 1;
+                ctx.font = `bold ${fontSize}px sans-serif`;
+            }
+            if (ctx.measureText(text).width > maxWidth) {
+                while (text.length > 0 && ctx.measureText(text + '...').width > maxWidth) {
+                    text = text.slice(0, -1);
+                }
+                text += '...';
+            }
+            ctx.fillText(text, x, y);
+        }
+
+        // --- Instagram Post Image Generator (1080x1080px) ---
         function generateInstagramPost() {
             const igCanvas = document.createElement('canvas');
             igCanvas.width = 1080;
@@ -397,7 +417,7 @@
             ctx.fillStyle = '#ffd700';
             ctx.font = 'bold 44px sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('👑 Random Participants Selections for Prize', 540, 105);
+            ctx.fillText('🎁 Random Participants Selections for Prize', 540, 105);
 
             // Category & Timestamp Display
             const selectedCategory = document.getElementById('categoryFilter').value;
@@ -411,7 +431,6 @@
             ctx.font = '16px sans-serif';
             ctx.fillText('Selection via Discrete Uniform Distribution & Angular Quantization', 540, 178);
 
-            // Data source: history queue or fallback preview items
             const itemsToDisplay = history.length > 0 ? history.slice(0, 8) : [
                 { name: "Daisy Chen", school: "Chinese International School", country: "China" },
                 { name: "Michael Wang", school: "Nikola Tesla STEM High School", country: "United States" }
@@ -423,6 +442,11 @@
             const availableHeight = 700;
             const rowHeight = Math.min(70, Math.floor(availableHeight / (itemsToDisplay.length + 1)));
 
+            // Columns layout: Name (width ~310), Institution (width ~370), Country (width ~200)
+            const col1X = startX + 25;
+            const col2X = startX + 345;
+            const col3X = startX + 725;
+
             // Table Header Bar
             ctx.fillStyle = '#aa7c11';
             ctx.fillRect(startX, startY, tableWidth, rowHeight);
@@ -430,11 +454,11 @@
             ctx.fillStyle = '#0b132b';
             ctx.font = 'bold 20px sans-serif';
             ctx.textAlign = 'left';
-            ctx.fillText('Participant Name', startX + 30, startY + (rowHeight / 2) + 7);
-            ctx.fillText('Institution / School', startX + 380, startY + (rowHeight / 2) + 7);
-            ctx.fillText('Country', startX + 760, startY + (rowHeight / 2) + 7);
+            ctx.fillText('Participant Name', col1X, startY + (rowHeight / 2) + 7);
+            ctx.fillText('Institution / School', col2X, startY + (rowHeight / 2) + 7);
+            ctx.fillText('Country', col3X, startY + (rowHeight / 2) + 7);
 
-            // Render Table Rows with Auto-sizing Text Truncation
+            // Render Table Rows with Responsive Fitted Text
             let currentY = startY + rowHeight;
             itemsToDisplay.forEach((item, index) => {
                 ctx.fillStyle = index % 2 === 0 ? 'rgba(28, 37, 65, 0.85)' : 'rgba(11, 19, 43, 0.85)';
@@ -445,18 +469,14 @@
                 ctx.strokeRect(startX, currentY, tableWidth, rowHeight);
 
                 const schoolName = item.school || item.institution || 'N/A';
-                
-                ctx.fillStyle = '#ffffff';
-                ctx.font = '19px sans-serif';
-                ctx.fillText(truncateText(ctx, item.name, 330), startX + 30, currentY + (rowHeight / 2) + 6);
-                
-                ctx.fillStyle = '#f3e5ab';
-                ctx.font = '17px sans-serif';
-                ctx.fillText(truncateText(ctx, schoolName, 360), startX + 380, currentY + (rowHeight / 2) + 6);
-                
-                ctx.fillStyle = '#ffd700';
-                ctx.font = '17px sans-serif';
-                ctx.fillText(truncateText(ctx, item.country, 150), startX + 760, currentY + (rowHeight / 2) + 6);
+                const rowCenterY = currentY + (rowHeight / 2) + 6;
+
+                // Col 1: Name
+                drawFittedText(ctx, item.name, col1X, rowCenterY, 305, 19, '#ffffff');
+                // Col 2: Institution
+                drawFittedText(ctx, schoolName, col2X, rowCenterY, 365, 17, '#f3e5ab');
+                // Col 3: Country (Fully responsive box size to prevent overflow)
+                drawFittedText(ctx, item.country, col3X, rowCenterY, 190, 17, '#ffd700');
 
                 currentY += rowHeight;
             });
@@ -472,14 +492,6 @@
             link.download = `IARCO_Prize_Selections_${selectedCategory}_${Date.now()}.png`;
             link.href = igCanvas.toDataURL('image/png');
             link.click();
-        }
-
-        function truncateText(ctx, text, maxWidth) {
-            if (ctx.measureText(text).width <= maxWidth) return text;
-            while (text.length > 0 && ctx.measureText(text + '...').width > maxWidth) {
-                text = text.slice(0, -1);
-            }
-            return text + '...';
         }
 
         window.onload = loadParticipants;
