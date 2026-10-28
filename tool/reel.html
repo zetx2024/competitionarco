@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IARCO random selector</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --blue-dark: #0b132b;
+            --blue-card: #1c2541;
+            --blue-accent: #3a506b;
+        }
+
+        body {
+            background-color: var(--blue-dark);
+            color: #f8fafc;
+        }
+
+        .wheel-container {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            transition: transform 4s cubic-bezier(0.15, 0.9, 0.2, 1);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Gold Pointer at top */
+        .wheel-pointer {
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 16px solid transparent;
+            border-right: 16px solid transparent;
+            border-top: 26px solid #ffd700;
+            z-index: 20;
+            filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6));
+        }
+
+        /* Custom Scrollbar */
+        #history-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        #history-list::-webkit-scrollbar-track {
+            background: rgba(28, 37, 65, 0.5);
+        }
+        #history-list::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased flex flex-col justify-center">
+
+    <!-- Header -->
+    <header class="bg-[#1c2541] border-b border-[#d4af37]/30 py-4 px-6 shadow-xl mb-6">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <h1 class="text-2xl font-extrabold tracking-wide text-[#ffd700] drop-shadow-md">
+                👑 IARCO random selector
+            </h1>
+            
+            <!-- Category Filter Controls -->
+            <div class="flex items-center gap-3">
+                <label for="categoryFilter" class="text-xs font-semibold text-[#f3e5ab] uppercase tracking-wider">
+                    Category:
+                </label>
+                <select id="categoryFilter" onchange="filterCategory()" class="bg-[#0b132b] text-[#ffd700] border border-[#d4af37] px-4 py-2 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#ffd700] shadow-inner cursor-pointer">
+                    <option value="ALL">All Categories</option>
+                    <option value="Junior">Junior Category</option>
+                    <option value="Senior">Senior Category</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="max-w-6xl mx-auto w-full px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Wheel Section (Left) -->
+        <div class="lg:col-span-6 flex flex-col items-center bg-[#1c2541]/90 border border-[#d4af37]/40 p-6 rounded-3xl shadow-2xl backdrop-blur-sm">
+            
+            <!-- Status Pill -->
+            <div id="status-badge" class="mb-5 text-xs font-semibold bg-[#0b132b] text-[#f3e5ab] border border-[#d4af37]/40 px-4 py-1.5 rounded-full shadow-sm text-center">
+                Loading Data...
+            </div>
+
+            <div class="wheel-container mb-6">
+                <div class="wheel-pointer"></div>
+                <canvas id="wheelCanvas" width="380" height="380" class="cursor-pointer rounded-full border-4 border-[#d4af37]"></canvas>
+                
+                <!-- Center Spin Hub -->
+                <button onclick="spinWheel()" id="spinBtn" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-gradient-to-tr from-[#aa7c11] via-[#d4af37] to-[#ffd700] hover:brightness-110 text-[#0b132b] font-black rounded-full shadow-2xl border-4 border-[#0b132b] flex items-center justify-center text-sm tracking-wider uppercase transition-transform active:scale-95 z-10">
+                    SPIN
+                </button>
+            </div>
+
+            <div class="flex gap-4 w-full justify-center">
+                <button onclick="spinWheel()" class="flex-1 bg-gradient-to-r from-[#aa7c11] to-[#d4af37] hover:brightness-110 text-[#0b132b] font-bold py-3.5 px-6 rounded-2xl shadow-lg transition-all text-base tracking-wide">
+                    Spin Wheel 🎲
+                </button>
+                <button onclick="resetData()" class="bg-[#0b132b] hover:bg-slate-900 text-[#f3e5ab] border border-[#d4af37]/40 font-medium py-3.5 px-5 rounded-2xl transition-all text-sm">
+                    Reset History
+                </button>
+            </div>
+        </div>
+
+        <!-- Details & Output (Right) -->
+        <div class="lg:col-span-6 flex flex-col gap-6">
+            
+            <!-- Winner Highlight Card -->
+            <div id="winner-card" class="bg-gradient-to-br from-[#1c2541] to-[#0b132b] border-2 border-[#ffd700] p-6 rounded-3xl shadow-2xl hidden relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#ffd700]/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="text-xs uppercase tracking-widest text-[#ffd700] font-bold mb-1">🎁 Random Participants selections for Prize</div>
+                <h2 id="winner-name" class="text-2xl font-extrabold text-white mb-3"></h2>
+                
+                <div class="grid grid-cols-2 gap-3 text-sm text-[#f3e5ab] mb-5 bg-[#0b132b]/60 p-4 rounded-xl border border-[#d4af37]/20">
+                    <div><span class="text-slate-400">Institution:</span> <br><span id="winner-school" class="font-semibold text-white"></span></div>
+                    <div><span class="text-slate-400">Country:</span> <br><span id="winner-country" class="font-semibold text-white"></span></div>
+                    <div><span class="text-slate-400">Category:</span> <br><span id="winner-category" class="font-semibold text-[#ffd700]"></span></div>
+                    <div><span class="text-slate-400">ID:</span> <br><span id="winner-id" class="font-semibold text-white"></span></div>
+                </div>
+
+                <button onclick="copyCurrentWinner()" class="w-full bg-gradient-to-r from-[#aa7c11] to-[#d4af37] hover:brightness-110 text-[#0b132b] font-extrabold py-3 px-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-sm uppercase tracking-wide">
+                    📋 Copy for Excel (Name, Institution, Country, Category)
+                </button>
+            </div>
+
+            <!-- History Queue & Generators -->
+            <div class="bg-[#1c2541]/90 border border-[#d4af37]/40 p-6 rounded-3xl shadow-2xl flex flex-col max-h-[480px]">
+                <div class="flex justify-between items-center mb-4 gap-2 flex-wrap">
+                    <div>
+                        <h3 class="font-bold text-lg text-[#ffd700]">Selection History</h3>
+                    </div>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <button onclick="generateInstagramPost()" class="bg-gradient-to-r from-[#aa7c11] to-[#d4af37] hover:brightness-110 text-[#0b132b] text-xs font-bold px-3.5 py-2 rounded-xl shadow transition-all flex items-center gap-1.5">
+                            📥 IG Post
+                        </button>
+                        <button onclick="generateReelVideo()" id="reelBtn" class="bg-gradient-to-r from-[#d4af37] to-[#ffd700] hover:brightness-110 text-[#0b132b] text-xs font-bold px-3.5 py-2 rounded-xl shadow transition-all flex items-center gap-1.5">
+                            🎬 Generate Reel
+                        </button>
+                        <span id="history-count" class="text-xs bg-[#0b132b] text-[#f3e5ab] border border-[#d4af37]/40 px-3 py-1.5 rounded-full font-semibold">
+                            0 Selected
+                        </span>
+                    </div>
+                </div>
+                <div id="history-list" class="overflow-y-auto space-y-3 pr-2 flex-1">
+                    <p class="text-slate-400 text-sm text-center py-8">No participants selected yet. Spin the wheel to begin!</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Logic Script -->
+    <script>
+        const JSON_URL = "https://iarco.org/data/finalists_2026.json";
+        
+        let allRawParticipants = [];
+        let filteredParticipants = [];
+        let history = JSON.parse(localStorage.getItem('iarco_selector_history')) || [];
+        
+        let currentAngle = 0;
+        let isSpinning = false;
+        let lastWinner = null;
+
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const themeColors = [
+            '#1c2541', '#aa7c11', '#0b132b', '#d4af37', 
+            '#3a506b', '#b8860b', '#1E293B', '#e6c200'
+        ];
+
+        async function loadParticipants() {
+            try {
+                const response = await fetch(JSON_URL);
+                if (!response.ok) throw new Error('Network response failed');
+                const rawData = await response.json();
+                
+                if (rawData.length > 0) {
+                    const sorted = [...rawData].sort((a, b) => (b.scaledFinalScore || 0) - (a.scaledFinalScore || 0));
+                    allRawParticipants = sorted.slice(20);
+                } else {
+                    allRawParticipants = rawData;
+                }
+
+                filterCategory();
+                renderHistory();
+            } catch (error) {
+                console.error("Error fetching finalists:", error);
+                document.getElementById('status-badge').textContent = "Failed to load JSON (Using fallback dataset)";
+                
+                const fallbackData = [
+                    { student_id: "2026-j-1Tako", name: "Daisy Chen", school: "Chinese International School", category: "Junior", country: "China", scaledFinalScore: 168 },
+                    { student_id: "2026-j-c6Pdk", name: "Michael Wang", school: "Nikola Tesla STEM High School", category: "Junior", country: "United States", scaledFinalScore: 162 },
+                    { student_id: "2026-s-99A12", name: "Alex Rivera", school: "Stanford High", category: "Senior", country: "United States", scaledFinalScore: 155 }
+                ];
+                const sorted = [...fallbackData].sort((a, b) => (b.scaledFinalScore || 0) - (a.scaledFinalScore || 0));
+                allRawParticipants = sorted.slice(20);
+
+                filterCategory();
+                renderHistory();
+            }
+        }
+
+        function filterCategory() {
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            
+            if (selectedCategory === 'ALL') {
+                filteredParticipants = [...allRawParticipants];
+            } else {
+                filteredParticipants = allRawParticipants.filter(p => p.category === selectedCategory);
+            }
+
+            document.getElementById('status-badge').textContent = `${filteredParticipants.length} Eligible Finalists (Top 20 Scorers Excluded)`;
+            drawWheel();
+        }
+
+        function drawWheel() {
+            const numSegments = filteredParticipants.length;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (numSegments === 0) {
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold 14px sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText("No participants found", canvas.width / 2, canvas.height / 2);
+                return;
+            }
+
+            const arcSize = (2 * Math.PI) / numSegments;
+            const radius = canvas.width / 2;
+
+            filteredParticipants.forEach((p, i) => {
+                const angle = i * arcSize;
+                
+                ctx.beginPath();
+                ctx.fillStyle = themeColors[i % themeColors.length];
+                ctx.moveTo(radius, radius);
+                ctx.arc(radius, radius, radius - 4, angle, angle + arcSize);
+                ctx.lineTo(radius, radius);
+                ctx.fill();
+                
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = '#d4af37';
+                ctx.stroke();
+
+                ctx.save();
+                ctx.translate(radius, radius);
+                ctx.rotate(angle + arcSize / 2);
+                ctx.textAlign = "right";
+                
+                const currentBg = themeColors[i % themeColors.length];
+                ctx.fillStyle = (currentBg === '#d4af37' || currentBg === '#e6c200' || currentBg === '#b8860b') ? '#0b132b' : '#ffffff';
+                ctx.font = "bold 11px sans-serif";
+                
+                let displayName = p.name.length > 15 ? p.name.substring(0, 13) + '...' : p.name;
+                ctx.fillText(displayName, radius - 18, 4);
+                ctx.restore();
+            });
+        }
+
+        function spinWheel() {
+            if (isSpinning || filteredParticipants.length === 0) return;
+            isSpinning = true;
+
+            const minSpins = 5;
+            const maxSpins = 9;
+            const spins = Math.floor(Math.random() * (maxSpins - minSpins + 1)) + minSpins;
+            const randomDegree = Math.floor(Math.random() * 360);
+            const totalDegrees = (spins * 360) + randomDegree;
+
+            currentAngle += totalDegrees;
+            canvas.style.transform = `rotate(${currentAngle}deg)`;
+
+            setTimeout(() => {
+                isSpinning = false;
+                determineWinner(currentAngle);
+            }, 4000);
+        }
+
+        function determineWinner(angle) {
+            const normalizedAngle = (360 - (angle % 360)) % 360;
+            const arcSize = 360 / filteredParticipants.length;
+            const winningIndex = Math.floor(normalizedAngle / arcSize);
+            
+            lastWinner = filteredParticipants[winningIndex];
+            if (lastWinner) {
+                history.unshift({
+                    ...lastWinner,
+                    timestamp: new Date().toLocaleTimeString()
+                });
+                localStorage.setItem('iarco_selector_history', JSON.stringify(history));
+
+                displayWinner(lastWinner);
+                renderHistory();
+            }
+        }
+
+        function displayWinner(p) {
+            document.getElementById('winner-card').classList.remove('hidden');
+            document.getElementById('winner-name').textContent = p.name;
+            document.getElementById('winner-school').textContent = p.school || p.institution || 'N/A';
+            document.getElementById('winner-country').textContent = p.country || 'N/A';
+            document.getElementById('winner-category').textContent = p.category || 'N/A';
+            document.getElementById('winner-id').textContent = p.student_id || 'N/A';
+        }
+
+        function copyCurrentWinner() {
+            if (!lastWinner) return;
+            const schoolName = lastWinner.school || lastWinner.institution || '';
+            const textToCopy = `${lastWinner.name}\t${schoolName}\t${lastWinner.country}\t${lastWinner.category}`;
+            
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert("Copied! You can now paste directly into MS Excel.");
+            }).catch(err => {
+                console.error('Copy failed: ', err);
+            });
+        }
+
+        function copyHistoryItem(name, school, country, category) {
+            const textToCopy = `${name}\t${school}\t${country}\t${category}`;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert(`Copied ${name} to clipboard for Excel!`);
+            });
+        }
+
+        function renderHistory() {
+            const listEl = document.getElementById('history-list');
+            const countEl = document.getElementById('history-count');
+            countEl.textContent = `${history.length} Selected`;
+
+            if (history.length === 0) {
+                listEl.innerHTML = `<p class="text-slate-400 text-sm text-center py-8">No participants selected yet. Spin the wheel to begin!</p>`;
+                return;
+            }
+
+            listEl.innerHTML = history.map((item) => {
+                const school = item.school || item.institution || 'N/A';
+                return `
+                    <div class="bg-[#0b132b]/80 border border-[#d4af37]/30 p-3.5 rounded-2xl flex items-center justify-between gap-3 shadow-md hover:border-[#ffd700] transition-all">
+                        <div class="overflow-hidden">
+                            <div class="font-bold text-white text-sm truncate">${item.name} <span class="text-xs font-normal text-[#ffd700]">(${item.category})</span></div>
+                            <div class="text-xs text-slate-400 truncate">${school} • ${item.country}</div>
+                        </div>
+                        <button onclick="copyHistoryItem('${item.name.replace(/'/g, "\\'")}', '${school.replace(/'/g, "\\'")}', '${item.country}', '${item.category}')" 
+                            class="bg-[#d4af37] hover:bg-[#ffd700] text-[#0b132b] text-xs px-3 py-1.5 rounded-xl font-bold whitespace-nowrap shadow transition-all">
+                            📋 Copy
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function resetData() {
+            if (confirm("Clear selection history?")) {
+                history = [];
+                localStorage.removeItem('iarco_selector_history');
+                document.getElementById('winner-card').classList.add('hidden');
+                renderHistory();
+            }
+        }
+
+        // --- Helper for Responsive Fitted Text ---
+        function drawFittedText(ctx, text, x, y, maxWidth, maxFontSize, color) {
+            let fontSize = maxFontSize;
+            ctx.fillStyle = color;
+            ctx.font = `bold ${fontSize}px sans-serif`;
+            
+            while (ctx.measureText(text).width > maxWidth && fontSize > 11) {
+                fontSize -= 1;
+                ctx.font = `bold ${fontSize}px sans-serif`;
+            }
+            if (ctx.measureText(text).width > maxWidth) {
+                while (text.length > 0 && ctx.measureText(text + '...').width > maxWidth) {
+                    text = text.slice(0, -1);
+                }
+                text += '...';
+            }
+            ctx.fillText(text, x, y);
+        }
+
+        // --- Instagram Post Image Generator (1080x1080px) ---
+        function generateInstagramPost() {
+            const igCanvas = document.createElement('canvas');
+            igCanvas.width = 1080;
+            igCanvas.height = 1080;
+            const ctx = igCanvas.getContext('2d');
+
+            const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1080);
+            bgGrad.addColorStop(0, '#0b132b');
+            bgGrad.addColorStop(1, '#1c2541');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, 1080, 1080);
+
+            ctx.strokeStyle = '#d4af37';
+            ctx.lineWidth = 14;
+            ctx.strokeRect(30, 30, 1020, 1020);
+
+            ctx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(50, 50, 980, 980);
+
+            ctx.fillStyle = '#ffd700';
+            ctx.font = 'bold 44px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('🎁 Random Participants Selections for Prize', 540, 105);
+
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            const generationTimestamp = new Date().toLocaleString();
+            ctx.fillStyle = '#f3e5ab';
+            ctx.font = '20px sans-serif';
+            ctx.fillText(`Category: ${selectedCategory}  |  Generated: ${generationTimestamp}`, 540, 145);
+
+            ctx.fillStyle = 'rgba(243, 229, 171, 0.75)';
+            ctx.font = '16px sans-serif';
+            ctx.fillText('Selection via Discrete Uniform Distribution & Angular Quantization', 540, 178);
+
+            const itemsToDisplay = history.length > 0 ? history.slice(0, 8) : [
+                { name: "Daisy Chen", school: "Chinese International School", country: "China" },
+                { name: "Michael Wang", school: "Nikola Tesla STEM High School", country: "United States" }
+            ];
+
+            const startY = 220;
+            const tableWidth = 940;
+            const startX = 70;
+            const availableHeight = 700;
+            const rowHeight = Math.min(70, Math.floor(availableHeight / (itemsToDisplay.length + 1)));
+
+            const col1X = startX + 25;
+            const col2X = startX + 345;
+            const col3X = startX + 725;
+
+            ctx.fillStyle = '#aa7c11';
+            ctx.fillRect(startX, startY, tableWidth, rowHeight);
+
+            ctx.fillStyle = '#0b132b';
+            ctx.font = 'bold 20px sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Participant Name', col1X, startY + (rowHeight / 2) + 7);
+            ctx.fillText('Institution / School', col2X, startY + (rowHeight / 2) + 7);
+            ctx.fillText('Country', col3X, startY + (rowHeight / 2) + 7);
+
+            let currentY = startY + rowHeight;
+            itemsToDisplay.forEach((item, index) => {
+                ctx.fillStyle = index % 2 === 0 ? 'rgba(28, 37, 65, 0.85)' : 'rgba(11, 19, 43, 0.85)';
+                ctx.fillRect(startX, currentY, tableWidth, rowHeight);
+
+                ctx.strokeStyle = 'rgba(212, 175, 55, 0.2)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(startX, currentY, tableWidth, rowHeight);
+
+                const schoolName = item.school || item.institution || 'N/A';
+                const rowCenterY = currentY + (rowHeight / 2) + 6;
+
+                drawFittedText(ctx, item.name, col1X, rowCenterY, 305, 19, '#ffffff');
+                drawFittedText(ctx, schoolName, col2X, rowCenterY, 365, 17, '#f3e5ab');
+                drawFittedText(ctx, item.country, col3X, rowCenterY, 190, 17, '#ffd700');
+
+                currentY += rowHeight;
+            });
+
+            ctx.fillStyle = 'rgba(243, 229, 171, 0.7)';
+            ctx.font = 'italic 16px sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('International Academic Research Competition • iarco.org', 540, 1030);
+
+            const link = document.createElement('a');
+            link.download = `IARCO_Prize_Selections_${selectedCategory}_${Date.now()}.png`;
+            link.href = igCanvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // --- Instagram Reel Video Generator (1080x1920px MP4/WebM) ---
+        async function generateReelVideo() {
+            if (history.length === 0) {
+                alert("Please spin the wheel and select at least one participant before generating a reel video!");
+                return;
+            }
+
+            const reelBtn = document.getElementById('reelBtn');
+            const originalText = reelBtn.textContent;
+            reelBtn.textContent = "🎬 Rendering Reel...";
+            reelBtn.disabled = true;
+
+            const reelCanvas = document.createElement('canvas');
+            reelCanvas.width = 1080;
+            reelCanvas.height = 1920;
+            const rCtx = reelCanvas.getContext('2d');
+
+            const stream = reelCanvas.captureStream(30);
+            let recordedChunks = [];
+            let options = { mimeType: 'video/webm; codecs=vp9' };
+            if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+                options = { mimeType: 'video/webm' };
+            }
+
+            let mediaRecorder;
+            try {
+                mediaRecorder = new MediaRecorder(stream, options);
+            } catch (e) {
+                alert("MediaRecorder not supported in this browser environment.");
+                reelBtn.textContent = originalText;
+                reelBtn.disabled = false;
+                return;
+            }
+
+            mediaRecorder.ondataavailable = function(e) {
+                if (e.data.size > 0) recordedChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = function() {
+                const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                const selectedCategory = document.getElementById('categoryFilter').value;
+                a.download = `IARCO_Prize_Reel_${selectedCategory}_${Date.now()}.webm`;
+                a.click();
+                reelBtn.textContent = originalText;
+                reelBtn.disabled = false;
+            };
+
+            mediaRecorder.start();
+
+            let frame = 0;
+            const totalFrames = 180; // ~6 seconds animation at 30fps
+            const itemsToShow = history.slice(0, 10);
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            const timestamp = new Date().toLocaleTimeString();
+
+            function drawReelFrame() {
+                // Background
+                const bgGrad = rCtx.createLinearGradient(0, 0, 1080, 1920);
+                bgGrad.addColorStop(0, '#0b132b');
+                bgGrad.addColorStop(1, '#1c2541');
+                rCtx.fillStyle = bgGrad;
+                rCtx.fillRect(0, 0, 1080, 1920);
+
+                // Borders
+                rCtx.strokeStyle = '#d4af37';
+                rCtx.lineWidth = 16;
+                rCtx.strokeRect(40, 40, 1000, 1840);
+                rCtx.strokeStyle = 'rgba(212, 175, 55, 0.3)';
+                rCtx.lineWidth = 3;
+                rCtx.strokeRect(60, 60, 960, 1800);
+
+                // Header Title
+                rCtx.fillStyle = '#ffd700';
+                rCtx.font = 'bold 50px sans-serif';
+                rCtx.textAlign = 'center';
+                rCtx.fillText('🎁 IARCO PRIZE SELECTIONS', 540, 150);
+
+                rCtx.fillStyle = '#f3e5ab';
+                rCtx.font = '24px sans-serif';
+                rCtx.fillText(`Category: ${selectedCategory}  •  ${timestamp}`, 540, 210);
+
+                // Animated Spinning Wheel Graphic on Reel
+                const wheelAngle = (frame * 0.18) % (Math.PI * 2);
+                rCtx.save();
+                rCtx.translate(540, 400);
+                rCtx.rotate(wheelAngle);
+                rCtx.beginPath();
+                rCtx.arc(0, 0, 110, 0, Math.PI * 2);
+                rCtx.fillStyle = '#aa7c11';
+                rCtx.fill();
+                rCtx.lineWidth = 6;
+                rCtx.strokeStyle = '#ffd700';
+                rCtx.stroke();
+                for (let i = 0; i < 6; i++) {
+                    rCtx.rotate(Math.PI / 3);
+                    rCtx.beginPath();
+                    rCtx.moveTo(0, 0);
+                    rCtx.lineTo(0, 110);
+                    rCtx.strokeStyle = '#0b132b';
+                    rCtx.stroke();
+                }
+                rCtx.restore();
+
+                // Top Pointer
+                rCtx.beginPath();
+                rCtx.moveTo(540, 270);
+                rCtx.lineTo(525, 240);
+                rCtx.lineTo(555, 240);
+                rCtx.fillStyle = '#ffd700';
+                rCtx.fill();
+
+                // Table Layout in Reel
+                const startY = 600;
+                const tableWidth = 920;
+                const startX = 80;
+                const rowH = 75;
+
+                rCtx.fillStyle = '#aa7c11';
+                rCtx.fillRect(startX, startY, tableWidth, rowH);
+
+                rCtx.fillStyle = '#0b132b';
+                rCtx.font = 'bold 22px sans-serif';
+                rCtx.textAlign = 'left';
+                rCtx.fillText('Participant Name', startX + 30, startY + 45);
+                rCtx.fillText('Institution / School', startX + 360, startY + 45);
+                rCtx.fillText('Country', startX + 720, startY + 45);
+
+                // Progressive reveal of items matching the designed table
+                const visibleCount = Math.min(itemsToShow.length, Math.floor((frame / totalFrames) * itemsToShow.length * 1.6) + 1);
+
+                let curY = startY + rowH;
+                for (let i = 0; i < visibleCount; i++) {
+                    const item = itemsToShow[i];
+                    rCtx.fillStyle = i % 2 === 0 ? 'rgba(28, 37, 65, 0.9)' : 'rgba(11, 19, 43, 0.9)';
+                    rCtx.fillRect(startX, curY, tableWidth, rowH);
+                    rCtx.strokeStyle = 'rgba(212, 175, 55, 0.25)';
+                    rCtx.lineWidth = 1;
+                    rCtx.strokeRect(startX, curY, tableWidth, rowH);
+
+                    const school = item.school || item.institution || 'N/A';
+                    
+                    rCtx.fillStyle = '#ffffff';
+                    rCtx.font = '20px sans-serif';
+                    rCtx.fillText(truncateTextForCanvas(rCtx, item.name, 310), startX + 30, curY + 46);
+
+                    rCtx.fillStyle = '#f3e5ab';
+                    rCtx.font = '18px sans-serif';
+                    rCtx.fillText(truncateTextForCanvas(rCtx, school, 340), startX + 360, curY + 46);
+
+                    rCtx.fillStyle = '#ffd700';
+                    rCtx.font = '18px sans-serif';
+                    rCtx.fillText(truncateTextForCanvas(rCtx, item.country, 180), startX + 720, curY + 46);
+
+                    curY += rowH;
+                }
+
+                // Watermark
+                rCtx.fillStyle = 'rgba(243, 229, 171, 0.8)';
+                rCtx.font = 'italic 20px sans-serif';
+                rCtx.textAlign = 'center';
+                rCtx.fillText('International Academic Research Competition • iarco.org', 540, 1830);
+
+                frame++;
+                if (frame < totalFrames) {
+                    setTimeout(drawReelFrame, 1000 / 30);
+                } else {
+                    mediaRecorder.stop();
+                }
+            }
+
+            drawReelFrame();
+        }
+
+        function truncateTextForCanvas(ctx, text, maxWidth) {
+            if (ctx.measureText(text).width <= maxWidth) return text;
+            while (text.length > 0 && ctx.measureText(text + '...').width > maxWidth) {
+                text = text.slice(0, -1);
+            }
+            return text + '...';
+        }
+
+        window.onload = loadParticipants;
+    </script>
+</body>
+</html>
