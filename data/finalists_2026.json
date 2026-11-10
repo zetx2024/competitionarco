@@ -6047,7 +6047,7 @@
     "submissionScore": 120,
     "scaledFinalScore": 120,
     "viewProposal": "https://iarco.org/storage/2026/senior/Md_Mehedi_Hasan_Proposal.pdf",
-    "videoPitch": "https://www.youtube.com/watch?v=cU0y_H1TCYY&t=4020s",
+    "videoPitch": "https://www.youtube.com/watch?v=cU0y_H1TCYY&t=3625s",
     "proposal_comment": "Addressing biometric calibration for South Asian populations alongside edge-optimized neural processing targets a critical healthcare bottleneck in rural obstetrics. Grounding the research question in concrete sub-questions and performance indicators provides a commendable engineering direction. However, the literature review relies heavily on a limited bibliography of only seven citations, which overlooks recent breakthroughs in tinyML ultrasound image segmentation and Doppler analysis. Several mathematical symbols in Section 1.2 and Section 3.2 suffer from noticeable font conversion errors that disrupt readability. Additionally, the methodology needs far more rigor regarding class balance strategies, prospective cohort validation protocols, and specific clinical handling of motion blur artifacts in raw B-scans.",
     "presentation_comment": "Delivered a structured and well-paced talk that effectively articulated the infrastructure challenges of rural Union Health Centres. The visual workflow diagram and hardware benchmarking metrics provide strong technical support for the claimed low-latency edge performance. Nonetheless, several transition frames suffer from jarring visual clipping errors where text margins are abruptly sliced on screen. Speech delivery is occasionally monotone and would benefit from dynamic inflection to emphasize clinical impact. Include live demonstration clips or realistic simulated field interface screenshots in future presentations to heighten engagement and credibility."
   },
@@ -6081,7 +6081,7 @@
     "submissionScore": 147,
     "scaledFinalScore": 127,
     "viewProposal": "https://iarco.org/storage/2026/senior/Md_Jonaidul_Islam_Proposal.pdf",
-    "videoPitch": "https://www.youtube.com/watch?v=cU0y_H1TCYY&t=3625s",
+    "videoPitch": "https://www.youtube.com/watch?v=cU0y_H1TCYY&t=4020s",
     "proposal_comment": "Methodological execution relies strictly on self-reported qualitative interviews and focus groups, which introduces substantial subjective bias when assessing algorithmic feed mechanics. Incorporate passive digital tracing, algorithmic audit methods, or verified screen-time logs to measure news consumption objectively. Several references in the bibliography, notably citations dealing with pandemic cultural activities and general mental health surveys, diverge from the core computational media focus. Refine the literature review by grounding the arguments in empirical algorithmic studies from South Asian media markets, and supply an operational codebook for the thematic analysis phase.",
     "presentation_comment": "Vocal delivery suffers from uneven cadence and frequent mispronunciations, making technical sections challenging to follow. Rehearse with a natural conversational flow instead of reading slide bullet points directly. Repeated slide footers containing names and institutional affiliations crowd the visual layout. Elaborate more specifically on participant selection criteria for the focus groups, and demonstrate how psychological fatigue will be operationalized beyond basic self-reporting during data collection."
   }
